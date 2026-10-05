@@ -1,0 +1,999 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Career Strategy &amp; Design: Proposal for the Revised Shared Gen Ed Curriculum</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Libre+Franklin:wght@400;500;600&display=swap" rel="stylesheet">
+
+<!--
+===============================================================================
+  HOW TO ADD A CITATION
+  -----------------------------------------------------------------------------
+  1. Add the document once to the DOCS list near the top of the <script>
+     file docs.js, which sits next to this one.
+
+  2. Drop this tag in your prose, right where the reference belongs:
+
+        <span data-cite="fds-2025"></span>
+
+  That's it. The page assigns the number, builds the yellow button, lights the
+  matching thumbnail as the reader scrolls, and adds the document to the side
+  rail for that section. Numbers restart at 1 in each section and renumber
+  themselves if you add, remove, or reorder references.
+
+  Cite the same document twice in one section and it reuses its number.
+===============================================================================
+-->
+
+<style>
+  :root{
+    --navy:#15284B;
+    --gold:#E7AB2A;
+    --body:#595959;
+    --ink:#000000;
+    --rule:rgba(21,40,75,.14);
+    --tint-02:rgba(21,40,75,.03);
+    --tint-05:rgba(21,40,75,.05);
+    --tint-08:rgba(21,40,75,.08);
+    --bg:#FFFFFF;
+
+    --t-title:1.75rem;
+    --t-head:1.25rem;
+    --t-body:1rem;
+    --t-small:.8125rem;
+
+    --sans:"Libre Franklin","Segoe UI",Helvetica,Arial,sans-serif;
+
+    --rail-l:244px;
+    --rail-r:206px;
+
+    box-sizing:border-box;
+    padding-top:env(safe-area-inset-top,0px);
+    padding-bottom:env(safe-area-inset-bottom,0px);
+  }
+  *,*::before,*::after{box-sizing:border-box;}
+  html,body{height:100%;}
+  body{
+    margin:0;
+    background:var(--bg);
+    color:var(--body);
+    font-family:var(--sans);
+    font-size:var(--t-body);
+    line-height:1.65;
+    -webkit-font-smoothing:antialiased;
+  }
+  a{color:inherit;}
+  ::selection{background:rgba(231,171,42,.3);}
+  :focus-visible{outline:2px solid var(--navy);outline-offset:2px;}
+
+  /* ---------- shell ---------- */
+  .shell{
+    display:grid;
+    grid-template-columns:var(--rail-l) minmax(0,1fr) var(--rail-r);
+    height:100%;
+  }
+
+  /* ---------- left menu ---------- */
+  .menu{
+    background:var(--navy);
+    color:#fff;
+    display:flex;
+    flex-direction:column;
+    overflow-y:auto;
+    padding:28px 0 32px;
+  }
+  .brand{
+    display:block;width:100%;text-align:left;
+    background:none;border:0;border-bottom:1px solid rgba(255,255,255,.16);
+    font:inherit;cursor:pointer;
+    padding:0 22px 22px;
+    margin-bottom:14px;
+    transition:opacity .18s ease;
+  }
+  .brand:hover{opacity:.82;}
+  .brand[aria-current="true"] .mark{width:44px;}
+  .brand .mark{
+    display:block;
+    width:26px;height:3px;
+    background:var(--gold);
+    margin-bottom:14px;
+    transition:width .22s ease;
+  }
+  .brand h1{
+    font-size:.9375rem;
+    font-weight:600;
+    line-height:1.4;
+    margin:0;
+    color:#fff;
+    letter-spacing:.005em;
+  }
+  .brand p{
+    margin:7px 0 0;
+    font-size:var(--t-small);
+    color:rgba(255,255,255,.62);
+    line-height:1.5;
+  }
+
+  .nav{list-style:none;margin:0;padding:0;}
+  .nav > li{margin:0;}
+  .nav-link{
+    display:block;width:100%;text-align:left;
+    background:none;border:0;
+    font:inherit;font-size:.9375rem;line-height:1.4;
+    color:rgba(255,255,255,.78);
+    padding:11px 22px;
+    cursor:pointer;
+    border-left:3px solid transparent;
+    transition:color .18s ease,background .18s ease,border-color .18s ease;
+  }
+  .nav-link:hover{color:#fff;background:rgba(255,255,255,.05);}
+  .nav-link[aria-current="true"]{
+    color:#fff;font-weight:600;
+    border-left-color:var(--gold);
+    background:rgba(255,255,255,.07);
+  }
+  .sublist{list-style:none;margin:0;padding:2px 0 8px;display:none;}
+  .sublist.open{display:block;}
+  .sub-link{
+    display:block;width:100%;text-align:left;
+    background:none;border:0;font:inherit;
+    font-size:var(--t-small);
+    color:rgba(255,255,255,.55);
+    padding:6px 22px 6px 40px;
+    cursor:pointer;position:relative;
+    transition:color .18s ease;
+  }
+  .sub-link::before{
+    content:"";position:absolute;left:25px;top:50%;
+    width:5px;height:1px;background:rgba(255,255,255,.35);
+  }
+  .sub-link:hover{color:rgba(255,255,255,.9);}
+  .sub-link.current{color:var(--gold);}
+  .sub-link.current::before{background:var(--gold);width:9px;left:23px;}
+
+  .menu-foot{
+    margin-top:auto;
+    padding:22px 22px 0;
+    font-size:var(--t-small);
+    color:rgba(255,255,255,.45);
+    line-height:1.5;
+  }
+
+  /* ---------- center stage ---------- */
+  .stage{position:relative;overflow:hidden;}
+  .panel{
+    position:absolute;inset:0;
+    overflow-y:auto;
+    opacity:0;visibility:hidden;
+    transition:opacity .34s ease,visibility 0s linear .34s;
+    scroll-behavior:smooth;
+  }
+  .panel.active{opacity:1;visibility:visible;transition:opacity .34s ease;}
+  .panel-inner{
+
+    margin:0 auto;
+    padding:54px 46px 120px;
+  }
+
+  /* landing page */
+  .home-inner{padding-top:84px;}
+  .home-title{
+    font-size:2.875rem;
+    line-height:1.12;
+    font-weight:600;
+    letter-spacing:-.02em;
+    color:var(--ink);
+    margin:0 0 4px;
+    max-width:17ch;
+  }
+  .home-sub{
+    font-size:var(--t-head);
+    font-weight:400;
+    color:var(--navy);
+    line-height:1.4;
+    margin:0 0 30px;
+  }
+  .home-rule{width:64px;height:3px;background:var(--gold);border:0;margin:0 0 30px;}
+  .home-lead{font-size:1.0625rem;line-height:1.65;margin:0 0 18px;}
+  .home-next{margin-top:40px;padding-top:24px;border-top:1px solid var(--rule);}
+  .home-next p{font-size:var(--t-small);color:#8A8A8A;margin:0 0 12px;}
+  .start{
+    background:var(--navy);color:#fff;border:0;font:inherit;
+    font-size:.9375rem;padding:11px 20px;cursor:pointer;
+  }
+  .start:hover{background:#0F1E39;}
+  @media (max-width:760px){
+    .home-title{font-size:2.125rem;}
+    .home-inner{padding-top:72px;}
+  }
+
+  .sec-title{
+    font-size:var(--t-title);
+    line-height:1.25;
+    font-weight:600;
+    color:var(--ink);
+    margin:0 0 6px;
+    letter-spacing:-.01em;
+  }
+  .sec-standfirst{
+    margin:0 0 38px;
+    font-size:1.0625rem;
+    line-height:1.6;
+    color:var(--body);
+    padding-bottom:26px;
+    border-bottom:1px solid var(--rule);
+  }
+  h3.sub{
+    font-size:var(--t-head);
+    font-weight:600;
+    color:var(--navy);
+    line-height:1.35;
+    margin:46px 0 12px;
+    scroll-margin-top:24px;
+  }
+  h3.sub:first-of-type{margin-top:0;}
+  h4.minor{
+    font-size:var(--t-body);
+    font-weight:600;
+    color:var(--navy);
+    margin:28px 0 6px;
+  }
+  p{margin:0 0 16px;}
+
+  .pull{
+    margin:30px 0;
+    padding:22px 26px;
+    background:var(--tint-05);
+    border-left:3px solid var(--gold);
+    color:var(--navy);
+    font-size:1.0625rem;
+    line-height:1.55;
+  }
+  .pull p{margin:0;}
+  .pull cite{
+    display:block;margin-top:10px;
+    font-style:normal;font-size:var(--t-small);
+    color:var(--body);
+  }
+
+  .note{
+    margin:26px 0;
+    padding:18px 22px;
+    background:var(--tint-02);
+    border:1px solid var(--rule);
+    font-size:.9375rem;
+  }
+  .note p:last-child{margin-bottom:0;}
+
+  ul.plain,ol.plain{margin:0 0 18px;padding-left:20px;}
+  ul.plain li,ol.plain li{margin-bottom:8px;}
+
+  table.grid{width:100%;border-collapse:collapse;margin:26px 0;font-size:.9375rem;}
+  table.grid th,table.grid td{
+    text-align:left;padding:11px 12px;
+    border-bottom:1px solid var(--rule);vertical-align:top;
+  }
+  table.grid th{color:var(--navy);font-weight:600;background:var(--tint-02);}
+
+  /* figures / diagrams */
+  .fig{margin:32px 0;}
+  .fig img{
+    display:block;width:100%;height:auto;
+    border:1px solid var(--rule);background:#fff;
+  }
+  .fig figcaption{
+    font-size:var(--t-small);color:#8A8A8A;
+    line-height:1.5;margin-top:9px;
+  }
+
+  /* inline citation marker (built by script) */
+  .cite-mark{
+    display:inline-block;
+    min-width:14px;height:14px;
+    line-height:14px;text-align:center;
+    font-size:.5625rem;font-weight:600;
+    color:var(--navy);
+    background:var(--gold);
+    border-radius:50%;
+    margin-left:2px;
+    cursor:pointer;
+    border:0;font-family:inherit;
+    padding:0 3px;
+    position:relative;top:-.34em;
+  }
+  .cite-mark.unknown{background:#C0392B;color:#fff;}
+
+  /* FAQ */
+  .faq{border-top:1px solid var(--rule);}
+  .faq-item{border-bottom:1px solid var(--rule);}
+  .faq-q{
+    width:100%;text-align:left;background:none;border:0;
+    font:inherit;font-weight:500;color:var(--navy);
+    padding:18px 30px 18px 0;cursor:pointer;position:relative;line-height:1.5;
+  }
+  .faq-q::after{
+    content:"";position:absolute;right:6px;top:50%;
+    width:9px;height:9px;margin-top:-6px;
+    border-right:1.5px solid var(--navy);
+    border-bottom:1.5px solid var(--navy);
+    transform:rotate(45deg);transition:transform .22s ease;
+  }
+  .faq-item.open .faq-q::after{transform:rotate(-135deg);margin-top:-2px;}
+  .faq-a{display:none;padding:0 0 20px;}
+  .faq-item.open .faq-a{display:block;}
+
+  /* ---------- right citation rail ---------- */
+  .rail{
+    border-left:1px solid var(--rule);
+    padding:30px 18px 40px;
+    overflow-y:auto;background:#fff;
+  }
+  .rail h2{font-size:var(--t-small);font-weight:600;color:var(--navy);margin:0 0 4px;}
+  .rail .rail-hint{
+    font-size:var(--t-small);color:#8A8A8A;line-height:1.45;
+    margin:0 0 20px;padding-bottom:16px;border-bottom:1px solid var(--rule);
+  }
+  .rail-group{display:none;}
+  .rail-group.active{display:block;}
+  .doc{
+    display:block;width:100%;text-align:left;position:relative;
+    background:#fff;border:1px solid var(--rule);
+    padding:10px;margin-bottom:12px;cursor:pointer;font:inherit;
+    transition:transform .2s ease,box-shadow .2s ease,border-color .2s ease;
+  }
+  .doc:hover{border-color:rgba(21,40,75,.4);}
+  .doc.lit{
+    transform:translateY(-3px);
+    box-shadow:0 4px 14px rgba(21,40,75,.16);
+    border-color:var(--navy);
+  }
+  .doc .num{
+    position:absolute;top:10px;right:10px;z-index:3;
+    width:18px;height:18px;line-height:18px;text-align:center;
+    font-size:.6875rem;font-weight:600;
+    background:var(--navy);color:#fff;
+    transition:background .2s ease,color .2s ease;
+  }
+  .doc.lit .num{background:var(--gold);color:var(--navy);}
+
+  /* landscape / default: banner thumbnail above the text */
+  .doc .thumb{
+    display:block;width:100%;height:84px;
+    background:var(--tint-02);border:1px solid var(--rule);
+    margin-bottom:8px;overflow:hidden;line-height:0;
+  }
+  .doc.lit .thumb{background:var(--tint-08);}
+  .doc .thumb svg,
+  .doc .thumb img{
+    display:block;width:100%;height:100%;
+    object-fit:cover;object-position:top center;
+  }
+  .doc .dt{
+    display:block;font-size:var(--t-small);color:var(--navy);
+    font-weight:500;line-height:1.35;padding-right:22px;
+  }
+
+  .doc .dm{display:block;font-size:.75rem;color:#8A8A8A;margin-top:3px;line-height:1.35;}
+  .doc .da{
+    font-size:.75rem;color:#8A8A8A;margin-top:1px;line-height:1.35;
+    display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;
+    overflow:hidden;
+  }
+
+  /* portrait: the cover fills the card, text rides on a white scrim */
+  .doc.portrait{padding:0;overflow:hidden;}
+  .doc.portrait .thumb{
+    height:auto;max-height:260px;
+    border:0;margin:0;background:#fff;
+  }
+  .doc.portrait .thumb img{height:auto;}
+  .doc.portrait .dmeta{
+    position:absolute;left:0;right:0;bottom:0;z-index:2;
+    background:rgba(255,255,255,.9);
+    padding:9px 11px 10px;
+  }
+  .doc.portrait .dt{color:#000;padding-right:0;}
+  .doc.portrait .dm,
+  .doc.portrait .da{color:#000;}
+  .rail-empty{font-size:var(--t-small);color:#8A8A8A;}
+
+  /* ---------- fallback viewer (docs with no file yet) ---------- */
+  .veil{
+    position:fixed;inset:0;background:rgba(21,40,75,.45);
+    display:none;align-items:center;justify-content:center;
+    padding:32px;z-index:60;
+  }
+  .veil.open{display:flex;}
+  .viewer{
+    background:#fff;max-width:560px;width:100%;
+    border-top:3px solid var(--gold);
+    padding:28px 30px 26px;max-height:86vh;overflow-y:auto;
+  }
+  .viewer h3{margin:0 0 4px;font-size:var(--t-head);color:var(--navy);font-weight:600;}
+  .viewer .vm{font-size:var(--t-small);color:#8A8A8A;margin:0 0 18px;}
+  .viewer .vbody{font-size:.9375rem;}
+  .viewer-close{
+    margin-top:22px;background:var(--navy);color:#fff;border:0;
+    font:inherit;font-size:.9375rem;padding:9px 18px;cursor:pointer;
+  }
+  .viewer-close:hover{background:#0F1E39;}
+
+  /* ---------- mobile ---------- */
+  .menu-toggle{
+    display:none;position:fixed;left:12px;
+    top:calc(12px + env(safe-area-inset-top,0px));
+    z-index:50;background:var(--navy);color:#fff;border:0;
+    font:inherit;font-size:.875rem;padding:9px 14px;cursor:pointer;
+  }
+  @media (max-width:1100px){
+    :root{--rail-r:0px;}
+    .shell{grid-template-columns:var(--rail-l) minmax(0,1fr);}
+    .rail{grid-column:1 / -1;border-left:0;border-top:1px solid var(--rule);display:none;}
+  }
+  @media (max-width:760px){
+    .shell{grid-template-columns:1fr;}
+    .menu{
+      position:fixed;inset:0 auto 0 0;width:260px;z-index:45;
+      transform:translateX(-100%);transition:transform .26s ease;
+      padding-top:calc(28px + env(safe-area-inset-top,0px));
+    }
+    .menu.open{transform:translateX(0);}
+    .menu-toggle{display:block;}
+    .panel-inner{padding:68px 22px 100px;}
+    .scrim{position:fixed;inset:0;background:rgba(0,0,0,.35);z-index:44;display:none;}
+    .scrim.on{display:block;}
+  }
+  @media (prefers-reduced-motion:reduce){
+    *{transition-duration:.01ms !important;animation-duration:.01ms !important;}
+    .panel{scroll-behavior:auto;}
+  }
+</style>
+</head>
+<body>
+
+<button class="menu-toggle" id="menuToggle" aria-expanded="false">Sections</button>
+<div class="scrim" id="scrim"></div>
+
+<div class="shell">
+
+  <!-- ============ LEFT MENU ============ -->
+  <nav class="menu" id="menu" aria-label="Section navigation">
+    <button class="brand" id="brand" data-panel="home">
+      <span class="mark" aria-hidden="true"></span>
+      <h1>Career Strategy &amp; Design</h1>
+      <p>Proposal for the Revised Shared Gen Ed Curriculum</p>
+    </button>
+
+    <ul class="nav" id="nav">
+      <li>
+        <button class="nav-link" data-panel="urgency">What is the urgency?</button>
+        <ul class="sublist" data-for="urgency">
+          <li><button class="sub-link" data-target="u-1">The labor market students enter</button></li>
+          <li><button class="sub-link" data-target="u-2">What our own data shows</button></li>
+          <li><button class="sub-link" data-target="u-3">Why the core, and why now</button></li>
+        </ul>
+      </li>
+      <li>
+        <button class="nav-link" data-panel="throughline">Students' throughline: the Career Plan</button>
+        <ul class="sublist" data-for="throughline">
+          <li><button class="sub-link" data-target="t-1">What the plan is</button></li>
+          <li><button class="sub-link" data-target="t-2">What students carry forward</button></li>
+          <li><button class="sub-link" data-target="t-3">How faculty see it</button></li>
+        </ul>
+      </li>
+      <li>
+        <button class="nav-link" data-panel="milestones">Four milestones</button>
+        <ul class="sublist" data-for="milestones">
+          <li><button class="sub-link" data-target="m-1">Milestone 1</button></li>
+          <li><button class="sub-link" data-target="m-2">Milestone 2</button></li>
+          <li><button class="sub-link" data-target="m-3">Milestone 3</button></li>
+          <li><button class="sub-link" data-target="m-4">Milestone 4</button></li>
+        </ul>
+      </li>
+      <li>
+        <button class="nav-link" data-panel="howwork">How the work gets done</button>
+        <ul class="sublist" data-for="howwork">
+          <li><button class="sub-link" data-target="h-1">Who teaches what</button></li>
+          <li><button class="sub-link" data-target="h-2">Support for instructors</button></li>
+          <li><button class="sub-link" data-target="h-3">Assessment and review</button></li>
+        </ul>
+      </li>
+      <li>
+        <button class="nav-link" data-panel="faq">FAQ</button>
+      </li>
+    </ul>
+
+    <div class="menu-foot">Proposal Draft, October 2026</div>
+  </nav>
+
+  <!-- ============ CENTER STAGE ============ -->
+  <main class="stage" id="stage">
+
+    <!-- HOME -->
+    <section class="panel" id="panel-home" tabindex="-1">
+      <div class="panel-inner home-inner">
+        <h2 class="home-title">Career Strategy &amp; Design</h2>
+        <p class="home-sub">Proposal for the Revised Shared Gen Ed Curriculum</p>
+        <hr class="home-rule">
+
+        <p class="home-lead">Career outcomes carry substantial weight in students’ college decisions and in public scrutiny of the value of higher education. Students increasingly encounter information about graduate earnings alongside decisions about where to enroll, bringing the connection between education and opportunity into sharper institutional focus.<span data-cite="SoHE2025"></span><span data-cite="fafsa"></span> At Suffolk, these expectations are explicit: in a local survey administered to incoming Fall 2026 first-year students during summer orientation, <b>93% of respondents rated obtaining a better job as a very or extremely important reason for attending college, and 84% identified developing professional skills.</b> For students seeking greater opportunity and economic mobility, fulfilling those expectations requires intentional educational support. Students arrive with unequal access to professional networks, familiarity with workplace expectations, and knowledge of how opportunities are found and pursued. First-generation students may be navigating these expectations with less access to guidance grounded in family experience of college and professional careers. Suffolk’s educational responsibility includes helping every student develop the knowledge, relationships, experience, and judgment needed to turn that promise of opportunity into an attainable future.<span data-cite="SU_FY26"></span></p>
+        <p>Suffolk already offers substantial career expertise, committed faculty mentorship, and valuable classroom and networking experiences. Yet voluntary Career Center engagement and opportunities embedded at individual instructors’ discretion cannot ensure that every student receives coherent preparation at the right time. National research recognizes faculty’s substantial contributions to career development while identifying opportunities for stronger coordination with campus resources; student surveys also show uneven participation in career guidance.<span data-cite="facattitudes"></span> <span data-cite="NACE2024studentsurvey"></span> Students may encounter excellent experiences without connecting them to a developing plan, while others may miss essential preparation altogether. **We need to know what every student can do before graduation puts that preparation to the test.** Can students investigate pathways, communicate evidence of their abilities, build professional relationships, pursue meaningful experience, and act on a realistic plan? These should be visible, assessable learning outcomes throughout college. </p>
+        <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.<span data-cite="charge-memo"></span></p>
+
+        <div class="pull">
+          <p>Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora.</p>
+          <cite>Placeholder — summative framing statement</cite>
+        </div>
+
+        <p>Nam libero tempore, cum soluta nobis est eligendi optio cumque nihil impedit quo minus id quod maxime placeat facere possimus, omnis voluptas assumenda est, omnis dolor repellendus.</p>
+
+        <div class="home-next">
+          <p>Start with the case for change, or use the menu to move between sections.</p>
+          <button class="start" data-panel="urgency">Read: What is the urgency?</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- URGENCY -->
+    <section class="panel" id="panel-urgency" tabindex="-1">
+      <div class="panel-inner">
+        <h2 class="sec-title">What is the urgency?</h2>
+        <p class="sec-standfirst">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco.</p>
+
+        <h3 class="sub" id="u-1">The labor market students enter</h3>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.<span data-cite="labor-market"></span></p>
+        <p>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+
+        <div class="pull">
+          <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam.</p>
+          <cite>Placeholder attribution — source to be confirmed</cite>
+        </div>
+
+        <h3 class="sub" id="u-2">What our own data shows</h3>
+        <p>At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident.<span data-cite="fds-2025"></span><span data-cite="entering-student-survey"></span><span data-cite="competency-benchmark"></span></p>
+
+        <table class="grid">
+          <thead><tr><th>Indicator</th><th>Suffolk</th><th>Peer median</th></tr></thead>
+          <tbody>
+            <tr><td>Lorem ipsum dolor</td><td>00%</td><td>00%</td></tr>
+            <tr><td>Consectetur adipiscing</td><td>00%</td><td>00%</td></tr>
+            <tr><td>Sed do eiusmod tempor</td><td>00%</td><td>00%</td></tr>
+            <tr><td>Ut labore et dolore</td><td>00%</td><td>00%</td></tr>
+          </tbody>
+        </table>
+
+        <p>Nam libero tempore, cum soluta nobis est eligendi optio cumque nihil impedit quo minus id quod maxime placeat facere possimus, omnis voluptas assumenda est.</p>
+
+        <h3 class="sub" id="u-3">Why the core, and why now</h3>
+        <p>Temporibus autem quibusdam et aut officiis debitis aut rerum necessitatibus saepe eveniet ut et voluptates repudiandae sint et molestiae non recusandae.<span data-cite="charge-memo"></span></p>
+        <p>Itaque earum rerum hic tenetur a sapiente delectus, ut aut reiciendis voluptatibus maiores alias consequatur aut perferendis doloribus asperiores repellat.</p>
+        <div class="note">
+          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Placeholder for a short framing note or a link out to the full proposal document.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- THROUGHLINE -->
+    <section class="panel" id="panel-throughline" tabindex="-1">
+      <div class="panel-inner">
+        <h2 class="sec-title">Students' throughline: the Career Plan</h2>
+        <p class="sec-standfirst">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua, quis nostrud exercitation.</p>
+
+        <h3 class="sub" id="t-1">What the plan is</h3>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris.<span data-cite="plan-template"></span></p>
+        <p>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur sint occaecat cupidatat non proident.</p>
+
+        <!-- EXAMPLE DIAGRAM — delete or replace. Put the file in images/ -->
+        <figure class="fig">
+          <img src="images/career-plan-structure.svg" alt="Placeholder: structure of the Career Plan across four years.">
+          <figcaption>Figure 1. Placeholder diagram. Replace with the Career Plan structure.</figcaption>
+        </figure>
+
+        <h4 class="minor">Components</h4>
+        <ul class="plain">
+          <li>Lorem ipsum dolor sit amet, consectetur adipiscing elit</li>
+          <li>Sed do eiusmod tempor incididunt ut labore</li>
+          <li>Ut enim ad minim veniam, quis nostrud</li>
+          <li>Duis aute irure dolor in reprehenderit</li>
+        </ul>
+
+        <h3 class="sub" id="t-2">What students carry forward</h3>
+        <p>At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores.<span data-cite="rubric"></span></p>
+        <div class="pull">
+          <p>Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit.</p>
+          <cite>Placeholder pull quote</cite>
+        </div>
+        <p>Nam libero tempore, cum soluta nobis est eligendi optio cumque nihil impedit quo minus id quod maxime placeat facere possimus.</p>
+
+        <h3 class="sub" id="t-3">How faculty see it</h3>
+        <p>Temporibus autem quibusdam et aut officiis debitis aut rerum necessitatibus saepe eveniet ut et voluptates repudiandae sint et molestiae non recusandae.<span data-cite="advisor-dashboard"></span></p>
+        <p>Itaque earum rerum hic tenetur a sapiente delectus, ut aut reiciendis voluptatibus maiores alias consequatur.</p>
+      </div>
+    </section>
+
+    <!-- MILESTONES -->
+    <section class="panel" id="panel-milestones" tabindex="-1">
+      <div class="panel-inner">
+        <h2 class="sec-title">Four milestones</h2>
+        <p class="sec-standfirst">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Each milestone is placeholder content pending the working group's draft language.</p>
+
+        <h3 class="sub" id="m-1">Milestone 1</h3>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.<span data-cite="milestone-1"></span></p>
+        <h4 class="minor">Where it sits</h4>
+        <p>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</p>
+        <h4 class="minor">What students produce</h4>
+        <p>Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+
+        <h3 class="sub" id="m-2">Milestone 2</h3>
+        <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam eaque ipsa quae ab illo inventore.<span data-cite="milestone-2"></span></p>
+        <h4 class="minor">Where it sits</h4>
+        <p>Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos.</p>
+        <h4 class="minor">What students produce</h4>
+        <p>Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam.</p>
+
+        <h3 class="sub" id="m-3">Milestone 3</h3>
+        <p>Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur.<span data-cite="milestone-3"></span></p>
+        <div class="pull">
+          <p>Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur.</p>
+          <cite>Placeholder pull quote</cite>
+        </div>
+        <h4 class="minor">What students produce</h4>
+        <p>At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti.</p>
+
+        <h3 class="sub" id="m-4">Milestone 4</h3>
+        <p>Et harum quidem rerum facilis est et expedita distinctio. Nam libero tempore, cum soluta nobis est eligendi optio cumque nihil impedit.<span data-cite="milestone-4"></span><span data-cite="fds-2025"></span></p>
+        <h4 class="minor">Where it sits</h4>
+        <p>Temporibus autem quibusdam et aut officiis debitis aut rerum necessitatibus saepe eveniet ut et voluptates repudiandae.</p>
+        <h4 class="minor">What students produce</h4>
+        <p>Itaque earum rerum hic tenetur a sapiente delectus, ut aut reiciendis voluptatibus maiores alias consequatur aut perferendis.</p>
+      </div>
+    </section>
+
+    <!-- HOW THE WORK GETS DONE -->
+    <section class="panel" id="panel-howwork" tabindex="-1">
+      <div class="panel-inner">
+        <h2 class="sec-title">How the work gets done</h2>
+        <p class="sec-standfirst">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+
+        <h3 class="sub" id="h-1">Who teaches what</h3>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation.<span data-cite="staffing-model"></span></p>
+        <table class="grid">
+          <thead><tr><th>Element</th><th>Led by</th><th>Supported by</th></tr></thead>
+          <tbody>
+            <tr><td>Lorem ipsum dolor</td><td>Placeholder</td><td>Placeholder</td></tr>
+            <tr><td>Consectetur adipiscing</td><td>Placeholder</td><td>Placeholder</td></tr>
+            <tr><td>Sed do eiusmod</td><td>Placeholder</td><td>Placeholder</td></tr>
+          </tbody>
+        </table>
+
+        <h3 class="sub" id="h-2">Support for instructors</h3>
+        <p>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur excepteur sint occaecat.<span data-cite="toolkit"></span></p>
+        <ul class="plain">
+          <li>Lorem ipsum dolor sit amet, consectetur</li>
+          <li>Sed do eiusmod tempor incididunt</li>
+          <li>Ut enim ad minim veniam quis nostrud</li>
+        </ul>
+
+        <h3 class="sub" id="h-3">Assessment and review</h3>
+        <p>Nam libero tempore, cum soluta nobis est eligendi optio cumque nihil impedit quo minus id quod maxime placeat facere possimus.<span data-cite="assessment-plan"></span></p>
+        <div class="note">
+          <p>Placeholder note: review cadence, who reports to whom, and where results surface.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- FAQ -->
+    <section class="panel" id="panel-faq" tabindex="-1">
+      <div class="panel-inner">
+        <h2 class="sec-title">FAQ</h2>
+        <p class="sec-standfirst">Questions raised so far, with placeholder answers to be replaced after the next working group meeting.</p>
+
+        <div class="faq">
+          <div class="faq-item">
+            <button class="faq-q">Does this add credits to a student's load?</button>
+            <div class="faq-a"><p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p></div>
+          </div>
+          <div class="faq-item">
+            <button class="faq-q">Who owns the content if it sits inside my course?</button>
+            <div class="faq-a"><p>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat duis aute irure.</p></div>
+          </div>
+          <div class="faq-item">
+            <button class="faq-q">How is this different from what Career Services already offers?</button>
+            <div class="faq-a"><p>Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum sed ut perspiciatis.</p></div>
+          </div>
+          <div class="faq-item">
+            <button class="faq-q">What happens to transfer students?</button>
+            <div class="faq-a"><p>Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione.</p></div>
+          </div>
+          <div class="faq-item">
+            <button class="faq-q">What is the implementation timeline?</button>
+            <div class="faq-a"><p>Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi.</p></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ============ RIGHT CITATION RAIL (built by script) ============ -->
+  <aside class="rail" id="rail" aria-label="Referenced documents">
+    <h2>Referenced Documents</h2>
+<br>
+  </aside>
+
+</div>
+
+<!-- fallback viewer, used only for documents with no file yet -->
+<div class="veil" id="veil" role="dialog" aria-modal="true" aria-labelledby="viewerTitle">
+  <div class="viewer">
+    <h3 id="viewerTitle">Document title</h3>
+    <p class="vm" id="viewerMeta">PDF</p>
+    <div class="vbody">
+      <p>No file is linked to this reference yet. Add a <code>file</code> value for it in the DOCS list and the thumbnail will open the document directly.</p>
+    </div>
+    <button class="viewer-close" id="viewerClose">Close</button>
+  </div>
+</div>
+
+<script src="docs.js"></script>
+<script>
+(function(){
+  "use strict";
+
+  var DOCS = window.DOCS || {};
+  if(!Object.keys(DOCS).length){
+    console.error("docs.js did not load. Check that it sits next to index.html.");
+  }
+
+  /* ======================= nothing below needs editing ====================== */
+
+  var navLinks=[].slice.call(document.querySelectorAll(".nav-link, .brand"));
+  var subLinks=[].slice.call(document.querySelectorAll(".sub-link"));
+  var panels={};
+  document.querySelectorAll(".panel").forEach(function(p){ panels[p.id.replace("panel-","")]=p; });
+  var rail=document.getElementById("rail");
+  var menu=document.getElementById("menu");
+  var scrim=document.getElementById("scrim");
+  var veil=document.getElementById("veil");
+  var observer=null;
+  var current=null;
+
+  function esc(s){
+    return String(s).replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;").replace(/"/g,"&quot;");
+  }
+
+  /* ---- build numbered markers + the rail, section by section ---- */
+  function buildCitations(){
+    Object.keys(panels).forEach(function(key){
+      var panel=panels[key];
+      var marks=[].slice.call(panel.querySelectorAll("[data-cite]"));
+      var numbers={}, order=[], n=0;
+
+      marks.forEach(function(span){
+        var id=span.dataset.cite;
+        var known=Object.prototype.hasOwnProperty.call(DOCS,id);
+        if(!known) console.warn('Citation "'+id+'" is not in the DOCS list.');
+        if(!(id in numbers)){ numbers[id]= ++n; order.push(id); }
+
+        var b=document.createElement("button");
+        b.className="cite-mark"+(known?"":" unknown");
+        b.dataset.doc=id;
+        b.textContent=known?numbers[id]:"?";
+        b.setAttribute("aria-label", known
+          ? ("Reference "+numbers[id]+": "+DOCS[id].title)
+          : ('Unknown reference "'+id+'"'));
+        span.parentNode.replaceChild(b,span);
+
+        var block=b.closest("p,li,figure,td,.pull,.note,h3,h4")||b.parentElement;
+        var list=(block.getAttribute("data-cites")||"").split(",").filter(Boolean);
+        if(list.indexOf(id)<0) list.push(id);
+        block.setAttribute("data-cites", list.join(","));
+      });
+
+      var g=document.createElement("div");
+      g.className="rail-group";
+      g.dataset.for=key;
+
+      if(!order.length){
+        g.innerHTML='<p class="rail-empty">No documents referenced in this section.</p>';
+      } else {
+        order.forEach(function(id){
+          var d=DOCS[id];
+          if(!d) return;
+          var b=document.createElement("button");
+          b.className="doc";
+          b.dataset.doc=id;
+          if(d.file) b.dataset.file=d.file;
+          b.innerHTML=
+            '<span class="num">'+numbers[id]+'</span>'+
+            (d.thumb
+              ? '<span class="thumb"><img src="'+esc(d.thumb)+'" alt=""></span>'
+              : '<span class="thumb"></span>')+
+            '<span class="dmeta">'+
+              '<span class="dt">'+esc(d.title)+'</span>'+
+              (d.date   ? '<span class="dm">'+esc(d.date)+'</span>' : '')+
+              (d.author ? '<span class="da" title="'+esc(d.author)+'">'+esc(d.author)+'</span>' : '')+
+            '</span>';
+          if(d.portrait) b.classList.add("portrait");
+          g.appendChild(b);
+        });
+      }
+      rail.appendChild(g);
+    });
+  }
+
+  /* ---- generic page graphic for documents with no thumbnail image ---- */
+  function drawPlaceholders(){
+    var NS="http://www.w3.org/2000/svg";
+    document.querySelectorAll(".thumb:empty").forEach(function(t){
+      var svg=document.createElementNS(NS,"svg");
+      svg.setAttribute("viewBox","0 0 120 84");
+      svg.setAttribute("preserveAspectRatio","none");
+      svg.setAttribute("aria-hidden","true");
+      [6,10,14,18,22,26,30,38,42,46,50,54,62,66,70].forEach(function(y,i){
+        var r=document.createElementNS(NS,"rect");
+        r.setAttribute("x","12"); r.setAttribute("y",String(y));
+        r.setAttribute("height","2");
+        r.setAttribute("width", String(i%5===3?54:(i%4===0?90:78)));
+        r.setAttribute("fill","rgba(21,40,75,.22)");
+        svg.appendChild(r);
+      });
+      var head=document.createElementNS(NS,"rect");
+      head.setAttribute("x","12"); head.setAttribute("y","-2");
+      head.setAttribute("width","40"); head.setAttribute("height","3");
+      head.setAttribute("fill","#E7AB2A");
+      svg.appendChild(head);
+      t.appendChild(svg);
+    });
+  }
+
+  function closeMobileMenu(){
+    menu.classList.remove("open");
+    scrim.classList.remove("on");
+    document.getElementById("menuToggle").setAttribute("aria-expanded","false");
+  }
+
+  function show(key){
+    if(current===key) return;
+    current=key;
+
+    navLinks.forEach(function(b){
+      b.setAttribute("aria-current", b.dataset.panel===key ? "true":"false");
+    });
+    document.querySelectorAll(".sublist").forEach(function(s){
+      s.classList.toggle("open", s.dataset.for===key);
+    });
+    Object.keys(panels).forEach(function(k){
+      panels[k].classList.toggle("active", k===key);
+    });
+    document.querySelectorAll(".rail-group").forEach(function(g){
+      g.classList.toggle("active", g.dataset.for===key);
+    });
+
+    var panel=panels[key];
+    panel.scrollTop=0;
+    clearLit();
+    watch(panel);
+  }
+
+  function clearLit(){
+    document.querySelectorAll(".doc.lit,.cite-mark.lit").forEach(function(d){
+      d.classList.remove("lit");
+    });
+  }
+
+  function watch(panel){
+    if(observer) observer.disconnect();
+    var cited=[].slice.call(panel.querySelectorAll("[data-cites]"));
+    if(cited.length){
+      observer=new IntersectionObserver(function(entries){
+        entries.forEach(function(e){
+          e.target.dataset.cites.split(",").forEach(function(id){
+            var doc=document.querySelector('.rail-group.active .doc[data-doc="'+id+'"]');
+            var mark=e.target.querySelector('.cite-mark[data-doc="'+id+'"]');
+            if(doc) doc.classList.toggle("lit", e.isIntersecting);
+            if(mark) mark.classList.toggle("lit", e.isIntersecting);
+          });
+        });
+      },{root:panel, rootMargin:"-18% 0px -52% 0px", threshold:0});
+      cited.forEach(function(el){ observer.observe(el); });
+    }
+    panel.addEventListener("scroll", function(){ spy(panel); }, {passive:true});
+    spy(panel);
+  }
+
+  function spy(panel){
+    var heads=[].slice.call(panel.querySelectorAll("h3.sub"));
+    if(!heads.length) return;
+    var top=panel.getBoundingClientRect().top+90, best=heads[0];
+    heads.forEach(function(h){ if(h.getBoundingClientRect().top<=top) best=h; });
+    subLinks.forEach(function(s){
+      s.classList.toggle("current", s.dataset.target===best.id);
+    });
+  }
+
+  function openDoc(id){
+    var d=DOCS[id];
+    if(d && d.file){ window.open(d.file,"_blank","noopener"); return; }
+    document.getElementById("viewerTitle").textContent=d?d.title:"Unknown reference";
+    document.getElementById("viewerMeta").textContent=d
+      ? [d.date,d.author].filter(Boolean).join(" · ")
+      : id;
+    veil.classList.add("open");
+    document.getElementById("viewerClose").focus();
+  }
+  function closeDoc(){ veil.classList.remove("open"); }
+
+  /* ---- events ---- */
+  navLinks.forEach(function(b){
+    b.addEventListener("click", function(){
+      show(b.dataset.panel);
+      if(window.innerWidth<=760) closeMobileMenu();
+    });
+  });
+
+  subLinks.forEach(function(b){
+    b.addEventListener("click", function(){
+      var list=b.closest(".sublist");
+      show(list.dataset.for);
+      var panel=panels[list.dataset.for];
+      var target=document.getElementById(b.dataset.target);
+      if(target){
+        window.requestAnimationFrame(function(){
+          panel.scrollTo({top:target.offsetTop-24, behavior:"smooth"});
+        });
+      }
+      if(window.innerWidth<=760) closeMobileMenu();
+    });
+  });
+
+  document.querySelectorAll(".start").forEach(function(b){
+    b.addEventListener("click", function(){ show(b.dataset.panel); });
+  });
+
+  document.addEventListener("click", function(e){
+    var d=e.target.closest(".doc, .cite-mark");
+    if(d){ openDoc(d.dataset.doc); return; }
+    if(e.target===veil) closeDoc();
+  });
+  document.getElementById("viewerClose").addEventListener("click", closeDoc);
+  document.addEventListener("keydown", function(e){
+    if(e.key==="Escape"){ closeDoc(); closeMobileMenu(); }
+  });
+
+  document.querySelectorAll(".faq-q").forEach(function(q){
+    q.addEventListener("click", function(){ q.parentElement.classList.toggle("open"); });
+  });
+
+  document.getElementById("menuToggle").addEventListener("click", function(){
+    var open=menu.classList.toggle("open");
+    scrim.classList.toggle("on", open);
+    this.setAttribute("aria-expanded", open?"true":"false");
+  });
+  scrim.addEventListener("click", closeMobileMenu);
+
+  /* ---- go ---- */
+  /* taller than it is wide -> let the cover fill the whole card */
+  function detectPortrait(){
+    document.querySelectorAll(".doc .thumb img").forEach(function(img){
+      function check(){
+        if(img.naturalWidth && img.naturalHeight > img.naturalWidth*1.15){
+          img.closest(".doc").classList.add("portrait");
+        }
+      }
+      if(img.complete) check();
+      else img.addEventListener("load", check, {once:true});
+    });
+  }
+
+  buildCitations();
+  drawPlaceholders();
+  detectPortrait();
+  show("home");
+})();
+</script>
+</body>
+</html>
