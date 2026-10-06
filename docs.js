@@ -24,7 +24,7 @@ window.DOCS = {
   title:"Entering Student Survey: Summary Findings",
   date:"September 2026",
   author:"Suffolk OIRA",
-  file:"files/oiradeck",
+  file:"files/oiradeck.pdf",
   thumb:"thumb/FYdata.png"
 },
 
@@ -32,7 +32,7 @@ window.DOCS = {
   title:"The State of Higher Education, 2025",
   date:"2025",
   author:"Gallup, Lumina Foundation",
-  file:"files/SoHE2025.pdf",
+  file:"files/GallupLumniaStateofHigherEd2025.pdf",
   thumb:"thumb/State-of-Higher-Education-2025-thumbnail.png"
 },
 "fafsa": {
@@ -46,14 +46,47 @@ window.DOCS = {
   title:"The Integration of Career Readiness Into the Curriculum",
   date:"April 2024",
   author:"AAC&U, NACE",
-  file:"files/careerreadinessfacultyattitutdes",
+  file:"files/careerreadinessfacultyattitutdes.pdf",
   thumb:"thumb/facattitudes.png"
 },
 "NACE2024studentsurvey": {
-  title:"First Destination Survey, 2025 cohort",
-  date:"January 2026",
-  author:"Office of Institutional Research and Assessment",
-  file:" files/NACE2024studentsurvey.pdf",
+  title:"The 2024 Student Survey Report",
+  date:"September 2024",
+  author:"NACE",
+  file:"files/NACE2024studentsurvey.pdf",
   thumb:"thumb/NACE2024studentsurvey.png"
+},
+
+"nacecompetency": {
+  title:"The 2024 Student Survey Report",
+  date:"September 2024",
+  author:"NACE",
+  file:"https://www.naceweb.org/career-readiness/competencies/career-readiness-defined/#competencies",
+  thumb:"thumb/nacecompetencies.png"
+},
+
+
+"soares": {
+  title:"A systematic review on career interventions...",
+  date:"2022",
+  author:"Soares, Carvalho, & Daniela Silva",
+  file:"files/soares.pdf",
+  thumb:"thumb/soares.png"
+},
+
+"stradaprinciples": {
+  title:"Principles for Quality Education-to-Career Guidance",
+  date:"March 2025",
+  author:"Strada Education",
+  file:"files/stradaprinciples.pdf",
+  thumb:"thumb/stradaprinciples.png"
+},
+
+"stradabeyond": {
+  title:"Internships and beyond: Strengthening career value...",
+  date:"July 2025",
+  author:"Strada Education",
+  file:"files/stradabeyond.pdf",
+  thumb:"thumb/stradabeyond.png"
 },
   };

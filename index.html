@@ -292,17 +292,17 @@
   /* inline citation marker (built by script) */
   .cite-mark{
     display:inline-block;
-    min-width:14px;height:14px;
-    line-height:14px;text-align:center;
-    font-size:.5625rem;font-weight:600;
+    min-width:11px;height:11px;
+    line-height:11px;text-align:center;
+    font-size:.5rem;font-weight:600;
     color:var(--navy);
     background:var(--gold);
     border-radius:50%;
     margin-left:2px;
     cursor:pointer;
     border:0;font-family:inherit;
-    padding:0 3px;
-    position:relative;top:-.34em;
+    padding:0 2px;
+    position:relative;top:-.5em;
   }
   .cite-mark.unknown{background:#C0392B;color:#fff;}
 
@@ -354,10 +354,8 @@
     position:absolute;top:10px;right:10px;z-index:3;
     width:18px;height:18px;line-height:18px;text-align:center;
     font-size:.6875rem;font-weight:600;
-    background:var(--navy);color:#fff;
-    transition:background .2s ease,color .2s ease;
+    background:var(--gold);color:var(--navy);
   }
-  .doc.lit .num{background:var(--gold);color:var(--navy);}
 
   /* landscape / default: banner thumbnail above the text */
   .doc .thumb{
@@ -428,10 +426,27 @@
     z-index:50;background:var(--navy);color:#fff;border:0;
     font:inherit;font-size:.875rem;padding:9px 14px;cursor:pointer;
   }
+  .rail-toggle{
+    display:none;position:fixed;right:12px;
+    top:calc(12px + env(safe-area-inset-top,0px));
+    z-index:50;background:var(--navy);color:#fff;border:0;
+    font:inherit;font-size:.875rem;padding:9px 14px;cursor:pointer;
+  }
   @media (max-width:1100px){
     :root{--rail-r:0px;}
     .shell{grid-template-columns:var(--rail-l) minmax(0,1fr);}
-    .rail{grid-column:1 / -1;border-left:0;border-top:1px solid var(--rule);display:none;}
+    /* references rail rolls up into a right-hand drawer */
+    .rail{
+      position:fixed;inset:0 0 0 auto;width:min(320px,86vw);z-index:45;
+      border-left:1px solid var(--rule);
+      padding-top:calc(64px + env(safe-area-inset-top,0px));
+      transform:translateX(100%);transition:transform .26s ease;
+      visibility:hidden;
+    }
+    .rail.open{transform:translateX(0);visibility:visible;}
+    .rail-toggle{display:block;}
+    .scrim{position:fixed;inset:0;background:rgba(0,0,0,.35);z-index:44;display:none;}
+    .scrim.on{display:block;}
   }
   @media (max-width:760px){
     .shell{grid-template-columns:1fr;}
@@ -443,8 +458,6 @@
     .menu.open{transform:translateX(0);}
     .menu-toggle{display:block;}
     .panel-inner{padding:68px 22px 100px;}
-    .scrim{position:fixed;inset:0;background:rgba(0,0,0,.35);z-index:44;display:none;}
-    .scrim.on{display:block;}
   }
   @media (prefers-reduced-motion:reduce){
     *{transition-duration:.01ms !important;animation-duration:.01ms !important;}
@@ -455,6 +468,7 @@
 <body>
 
 <button class="menu-toggle" id="menuToggle" aria-expanded="false">Sections</button>
+<button class="rail-toggle" id="railToggle" aria-expanded="false" aria-controls="rail">References</button>
 <div class="scrim" id="scrim"></div>
 
 <div class="shell">
@@ -477,7 +491,7 @@
         </ul>
       </li>
       <li>
-        <button class="nav-link" data-panel="throughline">Students' throughline: the Career Plan</button>
+        <button class="nav-link" data-panel="throughline">The Career Plan</button>
         <ul class="sublist" data-for="throughline">
           <li><button class="sub-link" data-target="t-1">What the plan is</button></li>
           <li><button class="sub-link" data-target="t-2">What students carry forward</button></li>
@@ -519,19 +533,23 @@
         <p class="home-sub">Proposal for the Revised Shared Gen Ed Curriculum</p>
         <hr class="home-rule">
 
-        <p class="home-lead">Career outcomes carry substantial weight in students’ college decisions and in public scrutiny of the value of higher education. Students increasingly encounter information about graduate earnings alongside decisions about where to enroll, bringing the connection between education and opportunity into sharper institutional focus.<span data-cite="SoHE2025"></span><span data-cite="fafsa"></span> At Suffolk, these expectations are explicit: in a local survey administered to incoming Fall 2026 first-year students during summer orientation, <b>93% of respondents rated obtaining a better job as a very or extremely important reason for attending college, and 84% identified developing professional skills.</b> For students seeking greater opportunity and economic mobility, fulfilling those expectations requires intentional educational support. Students arrive with unequal access to professional networks, familiarity with workplace expectations, and knowledge of how opportunities are found and pursued. First-generation students may be navigating these expectations with less access to guidance grounded in family experience of college and professional careers. Suffolk’s educational responsibility includes helping every student develop the knowledge, relationships, experience, and judgment needed to turn that promise of opportunity into an attainable future.<span data-cite="SU_FY26"></span></p>
-        <p>Suffolk already offers substantial career expertise, committed faculty mentorship, and valuable classroom and networking experiences. Yet voluntary Career Center engagement and opportunities embedded at individual instructors’ discretion cannot ensure that every student receives coherent preparation at the right time. National research recognizes faculty’s substantial contributions to career development while identifying opportunities for stronger coordination with campus resources; student surveys also show uneven participation in career guidance.<span data-cite="facattitudes"></span> <span data-cite="NACE2024studentsurvey"></span> Students may encounter excellent experiences without connecting them to a developing plan, while others may miss essential preparation altogether. **We need to know what every student can do before graduation puts that preparation to the test.** Can students investigate pathways, communicate evidence of their abilities, build professional relationships, pursue meaningful experience, and act on a realistic plan? These should be visible, assessable learning outcomes throughout college. </p>
-        <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.<span data-cite="charge-memo"></span></p>
+        <p class="home-lead">Career outcomes carry substantial weight in students’ college decisions and in public scrutiny of the value of higher education. Students increasingly encounter information about graduate earnings alongside decisions about where to enroll, bringing the connection between education and opportunity into sharper institutional focus.<span data-cite="SoHE2025"></span><span data-cite="fafsa"></span> At Suffolk, these expectations are explicit: in a local survey administered to incoming Fall 2026 first-year students during summer orientation, <b>93% of respondents rated obtaining a better job as a very or extremely important reason for attending college, and 84% identified developing professional skills.</b><span data-cite="SU_FY26"></span> For students seeking greater opportunity and economic mobility, fulfilling those expectations requires intentional educational support. Students arrive with unequal access to professional networks, familiarity with workplace expectations, and knowledge of how opportunities are found and pursued. First-generation students may be navigating these expectations with less access to guidance grounded in family experience of college and professional careers. Suffolk’s educational responsibility includes helping every student develop the knowledge, relationships, experience, and judgment needed to turn that promise of opportunity into an attainable future.</p>
 
         <div class="pull">
-          <p>Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora.</p>
-          <cite>Placeholder — summative framing statement</cite>
+          <p><b>93% </b>of Fall 2026 first-year students at Suffolk rated "obtaining a better job" as a <u>very</u> or <u>extremely</u> important reason for attending college."<span data-cite="SU_FY26"></span></p>
+          <cite>Office of institutional Research and Assessment, survey of incoming students at orientation, Summer 2026</cite>
         </div>
+        
+        <p>Suffolk already offers substantial career expertise, committed faculty mentorship, and valuable classroom and networking experiences. Yet voluntary Career Center engagement and opportunities embedded at individual instructors’ discretion cannot ensure that every student receives coherent preparation at the right time. National research recognizes faculty’s substantial contributions to career development while identifying opportunities for stronger coordination with campus resources; student surveys also show uneven participation in career guidance.<span data-cite="facattitudes"></span> <span data-cite="NACE2024studentsurvey"></span> Students may encounter excellent experiences without connecting them to a developing plan, while others may miss essential preparation altogether. <b>We need to know what every student can do before graduation puts that preparation to the test.</b>  Can students investigate pathways, communicate evidence of their abilities, build professional relationships, pursue meaningful experience, and act on a realistic plan? These should be visible learning outcomes, assessed throughout the undergraduate experience.<span data-cite="nacecompetency"></span> <span data-cite="soares"></span></p>
 
-        <p>Nam libero tempore, cum soluta nobis est eligendi optio cumque nihil impedit quo minus id quod maxime placeat facere possimus, omnis voluptas assumenda est, omnis dolor repellendus.</p>
+
+<p>Career Strategy & Design proposes a universal, longitudinal framework that makes this development an explicit part of a Suffolk education. Intentionally timed instruction, substantive work-based learning, and four connected Career Plan milestones would help students move from exploration through preparation, experience, and transition.<span data-cite="stradaprinciples"></span> <b>Work-based learning would offer multiple routes to a common educational standard</b>, including qualifying internships, faculty-led research, client or community projects, and robust on-campus employment. Through meaningful responsibility, professional feedback, expanded relationships, and reflection, students would connect academic learning with possible futures. These experiences would provide opportunities to apply and extend the critical thinking, communication, ethical judgment, and disciplinary knowledge developed through their education.<span data-cite="stradabeyond"></span>  An evolving Career Plan would give students continuity and, with appropriate access rules, help faculty and advisors connect educational choices and support to students’ current goals. Shared assessment would make gaps visible while students still have time to act.
+</p>
+
+
 
         <div class="home-next">
-          <p>Start with the case for change, or use the menu to move between sections.</p>
+
           <button class="start" data-panel="urgency">Read: What is the urgency?</button>
         </div>
       </div>
@@ -579,7 +597,7 @@
     <!-- THROUGHLINE -->
     <section class="panel" id="panel-throughline" tabindex="-1">
       <div class="panel-inner">
-        <h2 class="sec-title">Students' throughline: the Career Plan</h2>
+        <h2 class="sec-title">The Career Plan</h2>
         <p class="sec-standfirst">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua, quis nostrud exercitation.</p>
 
         <h3 class="sub" id="t-1">What the plan is</h3>
@@ -855,6 +873,11 @@
     scrim.classList.remove("on");
     document.getElementById("menuToggle").setAttribute("aria-expanded","false");
   }
+  function closeRail(){
+    rail.classList.remove("open");
+    scrim.classList.remove("on");
+    document.getElementById("railToggle").setAttribute("aria-expanded","false");
+  }
 
   function show(key){
     if(current===key) return;
@@ -905,7 +928,18 @@
     spy(panel);
   }
 
+  /* scroll the rail in proportion to the article, so the top and bottom of
+     both line up and the rail simply moves faster when it is longer */
+  function syncRail(panel){
+    if(panel!==panels[current]) return;
+    var pMax=panel.scrollHeight-panel.clientHeight;
+    var rMax=rail.scrollHeight-rail.clientHeight;
+    if(pMax<=0 || rMax<=0){ rail.scrollTop=0; return; }
+    rail.scrollTop=(panel.scrollTop/pMax)*rMax;
+  }
+
   function spy(panel){
+    syncRail(panel);
     var heads=[].slice.call(panel.querySelectorAll("h3.sub"));
     if(!heads.length) return;
     var top=panel.getBoundingClientRect().top+90, best=heads[0];
@@ -961,19 +995,32 @@
   });
   document.getElementById("viewerClose").addEventListener("click", closeDoc);
   document.addEventListener("keydown", function(e){
-    if(e.key==="Escape"){ closeDoc(); closeMobileMenu(); }
+    if(e.key==="Escape"){ closeDoc(); closeMobileMenu(); closeRail(); }
   });
 
   document.querySelectorAll(".faq-q").forEach(function(q){
     q.addEventListener("click", function(){ q.parentElement.classList.toggle("open"); });
   });
 
+  /* the Sections menu and the References rail are mutually exclusive drawers */
   document.getElementById("menuToggle").addEventListener("click", function(){
+    closeRail();
     var open=menu.classList.toggle("open");
     scrim.classList.toggle("on", open);
     this.setAttribute("aria-expanded", open?"true":"false");
   });
-  scrim.addEventListener("click", closeMobileMenu);
+  document.getElementById("railToggle").addEventListener("click", function(){
+    closeMobileMenu();
+    var open=rail.classList.toggle("open");
+    scrim.classList.toggle("on", open);
+    this.setAttribute("aria-expanded", open?"true":"false");
+  });
+  scrim.addEventListener("click", function(){ closeMobileMenu(); closeRail(); });
+  window.addEventListener("resize", function(){
+    if(current) syncRail(panels[current]);
+    if(window.innerWidth>1100) closeRail();
+    if(window.innerWidth>760) closeMobileMenu();
+  });
 
   /* ---- go ---- */
   /* taller than it is wide -> let the cover fill the whole card */
