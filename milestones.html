@@ -1,0 +1,324 @@
+<!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#faf9f5;color:#141413}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Career Strategy &amp; Design — the four milestones</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Libre+Franklin:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --navy:#15284B;
+    --navy-hover:rgba(21,40,75,.72);
+    --gold:#E7AB2A;
+    --body:#595959;
+    --mute:#8A8A8A;
+    --rule:rgba(21,40,75,.14);
+    --hair:rgba(21,40,75,.08);
+    --t02:rgba(21,40,75,.03);
+    --t05:rgba(21,40,75,.05);
+    --divider:#D5D9E0;
+    --sans:"Libre Franklin","Segoe UI",Helvetica,Arial,sans-serif;
+    --gap:14px;          /* space between cards — the arrow spans exactly this */
+    box-sizing:border-box;
+    padding-top:env(safe-area-inset-top,0px);
+    padding-bottom:env(safe-area-inset-bottom,0px);
+  }
+  *,*::before,*::after{box-sizing:border-box;}
+  html,body{height:auto;}
+  body{
+    margin:0;background:#fff;color:var(--body);
+    font-family:var(--sans);font-size:1rem;line-height:1.65;
+    -webkit-font-smoothing:antialiased;
+    padding:48px clamp(20px,5vw,56px) 90px;
+    max-width:1060px;
+  }
+  :focus-visible{outline:2px solid var(--navy);outline-offset:2px;}
+  h1{font-size:1.75rem;font-weight:600;color:#000;letter-spacing:-.01em;line-height:1.25;margin:0 0 6px;}
+  .standfirst{
+    font-size:1.0625rem;margin:0 0 34px;padding-bottom:24px;
+    border-bottom:1px solid var(--rule);max-width:66ch;
+  }
+
+/* ===========================================================
+   PROGRESSION — copy from here
+   =========================================================== */
+
+  .prog{
+    display:grid;
+    grid-template-columns:repeat(4,minmax(0,1fr));
+    gap:var(--gap);
+    margin:0 0 26px;
+  }
+
+  /* the whole card is one target */
+  .stage{
+    position:relative;
+    display:flex;flex-direction:column;
+    text-align:left;width:100%;
+    background:#fff;
+    border:1px solid var(--rule);
+    border-top:3px solid var(--navy);
+    font:inherit;cursor:pointer;padding:0;
+    transition:background .18s ease,border-color .18s ease;
+  }
+  .stage:hover{background:var(--navy-hover);border-color:var(--navy-hover);}
+  .stage.on,.stage.on:hover{background:var(--navy);border-color:var(--navy);}
+
+  .ms{flex:1 1 auto;padding:16px 15px 18px;position:relative;}
+  .ms::after{      /* short divider, deliberately not full width */
+    content:"";position:absolute;left:15px;bottom:0;
+    width:38px;height:1px;background:var(--divider);
+    transition:background .18s ease;
+  }
+  .stage:hover .ms::after,.stage.on .ms::after{background:rgba(255,255,255,.35);}
+
+  .ord{
+    display:block;
+    font-size:.6875rem;font-weight:600;letter-spacing:.09em;
+    text-transform:uppercase;color:var(--gold);margin-bottom:7px;
+  }
+  .nm{
+    display:block;
+    font-size:1rem;font-weight:600;color:var(--navy);
+    line-height:1.3;margin-bottom:8px;
+    transition:color .18s ease;
+  }
+  .when{
+    display:block;
+    font-size:.8125rem;line-height:1.45;color:var(--body);
+    transition:color .18s ease;
+  }
+  .credit{
+    display:block;
+    font-size:.75rem;line-height:1.4;color:var(--mute);margin-top:5px;
+    transition:color .18s ease;
+  }
+  .stage:hover .nm,.stage.on .nm,
+  .stage:hover .when,.stage.on .when{color:#fff;}
+  .stage:hover .credit,.stage.on .credit{color:rgba(255,255,255,.72);}
+
+  /* the plan band — part of the card, not its own control */
+  .plan{
+    position:relative;
+    display:block;
+    background:var(--t02);
+    padding:11px 15px 12px;
+    transition:background .18s ease;
+  }
+  .stage:hover .plan,.stage.on .plan{background:rgba(255,255,255,.1);}
+  .plan .pv{
+    display:block;
+    font-size:1.0625rem;font-weight:600;letter-spacing:-.01em;
+    color:var(--navy);line-height:1;margin-bottom:3px;
+    transition:color .18s ease;
+  }
+  .plan .pn{
+    display:block;
+    font-size:.75rem;line-height:1.3;color:var(--body);
+    transition:color .18s ease;
+  }
+  .stage:hover .plan .pv,.stage.on .plan .pv{color:var(--gold);}
+  .stage:hover .plan .pn,.stage.on .plan .pn{color:rgba(255,255,255,.8);}
+
+  /* arrow spans the gap exactly, band edge to band edge */
+  .plan::after{
+    content:"";position:absolute;z-index:2;
+    top:50%;margin-top:-1px;
+    right:calc(var(--gap) * -1 + 6px);
+    width:calc(var(--gap) - 6px);height:2px;
+    background:rgba(21,40,75,.35);
+    transition:background .18s ease;
+  }
+  .plan::before{
+    content:"";position:absolute;z-index:3;
+    top:50%;margin-top:-5px;
+    right:calc(var(--gap) * -1);
+    width:0;height:0;
+    border-left:6px solid rgba(21,40,75,.35);
+    border-top:5px solid transparent;
+    border-bottom:5px solid transparent;
+    transition:border-left-color .18s ease;
+  }
+  .stage:last-child .plan::after,
+  .stage:last-child .plan::before{display:none;}
+  .stage:hover .plan::after,.stage.on .plan::after{background:var(--navy);}
+  .stage:hover .plan::before,.stage.on .plan::before{border-left-color:var(--navy);}
+
+  /* ---------- field template below ---------- */
+  .detail{border-top:1px solid var(--rule);padding-top:22px;}
+  .dhead{
+    display:flex;flex-wrap:wrap;gap:6px 14px;align-items:baseline;margin-bottom:18px;
+  }
+  .dhead h2{
+    font-size:1.25rem;font-weight:600;color:var(--navy);margin:0;line-height:1.3;
+  }
+  .dhead .dv{
+    font-size:.8125rem;color:var(--mute);
+  }
+  .fields{
+    display:grid;grid-template-columns:1fr 1fr;
+    gap:0 32px;
+  }
+  .field{padding:0 0 20px;}
+  .field h3{
+    font-size:.6875rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;
+    color:var(--navy);margin:0 0 8px;padding-bottom:5px;
+    border-bottom:1px solid var(--rule);
+  }
+  .field p{
+    margin:0;font-size:.9375rem;line-height:1.55;
+  }
+  .field p.todo{
+    color:var(--mute);font-style:italic;
+  }
+
+  @media (max-width:860px){
+    .prog{grid-template-columns:repeat(2,minmax(0,1fr));}
+    .plan::after,.plan::before{display:none;}
+    .fields{grid-template-columns:1fr;}
+  }
+  @media (max-width:520px){
+    .prog{grid-template-columns:1fr;}
+  }
+  @media (prefers-reduced-motion:reduce){
+    *{transition-duration:.01ms !important;}
+  }
+
+/* ===========================================================
+   end progression
+   =========================================================== */
+</style>
+</head>
+<body>
+
+<h1>Four milestones</h1>
+<p class="standfirst">One plan, carried forward and revised four times across a student's degree. Select a milestone to see how it is built.</p>
+
+<div class="prog" id="prog"></div>
+<div class="detail" id="detail" aria-live="polite"></div>
+
+<script>
+(function(){
+  "use strict";
+
+  /* =====================================================================
+     EDIT HERE. Each milestone has its card text and its four fields.
+     The field text is placeholder — replace the strings below.
+     ===================================================================== */
+
+  var STAGES=[
+    {
+      ord:"Milestone 1",
+      nm:"Career Exploration",
+      when:"First year, spring semester",
+      credit:"1 credit",
+      planV:"v1.0",
+      planName:"Career Exploration Plan",
+      fields:{
+        credits:"Placeholder. One credit, graded pass/fail. Note here whether the credit sits inside an existing course or stands alone, and what that means for a student's total load.",
+        courses:"Placeholder. Name the host course or courses, who teaches them, and how a transfer or mid-year entry student picks the requirement up.",
+        outcomes:"Placeholder. Two or three learning outcomes, written so they can be assessed from what the student produces rather than from participation.",
+        sequencing:"Placeholder. When in the term this falls, what has to come before it, and what it unlocks for Milestone 2."
+      }
+    },
+    {
+      ord:"Milestone 2",
+      nm:"Career Navigation",
+      when:"Summer before sophomore year, through fall of junior year",
+      credit:"1 credit",
+      planV:"v2.0",
+      planName:"Career Navigation Plan",
+      fields:{
+        credits:"Placeholder. One credit. Note how the credit is handled when the milestone spans more than one term, and who records completion.",
+        courses:"Placeholder. CAS 201, repositioned as Career Fundamentals, plus any discipline-specific equivalents approved to carry the requirement.",
+        outcomes:"Placeholder. Outcomes should not presuppose an active work-based learning search, since many students take this one to three semesters before they are ready to apply.",
+        sequencing:"Placeholder. The wide window is deliberate. State the latest point at which a student can complete this and still be positioned for Milestone 3."
+      }
+    },
+    {
+      ord:"Milestone 3",
+      nm:"Career Integration",
+      when:"Sophomore spring, through the summer before senior year",
+      credit:"0 to 4 credits",
+      planV:"v3.0",
+      planName:"Career Integration Plan",
+      fields:{
+        credits:"Placeholder. Variable credit, zero to four, depending on the experience. Explain why zero credit is still a completed milestone and how that is recorded.",
+        courses:"Placeholder. Not a course in the usual sense. Name the five qualifying pathways and who verifies that an experience meets them.",
+        outcomes:"Placeholder. Three learning outcomes plus two experience conditions, rendered to students as five checkboxes rather than two categories.",
+        sequencing:"Placeholder. The Experience Accelerator triggers at the end of the third-to-last semester. Set out what happens for a student who reaches that point without a placement."
+      }
+    },
+    {
+      ord:"Milestone 4",
+      nm:"Career Launch",
+      when:"Senior year, fall or spring",
+      credit:"Capstone assignment",
+      planV:"v4.0",
+      planName:"Career Launch Plan",
+      fields:{
+        credits:"Placeholder. No separate credit. The milestone is an assignment inside an existing capstone, so note what that asks of capstone instructors.",
+        courses:"Placeholder. Discipline capstones across each school. Name who coordinates consistency across them.",
+        outcomes:"Placeholder. Outcomes here are about readiness to act rather than readiness to plan. Say what distinguishes this from Milestone 2.",
+        sequencing:"Placeholder. December and May graduates hit this at different points. Describe both, and how the plan feeds the First Destination Survey."
+      }
+    }
+  ];
+
+  var FIELD_ORDER=[
+    ["credits","Credits"],
+    ["courses","Courses"],
+    ["outcomes","Learning outcomes"],
+    ["sequencing","Sequencing"]
+  ];
+
+  /* ===================== nothing below needs editing ===================== */
+
+  var prog=document.getElementById("prog"), detail=document.getElementById("detail");
+
+  STAGES.forEach(function(s,i){
+    var b=document.createElement("button");
+    b.type="button"; b.className="stage"; b.dataset.i=i;
+    b.innerHTML=
+      '<span class="ms">'+
+        '<span class="ord">'+s.ord+'</span>'+
+        '<span class="nm">'+s.nm+'</span>'+
+        '<span class="when">'+s.when+'</span>'+
+        '<span class="credit">'+s.credit+'</span>'+
+      '</span>'+
+      '<span class="plan">'+
+        '<span class="pv">'+s.planV+'</span>'+
+        '<span class="pn">'+s.planName+'</span>'+
+      '</span>';
+    prog.appendChild(b);
+  });
+
+  function show(i){
+    var s=STAGES[i];
+    prog.querySelectorAll(".stage").forEach(function(e,j){ e.classList.toggle("on", j===i); });
+    var h='<div class="dhead"><h2>'+s.nm+'</h2>'+
+          '<span class="dv">'+s.ord+' &middot; '+s.planName+' '+s.planV+' &middot; '+s.when+'</span></div>'+
+          '<div class="fields">';
+    FIELD_ORDER.forEach(function(f){
+      var txt=s.fields[f[0]]||"";
+      var todo=/^Placeholder\./.test(txt);
+      h+='<div class="field"><h3>'+f[1]+'</h3><p'+(todo?' class="todo"':'')+'>'+txt+'</p></div>';
+    });
+    detail.innerHTML=h+'</div>';
+  }
+
+  prog.addEventListener("click", function(e){
+    var b=e.target.closest(".stage");
+    if(b) show(+b.dataset.i);
+  });
+
+  show(0);
+})();
+</script>
+</body>
+</html>
+
+</body></html>

@@ -203,4 +203,13 @@ window.DOCS = {
   thumb:"thumb/foundations.png"
 },
 
+
+"nacm": {
+  title:"National Alumni Career Mobility Annual Report",
+  date:"2024",
+  author:"Lightcast",
+  file:"files/nacm.pdf",
+  thumb:"thumb/nacm.png"
+},
+
   };

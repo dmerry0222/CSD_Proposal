@@ -1,0 +1,506 @@
+<!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#faf9f5;color:#141413}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>What the Career Plan makes possible</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Libre+Franklin:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --navy:#15284B;
+    --navy-hover:rgba(21,40,75,.72);
+    --gold:#E7AB2A;
+    --blue:#3CB4E5;
+    --teal:#3BBFAD;
+    --rose:#CC3362;
+    --body:#595959;
+    --mute:#8A8A8A;
+    --rule:rgba(21,40,75,.14);
+    --hair:rgba(21,40,75,.08);
+    --t02:rgba(21,40,75,.03);
+    --t05:rgba(21,40,75,.05);
+    --t08:rgba(21,40,75,.08);
+    --sans:"Libre Franklin","Segoe UI",Helvetica,Arial,sans-serif;
+    box-sizing:border-box;
+  }
+  *,*::before,*::after{box-sizing:border-box;}
+  body{
+    margin:0;background:#fff;color:var(--body);
+    font-family:var(--sans);font-size:1rem;line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+    padding-top:env(safe-area-inset-top,0px);
+    padding-bottom:env(safe-area-inset-bottom,0px);
+  }
+  :focus-visible{outline:2px solid var(--navy);outline-offset:2px;}
+
+  /* ---------- blue header bar ---------- */
+  .bar{
+    background:var(--navy);color:#fff;
+    padding:18px clamp(18px,4vw,44px) 0;
+  }
+  .bar h1{
+    font-size:1.0625rem;font-weight:600;margin:0 0 2px;color:#fff;line-height:1.3;
+  }
+  .bar .sub{
+    font-size:.8125rem;color:rgba(255,255,255,.62);margin:0 0 14px;
+  }
+  .tabs{display:flex;flex-wrap:wrap;gap:0;}
+  .tabs button{
+    background:none;border:0;border-bottom:3px solid transparent;
+    color:rgba(255,255,255,.72);font:inherit;font-size:.8125rem;
+    padding:10px 14px;cursor:pointer;text-align:left;line-height:1.3;
+    transition:background .18s ease,color .18s ease,border-color .18s ease;
+  }
+  .tabs button:hover{background:var(--navy-hover);color:#fff;}
+  .tabs button.on{color:#fff;font-weight:600;border-bottom-color:var(--gold);background:rgba(255,255,255,.07);}
+  .tabs button .n{
+    display:block;font-size:.6875rem;letter-spacing:.08em;
+    color:rgba(255,255,255,.45);margin-bottom:2px;
+  }
+  .tabs button.on .n{color:var(--gold);}
+
+  /* ---------- explanatory paragraph ---------- */
+  .lede{
+    padding:22px clamp(18px,4vw,44px) 20px;
+    border-bottom:1px solid var(--rule);
+    background:#fff;
+  }
+  .lede h2{
+    font-size:1.25rem;font-weight:600;color:#000;margin:0 0 8px;line-height:1.3;
+    letter-spacing:-.01em;
+  }
+  .lede p{margin:0;max-width:74ch;font-size:1rem;line-height:1.6;}
+  .lede .edit{
+    font-size:.6875rem;letter-spacing:.08em;text-transform:uppercase;
+    color:var(--mute);margin:10px 0 0;
+  }
+
+  /* ---------- example stage ---------- */
+  .stage{
+    padding:24px clamp(14px,4vw,44px) 70px;
+    background:#F2F4F6;
+  }
+  .screen{
+    background:#fff;border:1px solid var(--rule);
+    max-width:1080px;margin:0 auto;
+    box-shadow:0 1px 10px rgba(21,40,75,.07);
+  }
+  .chrome{
+    background:var(--t02);border-bottom:1px solid var(--rule);
+    padding:9px 16px;display:flex;gap:10px;align-items:center;
+    font-size:.75rem;color:var(--mute);
+  }
+  .chrome .dot{width:8px;height:8px;background:var(--teal);border-radius:50%;}
+  .chrome b{color:var(--navy);font-weight:600;font-size:.8125rem;}
+  .chrome .right{margin-left:auto;}
+  .pad{padding:20px 22px;}
+
+  h3.sh{
+    font-size:.6875rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;
+    color:var(--navy);margin:0 0 10px;padding-bottom:5px;border-bottom:1px solid var(--rule);
+  }
+  h3.sh.mt{margin-top:24px;}
+
+  /* piped-content block */
+  .piped{
+    background:rgba(231,171,42,.1);border-left:3px solid var(--gold);
+    padding:13px 15px;margin:0 0 14px;
+  }
+  .piped .src{
+    font-size:.6875rem;letter-spacing:.07em;text-transform:uppercase;
+    color:#8A6A1E;font-weight:600;display:block;margin-bottom:5px;
+  }
+  .piped .txt{font-size:.9375rem;line-height:1.5;color:var(--navy);margin:0;}
+  .fieldkey{
+    font-family:ui-monospace,SFMono-Regular,Menlo,monospace;
+    font-size:.6875rem;color:var(--mute);background:var(--t05);
+    padding:1px 5px;
+  }
+
+  /* form-ish */
+  .q{font-size:.9375rem;color:#111;font-weight:500;margin:0 0 8px;line-height:1.45;}
+  .input{
+    border:1px solid var(--rule);border-left:3px solid var(--navy);
+    background:#fff;padding:11px 13px;font-size:.9375rem;line-height:1.5;color:#1a1a1a;
+  }
+  .input.empty{
+    border-left-color:var(--hair);color:var(--mute);font-style:italic;
+    background:repeating-linear-gradient(45deg,transparent,transparent 6px,rgba(21,40,75,.022) 6px,rgba(21,40,75,.022) 12px);
+  }
+  .inline-lb{font-size:.75rem;color:var(--mute);display:block;margin-bottom:4px;}
+  .radios{display:flex;flex-wrap:wrap;gap:8px;margin:10px 0 0;}
+  .radios span{
+    border:1px solid var(--rule);padding:6px 11px;font-size:.8125rem;color:var(--body);
+  }
+  .radios span.sel{background:var(--navy);color:#fff;border-color:var(--navy);font-weight:500;}
+
+  /* email */
+  .mail{border:1px solid var(--rule);}
+  .mail .hdr{border-bottom:1px solid var(--rule);padding:12px 16px;font-size:.8125rem;}
+  .mail .hdr div{margin-bottom:3px;}
+  .mail .hdr .lb{color:var(--mute);display:inline-block;width:52px;}
+  .mail .hdr .subj{font-size:.9375rem;font-weight:600;color:var(--navy);margin-top:6px;}
+  .mail .body{padding:16px;font-size:.9375rem;line-height:1.6;}
+  .mail .body p{margin:0 0 12px;}
+  .goalrow{
+    display:grid;grid-template-columns:22px 1fr;gap:9px;
+    padding:9px 0;border-top:1px solid var(--hair);align-items:start;
+  }
+  .goalrow .bx{
+    width:16px;height:16px;border:1.5px solid var(--navy);margin-top:3px;
+    display:flex;align-items:center;justify-content:center;
+    font-size:.6875rem;color:#fff;font-weight:700;
+  }
+  .goalrow .bx.on{background:var(--navy);}
+  .goalrow .meta{font-size:.75rem;color:var(--mute);margin-top:3px;}
+
+  /* data check panel */
+  .check{border:1px solid var(--rule);background:var(--t02);padding:14px 16px;}
+  .ckrow{
+    display:flex;gap:9px;align-items:baseline;padding:7px 0;
+    border-top:1px solid var(--hair);font-size:.8125rem;
+  }
+  .ckrow:first-of-type{border-top:0;}
+  .ckrow .ic{font-size:.6875rem;font-weight:700;padding:1px 6px;white-space:nowrap;}
+  .ic.yes{background:rgba(59,191,173,.25);color:#17645A;}
+  .ic.no{background:rgba(204,51,98,.14);color:#93244A;}
+  .ic.part{background:var(--t08);color:var(--navy);}
+
+  /* charts */
+  .kpis{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-bottom:22px;}
+  .kpi{border:1px solid var(--rule);border-top:3px solid var(--navy);padding:12px 14px;}
+  .kpi b{display:block;font-size:1.75rem;font-weight:600;color:var(--navy);line-height:1;letter-spacing:-.02em;}
+  .kpi span{display:block;font-size:.75rem;color:var(--mute);margin-top:5px;line-height:1.35;}
+  .kpi em{font-style:normal;font-size:.6875rem;color:var(--teal);font-weight:600;}
+
+  .brow{display:grid;grid-template-columns:1fr 54px;gap:10px;align-items:center;
+    padding:5px 0;font-size:.8125rem;}
+  .btrack{background:var(--t05);height:17px;position:relative;}
+  .btrack i{display:block;height:17px;background:var(--navy);}
+  .btrack i.alt{background:var(--blue);}
+  .btrack i.warn{background:var(--rose);}
+  .blab{display:flex;justify-content:space-between;gap:8px;margin-bottom:2px;}
+  .bnum{text-align:right;font-size:.8125rem;color:var(--navy);font-weight:600;}
+
+  .lk{display:grid;grid-template-columns:1fr 120px 60px;gap:10px;align-items:center;
+    padding:6px 0;border-top:1px solid var(--hair);font-size:.8125rem;}
+  .lkbar{display:flex;gap:2px;}
+  .lkbar i{flex:1;height:12px;background:var(--t08);}
+  .lkbar i.f{background:var(--navy);}
+  .lkbar i.g{background:var(--gold);}
+  .up{color:#2E7D63;font-weight:600;}
+
+  /* tables */
+  table.t{width:100%;border-collapse:collapse;font-size:.8125rem;}
+  table.t th{
+    text-align:left;font-size:.6875rem;font-weight:600;letter-spacing:.07em;text-transform:uppercase;
+    color:var(--navy);background:var(--t02);padding:8px 10px;border-bottom:1px solid var(--rule);
+    position:sticky;top:0;
+  }
+  table.t td{padding:9px 10px;border-bottom:1px solid var(--hair);vertical-align:top;line-height:1.45;}
+  table.t tr:last-child td{border-bottom:0;}
+  .flagpill{
+    display:inline-block;font-size:.6875rem;font-weight:600;padding:2px 7px;margin:1px 3px 1px 0;
+  }
+  .f-high{background:rgba(204,51,98,.14);color:#93244A;}
+  .f-med{background:rgba(231,171,42,.26);color:#7A5A12;}
+  .f-low{background:var(--t08);color:var(--navy);}
+  .chips{display:flex;flex-wrap:wrap;gap:7px;margin-bottom:14px;}
+  .chip{
+    border:1px solid var(--rule);padding:5px 11px;font-size:.75rem;color:var(--body);
+  }
+  .chip.on{background:var(--navy);color:#fff;border-color:var(--navy);font-weight:500;}
+  .btn{
+    background:var(--navy);color:#fff;border:0;font:inherit;font-size:.75rem;
+    padding:5px 10px;cursor:default;
+  }
+
+  /* roster */
+  .rost{display:grid;grid-template-columns:1fr 1fr;gap:12px;}
+  .stu{border:1px solid var(--rule);padding:12px 14px;break-inside:avoid;}
+  .stu .top{display:flex;gap:10px;align-items:baseline;margin-bottom:3px;}
+  .stu .nm{font-size:.9375rem;font-weight:600;color:var(--navy);}
+  .stu .sid{font-size:.6875rem;color:var(--mute);margin-left:auto;font-family:ui-monospace,Menlo,monospace;}
+  .stu .mj{font-size:.75rem;color:var(--mute);margin:0 0 8px;}
+  .stu .gl{font-size:.875rem;line-height:1.5;color:#1a1a1a;margin:0;
+    padding-left:10px;border-left:2px solid var(--gold);}
+  .stu .wc{font-size:.6875rem;color:var(--mute);margin:6px 0 0;}
+
+  .foot{
+    max-width:1080px;margin:14px auto 0;font-size:.75rem;color:var(--mute);
+  }
+
+  @media (max-width:860px){
+    .kpis{grid-template-columns:repeat(2,1fr);}
+    .rost{grid-template-columns:1fr;}
+    .grid2{grid-template-columns:1fr !important;}
+  }
+  @media (prefers-reduced-motion:reduce){ *{transition-duration:.01ms !important;} }
+</style>
+</head>
+<body>
+
+<div class="bar">
+  <h1>Career Strategy &amp; Design — what the Career Plan makes possible</h1>
+  <p class="sub">Five things you can do with structured responses that you cannot do with an essay in Canvas</p>
+  <div class="tabs" id="tabs"></div>
+</div>
+
+<div class="lede" id="lede"></div>
+<div class="stage"><div id="stage"></div>
+  <p class="foot">Illustrative sample data. Student names, identifiers and responses are fabricated for demonstration.</p>
+</div>
+
+<script>
+(function(){
+  "use strict";
+
+  var USES=[
+  {
+    n:"Use 01",
+    tab:"Piping forward<br>into the next plan",
+    h:"The plan asks students to revise, not to start over",
+    p:"Because every response is stored as a field rather than as prose in a submitted document, the next version of the Career Plan can open with what the student actually said last time. The student is not asked \"what is your career aspiration?\" a second time — they are shown their own words from eighteen months ago and asked what has changed. This is the difference between four assignments and one longitudinal instrument. It also makes the reflection honest: a student cannot quietly rewrite their history to match where they ended up, because the prior response is on the screen in front of them. For the program, the paired responses are the assessment evidence — we can see movement, direction and reasoning, not just a final state."
+  },
+  {
+    n:"Use 02",
+    tab:"Piping into<br>follow-up outreach",
+    h:"Follow-up that references what the student committed to",
+    p:"The goals a student sets are stored as discrete records with an action, a detail and a deadline, so an email in March can name the three things they said in December. The outreach writes itself, and it arrives specific rather than generic — which is the difference between a message students ignore and one they answer. Because the system also holds attendance and appointment records, self-reported progress can be set beside what we already know: a student who says they have not yet met with an advisor, when our records show they came in twice, is telling us something about how they understand their own progress. Note that this is the point where governance matters most; who may send what, and on what basis, should be settled before the first message goes out."
+  },
+  {
+    n:"Use 03",
+    tab:"Program-level<br>pattern and outcome",
+    h:"Aggregate views of aspiration, obstacle and competency",
+    p:"When pathway selections are drawn from a fixed taxonomy rather than typed freely, they count. We can say how many students are heading toward a given Career Community, which obstacles they report most often, and where self-efficacy moves between versions of the plan — by major, by school, by first-generation status, by any population we are accountable for. This is the view that answers a dean's question about whether the requirement is working, and it is the view that is impossible to produce from a folder of essays. The competency movement is especially useful in accreditation conversations, because it is a repeated measure on the same students rather than a satisfaction survey."
+  },
+  {
+    n:"Use 04",
+    tab:"Advisor worklist<br>and triage",
+    h:"Finding the students who need a conversation",
+    p:"The same fields that aggregate also flag. A student with no pathway selected in their second year, a senior with no work-based learning plan, a self-efficacy score of 1 on asking for an informational conversation, a reported financial obstacle — each is a condition we can query rather than a problem we discover late, or never. Advisors begin the week with a list ordered by urgency instead of waiting for the students who were already going to come in. This is the equity mechanism in operation: the students who do not self-select into the career center are precisely the students this list surfaces."
+  },
+  {
+    n:"Use 05",
+    tab:"Shared back to<br>faculty and advisors",
+    h:"Giving instructors something genuinely useful before class",
+    p:"A short, structured field — a career goal statement of 50 to 75 words — can be assembled into a roster and handed to the person who is about to teach or advise those students. An instructor can see, before Tuesday's class, what each of their students is working toward, in the student's own words. An advisor can read fourteen statements in four minutes before a day of appointments. This is the lowest-effort, highest-goodwill use of the data, and it is often the one that convinces faculty the requirement is for them too, rather than something done to their curriculum."
+  }];
+
+  /* ===================== SCREEN 1 ===================== */
+  function screen1(){
+    return '<div class="screen"><div class="chrome"><span class="dot"></span>'+
+      '<b>Career Plan v2.0 — Career Navigation</b><span>Section A · Direction</span>'+
+      '<span class="right">Maya Ellison · S0148827 · autosaved 2:14 PM</span></div>'+
+      '<div class="pad">'+
+      '<h3 class="sh">Question A1 — Career aspiration</h3>'+
+      '<div class="piped"><span class="src">Piped from Career Plan v1.0 · submitted March 14, 2027 · field <span class="fieldkey">cp1_a1_aspiration</span></span>'+
+      '<p class="txt">"I think I want to work in health somehow, but not as a clinician. Maybe public health? I like the idea of working on problems that affect a lot of people at once rather than one person at a time. I don\'t really know what the jobs are called yet."</p></div>'+
+      '<p class="q">That is what you wrote at the end of your first year. What is your career aspiration now?</p>'+
+      '<div class="input"><span class="inline-lb">Field <span class="fieldkey">cp2_a1_aspiration</span> · 68 words</span>'+
+      'I want to work in hospital operations — specifically quality improvement, where you find what is broken in a process and prove it with data. I know the job titles now: performance improvement analyst, quality improvement coordinator, revenue cycle analyst. Public health is still interesting to me but it needs an MPH, and I am not ready to commit to that until I have worked for a few years.</div>'+
+
+      '<p class="q" style="margin-top:20px">How has it changed, or not changed — and what caused that?</p>'+
+      '<div class="input"><span class="inline-lb">Field <span class="fieldkey">cp2_a2_change_reason</span> · 61 words</span>'+
+      'The direction is the same, the vagueness is gone. Two things caused it: filtering the pathways site by my major showed me that "the business side of care" is an actual career with actual titles, and talking to Devon Marsh for forty minutes showed me what the week looks like. I did not change my mind. I found out what my mind was pointing at.</div>'+
+
+      '<div class="radios"><span class="inline-lb" style="width:100%;margin:0 0 2px">Which best describes the change? <span class="fieldkey">cp2_a3_change_type</span></span>'+
+      '<span>No meaningful change</span><span class="sel">Same direction, more specific</span>'+
+      '<span>Shifted to an adjacent pathway</span><span>Changed substantially</span><span>Still undecided</span></div>'+
+
+      '<h3 class="sh mt">Question A4 — Pathway selections</h3>'+
+      '<div class="piped"><span class="src">Piped from v1.0 · field <span class="fieldkey">cp1_a4_pathway_ids[]</span></span>'+
+      '<p class="txt">Healthcare Administration &amp; Health Data · Public Health &amp; Epidemiology · Policy Analysis &amp; Social Research</p></div>'+
+      '<p class="q">Keep, drop or add. You must give a reason for anything you drop.</p>'+
+      '<div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px" class="grid2">'+
+      '<div class="input"><span class="inline-lb">Healthcare Administration &amp; Health Data</span><b style="color:var(--navy)">Kept — now primary</b></div>'+
+      '<div class="input"><span class="inline-lb">Public Health &amp; Epidemiology</span><b style="color:var(--navy)">Kept — secondary</b></div>'+
+      '<div class="input"><span class="inline-lb">Policy Analysis &amp; Social Research</span><b style="color:#93244A">Dropped</b> — the RA job showed me I don\'t enjoy a full day of literature review.</div>'+
+      '</div></div></div>';
+  }
+
+  /* ===================== SCREEN 2 ===================== */
+  function screen2(){
+    return '<div class="screen"><div class="chrome"><span class="dot"></span><b>Outreach — generated from Career Plan goal records</b>'+
+      '<span class="right">Batch: 418 recipients · merge fields resolved</span></div>'+
+      '<div class="pad"><div style="display:grid;grid-template-columns:1.35fr 1fr;gap:20px" class="grid2">'+
+
+      '<div class="mail"><div class="hdr">'+
+      '<div><span class="lb">From</span> Center for Career Equity, Development &amp; Success</div>'+
+      '<div><span class="lb">To</span> mellison@su.suffolk.edu</div>'+
+      '<div><span class="lb">Sent</span> March 3, 2029</div>'+
+      '<div class="subj">Maya — how did those three goals go?</div></div>'+
+      '<div class="body"><p>Hi Maya,</p>'+
+      '<p>Back in December you set three career actions for yourself. Here they are again. Could you tell us where each one stands?</p>'+
+      '<div class="goalrow"><span class="bx on">✓</span><div><b>Secure work-based learning placement</b>'+
+      '<div class="meta">Deadline you set: 03/01/2029 · <span class="fieldkey">goal_id 7741</span></div></div></div>'+
+      '<div class="goalrow"><span class="bx"></span><div><b>Complete a skills inventory against your two remaining pathways</b>'+
+      '<div class="meta">Deadline you set: 04/20/2029 · <span class="fieldkey">goal_id 7742</span></div></div></div>'+
+      '<div class="goalrow"><span class="bx"></span><div><b>Mock interview with an advisor before your summer start</b>'+
+      '<div class="meta">Deadline you set: 05/15/2029 · <span class="fieldkey">goal_id 7743</span></div></div></div>'+
+      '<p style="margin-top:14px">It takes about ninety seconds. Whatever you say here goes straight into Career Plan v2.0, so you will not have to write it twice.</p>'+
+      '<p style="margin-bottom:0">— Rachel Alvarez, your advisor in Healthcare &amp; Wellness</p></div></div>'+
+
+      '<div><h3 class="sh">Self-report set beside what we already know</h3>'+
+      '<div class="check">'+
+      '<div class="ckrow"><span class="ic yes">Confirmed</span><div><b>Placement secured.</b> Student reports complete; WBL record created 02/26/2029, employer verified.</div></div>'+
+      '<div class="ckrow"><span class="ic no">Gap</span><div><b>Skills inventory not started.</b> No submission on file. Deadline is in seven weeks.</div></div>'+
+      '<div class="ckrow"><span class="ic part">Discrepancy</span><div><b>Student reports no advising contact since the fall.</b> Our records show two appointments, 01/23 and 03/12. Worth a gentle correction — or worth asking what did not feel like advising.</div></div>'+
+      '</div>'+
+      '<h3 class="sh mt">What this replaces</h3>'+
+      '<p style="font-size:.875rem;margin:0">A generic end-of-term email asking students to "reflect on your progress," which produces a 6% response rate and nothing comparable across students.</p>'+
+      '<h3 class="sh mt">Governance note</h3>'+
+      '<p style="font-size:.875rem;margin:0">Merge fields here are limited to the student\'s own prior responses. Any use beyond that — sharing with instructors, flagging to advisors — is a separate permission, set per field.</p>'+
+      '</div></div></div></div>';
+  }
+
+  /* ===================== SCREEN 3 ===================== */
+  function bars(rows,cls){
+    var mx=Math.max.apply(null,rows.map(function(r){return r[1];}));
+    return rows.map(function(r){
+      return '<div class="brow"><div><div class="blab"><span>'+r[0]+'</span></div>'+
+        '<div class="btrack"><i class="'+(cls||"")+'" style="width:'+(r[1]/mx*100).toFixed(1)+'%"></i></div></div>'+
+        '<div class="bnum">'+r[1]+'</div></div>';
+    }).join("");
+  }
+  function screen3(){
+    var paths=[["Healthcare Administration & Health Data",71],["Marketing Strategy & Brand Management",64],
+      ["Software Engineering",58],["Public Accounting",52],["Public Health & Epidemiology",47],
+      ["Criminal Justice & Public Safety",41],["Data Science & Analytics",39],["Social Work & Human Services",34]];
+    var obst=[["Paying for college expenses",287],["Not knowing what jobs exist for my major",241],
+      ["No professional network to draw on",223],["Managing anxiety about the search",198],
+      ["Finding time around work and commuting",176],["Nobody in my family has done this",149]];
+    var comp=[["Describe what I'm interested in, out loud",3.9,3.1],["Find pathways connected to my major",4.4,3.6],
+      ["Read earnings and outlook data",3.4,2.7],["Ask for an informational conversation",3.2,2.2],
+      ["Name specific skills and where I got them",3.6,2.9],["Explain what work-based learning is",4.5,3.3]];
+    var h='<div class="screen"><div class="chrome"><span class="dot"></span><b>Program dashboard — Career Plan v2.0</b>'+
+      '<span>Cohort: entered Fall 2026</span><span class="right">612 of 684 plans complete · exported 10/06/2030</span></div><div class="pad">'+
+      '<div class="chips"><span class="chip on">All students</span><span class="chip">By school</span><span class="chip">By major</span>'+
+      '<span class="chip">First-generation</span><span class="chip">Pell-eligible</span><span class="chip">Commuter</span><span class="chip">Transfer</span></div>'+
+      '<div class="kpis">'+
+      '<div class="kpi"><b>89%</b><span>completed v2.0 on time</span></div>'+
+      '<div class="kpi"><b>2.4</b><span>pathways selected per student <em>↓ from 3.0 at v1.0</em></span></div>'+
+      '<div class="kpi"><b>73%</b><span>have a stated work-based learning term</span></div>'+
+      '<div class="kpi"><b>61%</b><span>had at least one advising appointment <em>↑ 18 pts</em></span></div></div>'+
+      '<div style="display:grid;grid-template-columns:1fr 1fr;gap:26px" class="grid2">'+
+      '<div><h3 class="sh">Pathway aspirations — top 8 of 52</h3>'+bars(paths)+
+      '<p style="font-size:.75rem;color:var(--mute);margin:8px 0 0">Drawn from the fixed pathway taxonomy, so selections aggregate without coding free text.</p></div>'+
+      '<div><h3 class="sh">Self-reported obstacles — multi-select</h3>'+bars(obst,"warn")+
+      '<p style="font-size:.75rem;color:var(--mute);margin:8px 0 0">Each obstacle is a queryable condition, which is what makes the advisor worklist possible.</p></div></div>'+
+      '<h3 class="sh mt">Career self-efficacy — mean of 612, v2.0 against v1.0</h3>';
+    comp.forEach(function(c){
+      var v=Math.round(c[1]), p=Math.round(c[2]), seg="";
+      for(var i=1;i<=5;i++) seg+='<i class="'+(i<=v?(i>p?"f g":"f"):"")+'"></i>';
+      h+='<div class="lk"><span>'+c[0]+'</span><span class="lkbar">'+seg+'</span>'+
+         '<span style="text-align:right"><b style="color:var(--navy)">'+c[1].toFixed(1)+'</b> '+
+         '<span class="up">▲'+(c[1]-c[2]).toFixed(1)+'</span></span></div>';
+    });
+    return h+'<p style="font-size:.75rem;color:var(--mute);margin:10px 0 0">Repeated measure on the same students — not a satisfaction survey. Gold segments show movement since v1.0.</p></div></div>';
+  }
+
+  /* ===================== SCREEN 4 ===================== */
+  function screen4(){
+    var rows=[
+      ["Hassan, Nadia","S0151902","Biology","Junior",[["No WBL plan","f-high"],["Self-efficacy 1 — networking","f-med"]],"11 months ago","Three semesters left and no stated term for work-based learning. Experience Accelerator eligible next fall."],
+      ["Crowley, Brendan","S0149338","Marketing","Sophomore",[["No pathway selected","f-high"]],"Never","Completed v1.0 but left all three pathway slots empty. No advising contact in two years."],
+      ["Oyelaran, Tope","S0152277","Sociology","Senior",[["No WBL plan","f-high"],["Financial obstacle","f-med"]],"4 months ago","Reports paying for college as primary obstacle and has not secured a placement. Paid-placement list and emergency funding."],
+      ["Rivera-Santos, Luz","S0150441","Computer Science","Junior",[["Self-efficacy ≤2 — interviewing","f-med"]],"2 months ago","Strong technical profile, lowest-quartile interview confidence. Mock interview referral."],
+      ["Park, Daniel","S0151003","Finance","Senior",[["Pathway/role mismatch","f-med"]],"8 months ago","Pathway selections are all corporate finance; saved postings are all nonprofit program roles. Worth a conversation."],
+      ["Abdullahi, Fatima","S0152910","Psychology","Sophomore",[["No network entries","f-low"],["First-gen","f-low"]],"1 month ago","Zero contacts recorded in the network section across two plan versions."],
+      ["Moreau, Jean-Luc","S0149772","Media & Film","Senior",[["No WBL plan","f-high"],["Plan incomplete","f-med"]],"14 months ago","v2.0 is 40% complete and overdue. Last contact was a first-year drop-in."],
+      ["Tran, Mai","S0151566","Accounting","Junior",[["Self-efficacy drop","f-med"]],"3 weeks ago","Self-efficacy fell on four of six items between v1.0 and v2.0 — unusual direction, worth asking about."]
+    ];
+    var h='<div class="screen"><div class="chrome"><span class="dot"></span><b>Advisor worklist — R. Alvarez, Healthcare &amp; Wellness and shared caseload</b>'+
+      '<span class="right">38 students flagged · 8 shown · sorted by urgency</span></div><div class="pad">'+
+      '<div class="chips"><span class="chip on">No WBL plan</span><span class="chip on">No pathway selected</span>'+
+      '<span class="chip on">Self-efficacy ≤2</span><span class="chip">No advising contact 12+ months</span>'+
+      '<span class="chip">Reported financial obstacle</span><span class="chip">Plan incomplete</span><span class="chip">First-generation</span></div>'+
+      '<table class="t"><tr><th style="width:15%">Student</th><th style="width:7%">ID</th><th style="width:12%">Major</th>'+
+      '<th style="width:8%">Year</th><th style="width:20%">Flags</th><th style="width:11%">Last contact</th><th>Why this student surfaced</th><th style="width:8%"></th></tr>';
+    rows.forEach(function(r){
+      var f=r[4].map(function(x){return '<span class="flagpill '+x[1]+'">'+x[0]+'</span>';}).join("");
+      h+='<tr><td><b style="color:var(--navy)">'+r[0]+'</b></td><td><span class="fieldkey">'+r[1]+'</span></td>'+
+         '<td>'+r[2]+'</td><td>'+r[3]+'</td><td>'+f+'</td><td>'+r[5]+'</td><td>'+r[6]+'</td>'+
+         '<td><button class="btn">Reach out</button></td></tr>';
+    });
+    return h+'</table><p style="font-size:.75rem;color:var(--mute);margin:12px 0 0">Every flag is a stored field, not a judgment entered by hand: a missing pathway id, a null WBL term, a likert value, a date difference. The list regenerates nightly.</p></div></div>';
+  }
+
+  /* ===================== SCREEN 5 ===================== */
+  var ROSTER=[
+    ["Ellison, Maya","S0148827","Sociology · Public Health minor","mellison@su.suffolk.edu",
+     "I want to work in hospital operations — specifically quality improvement, where you find what is broken in a process and prove it with data. I know the job titles now: performance improvement analyst, quality improvement coordinator. Public health still interests me but it needs an MPH, and I am not ready to commit to that until I have worked a few years."],
+    ["Abara, Chinedu","S0150118","Computer Science","cabara@su.suffolk.edu",
+     "I am aiming for backend engineering at a company where I can see what the software is for. Fintech appeals to me because my family sends money home and the infrastructure for that is genuinely bad. I need to get better at talking about my projects — I can build things but I go quiet when someone asks me to explain the tradeoffs I made."],
+    ["Beaulieu, Simone","S0151440","Marketing","sbeaulieu@su.suffolk.edu",
+     "Brand strategy, ideally in consumer goods or beauty. I have run the Instagram for a local salon for two years and grew it from 400 to 11,000 followers, which taught me more than any class. What I do not know yet is whether I want an agency, where you work on many brands, or in-house, where you live with one."],
+    ["Castellanos, Mateo","S0149615","Finance","mcastellanos@su.suffolk.edu",
+     "Investment banking analyst for two years, then decide. I am clear-eyed that the hours are brutal and that I may hate it. The reason I want it anyway is that it is the fastest way to learn how deals actually work, and I want to end up doing corporate development inside a company rather than advising from outside."],
+    ["Donnelly, Kate","S0152031","Biology","kdonnelly@su.suffolk.edu",
+     "I came in pre-med and I am no longer sure. The lab I work in has made me think clinical research coordination might fit better — I like the trial design and the patient contact, without the eleven more years. I am giving myself until the end of junior year to decide, and using my internship to test the research side."],
+    ["Eze, Obianuju","S0150884","Political Science","oeze@su.suffolk.edu",
+     "Legislative work at the state level, then law school or a policy masters. I interned in a state rep's office and the thing I liked was constituent casework, which nobody warns you is most of the job. I want a role where I keep that contact rather than drifting entirely into drafting and strategy memos."],
+    ["Fitzgerald, Aidan","S0151777","Accounting","afitzgerald@su.suffolk.edu",
+     "Public accounting, audit track, at a firm large enough to rotate me through different industries. I want the CPA before I am twenty-five. Long term I am interested in forensic accounting — the fraud examination pathway on the career site described exactly the kind of puzzle I like, and I did not know it was a job until I read it."],
+    ["Gagnon, Elise","S0149290","Graphic Design","egagnon@su.suffolk.edu",
+     "Editorial and publication design. I want to work on things that get printed, which I know is a shrinking market, so I am building digital product design skills alongside it rather than pretending otherwise. My portfolio is the whole ballgame in this field and I am treating it as the main deliverable of my next two years."],
+    ["Haddad, Yusuf","S0152604","Cybersecurity","yhaddad@su.suffolk.edu",
+     "Security operations center analyst to start, because that is where you see the most incidents fastest. I want to move into threat intelligence. I have two certifications and I am working on a third, and my real gap is that I have never worked on a team — everything I have done has been solo lab work."],
+    ["Ivanova, Nadia","S0150357","International Relations","nivanova@su.suffolk.edu",
+     "Refugee and migration policy, probably at an international NGO rather than a government. I speak Russian and Ukrainian, which I now understand is a qualification and not just a fact about me. I need field experience and I am looking at a gap year placement before graduate school rather than going straight through."],
+    ["Jean-Baptiste, Marcus","S0151128","Sports Management","mjeanbaptiste@su.suffolk.edu",
+     "Athletic department operations at a Division I school, or a professional team's community relations office. I have worked three years in our equipment room and run the scheduling for intramurals. People hear sports management and assume I want to be a GM; I actually want to run the logistics nobody notices when they go well."],
+    ["Kowalczyk, Anna","S0149903","Psychology","akowalczyk@su.suffolk.edu",
+     "Industrial-organizational psychology, which I only learned existed last semester. The idea of applying research methods to how workplaces are designed is the first thing that has made my major feel practical. The honest obstacle is that it requires a masters and I do not yet know how I would pay for one."],
+    ["Lindqvist, Erik","S0152488","Environmental Science","elindqvist@su.suffolk.edu",
+     "Sustainability consulting or corporate environmental compliance. I would rather change what a large company does than work at a small organization with the right values and no leverage. That is a position I have argued about with people in my program, and I want an internship that tests whether I still believe it."],
+    ["Mendes, Sofia","S0150742","Journalism","smendes@su.suffolk.edu",
+     "Local accountability reporting, specifically on housing. I write for the student paper and freelanced two pieces for a neighborhood outlet this year. I know the industry economics are grim. My plan is to build data skills so I am useful in a newsroom in a way that is harder to cut, and to be realistic about moving for a first job."]
+  ];
+  function screen5(){
+    var h='<div class="screen"><div class="chrome"><span class="dot"></span><b>SOC 210 · Research Methods &amp; Data Analysis — Section 02</b>'+
+      '<span>Prepared for Dr. P. Lindo</span><span class="right">14 students · career goal statements from Career Plan v2.0 · generated 10/06/2030</span></div>'+
+      '<div class="pad"><p style="font-size:.875rem;margin:0 0 16px;max-width:76ch">Each statement is the student\'s own 50 to 75 word response to <i>"In your own words, what are you working toward?"</i> — pulled from the current version of their Career Plan. Nothing here was written for you, and nothing was edited.</p><div class="rost">';
+    ROSTER.forEach(function(s){
+      h+='<div class="stu"><div class="top"><span class="nm">'+s[0]+'</span><span class="sid">'+s[1]+'</span></div>'+
+        '<p class="mj">'+s[2]+' · '+s[3]+'</p>'+
+        '<p class="gl">'+s[4]+'</p>'+
+        '<p class="wc">'+s[4].split(/\s+/).length+' words · field <span class="fieldkey">cp2_a1_aspiration</span></p></div>';
+    });
+    return h+'</div></div></div>';
+  }
+
+  var SCREENS=[screen1,screen2,screen3,screen4,screen5];
+
+  var tabs=document.getElementById("tabs"), lede=document.getElementById("lede"), stage=document.getElementById("stage");
+
+  USES.forEach(function(u,i){
+    var b=document.createElement("button");
+    b.type="button"; b.dataset.i=i;
+    b.innerHTML='<span class="n">'+u.n+'</span>'+u.tab;
+    tabs.appendChild(b);
+  });
+
+  function render(i){
+    tabs.querySelectorAll("button").forEach(function(b,j){ b.classList.toggle("on", j===i); });
+    lede.innerHTML='<h2>'+USES[i].h+'</h2><p>'+USES[i].p+'</p>'+
+      '<p class="edit">Draft copy — written to be replaced</p>';
+    stage.innerHTML=SCREENS[i]();
+    window.scrollTo({top:0,behavior:"instant"});
+  }
+
+  tabs.addEventListener("click",function(e){
+    var b=e.target.closest("button[data-i]");
+    if(b) render(+b.dataset.i);
+  });
+
+  render(0);
+})();
+</script>
+</body>
+</html>
+
+</body></html>

@@ -38,11 +38,12 @@
   .bar{
     position:sticky;top:0;z-index:20;background:var(--navy);
     padding:14px clamp(14px,3vw,28px);
-    display:flex;flex-wrap:wrap;gap:8px;align-items:center;
+    display:flex;flex-direction:column;gap:10px;align-items:flex-start;
   }
+  .bar .row{display:flex;flex-wrap:wrap;gap:8px;}
   .bar .bt{
     color:#fff;font-size:.8125rem;font-weight:600;letter-spacing:.06em;
-    text-transform:uppercase;margin-right:10px;
+    text-transform:uppercase;
   }
   .bar button{
     background:none;border:1px solid rgba(255,255,255,.3);color:rgba(255,255,255,.85);
@@ -51,7 +52,6 @@
   }
   .bar button:hover{background:rgba(255,255,255,.14);color:#fff;}
   .bar button.on{background:var(--gold);border-color:var(--gold);color:var(--navy);font-weight:600;}
-  .bar .hint{margin-left:auto;font-size:.75rem;color:rgba(255,255,255,.55);}
 
   /* ---------- intro paragraph (screen only) ---------- */
   .intro{
@@ -213,7 +213,7 @@
 
 <div class="bar" id="bar">
   <span class="bt">Career Plan</span>
-  <span class="hint" id="hint"></span>
+  <div class="row" id="row"></div>
 </div>
 
 <div class="intro" id="intro"><p></p></div>
@@ -866,19 +866,29 @@
   };
 
   /* ===================== render ===================== */
-  var sheet=document.getElementById("sheet"), bar=document.getElementById("bar"), hint=document.getElementById("hint"), intro=document.getElementById("intro");
+  var sheet=document.getElementById("sheet"), bar=document.getElementById("bar"), row=document.getElementById("row"), intro=document.getElementById("intro");
 
   VERSIONS.forEach(function(v,i){
     var b=document.createElement("button");
     b.type="button"; b.dataset.i=i;
-    b.textContent=v.v+" · "+v.stage;
-    bar.insertBefore(b, hint);
+    row.appendChild(b);
   });
+
+  /* full labels while they fit on one line, shorter ones once v4 would wrap */
+  function labels(){
+    var btns=row.querySelectorAll("button");
+    btns.forEach(function(b,i){ b.textContent=VERSIONS[i].v+" · "+VERSIONS[i].stage; });
+    if(btns[btns.length-1].offsetTop>btns[0].offsetTop){
+      btns.forEach(function(b,i){ b.textContent="Plan "+VERSIONS[i].v; });
+    }
+  }
+  window.addEventListener("resize",labels);
+  labels();
+  if(document.fonts&&document.fonts.ready) document.fonts.ready.then(labels);
 
   function render(i){
     var v=VERSIONS[i];
-    bar.querySelectorAll("button").forEach(function(b,j){ b.classList.toggle("on", j===i); });
-    hint.textContent="Letter size · "+v.pages.length+" pages · print or save as PDF";
+    row.querySelectorAll("button").forEach(function(b,j){ b.classList.toggle("on", j===i); });
     intro.firstChild.textContent=INTROS[i]||"";
     var html="";
     v.pages.forEach(function(secs,pi){

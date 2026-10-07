@@ -476,6 +476,10 @@
     z-index:50;background:var(--navy);color:#fff;border:0;
     font:inherit;font-size:.875rem;padding:9px 14px;cursor:pointer;
   }
+  /* sections with no citations hide the rail and its button */
+  body.no-rail{--rail-r:0px;}
+  body.no-rail .rail,
+  body.no-rail .rail-toggle{display:none;}
   .rail-toggle{
     display:none;position:fixed;right:12px;
     top:calc(12px + env(safe-area-inset-top,0px));
@@ -543,19 +547,13 @@
       <li>
         <button class="nav-link" data-panel="throughline">The Career Plan</button>
         <ul class="sublist" data-for="throughline">
-          <li><button class="sub-link" data-target="t-1">What the plan is</button></li>
-          <li><button class="sub-link" data-target="t-2">What students carry forward</button></li>
-          <li><button class="sub-link" data-target="t-3">How faculty see it</button></li>
+          <li><button class="sub-link" data-target="t-1">Career Plan proof of concept example</button></li>
+          <li><button class="sub-link" data-target="t-3">How the Career Plan innovates career advising</button></li>
         </ul>
       </li>
       <li>
-        <button class="nav-link" data-panel="milestones">Four milestones</button>
-        <ul class="sublist" data-for="milestones">
-          <li><button class="sub-link" data-target="m-1">Milestone 1</button></li>
-          <li><button class="sub-link" data-target="m-2">Milestone 2</button></li>
-          <li><button class="sub-link" data-target="m-3">Milestone 3</button></li>
-          <li><button class="sub-link" data-target="m-4">Milestone 4</button></li>
-        </ul>
+        <button class="nav-link" data-panel="milestones">Four Curricular Milestones</button>
+      
       </li>
       <li>
         <button class="nav-link" data-panel="howwork">How the work gets done</button>
@@ -678,11 +676,14 @@
     <section class="panel" id="panel-throughline" tabindex="-1">
       <div class="panel-inner">
         <h2 class="sec-title">The Career Plan</h2>
-        <p class="sec-standfirst">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua, quis nostrud exercitation.</p>
+        <div class="sec-standfirst"><p>The <strong>Career Plan</strong> is an online tool currently in development and made specifically for Suffolk. It connects students’ learning, experiences, and decisions across their time at Suffolk. Students would use it to document the possibilities they are investigating, the evidence informing their choices, and the actions they intend to take next. As they gain experience and receive feedback, they would revisit and revise that plan. The value of guided planning is supported by the 2024 National Alumni Career Mobility report, which identifies institutional help in creating a career plan as a significant predictor of stronger alumni-reported career preparation.<span data-cite="nacm"></span></p>
 
-        <h3 class="sub" id="t-1">What the plan is</h3>
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris.<span data-cite="plan-template"></span></p>
-        <p>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur sint occaecat cupidatat non proident.</p>
+        <p>The plan also provides <strong>a shared starting point for guidance across courses, academic advising, and career services</strong>, allowing each conversation to build on the student’s prior work. For students, it would make progress and next steps explicit; for faculty and advisors, it would reveal opportunities to help; and for Suffolk, aggregate information would help identify patterns in students’ goals, preparation, and unmet needs. This design puts into practice the principle that career guidance should begin early, continue throughout college, and connect across the settings where students learn and seek support.<span data-cite="stradaprinciples"></span></p>
+        </div>
+
+        <h3 class="sub" id="t-1">Career Plan: Proof-of-Concept Example</h3>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris.</p>
+      
 
         <!-- Career Plan Portfolio module (stand-alone page, embedded) -->
         <figure class="fig portfolio">
@@ -690,25 +691,15 @@
           <figcaption>Figure 1. The Career Plan Portfolio across four stages. Use the buttons to move between versions.</figcaption>
         </figure>
 
-        <h4 class="minor">Components</h4>
-        <ul class="plain">
-          <li>Lorem ipsum dolor sit amet, consectetur adipiscing elit</li>
-          <li>Sed do eiusmod tempor incididunt ut labore</li>
-          <li>Ut enim ad minim veniam, quis nostrud</li>
-          <li>Duis aute irure dolor in reprehenderit</li>
-        </ul>
 
-        <h3 class="sub" id="t-2">What students carry forward</h3>
-        <p>At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores.<span data-cite="rubric"></span></p>
-        <div class="pull">
-          <p>Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit.</p>
-          <cite>Placeholder pull quote</cite>
-        </div>
-        <p>Nam libero tempore, cum soluta nobis est eligendi optio cumque nihil impedit quo minus id quod maxime placeat facere possimus.</p>
+        
 
-        <h3 class="sub" id="t-3">How faculty see it</h3>
-        <p>Temporibus autem quibusdam et aut officiis debitis aut rerum necessitatibus saepe eveniet ut et voluptates repudiandae sint et molestiae non recusandae.<span data-cite="advisor-dashboard"></span></p>
-        <p>Itaque earum rerum hic tenetur a sapiente delectus, ut aut reiciendis voluptatibus maiores alias consequatur.</p>
+        <h3 class="sub" id="t-3">How the Career Plan Innovates Career Advising at Suffolk</h3>
+        <p>Temporibus autem quibusdam et aut officiis debitis aut rerum necessitatibus saepe eveniet ut et voluptates repudiandae sint et molestiae non recusandae.</p>
+        <!-- CP_uses module (stand-alone page, embedded; grows to fit its content) -->
+        <figure class="fig portfolio">
+          <iframe src="CP_uses.html" title="What the Career Plan makes possible" loading="lazy" data-autofit></iframe>
+        </figure>
       </div>
     </section>
 
@@ -718,35 +709,12 @@
         <h2 class="sec-title">Four milestones</h2>
         <p class="sec-standfirst">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Each milestone is placeholder content pending the working group's draft language.</p>
 
-        <h3 class="sub" id="m-1">Milestone 1</h3>
+        <h3 class="sub" id="m-1">Proposed Curricular Milestones</h3>
         <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.<span data-cite="milestone-1"></span></p>
-        <h4 class="minor">Where it sits</h4>
-        <p>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</p>
-        <h4 class="minor">What students produce</h4>
-        <p>Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-
-        <h3 class="sub" id="m-2">Milestone 2</h3>
-        <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam eaque ipsa quae ab illo inventore.<span data-cite="milestone-2"></span></p>
-        <h4 class="minor">Where it sits</h4>
-        <p>Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos.</p>
-        <h4 class="minor">What students produce</h4>
-        <p>Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam.</p>
-
-        <h3 class="sub" id="m-3">Milestone 3</h3>
-        <p>Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur.<span data-cite="milestone-3"></span></p>
-        <div class="pull">
-          <p>Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur.</p>
-          <cite>Placeholder pull quote</cite>
-        </div>
-        <h4 class="minor">What students produce</h4>
-        <p>At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti.</p>
-
-        <h3 class="sub" id="m-4">Milestone 4</h3>
-        <p>Et harum quidem rerum facilis est et expedita distinctio. Nam libero tempore, cum soluta nobis est eligendi optio cumque nihil impedit.<span data-cite="milestone-4"></span><span data-cite="fds-2025"></span></p>
-        <h4 class="minor">Where it sits</h4>
-        <p>Temporibus autem quibusdam et aut officiis debitis aut rerum necessitatibus saepe eveniet ut et voluptates repudiandae.</p>
-        <h4 class="minor">What students produce</h4>
-        <p>Itaque earum rerum hic tenetur a sapiente delectus, ut aut reiciendis voluptatibus maiores alias consequatur aut perferendis.</p>
+        <!-- milestones module (stand-alone page, embedded; grows to fit its content) -->
+        <figure class="fig portfolio">
+          <iframe src="milestones.html" title="The four milestones" loading="lazy" data-autofit></iframe>
+        </figure>
       </div>
     </section>
 
@@ -979,6 +947,8 @@
     var panel=panels[key];
     panel.scrollTop=0;
     forcedSub=null;
+    document.body.classList.toggle("no-rail", NO_RAIL.indexOf(key)>=0);
+    closeRail();
     clearLit();
     watch(panel);
   }
@@ -1020,6 +990,7 @@
   }
 
   var forcedSub=null;
+  var NO_RAIL=["milestones"];   /* panel keys that hide the references rail */
 
   function spy(panel){
     syncRail(panel);
@@ -1115,6 +1086,23 @@
     if(current) syncRail(panels[current]);
     if(window.innerWidth>1100) closeRail();
     if(window.innerWidth>760) closeMobileMenu();
+  });
+
+  /* ---- embedded modules marked data-autofit grow to fit their own content ---- */
+  document.querySelectorAll("iframe[data-autofit]").forEach(function(f){
+    function fit(){
+      try{
+        var d=f.contentDocument;
+        f.style.height=Math.ceil(d.documentElement.scrollHeight)+"px";
+      }catch(err){}
+    }
+    f.addEventListener("load", function(){
+      fit();
+      try{
+        var ro=new ResizeObserver(fit);
+        ro.observe(f.contentDocument.body);
+      }catch(err){}
+    });
   });
 
   /* ---- go ---- */
