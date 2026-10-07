@@ -1,0 +1,906 @@
+<!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#faf9f5;color:#141413}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Career Plan Portfolio — v1.0 to v4.0</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Libre+Franklin:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --navy:#15284B;
+    --navy-hover:rgba(21,40,75,.72);
+    --gold:#E7AB2A;
+    --blue:#3CB4E5;
+    --teal:#3BBFAD;
+    --body:#595959;
+    --mute:#8A8A8A;
+    --rule:rgba(21,40,75,.14);
+    --hair:rgba(21,40,75,.08);
+    --t02:rgba(21,40,75,.03);
+    --t05:rgba(21,40,75,.05);
+    --t08:rgba(21,40,75,.08);
+    --sans:"Libre Franklin","Segoe UI",Helvetica,Arial,sans-serif;
+    box-sizing:border-box;
+  }
+  *,*::before,*::after{box-sizing:border-box;}
+  body{
+    margin:0;background:#EEF0F3;color:var(--body);
+    font-family:var(--sans);
+    -webkit-font-smoothing:antialiased;
+    padding-top:env(safe-area-inset-top,0px);
+  }
+  :focus-visible{outline:2px solid var(--navy);outline-offset:2px;}
+
+  /* ---------- version chooser (screen only) ---------- */
+  .bar{
+    position:sticky;top:0;z-index:20;background:var(--navy);
+    padding:14px clamp(14px,3vw,28px);
+    display:flex;flex-wrap:wrap;gap:8px;align-items:center;
+  }
+  .bar .bt{
+    color:#fff;font-size:.8125rem;font-weight:600;letter-spacing:.06em;
+    text-transform:uppercase;margin-right:10px;
+  }
+  .bar button{
+    background:none;border:1px solid rgba(255,255,255,.3);color:rgba(255,255,255,.85);
+    font:inherit;font-size:.8125rem;padding:7px 12px;cursor:pointer;
+    transition:background .18s ease,color .18s ease,border-color .18s ease;
+  }
+  .bar button:hover{background:rgba(255,255,255,.14);color:#fff;}
+  .bar button.on{background:var(--gold);border-color:var(--gold);color:var(--navy);font-weight:600;}
+  .bar .hint{margin-left:auto;font-size:.75rem;color:rgba(255,255,255,.55);}
+
+  /* ---------- intro paragraph (screen only) ---------- */
+  .intro{
+    max-width:8.5in;margin:0 auto;
+    padding:22px clamp(8px,2vw,24px) 0;
+    font-size:.9375rem;line-height:1.6;color:var(--body,#595959);
+  }
+  .intro p{margin:0;}
+
+  /* ---------- page ---------- */
+  .sheet{padding:26px clamp(8px,2vw,24px) 60px;}
+  .page{
+    width:8.5in;min-height:11in;background:#fff;margin:0 auto 22px;
+    padding:.46in .5in .4in;
+    box-shadow:0 2px 14px rgba(21,40,75,.14);
+    position:relative;
+    font-size:9.6pt;line-height:1.45;
+  }
+  .pfoot{
+    position:absolute;left:.5in;right:.5in;bottom:.22in;
+    display:flex;justify-content:space-between;
+    font-size:7pt;color:var(--mute);
+    border-top:1px solid var(--hair);padding-top:5px;
+  }
+
+  /* ---------- identity band ---------- */
+  .band{display:grid;grid-template-columns:62px 1fr auto;gap:14px;align-items:start;
+    padding-bottom:12px;border-bottom:2px solid var(--navy);}
+  .mono{
+    width:62px;height:62px;background:var(--navy);color:#fff;
+    display:flex;align-items:center;justify-content:center;
+    font-size:21pt;font-weight:600;letter-spacing:.02em;
+  }
+  .who h1{font-size:15pt;font-weight:600;color:#000;margin:0;line-height:1.15;letter-spacing:-.01em;}
+  .who .maj{font-size:8.6pt;color:var(--body);margin:3px 0 0;}
+  .who .hl{
+    font-size:10pt;color:var(--navy);font-weight:500;line-height:1.35;
+    margin:8px 0 0;padding-left:9px;border-left:3px solid var(--gold);
+  }
+  .who .hlwas{font-size:7.6pt;color:var(--mute);margin:4px 0 0 12px;}
+  .who .hlwas s{text-decoration:line-through;}
+  .vbox{text-align:right;}
+  .vbox .vv{font-size:15pt;font-weight:600;color:var(--navy);line-height:1;}
+  .vbox .vs{font-size:8pt;color:var(--body);margin-top:3px;}
+  .vbox .vd{font-size:7.4pt;color:var(--mute);margin-top:2px;}
+
+  /* ---------- section furniture ---------- */
+  h2.sec{
+    font-size:7.4pt;font-weight:600;letter-spacing:.11em;text-transform:uppercase;
+    color:var(--navy);margin:16px 0 8px;padding-bottom:4px;
+    border-bottom:1px solid var(--rule);
+    display:flex;justify-content:space-between;align-items:baseline;gap:10px;
+  }
+  h2.sec .sn{font-weight:400;letter-spacing:0;text-transform:none;font-size:7.6pt;color:var(--mute);}
+  .grid2{display:grid;grid-template-columns:1fr 1fr;gap:14px;}
+  .grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;}
+  .card{border:1px solid var(--rule);padding:9px 10px;break-inside:avoid;}
+  .card.fill{background:var(--t02);}
+  .ck{font-size:7pt;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--mute);display:block;margin-bottom:4px;}
+
+  .tag{
+    display:inline-block;font-size:6.4pt;font-weight:600;letter-spacing:.07em;
+    text-transform:uppercase;padding:1px 5px;vertical-align:1px;
+  }
+  .tag.new{background:var(--gold);color:var(--navy);}
+  .tag.rev{background:var(--t08);color:var(--navy);}
+  .tag.kept{background:transparent;color:#AEB3BD;border:1px solid var(--hair);}
+  .tag.drop{background:transparent;color:#B06A6A;border:1px solid rgba(176,106,106,.4);}
+
+  .was{display:block;font-size:7.4pt;color:var(--mute);margin-top:3px;}
+  .was s{text-decoration:line-through;}
+
+  /* entered-value styling: looks keyed into a form */
+  .fld{margin:0 0 7px;}
+  .fld:last-child{margin-bottom:0;}
+  .fld .lb{font-size:7.2pt;color:var(--mute);display:block;margin-bottom:2px;}
+  .fld .vl{
+    display:block;font-size:9pt;color:#1a1a1a;
+    border-bottom:1px solid var(--hair);padding-bottom:3px;
+  }
+  .empty{
+    border:1px dashed rgba(21,40,75,.22);background:repeating-linear-gradient(45deg,transparent,transparent 5px,rgba(21,40,75,.025) 5px,rgba(21,40,75,.025) 10px);
+    padding:7px 9px;font-size:8pt;color:var(--mute);font-style:italic;
+  }
+  .course{font-weight:600;color:var(--navy);}
+
+  /* ---------- likert ---------- */
+  .lk{display:grid;grid-template-columns:1fr 128px 54px;gap:8px;align-items:center;
+    padding:5px 0;border-top:1px solid var(--hair);font-size:8.4pt;}
+  .lk:first-of-type{border-top:0;}
+  .lk .lkl{line-height:1.3;}
+  .lkbar{display:flex;gap:2px;}
+  .lkbar i{flex:1;height:11px;background:var(--t08);display:block;}
+  .lkbar i.f{background:var(--navy);}
+  .lkbar i.g{background:var(--gold);}
+  .lkv{font-size:7.6pt;color:var(--mute);text-align:right;white-space:nowrap;}
+  .lkv b{color:var(--navy);font-size:8.6pt;}
+  .up{color:#2E7D63;font-weight:600;}
+  .dn{color:#B06A6A;font-weight:600;}
+  .scalekey{font-size:6.8pt;color:var(--mute);margin-top:5px;display:flex;justify-content:space-between;}
+
+  /* ---------- pathways ---------- */
+  .pw{border:1px solid var(--rule);border-top:3px solid var(--navy);padding:9px 10px;break-inside:avoid;}
+  .pw.dropped{border-top-color:#C9A0A0;opacity:.72;}
+  .pw.added{border-top-color:var(--gold);}
+  .pw h3{font-size:9.4pt;font-weight:600;color:var(--navy);margin:0 0 2px;line-height:1.2;}
+  .pw .cc{font-size:7.2pt;color:var(--mute);margin:0 0 7px;}
+  .pw .stat{display:flex;gap:10px;align-items:flex-end;margin:7px 0;padding:6px 0;border-top:1px solid var(--hair);border-bottom:1px solid var(--hair);}
+  .pw .stat .num{font-size:12pt;font-weight:600;color:var(--navy);line-height:1;}
+  .pw .stat .nl{font-size:6.8pt;color:var(--mute);display:block;margin-top:2px;}
+  .pw .refl{font-size:8pt;line-height:1.4;margin:6px 0 0;}
+  .pw .ttl{font-size:7.4pt;color:var(--mute);margin:6px 0 0;line-height:1.35;}
+
+  /* ---------- tables ---------- */
+  table.t{width:100%;border-collapse:collapse;font-size:8pt;}
+  table.t th{
+    text-align:left;font-size:6.9pt;font-weight:600;letter-spacing:.07em;text-transform:uppercase;
+    color:var(--navy);background:var(--t02);padding:5px 6px;border-bottom:1px solid var(--rule);
+  }
+  table.t td{padding:5px 6px;border-bottom:1px solid var(--hair);vertical-align:top;line-height:1.35;}
+  table.t tr:last-child td{border-bottom:0;}
+  .pill{display:inline-block;font-size:6.6pt;font-weight:600;letter-spacing:.05em;text-transform:uppercase;padding:1px 5px;}
+  .pill.ok{background:rgba(59,191,173,.22);color:#1C6A5E;}
+  .pill.wait{background:var(--t08);color:var(--navy);}
+  .pill.live{background:var(--gold);color:var(--navy);}
+  .pill.no{background:rgba(176,106,106,.15);color:#8E4B4B;}
+  .kw{display:inline-block;font-size:7pt;background:var(--t05);color:var(--navy);padding:1px 5px;margin:2px 3px 0 0;}
+  .kw.hit{background:var(--gold);}
+
+  /* ---------- misc ---------- */
+  .meter{height:5px;background:var(--t08);margin-top:5px;}
+  .meter i{display:block;height:5px;background:var(--gold);}
+  .funnel{display:grid;grid-template-columns:repeat(5,1fr);gap:5px;margin:8px 0 4px;}
+  .fn{background:var(--t02);border:1px solid var(--rule);padding:6px;text-align:center;}
+  .fn b{display:block;font-size:13pt;color:var(--navy);line-height:1;}
+  .fn span{display:block;font-size:6.6pt;color:var(--mute);margin-top:3px;letter-spacing:.05em;text-transform:uppercase;}
+  .ql{font-size:7.6pt;color:var(--body);margin:3px 0 0;padding-left:10px;border-left:2px solid var(--gold);line-height:1.35;}
+  .lnk{color:var(--navy);text-decoration:underline;text-underline-offset:2px;word-break:break-all;}
+  .quote{background:var(--t02);border-left:3px solid var(--gold);padding:9px 11px;font-size:8.4pt;line-height:1.45;}
+  .tl{display:grid;grid-template-columns:62px 1fr;gap:9px;font-size:8pt;}
+  .tl .tdate{color:var(--navy);font-weight:600;font-size:7.6pt;padding-top:4px;}
+  .tl .titem{border-top:1px solid var(--hair);padding:4px 0;}
+  .two{columns:2;column-gap:14px;}
+  .two > *{break-inside:avoid;}
+
+  @media print{
+    body{background:#fff;}
+    .bar,.intro{display:none;}
+    .sheet{padding:0;}
+    .page{box-shadow:none;margin:0;page-break-after:always;width:auto;min-height:0;}
+    @page{size:letter;margin:.4in;}
+  }
+  @media (max-width:950px){
+    .page{width:100%;min-height:0;padding:20px;}
+  }
+</style>
+</head>
+<body>
+
+<div class="bar" id="bar">
+  <span class="bt">Career Plan</span>
+  <span class="hint" id="hint"></span>
+</div>
+
+<div class="intro" id="intro"><p></p></div>
+
+<div class="sheet" id="sheet"></div>
+
+<script>
+(function(){
+  "use strict";
+
+  /* =====================================================================
+     DATA MODEL
+     Every numeric field below is deliberately structured so a future
+     many-student view can aggregate it directly: likert values (1-5) with
+     their prior reading, appointment counts and last-contact dates,
+     pathway ids, application funnel counts, network size.
+     ===================================================================== */
+
+  var STUDENT={
+    name:"Maya Ellison",
+    initials:"ME",
+    major:"B.A. Sociology",
+    minor:"Minor, Public Health",
+    classYear:"Class of 2030",
+    id:"S0148827"
+  };
+
+  // Pathway records as they appear on the Suffolk Career Pathways site
+  var PW={
+    "p-healthcare-administration--health-data":{
+      name:"Healthcare Administration & Health Data",
+      cc:"Healthcare & Wellness",
+      titles:"Healthcare Analyst · Revenue Cycle Analyst · Quality Improvement Coordinator · Practice Coordinator",
+      earn:"$74,900", earnNote:"median, health services managers (MA)",
+      trend:[100,104,109,113,118,124], trendNote:"+28% projected, 2024–34"
+    },
+    "p-public-health--epidemiology":{
+      name:"Public Health & Epidemiology",
+      cc:"Healthcare & Wellness",
+      titles:"Public Health Program Coordinator · Health Educator · Data Analyst (public health) · Epidemiology Assistant",
+      earn:"$62,400", earnNote:"median, health education specialists (MA)",
+      trend:[100,103,106,108,111,114], trendNote:"+14% projected, 2024–34"
+    },
+    "p-policy-analysis--social-research":{
+      name:"Policy Analysis & Social Research",
+      cc:"Public Administration, Government & Law",
+      titles:"Policy Analyst · Research Associate · Program Evaluation Analyst · Legislative Research Analyst",
+      earn:"$68,100", earnNote:"median, social science researchers (MA)",
+      trend:[100,102,104,105,107,109], trendNote:"+9% projected, 2024–34"
+    },
+    "p-data-science--analytics":{
+      name:"Data Science & Analytics",
+      cc:"STEM & Sustainability",
+      titles:"Data Analyst · Business Intelligence Analyst · Analytics Associate",
+      earn:"$89,300", earnNote:"median, data scientists (MA)",
+      trend:[100,106,112,119,126,134], trendNote:"+34% projected, 2024–34"
+    }
+  };
+
+  var SCALE=["Not at all confident","Slightly","Moderately","Very","Completely confident"];
+
+  var INTROS=[
+    "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
+    "Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+    "Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.",
+    "At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident."
+  ];
+
+  var VERSIONS=[
+  /* ================================ v1.0 ================================ */
+  {
+    v:"v1.0", stage:"Career Exploration", term:"First year, spring", date:"March 14, 2027",
+    headline:"First-year Sociology student interested in how health systems are organized — exploring whether that means working inside a hospital, in public health, or in research.",
+    complete:72,
+    pages:[
+      ["band","efficacy","pathways","wbl_intent"],
+      ["goals","advising","network","interview","jobs"]
+    ],
+    efficacy:{
+      note:"Stage 1 tasks · self-reported",
+      items:[
+        {k:"explain_interest", t:"Describe what I'm interested in and why, out loud, to someone I don't know", v:2},
+        {k:"find_pathways",    t:"Find career pathways connected to my major", v:4},
+        {k:"read_labor",       t:"Read earnings and employment outlook data and say what it means for me", v:2},
+        {k:"ask_informational",t:"Ask someone for an informational conversation", v:1},
+        {k:"name_skills",      t:"Name specific skills I have and where I got them", v:2},
+        {k:"plan_wbl",         t:"Explain what work-based learning is and when mine has to happen", v:3}
+      ]
+    },
+    pathways:[
+      {id:"p-healthcare-administration--health-data", state:"new",
+       refl:"I didn't know this was a career until I filtered by my major. The part that interests me is that it's the business side of care — you can improve how a hospital runs without being a clinician. Massachusetts being a steady market matters to me because I want to stay near my family."},
+      {id:"p-public-health--epidemiology", state:"new",
+       refl:"This is the one I came in thinking about. Working at the population level rather than one patient at a time appeals to me. Noting that an MPH is close to standard for advancement — that's a cost I need to think about, not assume."},
+      {id:"p-policy-analysis--social-research", state:"new",
+       refl:"Added this because my SOC 210 professor said the research methods I'm learning are the same ones used in policy shops. The site says quantitative skill separates candidates most sharply, which is honestly a reason I'm hesitant — stats is my hardest class."}
+    ],
+    wbl:{
+      term:"Summer after junior year (Summer 2029)",
+      roles:"Hospital operations or quality improvement · Public health program support · Research assistant in a health policy center",
+      prep:"Finish the statistics sequence by junior fall so I can claim data skills honestly. Get one semester of on-campus work in an office setting. Have at least four informational conversations before I start applying in January 2029."
+    },
+    goals:[
+      {a:"Attend an event", d:"Healthcare & Wellness Career Community kickoff", due:"04/02/2027", s:"done"},
+      {a:"Request an informational conversation", d:"With a Suffolk alum working in hospital operations", due:"04/18/2027", s:"open"},
+      {a:"Complete a skills inventory", d:"Using the Skills That Matter list from all three pathways", due:"05/01/2027", s:"open"},
+      {a:"Draft a resume", d:"First version, bring to drop-in advising", due:"05/09/2027", s:"open"}
+    ],
+    advising:{
+      past:[{d:"02/11/2027", w:"Drop-in advising", t:"Choosing a Career Community"},
+            {d:"03/04/2027", w:"R. Alvarez, Career Advisor", t:"Pathways site walkthrough; picked three to follow"}],
+      count:2, last:"03/04/2027",
+      upcoming:[{d:"04/02/2027", w:"Healthcare & Wellness Community kickoff", t:"Event · Sawyer 521"},
+                {d:"04/21/2027", w:"Resume Lab", t:"Event · drop-in, no appointment"}]
+    },
+    network:[
+      {n:"Rachel Alvarez", r:"Career Advisor, Healthcare & Wellness", o:"Suffolk CCEDS", m:"Assigned advisor", c:"Once a semester", l:"03/04/2027"},
+      {n:"Dr. Patrice Lindo", r:"Associate Professor of Sociology", o:"Suffolk University", m:"SOC 210 instructor", c:"Office hours, monthly", l:"03/09/2027"},
+      {n:"Devon Marsh", r:"Operations Analyst", o:"Beth Israel Lahey Health", m:"Alum, found via pathways site", c:"Email once a semester", l:"— not yet contacted"}
+    ],
+    interview:[
+      {q:"Tell me about a time you had to work with someone whose approach was different from yours.",
+       a:"In my first-year seminar group project, one person wanted to split the work into four separate pieces and I thought we'd end up with four different papers. I suggested we each draft a section but swap for editing. It took longer but the final paper actually sounded like one voice. I learned that I'd rather spend time up front on process than fix it at the end."},
+      {q:"What are some of your strengths?",
+       a:"I'm good at noticing when a process is inefficient — I did this at my summer job restocking, where I rearranged the back room by how often things were used. I'm still working on speaking up about it in the moment rather than afterward."},
+      {q:"What did you learn in <b class=\"course\">SOC 210: Research Methods &amp; Data Analysis</b> that could help you in this role?",
+       a:"We ran a survey from design through analysis, including writing the codebook. I learned that most of the work is deciding what you're actually measuring before you collect anything — and that clean data is a choice you make early, not a cleanup step."},
+      {q:"What did you learn in <b class=\"course\">PH 101: Introduction to Public Health</b> that could help you in this role?", a:null},
+      {q:"What did you learn in <b class=\"course\">STAT 240: Statistics for the Social Sciences</b> that could help you in this role?", a:null}
+    ],
+    jobs:[
+      {t:"Summer Operations Intern", o:"Mass General Brigham", link:"handshake.suffolk.edu/jobs/8841207",
+       why:"Posted for rising juniors and seniors, so I can't apply yet — saving it to see what they ask for. The description is almost entirely process improvement, which matches what I said I liked.",
+       kw:["Process improvement","Excel","Stakeholder communication","Data entry"], hits:["Excel"]},
+      {t:"Public Health Program Assistant (Summer)", o:"Boston Public Health Commission", link:"handshake.suffolk.edu/jobs/8798432",
+       why:"Named in the pathway description as a major local employer. Wants community outreach experience, which I don't have yet — that's a gap I can close with volunteering.",
+       kw:["Community outreach","Program support","Data collection","Spanish preferred"], hits:["Data collection"]},
+      {t:"Research Assistant, Health Policy", o:"Suffolk Center for Health Policy Research", link:"handshake.suffolk.edu/jobs/8802119",
+       why:"On campus and open to sophomores. Asks for coursework in research methods — I'll have that after this semester. This is my realistic first application.",
+       kw:["Research methods","Literature review","Stata or R","Academic writing"], hits:["Research methods","Academic writing"]}
+    ]
+  },
+
+  /* ================================ v2.0 ================================ */
+  {
+    v:"v2.0", stage:"Career Navigation", term:"Junior spring, before work-based learning", date:"April 9, 2029",
+    headline:"Junior studying Sociology and Public Health, heading into a summer in hospital operations — testing whether quality improvement is the part of health systems work I want to build a career on.",
+    headlineWas:"First-year Sociology student interested in how health systems are organized — exploring whether that means working inside a hospital, in public health, or in research.",
+    complete:88,
+    pages:[
+      ["band","efficacy","pathways"],
+      ["wbl_confirmed","wbl_goals","goals","advising"],
+      ["network","interview","jobs"]
+    ],
+    efficacy:{
+      note:"Re-measured before work-based learning · change shown against v1.0",
+      items:[
+        {k:"explain_interest", t:"Describe what I'm interested in and why, out loud, to someone I don't know", v:4, p:2},
+        {k:"find_pathways",    t:"Find career pathways connected to my major", v:5, p:4},
+        {k:"read_labor",       t:"Read earnings and employment outlook data and say what it means for me", v:4, p:2},
+        {k:"ask_informational",t:"Ask someone for an informational conversation", v:4, p:1},
+        {k:"name_skills",      t:"Name specific skills I have and where I got them", v:3, p:2},
+        {k:"plan_wbl",         t:"Explain what work-based learning is and when mine has to happen", v:5, p:3},
+        {k:"interview_ready",  t:"Answer a behavioral interview question without rehearsing first", v:2},
+        {k:"negotiate",        t:"Ask a question about pay or conditions before accepting an offer", v:1}
+      ]
+    },
+    pathways:[
+      {id:"p-healthcare-administration--health-data", state:"kept", rank:"Primary",
+       refl:"Moved to first after two informational conversations. Devon described his week and roughly half of it was work I'd actually enjoy. The earnings figure is higher than I expected for a non-clinical role, which changed how I think about the MPH question.",
+       reflWas:"I didn't know this was a career until I filtered by my major. The part that interests me is that it's the business side of care…"},
+      {id:"p-public-health--epidemiology", state:"kept", rank:"Secondary",
+       refl:"Still interested, but the MPH is the deciding factor and I'm not ready to commit to that. Keeping it as a second option that I could come back to after a few years of working.",
+       reflWas:"This is the one I came in thinking about. Working at the population level rather than one patient at a time appeals to me…"},
+      {id:"p-policy-analysis--social-research", state:"drop",
+       refl:"Dropping this one. I got the stats requirement done and did fine, but the research assistant job showed me I don't enjoy a full day of literature review. That's useful to know — I'd rather use data to fix something than to describe it."}
+    ],
+    wblConfirmed:{
+      org:"Beth Israel Lahey Health — Performance Improvement Office",
+      role:"Operations & Quality Improvement Intern",
+      dates:"June 4 – August 17, 2029 · 32 hrs/week · paid, $22/hr",
+      type:"Traditional internship",
+      how:"Applied through Handshake in January; Devon Marsh flagged the posting two weeks before it went live."
+    },
+    wblGoals:[
+      {g:"Learn how a quality improvement project actually gets scoped and approved — not the textbook version.",
+       how:"Ask to sit in on at least two project intake meetings. Keep a one-page log of what got approved and what got turned down, and why."},
+      {g:"Become genuinely useful with the data tools the team uses day to day, so I can claim them honestly on a resume.",
+       how:"Build at least one recurring report end to end. Ask my supervisor by week 3 which tool is worth my time — Epic reporting, Excel, or SQL."},
+      {g:"Find out whether I want the analyst track or the coordinator track, which I currently can't tell apart from the outside.",
+       how:"Have a conversation with one person on each track by the midpoint. Write a paragraph in week 8 on which day I'd rather have."}
+    ],
+    goals:[
+      {a:"Secure work-based learning placement", d:"Confirmed: BILH Performance Improvement", due:"03/01/2029", s:"done"},
+      {a:"Complete a skills inventory", d:"Updated against the two remaining pathways", due:"04/20/2029", s:"open"},
+      {a:"Practice interviewing", d:"Mock interview with advisor before summer start", due:"05/15/2029", s:"open"},
+      {a:"Set up a professional profile", d:"LinkedIn headline rewritten to match the pathway language", due:"05/22/2029", s:"open"}
+    ],
+    advising:{
+      past:[{d:"09/19/2028", w:"R. Alvarez, Career Advisor", t:"Narrowing from three pathways to two"},
+            {d:"11/07/2028", w:"Resume review", t:"Resume v3 — reframed campus job as operations experience"},
+            {d:"01/23/2029", w:"R. Alvarez, Career Advisor", t:"Handshake application strategy for summer"},
+            {d:"03/12/2029", w:"Drop-in advising", t:"Offer received — questions to ask before accepting"}],
+      count:7, last:"03/12/2029",
+      upcoming:[{d:"05/15/2029", w:"Mock interview", t:"Appointment · R. Alvarez"},
+                {d:"05/29/2029", w:"Pre-Internship Workshop", t:"Event · required before WBL start"}]
+    },
+    network:[
+      {n:"Devon Marsh", r:"Operations Analyst", o:"Beth Israel Lahey Health", m:"Alum, pathways site", c:"Email each semester; coffee once a year", l:"02/26/2029", chg:"rev"},
+      {n:"Rachel Alvarez", r:"Career Advisor, Healthcare & Wellness", o:"Suffolk CCEDS", m:"Assigned advisor", c:"Once a semester", l:"03/12/2029"},
+      {n:"Dr. Patrice Lindo", r:"Associate Professor of Sociology", o:"Suffolk University", m:"SOC 210, then thesis advisor", c:"Office hours, monthly", l:"03/28/2029"},
+      {n:"Amara Boateng", r:"Senior Program Manager", o:"Boston Public Health Commission", m:"Met at Community kickoff, 2028", c:"LinkedIn; message when I have news", l:"10/15/2028", chg:"new"},
+      {n:"Tomas Reyes", r:"Epic Reporting Analyst", o:"Mass General Brigham", m:"Introduced by Devon", c:"Email twice a year", l:"01/30/2029", chg:"new"}
+    ],
+    interview:[
+      {q:"Tell me about a time you had to work with someone whose approach was different from yours.",
+       a:"At my campus job in the Dean's office, a colleague wanted to keep the room-booking log on paper because that's how it had always been done. I rebuilt it as a shared sheet but kept the paper log running in parallel for three weeks so she could check it against mine. After that she asked me to take the paper one down herself. I learned that people aren't resisting the change, they're resisting losing the thing that makes them reliable.",
+       was:"In my first-year seminar group project, one person wanted to split the work into four separate pieces…"},
+      {q:"What are some of your strengths?",
+       a:"I'm good at finding the step in a process that's quietly costing everyone time, and I'm persistent about documenting things so the fix survives after I leave. My weakness is that I'd rather rebuild a system than have the conversation about why it's broken — I'm working on leading with the conversation.",
+       was:"I'm good at noticing when a process is inefficient — I did this at my summer job restocking…"},
+      {q:"What did you learn in <b class=\"course\">SOC 210: Research Methods &amp; Data Analysis</b> that could help you in this role?",
+       a:"We ran a survey from design through analysis, including writing the codebook. I learned that most of the work is deciding what you're actually measuring before you collect anything — and that clean data is a choice you make early, not a cleanup step."},
+      {q:"What did you learn in <b class=\"course\">PH 320: Health Systems &amp; Policy</b> that could help you in this role?",
+       a:"We mapped how a single patient encounter generates a billing claim, and where it can fail. It was the first time I understood that \"revenue cycle\" is a care problem as much as a finance one — a denied claim usually means something went wrong clinically or administratively upstream."},
+      {q:"What did you learn in <b class=\"course\">STAT 240: Statistics for the Social Sciences</b> that could help you in this role?", a:null}
+    ],
+    jobs:[
+      {t:"Operations & Quality Improvement Intern", o:"Beth Israel Lahey Health", link:"handshake.suffolk.edu/jobs/9120044",
+       why:"Applied and accepted. Saving the description so I can check my three learning goals against what they actually said they wanted.",
+       kw:["Process improvement","Excel","Data visualization","Stakeholder communication","Project coordination"], hits:["Excel","Process improvement","Stakeholder communication"], status:"accepted"},
+      {t:"Healthcare Analyst (New Grad)", o:"Point32Health", link:"handshake.suffolk.edu/jobs/9087731",
+       why:"Saved as a target for next year, not now. It asks for SQL, which I don't have — this is the strongest argument for making SQL a summer goal.",
+       kw:["SQL","Claims data","Excel","Healthcare operations","Tableau"], hits:["Excel"]},
+      {t:"Quality Improvement Coordinator", o:"Cambridge Health Alliance", link:"handshake.suffolk.edu/jobs/9101288",
+       why:"This is almost exactly the job title from the pathways page. Keeping it to see how the requirements change when it reposts next spring.",
+       kw:["Quality improvement","Lean/Six Sigma","Data analysis","Clinical workflow"], hits:["Data analysis"]},
+      {t:"Program Coordinator, Community Health", o:"Codman Square Health Center", link:"handshake.suffolk.edu/jobs/9094510",
+       why:"My public health option, kept deliberately so I'm not only looking at one pathway. If the summer goes badly, this is where I'd start looking seriously.",
+       kw:["Community health","Program coordination","Grant reporting","Spanish preferred"], hits:["Program coordination"]}
+    ]
+  },
+
+  /* ================================ v3.0 ================================ */
+  {
+    v:"v3.0", stage:"Career Integration", term:"Senior fall, after work-based learning", date:"September 23, 2029",
+    headline:"Senior Sociology and Public Health student with a summer in hospital performance improvement, targeting healthcare analyst roles where the work is finding what's broken in a process and proving it with data.",
+    headlineWas:"Junior studying Sociology and Public Health, heading into a summer in hospital operations — testing whether quality improvement is the part of health systems work I want to build a career on.",
+    complete:94,
+    pages:[
+      ["band","reflection","efficacy"],
+      ["pathways","targets"],
+      ["evals","network_wbl"],
+      ["launch_plan","goals","advising"]
+    ],
+    reflection:{
+      prompt:"How did your work-based learning experience clarify or change your career goals? What specifically caused the change?",
+      text:"It clarified more than it changed, but one thing did change. I went in assuming I'd have to choose between the analyst track and the coordinator track, and I spent the first month trying to figure out which one I was. By week six I'd stopped asking, because the project I ended up on needed both — I pulled the discharge delay data myself and then sat in the room where we argued about what to do with it.<br><br>What caused the change was a single meeting in week seven. I'd built a report showing that most of the delay was concentrated in one unit on weekends. I presented it and a nurse manager explained, politely, that she already knew that and the reason was a staffing rule I hadn't known existed. I was wrong about the cause but right about the pattern. That meeting is why my goal shifted from \"work with healthcare data\" to \"work with healthcare data in a role where I'm close enough to operations to be corrected.\" A pure analyst job sitting apart from the units would have let me be confidently wrong for a lot longer.<br><br>The second thing I learned is that I need SQL, not as a resume line but because I spent two weeks waiting on someone else to pull data I could have pulled myself.",
+      changed:[
+        "Pathway ranking unchanged — Healthcare Administration & Health Data stayed primary, which I did not expect.",
+        "Added Data Science & Analytics as a third pathway, because the summer made the technical gap concrete.",
+        "Target roles narrowed from four to two, both embedded in operations rather than central analytics."
+      ]
+    },
+    efficacy:{
+      note:"Re-measured after work-based learning · change shown against v2.0",
+      items:[
+        {k:"explain_interest", t:"Describe what I'm interested in and why, out loud, to someone I don't know", v:5, p:4},
+        {k:"read_labor",       t:"Read earnings and employment outlook data and say what it means for me", v:4, p:4},
+        {k:"ask_informational",t:"Ask someone for an informational conversation", v:5, p:4},
+        {k:"name_skills",      t:"Name specific skills I have and where I got them", v:5, p:3},
+        {k:"interview_ready",  t:"Answer a behavioral interview question without rehearsing first", v:4, p:2},
+        {k:"negotiate",        t:"Ask a question about pay or conditions before accepting an offer", v:3, p:1},
+        {k:"tech_claim",       t:"Claim a technical tool on my resume and defend it in an interview", v:2},
+        {k:"apply_volume",     t:"Keep applying after a rejection without stalling for a week", v:2}
+      ]
+    },
+    pathways:[
+      {id:"p-healthcare-administration--health-data", state:"kept", rank:"Primary",
+       refl:"Confirmed from the inside. The thing I couldn't have known from the description is how much of it is persuading clinical staff that your number means what you say it means. That's the part I want to get good at.",
+       reflWas:"Moved to first after two informational conversations. Devon described his week and roughly half of it was work I'd actually enjoy…"},
+      {id:"p-public-health--epidemiology", state:"kept", rank:"Secondary",
+       refl:"Kept but demoted in practice. The summer showed me I prefer a defined system I can change over a population I can only study. Still the pathway I'd return to with an MPH in five years.",
+       reflWas:"Still interested, but the MPH is the deciding factor and I'm not ready to commit to that…"},
+      {id:"p-data-science--analytics", state:"added", rank:"New third",
+       refl:"Added after the summer. Not because I want to be a data scientist, but because the technical floor for the jobs I want sits inside this pathway and I was treating it as optional. SQL and Tableau appear in almost every posting I've saved since August."}
+    ],
+    targets:{
+      roles:[
+        {t:"Performance Improvement Analyst", why:"Closest to what I actually did. Sits inside an operations team rather than central analytics."},
+        {t:"Revenue Cycle Analyst", why:"Broader market, and PH 320 plus the summer gave me the vocabulary. Less interesting work, more openings."}
+      ],
+      orgs:["Beth Israel Lahey Health","Mass General Brigham","Boston Medical Center","Cambridge Health Alliance","Point32Health","Tufts Medicine"],
+      geo:"Boston metro; would consider Providence. Not relocating out of New England.",
+      timing:"Applying October through February. Health systems hire new grads on a rolling basis, not a fall cycle — confirmed with Devon and with my supervisor."
+    },
+    evals:{
+      self:"portfolio.suffolk.edu/wbl/2029/ellison-self-evaluation.pdf",
+      sup:"portfolio.suffolk.edu/wbl/2029/ellison-supervisor-evaluation.pdf",
+      prompt:"Where did your self-evaluation and your supervisor's evaluation differ, and how will you use that difference going forward?",
+      text:"We agreed on almost everything except two ratings, and the two gaps point in opposite directions.<br><br>I rated myself a 3 of 5 on \"communicates findings clearly to non-technical audiences.\" My supervisor gave me a 5 and wrote that the discharge-delay walkthrough was the clearest presentation an intern had given her. I think I rated the week-seven meeting as a failure because I was wrong about the cause, and scored my communication down for it. That's a real habit: I conflate being corrected with having done badly. I'm going to stop doing that, because it will make me slower to put work in front of people.<br><br>The gap I didn't expect runs the other way. I rated myself a 4 on \"takes initiative on unassigned work\" and she gave me a 3, with a note that I tended to wait for a project to be formally assigned before starting. She's right, and I hadn't noticed because I was busy. Going forward I'm treating that as the specific thing to practice in my first job: ask for the problem, not the task.<br><br>The feedback I'm carrying into interviews is her exact phrase — that I'm \"strongest when the data has a person attached to it.\" I'd never have described myself that way and it's the truest sentence in either document."
+    },
+    networkWbl:[
+      {n:"Karen Whitlock", r:"Director, Performance Improvement", o:"Beth Israel Lahey Health", m:"Internship supervisor", c:"Quarterly email with an update; asked her to be a reference and she agreed", l:"08/15/2029", chg:"new"},
+      {n:"Priya Raghunathan", r:"Senior Analyst, Quality", o:"Beth Israel Lahey Health", m:"Sat next to me; taught me the reporting stack", c:"Monthly while job searching; she offered to review my SQL practice", l:"09/11/2029", chg:"new"},
+      {n:"Marcus Bell", r:"Nurse Manager, 7 West", o:"Beth Israel Lahey Health", m:"The week-seven meeting", c:"LinkedIn only; message if I get an offer in a clinical setting", l:"08/14/2029", chg:"new"},
+      {n:"Devon Marsh", r:"Operations Analyst", o:"Beth Israel Lahey Health", m:"Alum, pathways site — now a colleague's colleague", c:"Coffee each semester; he's reviewing my target list", l:"09/06/2029", chg:"rev"}
+    ],
+    launch:[
+      {d:"Oct 2029", t:"Finish the SQL course I started in August. Rebuild the discharge-delay report from scratch as a portfolio piece.", k:"Skill gap"},
+      {d:"Nov 2029", t:"Resume and LinkedIn rewritten around the summer project. Mock interview with R. Alvarez using the two target titles.", k:"Materials"},
+      {d:"Dec 2029", t:"First application wave: 8 roles. Ask Karen for the reference letter before the holidays, not after.", k:"Apply"},
+      {d:"Jan–Feb 2030", t:"Second wave. Reconnect with Priya and Tomas with a specific ask, not a general one.", k:"Apply"},
+      {d:"Mar 2030", t:"Decision point: if no offers, widen to revenue cycle roles statewide and ask Karen about per-diem or temp work at BILH.", k:"Contingency"},
+      {d:"May 2030", t:"Graduate. Career Plan v4.0 becomes the First Destination record.", k:"Close"}
+    ],
+    goals:[
+      {a:"Complete a certification or course", d:"SQL for Data Analysis — 60% complete", due:"10/31/2029", s:"open"},
+      {a:"Request a reference", d:"Karen Whitlock, confirmed verbally — need it in writing", due:"12/12/2029", s:"open"},
+      {a:"Apply to a position", d:"First wave, 8 roles from the target list", due:"12/19/2029", s:"open"},
+      {a:"Update my resume", d:"Rebuild around the summer project", due:"11/08/2029", s:"open"}
+    ],
+    advising:{
+      past:[{d:"05/15/2029", w:"Mock interview", t:"Before internship start"},
+            {d:"09/08/2029", w:"R. Alvarez, Career Advisor", t:"Post-internship debrief; added third pathway"},
+            {d:"09/20/2029", w:"Drop-in advising", t:"Target role list review"}],
+      count:10, last:"09/20/2029",
+      upcoming:[{d:"10/09/2029", w:"Healthcare Employer Panel", t:"Event · 5 systems attending"},
+                {d:"11/04/2029", w:"R. Alvarez, Career Advisor", t:"Resume rebuild review"}]
+    }
+  },
+
+  /* ================================ v4.0 ================================ */
+  {
+    v:"v4.0", stage:"Career Launch", term:"Senior spring", date:"March 18, 2030",
+    headline:"Graduating in May with a performance improvement background in hospital operations — looking for an analyst role close enough to the units that the data has a person attached to it.",
+    headlineWas:"Senior Sociology and Public Health student with a summer in hospital performance improvement, targeting healthcare analyst roles where the work is finding what's broken in a process and proving it with data.",
+    complete:100,
+    pages:[
+      ["band","funnel","applications"],
+      ["applications2","efficacy"],
+      ["network","interview","goals"]
+    ],
+    funnel:{applied:14, screen:6, interview:4, final:2, offer:1},
+    apps:[
+      {co:"Beth Israel Lahey Health", role:"Performance Improvement Analyst", d:"12/04/2029", st:"Offer", stc:"ok",
+       next:"Respond by 03/28/2030", q:["Which unit would I be embedded with, and does that change after the first year?","Is the reporting stack moving to the new platform, and would I be part of that?","What does Karen's team look like in two years?"]},
+      {co:"Mass General Brigham", role:"Revenue Cycle Analyst", d:"12/04/2029", st:"Final round", stc:"live",
+       next:"Final interview 03/24/2030", q:["How much of this role is denials work versus upstream prevention?","Who do I sit with — finance or operations?","What does the first 90 days look like concretely?"]},
+      {co:"Boston Medical Center", role:"Quality Improvement Coordinator", d:"12/11/2029", st:"2nd interview", stc:"live",
+       next:"Follow up 03/21/2030 if no reply", q:["Is this role primarily project coordination or does it include analysis?","What's the ratio of scheduled projects to reactive requests?"]},
+      {co:"Cambridge Health Alliance", role:"Performance Improvement Analyst", d:"12/19/2029", st:"Phone screen", stc:"wait",
+       next:"Follow up 03/20/2030 — two weeks since screen", q:["How does CHA's safety-net status change what gets prioritized?","Would I have access to the data directly or request it?"]},
+      {co:"Point32Health", role:"Healthcare Analyst (New Grad)", d:"01/08/2030", st:"No response", stc:"no",
+       next:"One more follow-up 03/22/2030, then close it out", q:[]},
+      {co:"Tufts Medicine", role:"Operations Analyst", d:"01/15/2030", st:"Rejected", stc:"no",
+       next:"Closed. Asked for feedback — they cited SQL depth.", q:[]}
+    ],
+    apps2:[
+      {co:"Dana-Farber Cancer Institute", role:"Clinical Operations Analyst", d:"01/22/2030", st:"2nd interview", stc:"live",
+       next:"Thank-you sent 03/17. Follow up 03/26.", q:["How much of the role is recurring reporting versus new analysis?","Who are the clinical stakeholders I'd work with most?"]},
+      {co:"Boston Public Health Commission", role:"Program Data Coordinator", d:"02/03/2030", st:"Phone screen", stc:"wait",
+       next:"Follow up 03/19/2030", q:["How much of this role is grant reporting?","Is there a path from coordinator to analyst here?"]},
+      {co:"Codman Square Health Center", role:"Quality & Data Specialist", d:"02/11/2030", st:"Applied", stc:"wait",
+       next:"Follow up 03/25/2030 — Amara offered to flag my name", q:[]},
+      {co:"Steward Health Care", role:"Revenue Cycle Analyst", d:"02/19/2030", st:"Applied", stc:"wait", next:"Follow up 03/27/2030", q:[]},
+      {co:"Harvard Pilgrim", role:"Analytics Associate", d:"02/26/2030", st:"Rejected", stc:"no", next:"Closed.", q:[]},
+      {co:"Lahey Hospital", role:"Data Quality Analyst", d:"03/04/2030", st:"Applied", stc:"wait", next:"Follow up 03/29/2030", q:[]},
+      {co:"Brigham and Women's", role:"Performance Improvement Specialist", d:"03/09/2030", st:"Applied", stc:"wait", next:"Follow up 03/30/2030", q:[]},
+      {co:"MA Health Policy Commission", role:"Research Analyst", d:"03/12/2030", st:"Applied", stc:"wait",
+       next:"Follow up 04/01/2030", q:["Does this role sit closer to research or to implementation?"]}
+    ],
+    efficacy:{
+      note:"Final measurement · change shown against v3.0",
+      items:[
+        {k:"explain_interest", t:"Describe what I'm interested in and why, out loud, to someone I don't know", v:5, p:5},
+        {k:"name_skills",      t:"Name specific skills I have and where I got them", v:5, p:5},
+        {k:"interview_ready",  t:"Answer a behavioral interview question without rehearsing first", v:5, p:4},
+        {k:"negotiate",        t:"Ask a question about pay or conditions before accepting an offer", v:4, p:3},
+        {k:"tech_claim",       t:"Claim a technical tool on my resume and defend it in an interview", v:4, p:2},
+        {k:"apply_volume",     t:"Keep applying after a rejection without stalling for a week", v:4, p:2}
+      ]
+    },
+    network:[
+      {n:"Karen Whitlock", r:"Director, Performance Improvement", o:"Beth Israel Lahey Health", m:"Internship supervisor", c:"Reference provided; quarterly update either way", l:"02/27/2030"},
+      {n:"Priya Raghunathan", r:"Senior Analyst, Quality", o:"Beth Israel Lahey Health", m:"Taught me the reporting stack", c:"Monthly; reviewed two of my SQL practice sets", l:"03/06/2030", chg:"rev"},
+      {n:"Devon Marsh", r:"Operations Analyst", o:"Beth Israel Lahey Health", m:"Alum, pathways site", c:"Coffee each semester", l:"01/19/2030"},
+      {n:"Amara Boateng", r:"Senior Program Manager", o:"Boston Public Health Commission", m:"Community kickoff, 2028", c:"Offered to flag my Codman application", l:"03/11/2030", chg:"rev"},
+      {n:"Tomas Reyes", r:"Epic Reporting Analyst", o:"Mass General Brigham", m:"Introduced by Devon", c:"Twice a year; referred me internally at MGB", l:"12/02/2029", chg:"rev"},
+      {n:"Rachel Alvarez", r:"Career Advisor, Healthcare & Wellness", o:"Suffolk CCEDS", m:"Assigned advisor, four years", c:"Final appointment scheduled before graduation", l:"03/02/2030"}
+    ],
+    interview:[
+      {q:"Tell me about a time you had to work with someone whose approach was different from yours.",
+       a:"During my internship I built a report showing discharge delays concentrated on one unit on weekends. I presented it to the nurse manager and she told me she already knew, and that the cause was a staffing rule I hadn't known about. Rather than defend the analysis I asked her to walk me through the rule, and we rebuilt the measure to separate delays she controlled from delays she didn't. The second version got used. What I'd do differently is ask first — I'd have found the rule in a ten-minute conversation before spending two weeks on the wrong cut of the data.",
+       was:"At my campus job in the Dean's office, a colleague wanted to keep the room-booking log on paper…"},
+      {q:"What are some of your strengths?",
+       a:"My supervisor put it better than I had: I'm strongest when the data has a person attached to it. Concretely, I'm good at taking an operational question, finding the measure that actually answers it, and explaining it to the people who have to act on it. The weakness I'd name is that I waited to be assigned work rather than asking for the problem — that was in my evaluation and it's the specific thing I want to do differently from week one.",
+       was:"I'm good at finding the step in a process that's quietly costing everyone time…"},
+      {q:"What did you learn in <b class=\"course\">PH 320: Health Systems &amp; Policy</b> that could help you in this role?",
+       a:"We mapped how a patient encounter becomes a billing claim and where it fails. That's the frame I used all summer: a denied claim is usually a signal that something went wrong upstream, clinically or administratively. It's why I read revenue cycle work as an operations problem rather than a finance one."},
+      {q:"What did you learn in <b class=\"course\">SOC 450: Senior Thesis Seminar</b> that could help you in this role?",
+       a:"My thesis used the discharge data from my internship, de-identified and with permission. Writing it taught me to state what the data cannot show as clearly as what it can — I have a limitations section I actually believe in, which is more than I could say about the week-seven version of the analysis."},
+      {q:"What did you learn in <b class=\"course\">STAT 240: Statistics for the Social Sciences</b> that could help you in this role?", a:null}
+    ],
+    goals:[
+      {a:"Respond to an offer", d:"BILH Performance Improvement Analyst — decide by 03/28", due:"03/28/2030", s:"open"},
+      {a:"Prepare for an interview", d:"MGB final round — revenue cycle vocabulary review", due:"03/23/2030", s:"open"},
+      {a:"Follow up on an application", d:"Four follow-ups scheduled this week", due:"03/22/2030", s:"open"},
+      {a:"Thank a network contact", d:"Karen, Priya and Tomas once the decision is made", due:"04/05/2030", s:"open"}
+    ]
+  }];
+
+  /* ===================== rendering helpers ===================== */
+  var E=function(s){return String(s==null?"":s);};
+
+  function tagEl(k){
+    var m={new:"New",rev:"Revised",kept:"Carried forward",drop:"Dropped",added:"Added"};
+    return k?'<span class="tag '+k+'">'+m[k]+'</span> ':'';
+  }
+
+  function spark(arr,w,h){
+    w=w||70;h=h||18;
+    var mn=Math.min.apply(null,arr), mx=Math.max.apply(null,arr), r=(mx-mn)||1;
+    var pts=arr.map(function(v,i){
+      return (i*(w/(arr.length-1))).toFixed(1)+","+(h-((v-mn)/r)*(h-3)-1.5).toFixed(1);
+    }).join(" ");
+    return '<svg width="'+w+'" height="'+h+'" viewBox="0 0 '+w+' '+h+'" aria-hidden="true">'+
+      '<polyline points="'+pts+'" fill="none" stroke="#E7AB2A" stroke-width="1.6"/>'+
+      '<circle cx="'+w+'" cy="'+(h-((arr[arr.length-1]-mn)/r)*(h-3)-1.5).toFixed(1)+'" r="2" fill="#15284B"/></svg>';
+  }
+
+  function likert(sec){
+    var h='<h2 class="sec">Self-efficacy check<span class="sn">'+E(sec.note)+'</span></h2>';
+    sec.items.forEach(function(it){
+      var seg="";
+      for(var i=1;i<=5;i++){
+        var cls = i<=it.v ? (it.p!=null && i>it.p ? "f g":"f") : "";
+        seg+='<i class="'+cls+'"></i>';
+      }
+      var d="";
+      if(it.p!=null){
+        var diff=it.v-it.p;
+        d = diff>0 ? '<span class="up">▲'+diff+'</span>' : diff<0 ? '<span class="dn">▼'+Math.abs(diff)+'</span>' : '<span style="color:#AEB3BD">—</span>';
+      } else { d='<span class="tag new" style="font-size:5.8pt">New</span>'; }
+      h+='<div class="lk"><span class="lkl">'+E(it.t)+'</span>'+
+         '<span class="lkbar">'+seg+'</span>'+
+         '<span class="lkv"><b>'+it.v+'</b>/5 '+d+'</span></div>';
+    });
+    h+='<div class="scalekey"><span>1 · '+SCALE[0]+'</span><span>5 · '+SCALE[4]+'</span></div>';
+    return h;
+  }
+
+  function band(v){
+    return '<div class="band">'+
+      '<div class="mono">'+STUDENT.initials+'</div>'+
+      '<div class="who">'+
+        '<h1>'+STUDENT.name+'</h1>'+
+        '<p class="maj">'+STUDENT.major+' · '+STUDENT.minor+' · '+STUDENT.classYear+'</p>'+
+        '<p class="hl">'+E(v.headline)+'</p>'+
+        (v.headlineWas?'<p class="hlwas">Revised from: <s>'+E(v.headlineWas)+'</s></p>':'')+
+      '</div>'+
+      '<div class="vbox"><div class="vv">'+v.v+'</div><div class="vs">'+E(v.stage)+'</div>'+
+        '<div class="vd">'+E(v.term)+'<br>'+E(v.date)+'</div>'+
+        '<div class="meter" style="width:96px"><i style="width:'+v.complete+'%"></i></div>'+
+        '<div class="vd">'+v.complete+'% complete</div></div>'+
+    '</div>';
+  }
+
+  function pathways(v){
+    var h='<h2 class="sec">Career pathways under consideration<span class="sn">Selected from the Suffolk Career Pathways site</span></h2><div class="grid3">';
+    v.pathways.forEach(function(p){
+      var d=PW[p.id];
+      h+='<div class="pw '+(p.state==="drop"?"dropped":p.state==="added"?"added":"")+'">'+
+        tagEl(p.state)+(p.rank?'<span class="ck" style="display:inline">'+p.rank+'</span>':'')+
+        '<h3>'+d.name+'</h3>'+
+        '<p class="cc">'+d.cc+'</p>'+
+        '<div class="stat"><div><span class="num">'+d.earn+'</span><span class="nl">'+d.earnNote+'</span></div>'+
+        '<div style="margin-left:auto;text-align:right">'+spark(d.trend)+'<span class="nl">'+d.trendNote+'</span></div></div>'+
+        '<p class="refl">'+E(p.refl)+'</p>'+
+        (p.reflWas?'<span class="was">Previously: <s>'+E(p.reflWas)+'</s></span>':'')+
+        '<p class="ttl"><b>Entry titles:</b> '+d.titles+'</p>'+
+      '</div>';
+    });
+    return h+'</div><p class="scalekey"><span>Earnings and outlook entered by the student from BLS and Massachusetts occupational data; not supplied by the pathways site.</span></p>';
+  }
+
+  function wblIntent(v){
+    return '<h2 class="sec">Work-based learning — intention<span class="sn">Stated before the requirement comes due</span></h2>'+
+      '<div class="grid2"><div class="card fill">'+
+      '<div class="fld"><span class="lb">When I intend to complete it</span><span class="vl">'+E(v.wbl.term)+'</span></div>'+
+      '<div class="fld"><span class="lb">Types of roles I would apply to</span><span class="vl">'+E(v.wbl.roles)+'</span></div></div>'+
+      '<div class="card"><span class="ck">How I will prepare in the meantime</span><p style="margin:0;font-size:8.4pt;line-height:1.45">'+E(v.wbl.prep)+'</p></div></div>';
+  }
+
+  function wblConfirmed(v){
+    var w=v.wblConfirmed;
+    return '<h2 class="sec">Work-based learning — confirmed<span class="sn">Qualifying experience, verified</span></h2>'+
+      '<div class="card fill"><div class="grid2">'+
+      '<div><div class="fld"><span class="lb">Organization</span><span class="vl">'+w.org+'</span></div>'+
+      '<div class="fld"><span class="lb">Role</span><span class="vl">'+w.role+'</span></div></div>'+
+      '<div><div class="fld"><span class="lb">Dates and terms</span><span class="vl">'+w.dates+'</span></div>'+
+      '<div class="fld"><span class="lb">Qualifying pathway</span><span class="vl">'+w.type+'</span></div></div></div>'+
+      '<div class="fld" style="margin-top:7px"><span class="lb">How I found it</span><span class="vl">'+w.how+'</span></div></div>';
+  }
+
+  function wblGoals(v){
+    var h='<h2 class="sec">My three learning goals for this experience<span class="sn">Written before the start date</span></h2><div class="grid3">';
+    v.wblGoals.forEach(function(g,i){
+      h+='<div class="card"><span class="ck">Goal '+(i+1)+'</span><p style="margin:0 0 6px;font-size:8.4pt;line-height:1.4;color:#1a1a1a">'+g.g+'</p>'+
+         '<span class="ck">How I will pursue it</span><p style="margin:0;font-size:7.8pt;line-height:1.4">'+g.how+'</p></div>';
+    });
+    return h+'</div>';
+  }
+
+  function goals(v){
+    var h='<h2 class="sec">Career plan goals<span class="sn">Action selected from a list · student-set deadline</span></h2><table class="t">'+
+      '<tr><th style="width:34%">Action</th><th>Detail</th><th style="width:76px">Deadline</th><th style="width:58px">Status</th></tr>';
+    v.goals.forEach(function(g){
+      h+='<tr><td>'+g.a+'</td><td>'+g.d+'</td><td>'+g.due+'</td><td><span class="pill '+(g.s==="done"?"ok":"wait")+'">'+(g.s==="done"?"Done":"Open")+'</span></td></tr>';
+    });
+    return h+'</table>';
+  }
+
+  function advising(v){
+    var a=v.advising;
+    var h='<h2 class="sec">Advising and events<span class="sn">'+a.count+' appointments to date · last contact '+a.last+'</span></h2><div class="grid2">';
+    h+='<div><span class="ck">Previous</span><div class="tl">';
+    a.past.forEach(function(p){ h+='<div class="tdate">'+p.d+'</div><div class="titem"><b style="color:#1a1a1a;font-weight:500">'+p.w+'</b><br>'+p.t+'</div>'; });
+    h+='</div></div><div><span class="ck">Upcoming</span><div class="tl">';
+    a.upcoming.forEach(function(p){ h+='<div class="tdate">'+p.d+'</div><div class="titem"><b style="color:#1a1a1a;font-weight:500">'+p.w+'</b><br>'+p.t+'</div>'; });
+    return h+'</div></div></div>';
+  }
+
+  function network(v,key,title,note){
+    var list=v[key||"network"];
+    var h='<h2 class="sec">'+(title||"My network")+'<span class="sn">'+(note||(list.length+" contacts · how I will keep each relationship going"))+'</span></h2>'+
+      '<table class="t"><tr><th>Name</th><th>Role</th><th>How we met</th><th style="width:30%">How I will stay in touch</th><th style="width:66px">Last contact</th></tr>';
+    list.forEach(function(p){
+      h+='<tr><td>'+(p.chg?tagEl(p.chg):'')+'<b style="color:#1a1a1a;font-weight:500">'+p.n+'</b></td>'+
+         '<td>'+p.r+'<br><span style="color:#8A8A8A">'+p.o+'</span></td><td>'+p.m+'</td><td>'+p.c+'</td><td>'+p.l+'</td></tr>';
+    });
+    return h+'</table>';
+  }
+
+  function interview(v){
+    var h='<h2 class="sec">Interview responses, drafted<span class="sn">Saved answers the student revises over time</span></h2>';
+    v.interview.forEach(function(q){
+      h+='<div class="card" style="margin-bottom:7px"><span class="ck">'+q.q+'</span>';
+      if(q.a){
+        h+='<p style="margin:0;font-size:8.3pt;line-height:1.45;color:#1a1a1a">'+q.a+'</p>';
+        if(q.was) h+='<span class="was">Earlier answer: <s>'+q.was+'</s></span>';
+      } else {
+        h+='<div class="empty">No response entered yet — this prompt stays open until the student answers it.</div>';
+      }
+      h+='</div>';
+    });
+    return h;
+  }
+
+  function jobs(v){
+    var h='<h2 class="sec">Saved postings<span class="sn">Pasted from Handshake · why it interests me, and what I can speak to</span></h2>';
+    v.jobs.forEach(function(j){
+      h+='<div class="card" style="margin-bottom:7px"><div style="display:flex;gap:10px;align-items:baseline">'+
+        '<b style="font-size:9pt;color:var(--navy)">'+j.t+'</b>'+
+        '<span style="font-size:8pt">'+j.o+'</span>'+
+        (j.status?'<span class="pill ok" style="margin-left:auto">'+j.status+'</span>':'')+'</div>'+
+        '<div style="font-size:7.2pt;margin:2px 0 5px"><span class="lnk">'+j.link+'</span></div>'+
+        '<p style="margin:0 0 5px;font-size:8.2pt;line-height:1.4">'+j.why+'</p>'+
+        '<span class="ck">Keywords and skills from the posting — highlighted ones I can speak to with a specific example</span><div>';
+      j.kw.forEach(function(k){
+        h+='<span class="kw'+((j.hits||[]).indexOf(k)>-1?' hit':'')+'">'+k+'</span>';
+      });
+      h+='</div></div>';
+    });
+    return h;
+  }
+
+  function reflection(v){
+    var r=v.reflection;
+    var h='<h2 class="sec">Reflection on work-based learning<span class="sn">Revising the plan, not restarting it</span></h2>'+
+      '<div class="quote"><span class="ck">'+r.prompt+'</span>'+r.text+'</div>'+
+      '<div style="margin-top:9px"><span class="ck">What changed in this version as a result</span><table class="t">';
+    r.changed.forEach(function(c){ h+='<tr><td>'+c+'</td></tr>'; });
+    return h+'</table></div>';
+  }
+
+  function targets(v){
+    var t=v.targets;
+    var h='<h2 class="sec">What I am pursuing after graduation<span class="sn">Narrowed from the pathway work</span></h2><div class="grid2">';
+    h+='<div><span class="ck">Target titles</span>';
+    t.roles.forEach(function(r){
+      h+='<div class="card" style="margin-bottom:6px"><b style="font-size:9pt;color:var(--navy)">'+r.t+'</b>'+
+         '<p style="margin:3px 0 0;font-size:8pt;line-height:1.4">'+r.why+'</p></div>';
+    });
+    h+='</div><div><span class="ck">Organizations I am targeting</span><div class="card fill" style="margin-bottom:6px">';
+    t.orgs.forEach(function(o){ h+='<span class="kw">'+o+'</span>'; });
+    h+='</div><div class="fld"><span class="lb">Geography</span><span class="vl">'+t.geo+'</span></div>'+
+       '<div class="fld"><span class="lb">Timing</span><span class="vl">'+t.timing+'</span></div></div></div>';
+    return h;
+  }
+
+  function evals(v){
+    var e=v.evals;
+    return '<h2 class="sec">Evaluations<span class="sn">Self and supervisor, compared</span></h2>'+
+      '<div class="grid2" style="margin-bottom:8px">'+
+      '<div class="card fill"><span class="ck">My self-evaluation</span><span class="lnk" style="font-size:7.6pt">'+e.self+'</span></div>'+
+      '<div class="card fill"><span class="ck">Supervisor evaluation — K. Whitlock</span><span class="lnk" style="font-size:7.6pt">'+e.sup+'</span></div></div>'+
+      '<div class="quote"><span class="ck">'+e.prompt+'</span>'+e.text+'</div>';
+  }
+
+  function launchPlan(v){
+    var h='<h2 class="sec">Plan from here to graduation<span class="sn">One year · return from work-based learning to first destination</span></h2><div class="tl">';
+    v.launch.forEach(function(s){
+      h+='<div class="tdate">'+s.d+'</div><div class="titem"><span class="kw" style="margin:0 6px 0 0">'+s.k+'</span>'+s.t+'</div>';
+    });
+    return h+'</div>';
+  }
+
+  function funnel(v){
+    var f=v.funnel;
+    var rows=[["applied","Applied"],["screen","Phone screen"],["interview","Interview"],["final","Final round"],["offer","Offer"]];
+    var h='<h2 class="sec">Application activity<span class="sn">Live record · '+f.applied+' applications since December</span></h2><div class="funnel">';
+    rows.forEach(function(r){ h+='<div class="fn"><b>'+f[r[0]]+'</b><span>'+r[1]+'</span></div>'; });
+    return h+'</div>';
+  }
+
+  function appsTable(list,title,note){
+    var h='<h2 class="sec">'+title+'<span class="sn">'+note+'</span></h2>'+
+      '<table class="t"><tr><th style="width:21%">Organization</th><th style="width:21%">Role</th><th style="width:58px">Applied</th><th style="width:72px">Status</th><th>Next action, and what I want to ask</th></tr>';
+    list.forEach(function(a){
+      var q=a.q&&a.q.length ? a.q.map(function(x){return '<p class="ql">'+x+'</p>';}).join("") : "";
+      h+='<tr><td><b style="color:#1a1a1a;font-weight:500">'+a.co+'</b></td><td>'+a.role+'</td><td>'+a.d+'</td>'+
+         '<td><span class="pill '+a.stc+'">'+a.st+'</span></td>'+
+         '<td>'+a.next+q+'</td></tr>';
+    });
+    return h+'</table>';
+  }
+
+  var SECTIONS={
+    band:band,
+    efficacy:function(v){return likert(v.efficacy);},
+    pathways:pathways, wbl_intent:wblIntent,
+    wbl_confirmed:wblConfirmed, wbl_goals:wblGoals, goals:goals, advising:advising,
+    network:function(v){return network(v);},
+    network_wbl:function(v){return network(v,"networkWbl","People I added during work-based learning","New contacts · how I will maintain each relationship");},
+    interview:interview, jobs:jobs, reflection:reflection, targets:targets,
+    evals:evals, launch_plan:launchPlan, funnel:funnel,
+    applications:function(v){return appsTable(v.apps,"Applications — active","Sortable in the live tool · follow-up dates drive reminders");},
+    applications2:function(v){return appsTable(v.apps2,"Applications — continued","");}
+  };
+
+  /* ===================== render ===================== */
+  var sheet=document.getElementById("sheet"), bar=document.getElementById("bar"), hint=document.getElementById("hint"), intro=document.getElementById("intro");
+
+  VERSIONS.forEach(function(v,i){
+    var b=document.createElement("button");
+    b.type="button"; b.dataset.i=i;
+    b.textContent=v.v+" · "+v.stage;
+    bar.insertBefore(b, hint);
+  });
+
+  function render(i){
+    var v=VERSIONS[i];
+    bar.querySelectorAll("button").forEach(function(b,j){ b.classList.toggle("on", j===i); });
+    hint.textContent="Letter size · "+v.pages.length+" pages · print or save as PDF";
+    intro.firstChild.textContent=INTROS[i]||"";
+    var html="";
+    v.pages.forEach(function(secs,pi){
+      html+='<div class="page">';
+      secs.forEach(function(s){ html+=SECTIONS[s](v); });
+      html+='<div class="pfoot"><span>'+STUDENT.name+' · '+STUDENT.id+' · Career Plan '+v.v+'</span>'+
+            '<span>'+v.stage+'</span><span>Page '+(pi+1)+' of '+v.pages.length+'</span></div>';
+      html+='</div>';
+    });
+    sheet.innerHTML=html;
+    window.scrollTo({top:0,behavior:"instant"});
+  }
+
+  bar.addEventListener("click",function(e){
+    var b=e.target.closest("button[data-i]");
+    if(b) render(+b.dataset.i);
+  });
+
+  render(0);
+})();
+</script>
+</body>
+</html>
+
+</body></html>

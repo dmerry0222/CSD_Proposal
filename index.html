@@ -32,6 +32,7 @@
   :root{
     --navy:#15284B;
     --gold:#E7AB2A;
+    --sky:#3CB4E5;
     --body:#595959;
     --ink:#000000;
     --rule:rgba(21,40,75,.14);
@@ -179,7 +180,7 @@
   }
 
   /* landing page */
-  .home-inner{padding-top:84px;}
+  .home-inner{padding-top:42px;}
   .home-title{
     font-size:2.875rem;
     line-height:1.12;
@@ -207,7 +208,7 @@
   .start:hover{background:#0F1E39;}
   @media (max-width:760px){
     .home-title{font-size:2.125rem;}
-    .home-inner{padding-top:72px;}
+    .home-inner{padding-top:56px;}
   }
 
   .sec-title{
@@ -226,6 +227,10 @@
     padding-bottom:26px;
     border-bottom:1px solid var(--rule);
   }
+  .sec-standfirst p{margin:0 0 .75em;}
+  .sec-standfirst p:last-child{margin-bottom:0;}
+  .sec-standfirst ul.plain{margin:-.4em 0 .6em;}
+  .sec-standfirst ul.plain li{margin-bottom:0;}
   h3.sub{
     font-size:var(--t-head);
     font-weight:600;
@@ -259,6 +264,50 @@
     color:var(--body);
   }
 
+  /* ---------- stat band ---------- */
+  .stats-wrap{
+    container-type:inline-size;
+    margin:28px 0;
+    padding:16px clamp(18px,3vw,30px) 12px;
+    background:var(--tint-02);
+    border:1px solid var(--rule);
+    border-radius:4px;
+  }
+  .stats-title{
+    font-size:1.0625rem;font-weight:500;line-height:1.45;
+    color:var(--navy);margin:0 0 12px;
+  }
+  .stats{margin:0;padding:0;}
+  .stat{--accent:var(--gold);}
+  .stats-sky .stat{--accent:var(--sky);}
+  .stat-n{
+    display:block;
+    font-size:clamp(2.125rem,4.5vw,2.875rem);
+    font-weight:600;line-height:.95;letter-spacing:-.035em;
+    color:var(--navy);
+    font-variant-numeric:lining-nums tabular-nums;
+  }
+  .stat-t{margin:0;font-size:1rem;line-height:1.4;color:var(--body);}
+  .stat-t .mark,
+  .hl{
+    font-style:normal;font-weight:500;color:var(--navy);
+    box-shadow:inset 0 -2px 0 var(--gold);
+  }
+  .stat-sub{display:block;margin-top:4px;font-size:.8125rem;line-height:1.45;color:#8A8A8A;}
+  .stats-row{
+    display:grid;grid-template-columns:repeat(3,minmax(0,1fr));
+    gap:clamp(22px,3.5vw,44px);
+  }
+  .stats-row .stat{border-top:3px solid var(--accent);padding-top:10px;}
+  .stats-row .stat-n{margin-bottom:6px;}
+  .stats-source{
+    margin:12px 0 0;padding-top:8px;border-top:1px solid var(--rule);
+    font-size:var(--t-small);color:var(--body);
+  }
+  @container (max-width:560px){
+    .stats-row{grid-template-columns:1fr;gap:30px;}
+  }
+
   .note{
     margin:26px 0;
     padding:18px 22px;
@@ -280,6 +329,7 @@
 
   /* figures / diagrams */
   .fig{margin:32px 0;}
+  .fig iframe{display:block;width:100%;height:min(80vh,820px);border:1px solid var(--rule);background:#fff;}
   .fig img{
     display:block;width:100%;height:auto;
     border:1px solid var(--rule);background:#fff;
@@ -485,9 +535,9 @@
       <li>
         <button class="nav-link" data-panel="urgency">What is the urgency?</button>
         <ul class="sublist" data-for="urgency">
-          <li><button class="sub-link" data-target="u-1">The labor market students enter</button></li>
-          <li><button class="sub-link" data-target="u-2">What our own data shows</button></li>
-          <li><button class="sub-link" data-target="u-3">Why the core, and why now</button></li>
+          <li><button class="sub-link" data-target="u-1">The promise of career opportunity</button></li>
+          <li><button class="sub-link" data-target="u-2">Career management skills require explicit instruction</button></li>
+          <li><button class="sub-link" data-target="u-3">Ensuring <u>every</u> Suffolk student acquires these skills</button></li>
         </ul>
       </li>
       <li>
@@ -533,13 +583,29 @@
         <p class="home-sub">Proposal for the Revised Shared Gen Ed Curriculum</p>
         <hr class="home-rule">
 
-        <p class="home-lead">Career outcomes carry substantial weight in students’ college decisions and in public scrutiny of the value of higher education. Students increasingly encounter information about graduate earnings alongside decisions about where to enroll, bringing the connection between education and opportunity into sharper institutional focus.<span data-cite="SoHE2025"></span><span data-cite="fafsa"></span> At Suffolk, these expectations are explicit: in a local survey administered to incoming Fall 2026 first-year students during summer orientation, <b>93% of respondents rated obtaining a better job as a very or extremely important reason for attending college, and 84% identified developing professional skills.</b><span data-cite="SU_FY26"></span> For students seeking greater opportunity and economic mobility, fulfilling those expectations requires intentional educational support. Students arrive with unequal access to professional networks, familiarity with workplace expectations, and knowledge of how opportunities are found and pursued. First-generation students may be navigating these expectations with less access to guidance grounded in family experience of college and professional careers. Suffolk’s educational responsibility includes helping every student develop the knowledge, relationships, experience, and judgment needed to turn that promise of opportunity into an attainable future.</p>
+        <p class="home-lead">Career outcomes carry substantial weight in students’ college decisions and in public scrutiny of the value of higher education. Students increasingly encounter information about graduate earnings alongside decisions about where to enroll, bringing the connection between education and opportunity into sharper institutional focus.<span data-cite="SoHE2025"></span><span data-cite="fafsa"></span> At Suffolk, these expectations are explicit: in a local survey administered to incoming Fall 2026 first-year students during summer orientation, <b>93% of respondents rated obtaining a better job as a very or extremely important reason for attending college, and 84% identified developing professional skills.</b><span data-cite="SU_FY26"></span></p>
 
-        <div class="pull">
-          <p><b>93% </b>of Fall 2026 first-year students at Suffolk rated "obtaining a better job" as a <u>very</u> or <u>extremely</u> important reason for attending college."<span data-cite="SU_FY26"></span></p>
-          <cite>Office of institutional Research and Assessment, survey of incoming students at orientation, Summer 2026</cite>
+        <div class="stats-wrap">
+          <p class="stats-title">Among students entering Suffolk in Fall 2026:</p>
+          <div class="stats stats-row stats-sky">
+            <div class="stat">
+              <span class="stat-n">93%</span>
+              <p class="stat-t">rated getting a better job a <span class="mark">very</span> or <span class="mark">extremely</span> important reason for going to college (the top reason overall).</p>
+            </div>
+            <div class="stat">
+              <span class="stat-n">95%</span>
+              <p class="stat-t">said it is <span class="mark">most important</span> that Suffolk help them find jobs or internships related to their major (the top request).</p>
+            </div>
+            <div class="stat">
+              <span class="stat-n">90%</span>
+              <p class="stat-t">plan to complete an internship during their time at Suffolk.
+                <span class="stat-sub">68% strongly agree, 22% somewhat agree</span>
+              </p>
+            </div>
+          </div>
+          <p class="stats-source">Entering Student Survey, Office of Institutional Research and Assessment, Summer 2026. n = 556–561.<span data-cite="SU_FY26"></span></p>
         </div>
-        
+        <p> For students seeking greater opportunity and economic mobility, fulfilling those expectations requires intentional educational support. Students arrive with unequal access to professional networks, familiarity with workplace expectations, and knowledge of how opportunities are found and pursued. First-generation students may be navigating these expectations with less access to guidance grounded in family experience of college and professional careers. Suffolk’s educational responsibility includes helping every student develop the knowledge, relationships, experience, and judgment needed to turn that promise of opportunity into an attainable future. </p>
         <p>Suffolk already offers substantial career expertise, committed faculty mentorship, and valuable classroom and networking experiences. Yet voluntary Career Center engagement and opportunities embedded at individual instructors’ discretion cannot ensure that every student receives coherent preparation at the right time. National research recognizes faculty’s substantial contributions to career development while identifying opportunities for stronger coordination with campus resources; student surveys also show uneven participation in career guidance.<span data-cite="facattitudes"></span> <span data-cite="NACE2024studentsurvey"></span> Students may encounter excellent experiences without connecting them to a developing plan, while others may miss essential preparation altogether. <b>We need to know what every student can do before graduation puts that preparation to the test.</b>  Can students investigate pathways, communicate evidence of their abilities, build professional relationships, pursue meaningful experience, and act on a realistic plan? These should be visible learning outcomes, assessed throughout the undergraduate experience.<span data-cite="nacecompetency"></span> <span data-cite="soares"></span></p>
 
 
@@ -559,38 +625,52 @@
     <section class="panel" id="panel-urgency" tabindex="-1">
       <div class="panel-inner">
         <h2 class="sec-title">What is the urgency?</h2>
-        <p class="sec-standfirst">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco.</p>
+        <div class="sec-standfirst"><p>Students invest years of their lives and substantial financial resources in college, often taking on debt that will follow them long after graduation. They trust that this investment will help them find meaningful work, achieve economic security, and have greater choice in their futures. <strong>Helping students realize that promise is part of our educational responsibility</strong>. </p>
+          <p>Suffolk faculty develop students’ <span class="hl">career readiness</span> through disciplinary knowledge and transferable capacities such as critical thinking, ethical judgment, collaboration, and strong written and verbal communication. Students also need explicit instruction and guided practice in <span class="hl">career management</span> skills, such as:</p>
+          <ul class="plain">
+            <li>understanding and persuasively articulating their unique skills and experiences;</li>
+            <li>developing authentic relationships with trusted mentors, supervisors, and future colleagues who can share insights and open doors;</li>
+            <li>evaluating workforce data, insights from trusted sources, and one's lived experience to make sound and confident career decisions;</li>
+            <li>building a strong foundation of real work and positive regard in their intended field.</li>
 
-        <h3 class="sub" id="u-1">The labor market students enter</h3>
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.<span data-cite="labor-market"></span></p>
-        <p>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+          </ul>
+          <p>Structured and sequential development of these skills is especially important for students with limited prior access to professional social capital or industry-relevant guidance. Research shows that purposeful instruction can strengthen students’ ability to seek support and build the relationships that help them move forward.</p></div>
 
-        <div class="pull">
-          <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam.</p>
-          <cite>Placeholder attribution — source to be confirmed</cite>
-        </div>
+        <h3 class="sub" id="u-1">Career opportunity is central to the promise of a Suffolk education</h3>
+        <p>Students come to Suffolk expecting their education to expand their intellectual horizons and career prospects; this is a promise we explicitly make in our admissions materials.<span data-cite="suadmissions1"></span><span data-cite="suadmissions2"></span> Data shows that career goals are one of, if not the most important factors in students' decision to attend college<span data-cite="SoHE2025"></span><span data-cite="cirp"></span>, and those statistics are even more pronounced at Suffolk<span data-cite="SU_FY26"></span>. </p>
 
-        <h3 class="sub" id="u-2">What our own data shows</h3>
-        <p>At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident.<span data-cite="fds-2025"></span><span data-cite="entering-student-survey"></span><span data-cite="competency-benchmark"></span></p>
+        <p>While national data consistently associate higher educational attainment with higher earnings and lower unemployment, those results are not automatic. Strada and the Burning Glass Institute found that only about half of bachelor’s graduates secured employment in an occupation typically requiring a college degree within a year of graduation.<span data-cite="talentdisrupted"></span> <strong>Helping students translate their education into opportunity is an essential part of fulfilling the promise we make and they trust</strong></p>
 
-        <table class="grid">
-          <thead><tr><th>Indicator</th><th>Suffolk</th><th>Peer median</th></tr></thead>
-          <tbody>
-            <tr><td>Lorem ipsum dolor</td><td>00%</td><td>00%</td></tr>
-            <tr><td>Consectetur adipiscing</td><td>00%</td><td>00%</td></tr>
-            <tr><td>Sed do eiusmod tempor</td><td>00%</td><td>00%</td></tr>
-            <tr><td>Ut labore et dolore</td><td>00%</td><td>00%</td></tr>
-          </tbody>
-        </table>
+        <p>A university’s ability to prepare graduates for career success has direct implications for its financial stability, eligibility for federal student loans, and credibility with prospective students and families. The One Big Beautiful Bill Act’s earnings test ties academic programs’ eligibility for federal student loans to graduates’ earnings. Undergraduate programs are measured against an earnings benchmark for working adults with only a high school education; programs that fail the test in two of three years lose access to federal Direct Loans.<span data-cite="fafsa"></span><span data-cite="obbb"></span> </p>
 
-        <p>Nam libero tempore, cum soluta nobis est eligendi optio cumque nihil impedit quo minus id quod maxime placeat facere possimus, omnis voluptas assumenda est.</p>
+        <p>These accountability requirements coincide with demographic pressures close to home: demographic research projects <strong>8% fewer high school graduates in Massachusetts and 17% fewer across the Northeast between 2023 and 2041</strong><span data-cite="wiche"></span>. Together, these pressures strengthen the case for making career preparation a visible and credible part of Suffolk’s educational promise. Prospective students and families should be able to see how every student will receive guidance, gain relevant experience, and develop the ability to pursue meaningful work after graduation.</p>
 
-        <h3 class="sub" id="u-3">Why the core, and why now</h3>
-        <p>Temporibus autem quibusdam et aut officiis debitis aut rerum necessitatibus saepe eveniet ut et voluptates repudiandae sint et molestiae non recusandae.<span data-cite="charge-memo"></span></p>
-        <p>Itaque earum rerum hic tenetur a sapiente delectus, ut aut reiciendis voluptatibus maiores alias consequatur aut perferendis doloribus asperiores repellat.</p>
-        <div class="note">
-          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Placeholder for a short framing note or a link out to the full proposal document.</p>
-        </div>
+
+        <h3 class="sub" id="u-2">Career management skills require explicit instruction,  practice, and assessment</h3>
+
+        <p>Suffolk’s curriculum develops and assesses capabilities foundational to students’ professional lives, including disciplinary knowledge, communication, ethical reasoning, and critical thinking. Career management builds on that foundation by teaching students how to investigate and pursue the opportunities for which their education has prepared them. NACE recognizes these abilities within its *Career + Self-Development* competency, including self-assessment, planning, navigating opportunities, and developing professional relationships.<span data-cite="nacecompetency"></span> <span data-cite="agility"></span></p>
+
+        <p>In conversations with Suffolk faculty,  students’ challenges often concern navigating the transition from college to work: being aware of possible occupations and roles, knowing when and how to prepare for a search, explaining how their skills apply to a role, or approaching professionals and sustaining relationships. These observations point to concrete educational tasks: researching careers through labor-market data, job postings, and professional conversations; assembling and communicating evidence of one’s capabilities; and translating that investigation into an actionable plan. </p>
+
+        <p>Explicit instruction matters because access to professional knowledge and relationships is uneven. First-generation and historically underrepresented students often have had fewer opportunities to learn how particular professions operate or develop connections within them.<span data-cite="stradaexperiences"></span> Research documents disparities in internship participation and shows that purposeful teaching can strengthen students’ networks. <span data-cite="naceinequity"></span>Students from any background, however, can miss optional guidance when they do not recognize its relevance, know when to seek it, or have time among competing responsibilities. These are capabilities students can learn, but ensuring that every student develops them requires more than waiting for individuals to seek out support.<span data-cite="stradaprinciples"></span>
+
+        <p>Sustained, supervised work gives students opportunities to test their career expectations, apply their skills, respond to feedback, and build relationships through their contributions. Employers value this preparation: <strong>81% of respondents to AAC&U’s 2025 survey were more likely to consider hiring a candidate who had completed an internship or apprenticeship.</strong> The survey also affirmed the value of leadership, research, employment, and other applied experiences. <span data-cite="agility"></span></p>
+
+        <p>These findings and observations inform Career Strategy & Design’s learning goals and objectives. Assignments, feedback, and successive Career Plans would assess students’ ability to investigate options, demonstrate their capabilities, build relationships, and prepare for and learn from work-based experiences. They would also help identify barriers such as competing work obligations and inadequate compensation. <span data-cite="naceobstacles"></span></p>
+
+
+
+        <h3 class="sub" id="u-3">Ensuring <u>every</u> Suffolk student acquires these skills</h3>
+
+        <p>A university can offer excellent career services and meaningful classroom experiences without ensuring that every student receives a coherent foundation in career management. Gallup and Lumina report that 53% of alumni wished they had accessed more career coaching as students <span data-cite="gallupalumni"></span>, while Strada found that only 20% of recent public four-year graduates experienced career coaching that included guidance, timely information, and support<span data-cite="stradaquality"></span>. These findings strengthen the case for making foundational career learning an expected part of every student’s education, supported by continuing access to individualized advising.</p>
+
+        <p>The Career Leadership Collective’s <strong>Career Ecosystem Model</strong> provides an organizing framework for this approach: a commitment to every student, shared career learning outcomes, embedded milestones, and an empowered campus community<span data-cite="foundations"></span>. Strada’s principles for education-to-career guidance similarly call for support that is universal, proactive, embedded, and sustained over time <span data-cite="stradaprinciples"></span>. Together, these frameworks support a coordinated approach in which the career center contributes expertise, resources, and connections, while faculty and advisors connect career learning to students’ academic interests and decisions. Faculty already play a substantial role: in NACE’s 2024 survey, 92% of faculty respondents reported that students in their disciplinary area had sought career advice from them during the previous year.<span data-cite="facattitudes"></span> A shared framework can give those conversations greater continuity and better information.</p>
+
+        <p>At Suffolk, that means a required sequence with room for different interests, disciplines, and professional goals. Early exploration should inform preparation for work-based learning; that experience should, in turn, inform students’ remaining academic choices and plans for life after graduation. A continuing Career Plan would connect these stages, giving students a place to document their thinking, evidence, relationships, and next steps. It would also give faculty, advisors, and career staff a common starting point for guidance, while allowing the university to examine patterns in students’ progress and unmet needs across populations. The educational value comes from each stage building on what students have already learned and helping them make the next consequential decision.</p>
+
+        <p><strong>We should not have to wait until after graduation for our first assessment of students' ability to secure a job</strong>. Clear learning outcomes and recurring milestones would enable formative assessment students’ developing capabilities while there is still time to provide feedback, remove barriers, and connect them with support  A universal requirement also creates a corresponding institutional responsibility: participation must be feasible, expectations must be clear, and students must have appropriate ways to meet them. The purpose is to make career development a visible, connected, and assessable part of a Suffolk education, with sustained support for every student’s progress.</p>
+
+
       </div>
     </section>
 
@@ -604,10 +684,10 @@
         <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris.<span data-cite="plan-template"></span></p>
         <p>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur sint occaecat cupidatat non proident.</p>
 
-        <!-- EXAMPLE DIAGRAM — delete or replace. Put the file in images/ -->
-        <figure class="fig">
-          <img src="images/career-plan-structure.svg" alt="Placeholder: structure of the Career Plan across four years.">
-          <figcaption>Figure 1. Placeholder diagram. Replace with the Career Plan structure.</figcaption>
+        <!-- Career Plan Portfolio module (stand-alone page, embedded) -->
+        <figure class="fig portfolio">
+          <iframe src="Career%20Plan%20Portfolio%20%E2%80%94%20v1.0%20to%20v4.0.html" title="Career Plan Portfolio, versions 1.0 to 4.0" loading="lazy"></iframe>
+          <figcaption>Figure 1. The Career Plan Portfolio across four stages. Use the buttons to move between versions.</figcaption>
         </figure>
 
         <h4 class="minor">Components</h4>
@@ -898,6 +978,7 @@
 
     var panel=panels[key];
     panel.scrollTop=0;
+    forcedSub=null;
     clearLit();
     watch(panel);
   }
@@ -938,14 +1019,19 @@
     rail.scrollTop=(panel.scrollTop/pMax)*rMax;
   }
 
+  var forcedSub=null;
+
   function spy(panel){
     syncRail(panel);
     var heads=[].slice.call(panel.querySelectorAll("h3.sub"));
     if(!heads.length) return;
-    var top=panel.getBoundingClientRect().top+90, best=heads[0];
-    heads.forEach(function(h){ if(h.getBoundingClientRect().top<=top) best=h; });
+    /* a subheading goes yellow once it reaches the middle of the panel, or when
+       it was clicked directly (kept until the reader scrolls by hand) */
+    var mid=panel.getBoundingClientRect().top+panel.clientHeight/2, best=null;
+    heads.forEach(function(h){ if(h.getBoundingClientRect().top<=mid) best=h; });
+    var id=forcedSub || (best && best.id);
     subLinks.forEach(function(s){
-      s.classList.toggle("current", s.dataset.target===best.id);
+      s.classList.toggle("current", s.dataset.target===id);
     });
   }
 
@@ -975,12 +1061,21 @@
       show(list.dataset.for);
       var panel=panels[list.dataset.for];
       var target=document.getElementById(b.dataset.target);
+      forcedSub=b.dataset.target;
+      spy(panel);
       if(target){
         window.requestAnimationFrame(function(){
           panel.scrollTo({top:target.offsetTop-24, behavior:"smooth"});
         });
       }
       if(window.innerWidth<=760) closeMobileMenu();
+    });
+  });
+
+  /* hand scrolling hands control back to the scroll position */
+  ["wheel","touchstart","keydown"].forEach(function(ev){
+    Object.keys(panels).forEach(function(k){
+      panels[k].addEventListener(ev, function(){ forcedSub=null; }, {passive:true});
     });
   });
 
