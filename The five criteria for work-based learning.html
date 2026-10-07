@@ -1,0 +1,181 @@
+<!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#faf9f5;color:#141413}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>The five criteria for work-based learning</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Libre+Franklin:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --navy:#15284B;
+    --gold:#E7AB2A;
+    --body:#595959;
+    --mute:#8A8A8A;
+    --rule:rgba(21,40,75,.14);
+    --hair:rgba(21,40,75,.08);
+    --t02:rgba(21,40,75,.03);
+    --t05:rgba(21,40,75,.05);
+    --sans:"Libre Franklin","Segoe UI",Helvetica,Arial,sans-serif;
+    box-sizing:border-box;
+    padding-top:env(safe-area-inset-top,0px);
+    padding-bottom:env(safe-area-inset-bottom,0px);
+  }
+  *,*::before,*::after{box-sizing:border-box;}
+  body{
+    margin:0;background:#fff;color:var(--body);
+    font-family:var(--sans);font-size:1rem;line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+    padding:48px clamp(20px,5vw,56px) 80px;
+    max-width:1080px;
+  }
+  h1{
+    font-size:1.75rem;font-weight:600;color:#000;
+    letter-spacing:-.01em;line-height:1.25;margin:0 0 6px;
+  }
+  .standfirst{
+    font-size:1.0625rem;margin:0 0 30px;padding-bottom:22px;
+    border-bottom:1px solid var(--rule);max-width:70ch;
+  }
+
+/* ===========================================================
+   CRITERIA TABLE — copy from here
+   =========================================================== */
+
+  .crit{
+    width:100%;border-collapse:collapse;
+    border-top:3px solid var(--navy);
+  }
+  .crit thead th{
+    text-align:left;vertical-align:bottom;
+    font-size:.6875rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;
+    color:var(--navy);
+    padding:12px 16px 9px;
+    border-bottom:1px solid var(--rule);
+    background:var(--t02);
+  }
+  .crit thead th:first-child{padding-left:0;background:none;}
+  .crit tbody tr{border-bottom:1px solid var(--rule);}
+  .crit tbody tr:last-child{border-bottom:0;}
+  .crit td{
+    vertical-align:top;
+    padding:18px 16px;
+    font-size:.9375rem;line-height:1.55;
+  }
+
+  /* column 1 — criterion */
+  .crit td.c-name{
+    padding-left:0;width:19%;
+  }
+  .c-name .num{
+    display:block;
+    width:26px;height:26px;line-height:26px;text-align:center;
+    background:var(--navy);color:#fff;
+    font-size:.75rem;font-weight:600;
+    margin-bottom:9px;
+  }
+  .c-name .nm{
+    display:block;
+    font-size:1.0625rem;font-weight:600;color:var(--navy);
+    line-height:1.25;letter-spacing:-.005em;
+  }
+
+  /* column 2 — description */
+  .crit td.c-desc{width:42%;color:#1a1a1a;}
+
+  /* column 3 — verification */
+  .crit td.c-ver{
+    width:39%;
+    background:var(--t02);
+    border-left:1px solid var(--hair);
+    font-size:.875rem;
+  }
+
+  .crit b{font-weight:600;color:var(--navy);}
+  .crit .hrs{
+    white-space:nowrap;
+    box-shadow:inset 0 -3px 0 rgba(231,171,42,.5);
+  }
+
+  @media (max-width:820px){
+    .crit,.crit tbody,.crit tr,.crit td{display:block;width:100% !important;}
+    .crit thead{display:none;}
+    .crit tbody tr{
+      border-bottom:0;border-top:1px solid var(--rule);
+      padding:20px 0;
+    }
+    .crit tbody tr:first-child{border-top:0;}
+    .crit td{padding:0 0 12px;}
+    .crit td.c-ver{
+      background:var(--t02);border-left:3px solid var(--rule);
+      padding:12px 14px;margin-top:4px;
+    }
+    .crit td.c-ver::before{
+      content:"Verification and validation";
+      display:block;
+      font-size:.6875rem;font-weight:600;letter-spacing:.09em;text-transform:uppercase;
+      color:var(--mute);margin-bottom:5px;
+    }
+  }
+  @media print{
+    body{padding:0;}
+    .crit tbody tr{break-inside:avoid;}
+  }
+
+/* ===========================================================
+   end criteria table
+   =========================================================== */
+</style>
+</head>
+<body>
+
+
+<table class="crit">
+  <thead>
+    <tr>
+      <th>Criterion</th>
+      <th>Description</th>
+      <th>Verification and validation</th>
+    </tr>
+  </thead>
+  <tbody>
+
+    <tr>
+      <td class="c-name"><span class="num">1</span><span class="nm">Real Work</span></td>
+      <td class="c-desc">A majority of the student's responsibilities consist of substantive, career-relevant work that draws upon or extends academic learning and advances career exploration or preparation.</td>
+      <td class="c-ver">The student submits a job description and three student-authored learning goals for approval by the relevant faculty member or other designated party.</td>
+    </tr>
+
+    <tr>
+      <td class="c-name"><span class="num">2</span><span class="nm">Meaningful Time</span></td>
+      <td class="c-desc">The student completes at least <b class="hrs">120 hours</b>, including required training and activities integral to the role. With prior approval, two experiences may be combined to reach 120 hours, provided each independently satisfies all other criteria.</td>
+      <td class="c-ver">Anticipated dates and hours are approved in advance. The student and supervisor confirm completion at the end; hourly logging is not required.</td>
+    </tr>
+
+    <tr>
+      <td class="c-name"><span class="num">3</span><span class="nm">Professional Supervision</span></td>
+      <td class="c-desc">A qualified professional or field-specific equivalent provides appropriate training, ongoing guidance and feedback, and an end-of-experience performance evaluation.</td>
+      <td class="c-ver">Site approval confirms the supervisor's qualifications and responsibilities. The supervisor completes an evaluation administered or supported by the Career Center.</td>
+    </tr>
+
+    <tr>
+      <td class="c-name"><span class="num">4</span><span class="nm">Expanded Network</span></td>
+      <td class="c-desc">The student engages with at least <b>two professionals beyond existing classroom, peer, and immediate supervisory relationships</b>, gaining exposure to perspectives, pathways, communities, or opportunities relevant to their goals.</td>
+      <td class="c-ver">Off-campus experiences are generally expected to provide these interactions through the work itself. For on-campus roles, the student and supervisor identify a plan for at least three purposeful interactions, such as informational interviews, professional meetings, external collaborations, conferences, or site visits.</td>
+    </tr>
+
+    <tr>
+      <td class="c-name"><span class="num">5</span><span class="nm">Integrated Learning</span></td>
+      <td class="c-desc">The student identifies what they learned, connects it to academic and career development, and communicates the experience's value in a professional context.</td>
+      <td class="c-ver">Through an internship course or analogous academic mechanism, the student completes structured reflection, updates their resume and professional profile, and submits <b>Career Plan 3</b>, connecting the experience to prior learning, strengths, development needs, and future goals.</td>
+    </tr>
+
+  </tbody>
+</table>
+
+</body>
+</html>
+
+</body></html>

@@ -159,8 +159,8 @@
     font-size:.8125rem;color:var(--mute);
   }
   .fields{
-    display:grid;grid-template-columns:1fr 1fr;
-    gap:0 32px;
+    display:grid;grid-template-columns:1fr;
+    gap:0;
   }
   .field{padding:0 0 20px;}
   .field h3{
@@ -168,12 +168,18 @@
     color:var(--navy);margin:0 0 8px;padding-bottom:5px;
     border-bottom:1px solid var(--rule);
   }
-  .field p{
+  .field p,.field .fb{
     margin:0;font-size:.9375rem;line-height:1.55;
   }
-  .field p.todo{
+  .field p.todo,.field .fb.todo{
     color:var(--mute);font-style:italic;
   }
+
+  .crit{margin:10px 0 14px;}
+  .crit-row{display:grid;grid-template-columns:minmax(120px,1fr) 3fr;gap:0 24px;padding:9px 0;border-top:1px solid var(--hair);}
+  .crit-head{border-top:0;font-size:.6875rem;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--navy);}
+  .crit-c{font-weight:600;color:var(--navy);}
+  @media (max-width:520px){.crit-row{grid-template-columns:1fr;gap:2px;}}
 
   @media (max-width:860px){
     .prog{grid-template-columns:repeat(2,minmax(0,1fr));}
@@ -194,8 +200,6 @@
 </head>
 <body>
 
-<h1>Four milestones</h1>
-<p class="standfirst">One plan, carried forward and revised four times across a student's degree. Select a milestone to see how it is built.</p>
 
 <div class="prog" id="prog"></div>
 <div class="detail" id="detail" aria-live="polite"></div>
@@ -209,6 +213,11 @@
      The field text is placeholder — replace the strings below.
      ===================================================================== */
 
+  function crit(head,rows){
+    function r(a,b,cls){ return '<div class="crit-row'+(cls||'')+'"><div class="crit-c">'+a+'</div><div class="crit-d">'+b+'</div></div>'; }
+    return '<div class="crit">'+r(head[0],head[1]," crit-head")+rows.map(function(x){return r(x[0],x[1]);}).join("")+'</div>';
+  }
+
   var STAGES=[
     {
       ord:"Milestone 1",
@@ -218,25 +227,38 @@
       planV:"v1.0",
       planName:"Career Exploration Plan",
       fields:{
-        credits:"Placeholder. One credit, graded pass/fail. Note here whether the credit sits inside an existing course or stands alone, and what that means for a student's total load.",
-        courses:"Placeholder. Name the host course or courses, who teaches them, and how a transfer or mid-year entry student picks the requirement up.",
-        outcomes:"Placeholder. Two or three learning outcomes, written so they can be assessed from what the student produces rather than from participation.",
-        sequencing:"Placeholder. When in the term this falls, what has to come before it, and what it unlocks for Milestone 2."
-      }
+        credits:"1 credit, additional for both colleges.",
+        sequencing:"Second semester of students' first year.  Serves as 2nd credit in the 2-credit FYE sequence.",
+        courses:"There are no existing courses that currently serve this specific purpose in either colleges' curricula. Below is a proposed course that could be developed and managed by the Career Center, with instructions from career advisors and faculty from across both colleges. Below that are proposed criteria that other courses would need to meet to satisfy this requirement in its place.<br><strong>CE-100: Career Exploration</strong><br>Through guided self-assessment, labor-market research, analysis of professional roles, and conversations with professionals and other students, students research multiple pathways and learn to evaluate the information informing their decisions. Students practice initiating professional relationships, develop foundational career materials, and consider how compensation, educational costs, and personal circumstances affect their choices. They complete a Career Exploration Plan documenting what they have learned, the possibilities they intend to investigate further, and specific next steps for coursework, relationships, and experience. The course prepares students to identify an appropriate field or fields for further development in CE 200.       ",
+        modality:"In person, biweekly meetings for groups of ~20 students.  Instructors would have two sections of 20 students each, meeting on alternating weeks. Students would complete asynchronous assignments and reflections between meetings.",
+        criteria:"A course satisfying the Career Exploration requirement must teach and assess students’ ability to:"+
+          crit(["Core competency","Students must be able to…"],[
+            ["Understand themselves as developing professionals","Explain how their interests, values, strengths, experiences, and circumstances inform possible academic and career directions, using evidence rather than unsupported self-description."],
+            ["Investigate career possibilities","Research and compare multiple pathways, including the work involved, entry routes, qualifications, working conditions, and connections to academic study."],
+            ["Interpret career information","Evaluate labor-market data, job postings, and professional perspectives; recognize their limitations; and use findings to inform decisions and identify further questions."],
+            ["Learn through professional relationships","Identify relevant people, initiate purposeful conversations, ask informed questions, and follow up appropriately to deepen their understanding and connections."],
+            ["Communicate emerging capabilities","Describe their skills and experiences with concrete examples and explain their potential relevance to professional settings."],
+            ["Make informed, feasible choices","Consider career possibilities alongside financial realities, educational requirements, personal priorities, and available resources."],
+            ["Translate exploration into action","Identify directions worth investigating further and establish specific next steps for learning, relationships, and experience."]
+          ])+
+          "<br>Common artifact: Career Plan 1, the Career Exploration Plan, records the student’s findings, current directions, remaining questions, and next steps. An equivalent course can use different assignments while requiring these common plan components.",
+        notes:" "
+        }
     },
     {
       ord:"Milestone 2",
       nm:"Career Navigation",
       when:"Summer before sophomore year, through fall of junior year",
-      credit:"1 credit",
+      credit:"1 credit, new in SBS and replacing CAS201 and its analogs.",
       planV:"v2.0",
       planName:"Career Navigation Plan",
       fields:{
-        credits:"Placeholder. One credit. Note how the credit is handled when the milestone spans more than one term, and who records completion.",
-        courses:"Placeholder. CAS 201, repositioned as Career Fundamentals, plus any discipline-specific equivalents approved to carry the requirement.",
-        outcomes:"Placeholder. Outcomes should not presuppose an active work-based learning search, since many students take this one to three semesters before they are ready to apply.",
-        sequencing:"Placeholder. The wide window is deliberate. State the latest point at which a student can complete this and still be positioned for Milestone 3."
-      }
+        credits:"1 credit  ",
+        sequencing:"Summer before sophomore year (async online), through fall of junior year",
+        courses:" ",
+        criteria:" ",
+        notes:" "
+        }
     },
     {
       ord:"Milestone 3",
@@ -246,11 +268,12 @@
       planV:"v3.0",
       planName:"Career Integration Plan",
       fields:{
-        credits:"Placeholder. Variable credit, zero to four, depending on the experience. Explain why zero credit is still a completed milestone and how that is recorded.",
-        courses:"Placeholder. Not a course in the usual sense. Name the five qualifying pathways and who verifies that an experience meets them.",
-        outcomes:"Placeholder. Three learning outcomes plus two experience conditions, rendered to students as five checkboxes rather than two categories.",
-        sequencing:"Placeholder. The Experience Accelerator triggers at the end of the third-to-last semester. Set out what happens for a student who reaches that point without a placement."
-      }
+        credits:" ",
+        sequencing:" ",
+        courses:" ",
+        criteria:" ",
+        notes:" "
+       }
     },
     {
       ord:"Milestone 4",
@@ -260,20 +283,22 @@
       planV:"v4.0",
       planName:"Career Launch Plan",
       fields:{
-        credits:"Placeholder. No separate credit. The milestone is an assignment inside an existing capstone, so note what that asks of capstone instructors.",
-        courses:"Placeholder. Discipline capstones across each school. Name who coordinates consistency across them.",
-        outcomes:"Placeholder. Outcomes here are about readiness to act rather than readiness to plan. Say what distinguishes this from Milestone 2.",
-        sequencing:"Placeholder. December and May graduates hit this at different points. Describe both, and how the plan feeds the First Destination Survey."
+        credits:" ",
+        sequencing:" ",
+        courses:" ",
+        criteria:" ",
+        notes:" "
       }
     }
   ];
 
   var FIELD_ORDER=[
     ["credits","Credits"],
-    ["courses","Courses"],
-    ["outcomes","Learning outcomes"],
-    ["sequencing","Sequencing"]
-  ];
+    ["sequencing","Sequencing"],
+    ["courses","Possible Courses"],
+    ["modality","Proposed Modality"],
+    ["criteria","Criteria"],
+    ["notes","Notes"],]
 
   /* ===================== nothing below needs editing ===================== */
 
@@ -299,13 +324,12 @@
   function show(i){
     var s=STAGES[i];
     prog.querySelectorAll(".stage").forEach(function(e,j){ e.classList.toggle("on", j===i); });
-    var h='<div class="dhead"><h2>'+s.nm+'</h2>'+
-          '<span class="dv">'+s.ord+' &middot; '+s.planName+' '+s.planV+' &middot; '+s.when+'</span></div>'+
+    var h='<div class="dhead"><h2>'+s.ord+': '+s.nm+'</h2></div>'+
           '<div class="fields">';
     FIELD_ORDER.forEach(function(f){
       var txt=s.fields[f[0]]||"";
       var todo=/^Placeholder\./.test(txt);
-      h+='<div class="field"><h3>'+f[1]+'</h3><p'+(todo?' class="todo"':'')+'>'+txt+'</p></div>';
+      h+='<div class="field"><h3>'+f[1]+'</h3><div class="fb'+(todo?' todo':'')+'">'+txt+'</div></div>';
     });
     detail.innerHTML=h+'</div>';
   }
