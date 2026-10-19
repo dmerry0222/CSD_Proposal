@@ -1,0 +1,928 @@
+<!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#faf9f5;color:#141413}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>My Career Plan</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Libre+Franklin:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --navy:#15284B;
+    --navy-2:#1D3560;
+    --gold:#E7AB2A;
+    --blue:#3CB4E5;
+    --teal:#3BBFAD;
+    --green:#2E7D63;
+    --rose:#B04A5F;
+    --ink:#1A1A1A;
+    --body:#4F5663;
+    --mute:#7B8494;
+    --line:#E2E6EC;
+    --line-2:#EDF0F4;
+    --bg:#F4F6F9;
+    --card:#FFFFFF;
+    --tint:#F7F9FC;
+    --sans:"Libre Franklin","Segoe UI",Helvetica,Arial,sans-serif;
+    --r:10px;
+    box-sizing:border-box;
+  }
+  *,*::before,*::after{box-sizing:border-box;}
+  body{
+    margin:0;background:var(--bg);color:var(--body);
+    font-family:var(--sans);font-size:15px;line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+    padding-bottom:env(safe-area-inset-bottom,0px);
+  }
+  :focus-visible{outline:2px solid var(--navy);outline-offset:2px;}
+  button{font:inherit;}
+
+  /* ================= app bar ================= */
+  .appbar{
+    position:sticky;top:0;z-index:40;background:var(--navy);
+    padding-top:env(safe-area-inset-top,0px);
+  }
+  .appbar .row1{
+    display:flex;align-items:center;gap:14px;
+    padding:14px clamp(16px,4vw,36px) 10px;
+    max-width:1100px;margin:0 auto;
+  }
+  .appbar .mark{width:24px;height:3px;background:var(--gold);}
+  .appbar h1{
+    font-size:15px;font-weight:600;color:#fff;margin:0;letter-spacing:.01em;
+  }
+  .saved{
+    margin-left:auto;display:flex;align-items:center;gap:7px;
+    font-size:12.5px;color:rgba(255,255,255,.65);
+  }
+  .saved .dot{width:7px;height:7px;border-radius:50%;background:var(--teal);}
+  .tabs{
+    display:grid;grid-auto-flow:column;grid-auto-columns:minmax(max-content,1fr);gap:2px;max-width:1100px;margin:0 auto;
+    padding:0 clamp(16px,4vw,36px);overflow-x:auto;
+  }
+  .tabs button{
+    background:none;border:0;border-bottom:3px solid transparent;
+    color:rgba(255,255,255,.7);font-size:13.5px;
+    padding:9px 14px 10px;cursor:pointer;white-space:nowrap;
+    display:flex;flex-direction:column;gap:1px;text-align:left;
+    transition:color .18s ease,background .18s ease,border-color .18s ease;
+  }
+  .tabs button .tv{font-weight:600;font-size:14.5px;}
+  .tabs button .tn{font-size:11.5px;color:rgba(255,255,255,.5);}
+  .tabs button:hover{background:rgba(255,255,255,.08);color:#fff;}
+  .tabs button.on{color:#fff;border-bottom-color:var(--gold);background:rgba(255,255,255,.07);}
+  .tabs button.on .tn{color:var(--gold);}
+  .tabs button .td{font-size:11px;color:#7FD6C2;margin-top:1px;}
+  .tabs button:disabled{cursor:not-allowed;opacity:.38;}
+  .tabs button:disabled:hover{background:none;color:rgba(255,255,255,.7);}
+
+  /* ================= page ================= */
+  .wrap{max-width:1100px;margin:0 auto;padding:22px clamp(16px,4vw,36px) 90px;}
+
+  /* hero */
+  .hero{
+    background:var(--card);border:1px solid var(--line);border-radius:var(--r);
+    padding:22px 24px;margin-bottom:18px;
+    display:grid;grid-template-columns:auto 1fr auto;gap:18px;align-items:start;
+  }
+  .avatar{
+    width:62px;height:62px;border-radius:50%;background:var(--navy);
+    color:#fff;display:flex;align-items:center;justify-content:center;
+    font-size:22px;font-weight:600;letter-spacing:.02em;
+  }
+  .hero .who h2{font-size:21px;font-weight:600;color:var(--ink);margin:0;line-height:1.2;}
+  .hero .who .maj{font-size:13.5px;color:var(--mute);margin:3px 0 0;}
+  .goalbox{
+    margin:13px 0 0;padding:13px 15px;background:var(--tint);
+    border:1px solid var(--line);border-left:3px solid var(--gold);border-radius:8px;
+    position:relative;
+  }
+  .goalbox .lb{
+    font-size:11.5px;font-weight:600;letter-spacing:.07em;text-transform:uppercase;
+    color:var(--mute);display:block;margin-bottom:5px;
+  }
+  .goalbox p{margin:0;font-size:15.5px;line-height:1.5;color:var(--ink);}
+  .goalbox .prev{
+    display:block;margin-top:8px;padding-top:8px;border-top:1px dashed var(--line);
+    font-size:12.5px;color:var(--mute);
+  }
+  .ring{display:flex;flex-direction:column;align-items:center;gap:5px;}
+  .ring .pct{font-size:19px;font-weight:600;color:var(--navy);line-height:1;}
+  .ring .pl{font-size:11.5px;color:var(--mute);}
+  .ringbar{width:86px;height:6px;background:var(--line-2);border-radius:3px;overflow:hidden;}
+  .ringbar i{display:block;height:6px;background:var(--gold);}
+
+  /* section */
+  .sec{
+    background:var(--card);border:1px solid var(--line);border-radius:var(--r);
+    padding:20px 24px 22px;margin-bottom:16px;
+  }
+  .sechead{
+    display:flex;align-items:baseline;gap:12px;flex-wrap:wrap;
+    padding-bottom:12px;border-bottom:1px solid var(--line-2);margin-bottom:16px;
+  }
+  .sechead h3{font-size:17px;font-weight:600;color:var(--ink);margin:0;line-height:1.3;}
+  .sechead .hint{font-size:13px;color:var(--mute);}
+  .sechead .act{margin-left:auto;display:flex;gap:8px;}
+
+  /* controls */
+  .btn{
+    display:inline-flex;align-items:center;gap:6px;
+    background:#fff;border:1px solid var(--line);border-radius:7px;
+    color:var(--navy);font-size:13px;padding:5px 11px;cursor:pointer;
+    transition:background .16s ease,border-color .16s ease;
+  }
+  .btn:hover{background:var(--tint);border-color:#C9D0DA;}
+  .btn.primary{background:var(--navy);border-color:var(--navy);color:#fff;}
+  .btn.primary:hover{background:#0F1E39;}
+  .ic{width:13px;height:13px;display:block;flex:none;}
+
+  .chip{
+    display:inline-flex;align-items:center;gap:6px;
+    border:1px solid var(--line);border-radius:999px;background:#fff;
+    font-size:12.5px;font-weight:500;padding:3px 9px 3px 11px;cursor:pointer;
+    color:var(--body);white-space:nowrap;
+    transition:border-color .16s ease,background .16s ease;
+  }
+  .chip:hover{border-color:#B9C2CF;background:var(--tint);}
+  .chip .cdot{width:7px;height:7px;border-radius:50%;background:var(--mute);flex:none;}
+  .chip .car{width:9px;height:9px;opacity:.5;flex:none;}
+  .chip.done{background:rgba(46,125,99,.09);border-color:rgba(46,125,99,.3);color:#1F5A47;}
+  .chip.done .cdot{background:var(--green);}
+  .chip.track{background:rgba(60,180,229,.1);border-color:rgba(60,180,229,.35);color:#19617E;}
+  .chip.track .cdot{background:var(--blue);}
+  .chip.soon{background:rgba(231,171,42,.14);border-color:rgba(231,171,42,.45);color:#7A5A12;}
+  .chip.soon .cdot{background:var(--gold);}
+  .chip.not{background:#fff;}
+
+  /* editable field look */
+  .field{
+    background:#fff;border:1px solid var(--line);border-radius:8px;
+    padding:12px 14px;font-size:14.5px;line-height:1.55;color:var(--ink);
+    position:relative;
+  }
+  .field.live{
+    border-color:var(--navy);box-shadow:0 0 0 3px rgba(21,40,75,.08);
+  }
+  .field .caret{
+    display:inline-block;width:1.5px;height:17px;background:var(--navy);
+    vertical-align:-3px;margin-left:1px;animation:blink 1.1s step-end infinite;
+  }
+  @keyframes blink{0%,100%{opacity:1}50%{opacity:0}}
+  .field.empty{
+    border-style:dashed;color:var(--mute);background:var(--tint);
+    display:flex;align-items:center;justify-content:space-between;gap:12px;
+  }
+  .fieldlb{
+    font-size:12.5px;color:var(--mute);display:block;margin-bottom:6px;
+  }
+  .wc{font-size:12px;color:var(--mute);margin:5px 0 0;display:flex;gap:10px;}
+  .wc .sv{color:var(--green);}
+
+  /* confidence bars */
+  .cf{
+    display:grid;grid-template-columns:1fr 132px 74px;gap:14px;align-items:center;
+    padding:9px 0;border-top:1px solid var(--line-2);
+  }
+  .cf:first-of-type{border-top:0;}
+  .cf .q{font-size:14px;line-height:1.4;color:var(--ink);}
+  .cfbar{display:flex;gap:3px;}
+  .cfbar i{flex:1;height:14px;border-radius:2px;background:var(--line-2);}
+  .cfbar i.f{background:var(--navy);}
+  .cfbar i.g{background:var(--gold);}
+  .cfv{font-size:12.5px;color:var(--mute);text-align:right;white-space:nowrap;}
+  .cfv b{color:var(--navy);font-size:14px;}
+  .up{color:var(--green);font-weight:600;}
+  .scale{
+    display:flex;justify-content:space-between;font-size:12px;color:var(--mute);
+    margin-top:10px;padding-top:9px;border-top:1px solid var(--line-2);
+  }
+
+  /* pathway cards */
+  .pws{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:14px;}
+  .pw{
+    border:1px solid var(--line);border-radius:9px;padding:15px 16px;
+    border-top:3px solid var(--navy);position:relative;
+  }
+  .pw.added{border-top-color:var(--gold);}
+  .pw.dropped{border-top-color:#D7C3C3;background:var(--tint);}
+  .pw .rank{
+    font-size:11.5px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;
+    color:var(--mute);display:block;margin-bottom:4px;
+  }
+  .pw h4{font-size:15.5px;font-weight:600;color:var(--navy);margin:0 0 2px;line-height:1.25;}
+  .pw .cc{font-size:12.5px;color:var(--mute);margin:0 0 11px;}
+  .pw .nums{
+    display:flex;gap:14px;align-items:flex-end;
+    padding:10px 0;border-top:1px solid var(--line-2);border-bottom:1px solid var(--line-2);
+    margin-bottom:11px;
+  }
+  .pw .nums .n{font-size:19px;font-weight:600;color:var(--navy);line-height:1;}
+  .pw .nums .nl{font-size:11.5px;color:var(--mute);display:block;margin-top:3px;}
+  .pw .refl{font-size:13.5px;line-height:1.5;color:var(--body);margin:0;}
+  .pw .prev{
+    display:block;margin-top:8px;padding-top:8px;border-top:1px dashed var(--line);
+    font-size:12.5px;color:var(--mute);
+  }
+
+  /* goals list */
+  .goal{
+    display:grid;grid-template-columns:1fr auto;gap:12px;align-items:center;
+    padding:12px 0;border-top:1px solid var(--line-2);
+  }
+  .goal:first-of-type{border-top:0;}
+  .goal .gt{font-size:14.5px;color:var(--ink);font-weight:500;}
+  .goal .gd{font-size:13px;color:var(--mute);margin-top:2px;}
+  .goal .right{display:flex;align-items:center;gap:10px;}
+  .due{
+    font-size:13px;color:var(--body);background:var(--tint);
+    border:1px solid var(--line);border-radius:7px;padding:4px 9px;white-space:nowrap;
+    display:inline-flex;align-items:center;gap:6px;cursor:pointer;
+  }
+  .due:hover{border-color:#B9C2CF;}
+
+  /* simple rows */
+  .rows{display:flex;flex-direction:column;}
+  .row{
+    display:grid;gap:12px;align-items:start;
+    padding:12px 0;border-top:1px solid var(--line-2);
+  }
+  .row:first-child{border-top:0;}
+  .row .dt{font-size:13px;font-weight:600;color:var(--navy);white-space:nowrap;}
+  .row .w{font-size:14px;color:var(--ink);}
+  .row .t{font-size:13px;color:var(--mute);}
+  .r-appt{grid-template-columns:86px 1fr;}
+  .r-net{grid-template-columns:1.1fr 1.2fr 1.4fr auto;}
+  .r-tl{grid-template-columns:96px 1fr;}
+
+  .tag{
+    display:inline-block;font-size:11px;font-weight:600;letter-spacing:.04em;
+    padding:2px 7px;border-radius:5px;vertical-align:1px;margin-right:6px;
+  }
+  .tag.new{background:rgba(231,171,42,.2);color:#7A5A12;}
+  .tag.upd{background:rgba(60,180,229,.14);color:#19617E;}
+
+  /* quote / reflection */
+  .reflect{
+    background:var(--tint);border:1px solid var(--line);border-left:3px solid var(--gold);
+    border-radius:8px;padding:16px 18px;
+  }
+  .reflect .prompt{
+    font-size:14px;font-weight:600;color:var(--navy);margin:0 0 9px;line-height:1.45;
+  }
+  .reflect p{margin:0 0 11px;font-size:14.5px;line-height:1.6;color:var(--ink);}
+  .reflect p:last-child{margin-bottom:0;}
+
+  /* funnel */
+  .funnel{display:grid;grid-template-columns:repeat(5,1fr);gap:10px;}
+  .fn{
+    border:1px solid var(--line);border-radius:9px;padding:13px;text-align:center;
+  }
+  .fn.win{background:var(--navy);border-color:var(--navy);}
+  .fn b{display:block;font-size:26px;font-weight:600;color:var(--navy);line-height:1;}
+  .fn.win b{color:var(--gold);}
+  .fn span{display:block;font-size:11.5px;color:var(--mute);margin-top:5px;}
+  .fn.win span{color:rgba(255,255,255,.75);}
+
+  /* applications */
+  .app{
+    border:1px solid var(--line);border-radius:9px;padding:14px 16px;margin-bottom:11px;
+  }
+  .app .top{display:flex;align-items:baseline;gap:10px;flex-wrap:wrap;margin-bottom:3px;}
+  .app .co{font-size:15px;font-weight:600;color:var(--navy);}
+  .app .ro{font-size:14px;color:var(--ink);}
+  .app .meta{font-size:12.5px;color:var(--mute);margin-left:auto;}
+  .app .next{
+    font-size:13.5px;color:var(--body);margin:9px 0 0;padding-top:9px;
+    border-top:1px solid var(--line-2);
+  }
+  .app .qs{margin:8px 0 0;padding:0;list-style:none;}
+  .app .qs li{
+    font-size:13.5px;color:var(--body);line-height:1.45;
+    padding:3px 0 3px 12px;border-left:2px solid var(--gold);margin-bottom:4px;
+  }
+
+  /* jobs */
+  .job{border:1px solid var(--line);border-radius:9px;padding:14px 16px;margin-bottom:11px;}
+  .job .top{display:flex;align-items:baseline;gap:10px;flex-wrap:wrap;}
+  .job .jt{font-size:15px;font-weight:600;color:var(--navy);}
+  .job .jo{font-size:14px;color:var(--ink);}
+  .job .lnk{font-size:12.5px;color:var(--blue);margin:3px 0 8px;word-break:break-all;}
+  .job .why{font-size:13.5px;line-height:1.5;color:var(--body);margin:0 0 9px;}
+  .kw{
+    display:inline-block;font-size:12px;background:var(--tint);color:var(--body);
+    border:1px solid var(--line);border-radius:6px;padding:2px 8px;margin:3px 5px 0 0;
+  }
+  .kw.hit{background:rgba(231,171,42,.17);border-color:rgba(231,171,42,.4);color:#7A5A12;font-weight:500;}
+
+  /* links */
+  .doclink{
+    display:flex;align-items:center;gap:10px;
+    border:1px solid var(--line);border-radius:8px;padding:11px 13px;
+    font-size:13.5px;color:var(--navy);background:#fff;margin-bottom:9px;
+  }
+  .doclink .ic{color:var(--mute);}
+
+  .addrow{
+    display:flex;align-items:center;gap:8px;margin-top:13px;
+    padding-top:13px;border-top:1px dashed var(--line);
+  }
+
+  .grid2{display:grid;grid-template-columns:1fr 1fr;gap:16px;}
+
+  @media (max-width:760px){
+    .hero{grid-template-columns:auto 1fr;}
+    .ring{grid-column:1 / -1;flex-direction:row;align-items:center;gap:10px;}
+    .cf{grid-template-columns:1fr;gap:7px;}
+    .cfv{text-align:left;}
+    .r-net{grid-template-columns:1fr;}
+    .funnel{grid-template-columns:repeat(2,1fr);}
+    .grid2{grid-template-columns:1fr;}
+    .goal{grid-template-columns:1fr;}
+  }
+  @media (prefers-reduced-motion:reduce){
+    *{transition-duration:.01ms !important;}
+    .field .caret{animation:none;}
+  }
+</style>
+</head>
+<body>
+
+<div class="appbar">
+  <div class="row1">
+    <span class="mark"></span>
+    <h1>My Career Plan</h1>
+    <span class="saved"><span class="dot"></span><span id="savedtxt">Saved just now</span></span>
+  </div>
+  <div class="tabs" id="tabs"></div>
+</div>
+
+<div class="wrap" id="wrap"></div>
+
+<script>
+(function(){
+  "use strict";
+
+  /* --- small inline icons --- */
+  var I={
+    pencil:'<svg class="ic" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M11.5 2.5l2 2L6 12l-3 1 1-3z"/></svg>',
+    caret:'<svg class="car" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 4.5L6 7.5 9 4.5"/></svg>',
+    plus:'<svg class="ic" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><path d="M8 3v10M3 8h10"/></svg>',
+    cal:'<svg class="ic" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4"><rect x="2.5" y="3.5" width="11" height="10" rx="1.5"/><path d="M2.5 6.5h11M5.5 2v3M10.5 2v3"/></svg>',
+    doc:'<svg class="ic" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round"><path d="M4 2h5l3 3v9H4z"/><path d="M9 2v3h3"/></svg>',
+    link:'<svg class="ic" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><path d="M7 9a3 3 0 004.2 0l2-2A3 3 0 009 2.8L7.8 4"/><path d="M9 7a3 3 0 00-4.2 0l-2 2A3 3 0 007 13.2L8.2 12"/></svg>'
+  };
+
+  function chip(state,label){
+    return '<button class="chip '+state+'"><span class="cdot"></span>'+label+I.caret+'</button>';
+  }
+  function editBtn(){ return '<button class="btn">'+I.pencil+'Edit</button>'; }
+  function addBtn(t){ return '<button class="btn">'+I.plus+t+'</button>'; }
+
+  function bars(v,prev){
+    var h='<span class="cfbar">';
+    for(var i=1;i<=5;i++){
+      var c = i<=v ? (prev!=null && i>prev ? 'f g' : 'f') : '';
+      h+='<i class="'+c+'"></i>';
+    }
+    return h+'</span>';
+  }
+  function cfRow(q,v,prev){
+    var d='';
+    if(prev!=null && v>prev) d='<span class="up">+'+(v-prev)+'</span>';
+    else if(prev!=null) d='<span style="color:#B9C0CB">—</span>';
+    return '<div class="cf"><span class="q">'+q+'</span>'+bars(v,prev)+
+           '<span class="cfv"><b>'+v+'</b>/5 '+d+'</span></div>';
+  }
+  function scale(){
+    return '<div class="scale"><span>1 — Not at all confident</span><span>5 — Completely confident</span></div>';
+  }
+  function sec(title,hint,actions,inner){
+    return '<div class="sec"><div class="sechead"><h3>'+title+'</h3>'+
+      (hint?'<span class="hint">'+hint+'</span>':'')+
+      (actions?'<span class="act">'+actions+'</span>':'')+
+      '</div>'+inner+'</div>';
+  }
+
+  /* ===================================================================== */
+
+  var V=[];
+
+  /* ---------------------------- v1.0 ---------------------------- */
+  V.push({
+    v:"v1.0", name:"Career Exploration Plan", term:"First year, spring",
+    build:function(){
+      var h='';
+      h+='<div class="hero">'+
+        '<div class="avatar">ME</div>'+
+        '<div class="who"><h2>Maya Ellison</h2>'+
+        '<p class="maj">B.A. Sociology · Minor, Public Health · Class of 2030</p>'+
+        '<div class="goalbox"><span class="lb">Where I\'m headed right now</span>'+
+        '<p>First-year Sociology student interested in how health systems are organized — exploring whether that means working inside a hospital, in public health, or in research.<span class="caret"></span></p>'+
+        '<p class="wc"><span>41 words</span><span class="sv">Saving…</span></p></div></div>'+
+        '<div class="ring"><div class="ringbar"><i style="width:72%"></i></div>'+
+        '<span class="pct">72%</span><span class="pl">complete</span></div>'+
+      '</div>';
+
+      h+=sec("How confident do you feel?","Answer honestly — this is a starting point, not a test",editBtn(),
+        cfRow("Describing what I'm interested in, out loud, to someone I don't know",2)+
+        cfRow("Finding career pathways connected to my major",4)+
+        cfRow("Reading earnings and employment data and saying what it means for me",2)+
+        cfRow("Asking someone for an informational conversation",1)+
+        cfRow("Naming specific skills I have and where I got them",2)+
+        cfRow("Explaining what work-based learning is and when mine has to happen",3)+
+        scale());
+
+      h+=sec("Pathways you're exploring","Pick three to follow for now",addBtn("Add a pathway"),
+        '<div class="pws">'+
+        pw("Healthcare Administration &amp; Health Data","Healthcare &amp; Wellness","$74,900","median, MA","+28%","2024–34",
+          "I didn't know this was a career until I filtered by my major. The part that interests me is that it's the business side of care — you can improve how a hospital runs without being a clinician. Massachusetts being a steady market matters because I want to stay near my family.")+
+        pw("Public Health &amp; Epidemiology","Healthcare &amp; Wellness","$62,400","median, MA","+14%","2024–34",
+          "This is the one I came in thinking about. Working at the population level rather than one patient at a time appeals to me. Noting that an MPH is close to standard for advancement — that's a cost I need to think about, not assume.")+
+        pw("Policy Analysis &amp; Social Research","Public Administration, Government &amp; Law","$68,100","median, MA","+9%","2024–34",
+          "Added this because my SOC 210 professor said the research methods I'm learning are the same ones used in policy shops. The site says quantitative skill separates candidates most sharply, which is honestly a reason I'm hesitant — stats is my hardest class.")+
+        '</div>');
+
+      h+=sec("Your plan for work-based learning","You'll need 120 hours before you graduate",editBtn(),
+        '<div class="grid2">'+
+        '<div><span class="fieldlb">When I plan to do it</span>'+
+        '<div class="field">Summer after junior year (Summer 2029)</div>'+
+        '<span class="fieldlb" style="margin-top:13px">Kinds of roles I\'d apply to</span>'+
+        '<div class="field">Hospital operations or quality improvement · Public health program support · Research assistant in a health policy center</div></div>'+
+        '<div><span class="fieldlb">How I\'ll get ready between now and then</span>'+
+        '<div class="field">Finish the statistics sequence by junior fall so I can claim data skills honestly. Get one semester of on-campus work in an office setting. Have at least four informational conversations before I start applying in January 2029.</div></div>'+
+        '</div>');
+
+      h+=sec("Your goals","Set your own deadlines — nobody else sets them for you",addBtn("Add a goal"),
+        goal("Attend an event","Healthcare &amp; Wellness Career Community kickoff","Apr 2, 2027","done","Done")+
+        goal("Request an informational conversation","With a Suffolk alum working in hospital operations","Apr 18, 2027","track","On track")+
+        goal("Complete a skills inventory","Using the Skills That Matter list from all three pathways","May 1, 2027","not","Not started")+
+        goal("Draft a resume","First version, bring to drop-in advising","May 9, 2027","soon","Due soon"));
+
+      h+=sec("Appointments and events","","",
+        '<div class="grid2">'+
+        '<div><span class="fieldlb">Coming up</span><div class="rows">'+
+        appt("Apr 2","Healthcare &amp; Wellness Community kickoff","Sawyer 521")+
+        appt("Apr 21","Resume Lab","Drop-in, no appointment needed")+
+        '</div></div>'+
+        '<div><span class="fieldlb">Already happened</span><div class="rows">'+
+        appt("Mar 4","Rachel Alvarez, Career Advisor","Pathways walkthrough; picked three to follow")+
+        appt("Feb 11","Drop-in advising","Choosing a Career Community")+
+        '</div></div></div>');
+
+      h+=sec("People you know","Three so far — one you haven't reached out to yet",addBtn("Add a person"),
+        '<div class="rows">'+
+        net("Rachel Alvarez","Career Advisor, Healthcare &amp; Wellness","Suffolk CCEDS","Once a semester","Mar 4")+
+        net("Dr. Patrice Lindo","Associate Professor of Sociology","Suffolk University","Office hours, monthly","Mar 9")+
+        net("Devon Marsh","Operations Analyst","Beth Israel Lahey Health","Email once a semester","Not yet")+
+        '</div>');
+
+      h+=sec("Your interview answers","Draft them now, polish them later","",
+        iv("Tell me about a time you had to work with someone whose approach was different from yours.",
+           "In my first-year seminar group project, one person wanted to split the work into four separate pieces and I thought we'd end up with four different papers. I suggested we each draft a section but swap for editing. It took longer but the final paper actually sounded like one voice. I learned that I'd rather spend time up front on process than fix it at the end.")+
+        iv("What are some of your strengths?",
+           "I'm good at noticing when a process is inefficient — I did this at my summer job restocking, where I rearranged the back room by how often things were used. I'm still working on speaking up about it in the moment rather than afterward.")+
+        iv("What did you learn in <b>SOC 210: Research Methods &amp; Data Analysis</b> that could help you in this role?",
+           "We ran a survey from design through analysis, including writing the codebook. I learned that most of the work is deciding what you're actually measuring before you collect anything — and that clean data is a choice you make early, not a cleanup step.")+
+        iv("What did you learn in <b>PH 101: Introduction to Public Health</b> that could help you in this role?",null)+
+        iv("What did you learn in <b>STAT 240: Statistics for the Social Sciences</b> that could help you in this role?",null));
+
+      h+=sec("Jobs and internships you're watching","Save anything interesting, even if you can't apply yet",addBtn("Save a posting"),
+        job("Summer Operations Intern","Mass General Brigham","handshake.suffolk.edu/jobs/8841207",
+          "Posted for rising juniors and seniors, so I can't apply yet — saving it to see what they ask for. The description is almost entirely process improvement, which matches what I said I liked.",
+          ["Process improvement","Excel","Stakeholder communication","Data entry"],["Excel"])+
+        job("Public Health Program Assistant (Summer)","Boston Public Health Commission","handshake.suffolk.edu/jobs/8798432",
+          "Named in the pathway description as a major local employer. Wants community outreach experience, which I don't have yet — that's a gap I can close with volunteering.",
+          ["Community outreach","Program support","Data collection","Spanish preferred"],["Data collection"])+
+        job("Research Assistant, Health Policy","Suffolk Center for Health Policy Research","handshake.suffolk.edu/jobs/8802119",
+          "On campus and open to sophomores. Asks for coursework in research methods — I'll have that after this semester. This is my realistic first application.",
+          ["Research methods","Literature review","Stata or R","Academic writing"],["Research methods","Academic writing"]));
+
+      return h;
+    }
+  });
+
+  /* ---------------------------- v2.0 ---------------------------- */
+  V.push({
+    v:"v2.0", name:"Career Navigation Plan", term:"Junior spring",
+    build:function(){
+      var h='';
+      h+='<div class="hero">'+
+        '<div class="avatar">ME</div>'+
+        '<div class="who"><h2>Maya Ellison</h2>'+
+        '<p class="maj">B.A. Sociology · Minor, Public Health · Class of 2030</p>'+
+        '<div class="goalbox"><span class="lb">Where I\'m headed right now</span>'+
+        '<p>Junior studying Sociology and Public Health, heading into a summer in hospital operations — testing whether quality improvement is the part of health systems work I want to build a career on.</p>'+
+        '<span class="prev">You wrote in first year: <i>"interested in how health systems are organized — exploring whether that means working inside a hospital, in public health, or in research."</i></span>'+
+        '</div></div>'+
+        '<div class="ring"><div class="ringbar"><i style="width:88%"></i></div>'+
+        '<span class="pct">88%</span><span class="pl">complete</span></div>'+
+      '</div>';
+
+      h+=sec("How confident do you feel?","Gold shows where you've grown since first year",editBtn(),
+        cfRow("Describing what I'm interested in, out loud, to someone I don't know",4,2)+
+        cfRow("Finding career pathways connected to my major",5,4)+
+        cfRow("Reading earnings and employment data and saying what it means for me",4,2)+
+        cfRow("Asking someone for an informational conversation",4,1)+
+        cfRow("Naming specific skills I have and where I got them",3,2)+
+        cfRow("Explaining what work-based learning is and when mine has to happen",5,3)+
+        cfRow("Answering a behavioral interview question without rehearsing first",2)+
+        cfRow("Asking a question about pay or conditions before accepting an offer",1)+
+        scale());
+
+      h+=sec("Pathways you're exploring","Down to two — you dropped one and said why",addBtn("Add a pathway"),
+        '<div class="pws">'+
+        pw("Healthcare Administration &amp; Health Data","Healthcare &amp; Wellness","$74,900","median, MA","+28%","2024–34",
+          "Moved to first after two informational conversations. Devon described his week and roughly half of it was work I'd actually enjoy. The earnings figure is higher than I expected for a non-clinical role, which changed how I think about the MPH question.",
+          "Primary","I didn't know this was a career until I filtered by my major…")+
+        pw("Public Health &amp; Epidemiology","Healthcare &amp; Wellness","$62,400","median, MA","+14%","2024–34",
+          "Still interested, but the MPH is the deciding factor and I'm not ready to commit to that. Keeping it as a second option I could come back to after a few years of working.",
+          "Secondary","This is the one I came in thinking about…")+
+        pwDropped("Policy Analysis &amp; Social Research",
+          "I got the stats requirement done and did fine, but the research assistant job showed me I don't enjoy a full day of literature review. That's useful to know — I'd rather use data to fix something than to describe it.")+
+        '</div>');
+
+      h+=sec("Your work-based learning","Secured — nice work",'<span class="chip done"><span class="cdot"></span>Approved'+I.caret+'</span>',
+        '<div class="grid2">'+
+        '<div><span class="fieldlb">Where</span><div class="field">Beth Israel Lahey Health — Performance Improvement Office</div>'+
+        '<span class="fieldlb" style="margin-top:13px">Role</span><div class="field">Operations &amp; Quality Improvement Intern</div></div>'+
+        '<div><span class="fieldlb">When and how much</span><div class="field">June 4 – August 17, 2029 · 32 hrs/week · paid, $22/hr</div>'+
+        '<span class="fieldlb" style="margin-top:13px">How I found it</span><div class="field">Applied through Handshake in January; Devon Marsh flagged the posting two weeks before it went live.</div></div>'+
+        '</div>');
+
+      h+=sec("What you want to get out of this","Three goals, written before you start",editBtn(),
+        wgoal("Learn how a quality improvement project actually gets scoped and approved — not the textbook version.",
+          "Ask to sit in on at least two project intake meetings. Keep a one-page log of what got approved and what got turned down, and why.")+
+        wgoal("Become genuinely useful with the data tools the team uses day to day, so I can claim them honestly on a resume.",
+          "Build at least one recurring report end to end. Ask my supervisor by week 3 which tool is worth my time — Epic reporting, Excel, or SQL.")+
+        wgoal("Find out whether I want the analyst track or the coordinator track, which I can't tell apart from the outside.",
+          "Have a conversation with one person on each track by the midpoint. Write a paragraph in week 8 on which day I'd rather have."));
+
+      h+=sec("Your goals","",addBtn("Add a goal"),
+        goal("Secure work-based learning placement","Confirmed: BILH Performance Improvement","Mar 1, 2029","done","Done")+
+        goal("Complete a skills inventory","Updated against the two remaining pathways","Apr 20, 2029","track","On track")+
+        goal("Practice interviewing","Mock interview with advisor before summer start","May 15, 2029","soon","Due soon")+
+        goal("Set up a professional profile","LinkedIn headline rewritten to match the pathway language","May 22, 2029","not","Not started"));
+
+      h+=sec("Appointments and events","7 appointments so far","",
+        '<div class="grid2">'+
+        '<div><span class="fieldlb">Coming up</span><div class="rows">'+
+        appt("May 15","Mock interview","With Rachel Alvarez")+
+        appt("May 29","Pre-Internship Workshop","Required before you start")+
+        '</div></div>'+
+        '<div><span class="fieldlb">Recently</span><div class="rows">'+
+        appt("Mar 12","Drop-in advising","Offer received — questions to ask before accepting")+
+        appt("Jan 23","Rachel Alvarez, Career Advisor","Handshake application strategy for summer")+
+        '</div></div></div>');
+
+      h+=sec("People you know","Five contacts — two added since first year",addBtn("Add a person"),
+        '<div class="rows">'+
+        net("Devon Marsh","Operations Analyst","Beth Israel Lahey Health","Email each semester; coffee once a year","Feb 26",'upd')+
+        net("Rachel Alvarez","Career Advisor, Healthcare &amp; Wellness","Suffolk CCEDS","Once a semester","Mar 12")+
+        net("Dr. Patrice Lindo","Associate Professor of Sociology","Suffolk University","Office hours, monthly","Mar 28")+
+        net("Amara Boateng","Senior Program Manager","Boston Public Health Commission","LinkedIn; message when I have news","Oct 15",'new')+
+        net("Tomas Reyes","Epic Reporting Analyst","Mass General Brigham","Email twice a year","Jan 30",'new')+
+        '</div>');
+
+      h+=sec("Your interview answers","Two have changed since first year","",
+        iv("Tell me about a time you had to work with someone whose approach was different from yours.",
+           "At my campus job in the Dean's office, a colleague wanted to keep the room-booking log on paper because that's how it had always been done. I rebuilt it as a shared sheet but kept the paper log running in parallel for three weeks so she could check it against mine. After that she asked me to take the paper one down herself. I learned that people aren't resisting the change, they're resisting losing the thing that makes them reliable.",
+           "In my first-year seminar group project, one person wanted to split the work into four separate pieces…")+
+        iv("What are some of your strengths?",
+           "I'm good at finding the step in a process that's quietly costing everyone time, and I'm persistent about documenting things so the fix survives after I leave. My weakness is that I'd rather rebuild a system than have the conversation about why it's broken — I'm working on leading with the conversation.",
+           "I'm good at noticing when a process is inefficient — I did this at my summer job restocking…")+
+        iv("What did you learn in <b>PH 320: Health Systems &amp; Policy</b> that could help you in this role?",
+           "We mapped how a single patient encounter generates a billing claim, and where it can fail. It was the first time I understood that \"revenue cycle\" is a care problem as much as a finance one — a denied claim usually means something went wrong clinically or administratively upstream.")+
+        iv("What did you learn in <b>STAT 240: Statistics for the Social Sciences</b> that could help you in this role?",null));
+
+      h+=sec("Jobs and internships you're watching","",addBtn("Save a posting"),
+        job("Operations &amp; Quality Improvement Intern","Beth Israel Lahey Health","handshake.suffolk.edu/jobs/9120044",
+          "Applied and accepted. Saving the description so I can check my three learning goals against what they actually said they wanted.",
+          ["Process improvement","Excel","Data visualization","Stakeholder communication","Project coordination"],["Excel","Process improvement","Stakeholder communication"],"Accepted")+
+        job("Healthcare Analyst (New Grad)","Point32Health","handshake.suffolk.edu/jobs/9087731",
+          "Saved as a target for next year, not now. It asks for SQL, which I don't have — this is the strongest argument for making SQL a summer goal.",
+          ["SQL","Claims data","Excel","Healthcare operations","Tableau"],["Excel"])+
+        job("Quality Improvement Coordinator","Cambridge Health Alliance","handshake.suffolk.edu/jobs/9101288",
+          "This is almost exactly the job title from the pathways page. Keeping it to see how the requirements change when it reposts next spring.",
+          ["Quality improvement","Lean/Six Sigma","Data analysis","Clinical workflow"],["Data analysis"]));
+
+      return h;
+    }
+  });
+
+  /* ---------------------------- v3.0 ---------------------------- */
+  V.push({
+    v:"v3.0", name:"Career Integration Plan", term:"Senior fall",
+    build:function(){
+      var h='';
+      h+='<div class="hero">'+
+        '<div class="avatar">ME</div>'+
+        '<div class="who"><h2>Maya Ellison</h2>'+
+        '<p class="maj">B.A. Sociology · Minor, Public Health · Class of 2030</p>'+
+        '<div class="goalbox"><span class="lb">Where I\'m headed right now</span>'+
+        '<p>Senior Sociology and Public Health student with a summer in hospital performance improvement, targeting healthcare analyst roles where the work is finding what\'s broken in a process and proving it with data.</p>'+
+        '<span class="prev">You wrote last spring: <i>"heading into a summer in hospital operations — testing whether quality improvement is the part of health systems work I want to build a career on."</i></span>'+
+        '</div></div>'+
+        '<div class="ring"><div class="ringbar"><i style="width:94%"></i></div>'+
+        '<span class="pct">94%</span><span class="pl">complete</span></div>'+
+      '</div>';
+
+      h+=sec("Looking back on your internship","Take your time with this one",editBtn(),
+        '<div class="reflect">'+
+        '<p class="prompt">How did your work-based learning experience clarify or change your career goals? What specifically caused the change?</p>'+
+        '<p>It clarified more than it changed, but one thing did change. I went in assuming I\'d have to choose between the analyst track and the coordinator track, and I spent the first month trying to figure out which one I was. By week six I\'d stopped asking, because the project I ended up on needed both — I pulled the discharge delay data myself and then sat in the room where we argued about what to do with it.</p>'+
+        '<p>What caused the change was a single meeting in week seven. I\'d built a report showing that most of the delay was concentrated in one unit on weekends. I presented it and a nurse manager explained, politely, that she already knew that and the reason was a staffing rule I hadn\'t known existed. I was wrong about the cause but right about the pattern. That meeting is why my goal shifted from "work with healthcare data" to "work with healthcare data in a role where I\'m close enough to operations to be corrected." A pure analyst job sitting apart from the units would have let me be confidently wrong for a lot longer.</p>'+
+        '<p>The second thing I learned is that I need SQL, not as a resume line but because I spent two weeks waiting on someone else to pull data I could have pulled myself.<span class="caret"></span></p>'+
+        '<p class="wc"><span>268 words</span><span class="sv">Saving…</span></p>'+
+        '</div>');
+
+      h+=sec("How confident do you feel?","Gold shows where you've grown since last spring",editBtn(),
+        cfRow("Describing what I'm interested in, out loud, to someone I don't know",5,4)+
+        cfRow("Reading earnings and employment data and saying what it means for me",4,4)+
+        cfRow("Asking someone for an informational conversation",5,4)+
+        cfRow("Naming specific skills I have and where I got them",5,3)+
+        cfRow("Answering a behavioral interview question without rehearsing first",4,2)+
+        cfRow("Asking a question about pay or conditions before accepting an offer",3,1)+
+        cfRow("Claiming a technical tool on my resume and defending it in an interview",2)+
+        cfRow("Keeping on applying after a rejection without stalling for a week",2)+
+        scale());
+
+      h+=sec("Pathways you're exploring","Your ranking held — and you added one",addBtn("Add a pathway"),
+        '<div class="pws">'+
+        pw("Healthcare Administration &amp; Health Data","Healthcare &amp; Wellness","$74,900","median, MA","+28%","2024–34",
+          "Confirmed from the inside. The thing I couldn't have known from the description is how much of it is persuading clinical staff that your number means what you say it means. That's the part I want to get good at.",
+          "Primary","Moved to first after two informational conversations…")+
+        pw("Public Health &amp; Epidemiology","Healthcare &amp; Wellness","$62,400","median, MA","+14%","2024–34",
+          "Kept but demoted in practice. The summer showed me I prefer a defined system I can change over a population I can only study. Still the pathway I'd return to with an MPH in five years.",
+          "Secondary","Still interested, but the MPH is the deciding factor…")+
+        pwAdded("Data Science &amp; Analytics","STEM &amp; Sustainability","$89,300","median, MA","+34%","2024–34",
+          "Added after the summer. Not because I want to be a data scientist, but because the technical floor for the jobs I want sits inside this pathway and I was treating it as optional. SQL and Tableau appear in almost every posting I've saved since August.")+
+        '</div>');
+
+      h+=sec("What you're going after","",editBtn(),
+        '<div class="grid2">'+
+        '<div><span class="fieldlb">Target job titles</span>'+
+        '<div class="field" style="margin-bottom:9px"><b style="color:var(--navy)">Performance Improvement Analyst</b><br>Closest to what I actually did. Sits inside an operations team rather than central analytics.</div>'+
+        '<div class="field"><b style="color:var(--navy)">Revenue Cycle Analyst</b><br>Broader market, and PH 320 plus the summer gave me the vocabulary. Less interesting work, more openings.</div></div>'+
+        '<div><span class="fieldlb">Organizations I\'m targeting</span>'+
+        '<div class="field"><span class="kw">Beth Israel Lahey Health</span><span class="kw">Mass General Brigham</span><span class="kw">Boston Medical Center</span><span class="kw">Cambridge Health Alliance</span><span class="kw">Point32Health</span><span class="kw">Tufts Medicine</span></div>'+
+        '<span class="fieldlb" style="margin-top:13px">Where, and when</span>'+
+        '<div class="field">Boston metro; would consider Providence. Not relocating out of New England. Applying October through February — health systems hire new grads on a rolling basis, not a fall cycle.</div></div>'+
+        '</div>');
+
+      h+=sec("Your evaluations","Yours and your supervisor's, side by side",editBtn(),
+        '<div class="grid2" style="margin-bottom:15px">'+
+        '<div class="doclink">'+I.doc+'<span>My self-evaluation</span></div>'+
+        '<div class="doclink">'+I.doc+'<span>Supervisor evaluation — K. Whitlock</span></div>'+
+        '</div>'+
+        '<div class="reflect">'+
+        '<p class="prompt">Where did your evaluation and your supervisor\'s differ, and how will you use that difference going forward?</p>'+
+        '<p>We agreed on almost everything except two ratings, and the two gaps point in opposite directions.</p>'+
+        '<p>I rated myself a 3 of 5 on "communicates findings clearly to non-technical audiences." My supervisor gave me a 5 and wrote that the discharge-delay walkthrough was the clearest presentation an intern had given her. I think I rated the week-seven meeting as a failure because I was wrong about the cause, and scored my communication down for it. That\'s a real habit: I conflate being corrected with having done badly. I\'m going to stop doing that, because it will make me slower to put work in front of people.</p>'+
+        '<p>The gap I didn\'t expect runs the other way. I rated myself a 4 on "takes initiative on unassigned work" and she gave me a 3, with a note that I tended to wait for a project to be formally assigned before starting. She\'s right, and I hadn\'t noticed because I was busy. Going forward I\'m treating that as the specific thing to practice in my first job: ask for the problem, not the task.</p>'+
+        '<p>The feedback I\'m carrying into interviews is her exact phrase — that I\'m "strongest when the data has a person attached to it." I\'d never have described myself that way and it\'s the truest sentence in either document.</p>'+
+        '</div>');
+
+      h+=sec("People you met on the job","Four new contacts — decide now how you'll stay in touch",addBtn("Add a person"),
+        '<div class="rows">'+
+        net("Karen Whitlock","Director, Performance Improvement","Beth Israel Lahey Health","Quarterly update; agreed to be a reference","Aug 15",'new')+
+        net("Priya Raghunathan","Senior Analyst, Quality","Beth Israel Lahey Health","Monthly while job searching; reviewing my SQL","Sep 11",'new')+
+        net("Marcus Bell","Nurse Manager, 7 West","Beth Israel Lahey Health","LinkedIn only; message if I get a clinical-setting offer","Aug 14",'new')+
+        net("Devon Marsh","Operations Analyst","Beth Israel Lahey Health","Coffee each semester; reviewing my target list","Sep 6",'upd')+
+        '</div>');
+
+      h+=sec("Your plan to graduation","One year — here's how you get there",editBtn(),
+        '<div class="rows">'+
+        tl("Oct 2029","Skill gap","Finish the SQL course I started in August. Rebuild the discharge-delay report from scratch as a portfolio piece.")+
+        tl("Nov 2029","Materials","Resume and LinkedIn rewritten around the summer project. Mock interview using the two target titles.")+
+        tl("Dec 2029","Apply","First application wave: 8 roles. Ask Karen for the reference letter before the holidays, not after.")+
+        tl("Jan–Feb","Apply","Second wave. Reconnect with Priya and Tomas with a specific ask, not a general one.")+
+        tl("Mar 2030","Checkpoint","If no offers, widen to revenue cycle roles statewide and ask Karen about per-diem or temp work at BILH.")+
+        tl("May 2030","Graduate","Career Plan v4.0 becomes my first destination record.")+
+        '</div>');
+
+      h+=sec("Your goals","",addBtn("Add a goal"),
+        goal("Complete a certification or course","SQL for Data Analysis — 60% done","Oct 31, 2029","track","On track")+
+        goal("Request a reference","Karen Whitlock, confirmed verbally — need it in writing","Dec 12, 2029","not","Not started")+
+        goal("Apply to a position","First wave, 8 roles from the target list","Dec 19, 2029","not","Not started")+
+        goal("Update my resume","Rebuild around the summer project","Nov 8, 2029","soon","Due soon"));
+
+      return h;
+    }
+  });
+
+  /* ---------------------------- v4.0 ---------------------------- */
+  V.push({
+    v:"v4.0", name:"Career Launch Plan", term:"Senior spring",
+    build:function(){
+      var h='';
+      h+='<div class="hero">'+
+        '<div class="avatar">ME</div>'+
+        '<div class="who"><h2>Maya Ellison</h2>'+
+        '<p class="maj">B.A. Sociology · Minor, Public Health · Class of 2030</p>'+
+        '<div class="goalbox"><span class="lb">Where I\'m headed right now</span>'+
+        '<p>Graduating in May with a performance improvement background in hospital operations — looking for an analyst role close enough to the units that the data has a person attached to it.</p>'+
+        '<span class="prev">You wrote in the fall: <i>"targeting healthcare analyst roles where the work is finding what\'s broken in a process and proving it with data."</i></span>'+
+        '</div></div>'+
+        '<div class="ring"><div class="ringbar"><i style="width:100%"></i></div>'+
+        '<span class="pct">100%</span><span class="pl">complete</span></div>'+
+      '</div>';
+
+      h+=sec("Where your applications stand","14 applications since December","",
+        '<div class="funnel">'+
+        '<div class="fn"><b>14</b><span>Applied</span></div>'+
+        '<div class="fn"><b>6</b><span>Phone screen</span></div>'+
+        '<div class="fn"><b>4</b><span>Interview</span></div>'+
+        '<div class="fn"><b>2</b><span>Final round</span></div>'+
+        '<div class="fn win"><b>1</b><span>Offer</span></div>'+
+        '</div>');
+
+      h+=sec("Your applications","Follow-up dates set reminders for you",addBtn("Add an application"),
+        app("Beth Israel Lahey Health","Performance Improvement Analyst","Applied Dec 4","done","Offer",
+          "Respond by March 28",
+          ["Which unit would I be embedded with, and does that change after the first year?",
+           "Is the reporting stack moving to the new platform, and would I be part of that?",
+           "What does Karen's team look like in two years?"])+
+        app("Mass General Brigham","Revenue Cycle Analyst","Applied Dec 4","track","Final round",
+          "Final interview March 24",
+          ["How much of this role is denials work versus upstream prevention?",
+           "Who do I sit with — finance or operations?",
+           "What does the first 90 days look like concretely?"])+
+        app("Boston Medical Center","Quality Improvement Coordinator","Applied Dec 11","track","2nd interview",
+          "Follow up March 21 if no reply",
+          ["Is this role primarily project coordination, or does it include analysis?",
+           "What's the ratio of scheduled projects to reactive requests?"])+
+        app("Cambridge Health Alliance","Performance Improvement Analyst","Applied Dec 19","soon","Phone screen",
+          "Follow up March 20 — two weeks since the screen",
+          ["How does CHA's safety-net status change what gets prioritized?",
+           "Would I have access to the data directly, or request it?"])+
+        app("Dana-Farber Cancer Institute","Clinical Operations Analyst","Applied Jan 22","track","2nd interview",
+          "Thank-you sent March 17. Follow up March 26.",
+          ["How much of the role is recurring reporting versus new analysis?",
+           "Who are the clinical stakeholders I'd work with most?"])+
+        app("Boston Public Health Commission","Program Data Coordinator","Applied Feb 3","soon","Phone screen",
+          "Follow up March 19",
+          ["How much of this role is grant reporting?","Is there a path from coordinator to analyst here?"])+
+        app("Codman Square Health Center","Quality &amp; Data Specialist","Applied Feb 11","not","Applied",
+          "Follow up March 25 — Amara offered to flag my name",[])+
+        app("Tufts Medicine","Operations Analyst","Applied Jan 15","not","Not moving forward",
+          "Closed. Asked for feedback — they cited SQL depth.",[]));
+
+      h+=sec("How confident do you feel?","Gold shows where you've grown since the fall",editBtn(),
+        cfRow("Describing what I'm interested in, out loud, to someone I don't know",5,5)+
+        cfRow("Naming specific skills I have and where I got them",5,5)+
+        cfRow("Answering a behavioral interview question without rehearsing first",5,4)+
+        cfRow("Asking a question about pay or conditions before accepting an offer",4,3)+
+        cfRow("Claiming a technical tool on my resume and defending it in an interview",4,2)+
+        cfRow("Keeping on applying after a rejection without stalling for a week",4,2)+
+        scale());
+
+      h+=sec("People you know","Six contacts — three have helped directly this year",addBtn("Add a person"),
+        '<div class="rows">'+
+        net("Karen Whitlock","Director, Performance Improvement","Beth Israel Lahey Health","Reference provided; quarterly update either way","Feb 27")+
+        net("Priya Raghunathan","Senior Analyst, Quality","Beth Israel Lahey Health","Monthly; reviewed two of my SQL practice sets","Mar 6",'upd')+
+        net("Devon Marsh","Operations Analyst","Beth Israel Lahey Health","Coffee each semester","Jan 19")+
+        net("Amara Boateng","Senior Program Manager","Boston Public Health Commission","Offered to flag my Codman application","Mar 11",'upd')+
+        net("Tomas Reyes","Epic Reporting Analyst","Mass General Brigham","Twice a year; referred me internally at MGB","Dec 2",'upd')+
+        net("Rachel Alvarez","Career Advisor, Healthcare &amp; Wellness","Suffolk CCEDS","Final appointment booked before graduation","Mar 2")+
+        '</div>');
+
+      h+=sec("Your interview answers","Two rewritten around your internship","",
+        iv("Tell me about a time you had to work with someone whose approach was different from yours.",
+           "During my internship I built a report showing discharge delays concentrated on one unit on weekends. I presented it to the nurse manager and she told me she already knew, and that the cause was a staffing rule I hadn't known about. Rather than defend the analysis I asked her to walk me through the rule, and we rebuilt the measure to separate delays she controlled from delays she didn't. The second version got used. What I'd do differently is ask first — I'd have found the rule in a ten-minute conversation before spending two weeks on the wrong cut of the data.",
+           "At my campus job in the Dean's office, a colleague wanted to keep the room-booking log on paper…")+
+        iv("What are some of your strengths?",
+           "My supervisor put it better than I had: I'm strongest when the data has a person attached to it. Concretely, I'm good at taking an operational question, finding the measure that actually answers it, and explaining it to the people who have to act on it. The weakness I'd name is that I waited to be assigned work rather than asking for the problem — that was in my evaluation and it's the specific thing I want to do differently from week one.",
+           "I'm good at finding the step in a process that's quietly costing everyone time…")+
+        iv("What did you learn in <b>SOC 450: Senior Thesis Seminar</b> that could help you in this role?",
+           "My thesis used the discharge data from my internship, de-identified and with permission. Writing it taught me to state what the data cannot show as clearly as what it can — I have a limitations section I actually believe in, which is more than I could say about the week-seven version of the analysis.")+
+        iv("What did you learn in <b>STAT 240: Statistics for the Social Sciences</b> that could help you in this role?",null));
+
+      h+=sec("Your goals","",addBtn("Add a goal"),
+        goal("Respond to an offer","BILH Performance Improvement Analyst","Mar 28, 2030","soon","Due soon")+
+        goal("Prepare for an interview","MGB final round — revenue cycle vocabulary review","Mar 23, 2030","soon","Due soon")+
+        goal("Follow up on an application","Four follow-ups scheduled this week","Mar 22, 2030","track","On track")+
+        goal("Thank a network contact","Karen, Priya and Tomas once the decision is made","Apr 5, 2030","not","Not started"));
+
+      return h;
+    }
+  });
+
+  /* ---------------------- component builders ---------------------- */
+  function pw(name,cc,earn,earnL,tr,trL,refl,rank,prev){
+    return '<div class="pw">'+(rank?'<span class="rank">'+rank+'</span>':'')+
+      '<h4>'+name+'</h4><p class="cc">'+cc+'</p>'+
+      '<div class="nums"><div><span class="n">'+earn+'</span><span class="nl">'+earnL+'</span></div>'+
+      '<div style="margin-left:auto;text-align:right"><span class="n">'+tr+'</span><span class="nl">'+trL+'</span></div></div>'+
+      '<p class="refl">'+refl+'</p>'+
+      (prev?'<span class="prev">You wrote before: <i>'+prev+'</i></span>':'')+'</div>';
+  }
+  function pwAdded(name,cc,earn,earnL,tr,trL,refl){
+    return '<div class="pw added"><span class="rank" style="color:#7A5A12">Added this year</span>'+
+      '<h4>'+name+'</h4><p class="cc">'+cc+'</p>'+
+      '<div class="nums"><div><span class="n">'+earn+'</span><span class="nl">'+earnL+'</span></div>'+
+      '<div style="margin-left:auto;text-align:right"><span class="n">'+tr+'</span><span class="nl">'+trL+'</span></div></div>'+
+      '<p class="refl">'+refl+'</p></div>';
+  }
+  function pwDropped(name,refl){
+    return '<div class="pw dropped"><span class="rank" style="color:#8E5A5A">No longer exploring</span>'+
+      '<h4 style="color:#6E7684">'+name+'</h4>'+
+      '<p class="refl" style="margin-top:9px">'+refl+'</p></div>';
+  }
+  function goal(t,d,due,st,stl){
+    return '<div class="goal"><div><div class="gt">'+t+'</div><div class="gd">'+d+'</div></div>'+
+      '<div class="right"><span class="due">'+I.cal+due+'</span>'+chip(st,stl)+'</div></div>';
+  }
+  function wgoal(g,how){
+    return '<div class="field" style="margin-bottom:11px"><b style="color:var(--navy)">'+g+'</b>'+
+      '<div style="font-size:13.5px;color:var(--body);margin-top:6px">'+how+'</div></div>';
+  }
+  function appt(d,w,t){
+    return '<div class="row r-appt"><span class="dt">'+d+'</span>'+
+      '<div><div class="w">'+w+'</div><div class="t">'+t+'</div></div></div>';
+  }
+  function net(n,r,o,c,l,tag){
+    return '<div class="row r-net">'+
+      '<div><div class="w">'+(tag?'<span class="tag '+tag+'">'+(tag==='new'?'New':'Updated')+'</span>':'')+n+'</div></div>'+
+      '<div><div class="t">'+r+'</div><div class="t" style="color:#9AA3B1">'+o+'</div></div>'+
+      '<div class="t">'+c+'</div>'+
+      '<div class="t" style="white-space:nowrap">'+l+'</div></div>';
+  }
+  function tl(d,k,t){
+    return '<div class="row r-tl"><span class="dt">'+d+'</span>'+
+      '<div><span class="kw">'+k+'</span> <span class="w">'+t+'</span></div></div>';
+  }
+  function iv(q,a,prev){
+    if(!a){
+      return '<div style="margin-bottom:13px"><span class="fieldlb">'+q+'</span>'+
+        '<div class="field empty"><span>You haven\'t answered this one yet</span>'+
+        '<button class="btn primary">'+I.plus+'Write an answer</button></div></div>';
+    }
+    return '<div style="margin-bottom:13px"><span class="fieldlb">'+q+'</span>'+
+      '<div class="field">'+a+
+      (prev?'<span class="prev" style="display:block;margin-top:9px;padding-top:9px;border-top:1px dashed var(--line);font-size:12.5px;color:var(--mute)">Earlier answer: <i>'+prev+'</i></span>':'')+
+      '</div></div>';
+  }
+  function job(t,o,link,why,kws,hits,status){
+    var k=kws.map(function(x){return '<span class="kw'+(hits.indexOf(x)>-1?' hit':'')+'">'+x+'</span>';}).join('');
+    return '<div class="job"><div class="top"><span class="jt">'+t+'</span><span class="jo">'+o+'</span>'+
+      (status?'<span class="chip done" style="margin-left:auto"><span class="cdot"></span>'+status+'</span>':'')+'</div>'+
+      '<div class="lnk">'+link+'</div><p class="why">'+why+'</p>'+
+      '<div style="font-size:12.5px;color:var(--mute);margin-bottom:3px">Highlighted keywords are ones I can speak to with a specific example</div>'+
+      '<div>'+k+'</div></div>';
+  }
+  function app(co,ro,d,st,stl,next,qs){
+    var q=qs.length?'<ul class="qs">'+qs.map(function(x){return '<li>'+x+'</li>';}).join('')+'</ul>':'';
+    return '<div class="app"><div class="top"><span class="co">'+co+'</span><span class="ro">'+ro+'</span>'+
+      '<span class="meta">'+d+'</span></div>'+
+      '<div style="margin-top:7px">'+chip(st,stl)+'</div>'+
+      '<div class="next"><b style="color:var(--navy)">Next:</b> '+next+q+'</div></div>';
+  }
+
+  /* ---------------------- render ---------------------- */
+  var tabs=document.getElementById("tabs"), wrap=document.getElementById("wrap");
+
+  V.forEach(function(d,i){
+    var b=document.createElement("button");
+    b.type="button"; b.dataset.i=i;
+    b.innerHTML='<span class="tv">'+d.v+'</span><span class="tn">'+d.name+'</span>';
+    tabs.appendChild(b);
+  });
+
+  function show(i){
+    tabs.querySelectorAll("button").forEach(function(b,j){ b.classList.toggle("on", j===i); });
+    wrap.innerHTML=V[i].build();
+    window.scrollTo({top:0,behavior:"instant"});
+  }
+
+  tabs.addEventListener("click",function(e){
+    var b=e.target.closest("button[data-i]");
+    if(b) show(+b.dataset.i);
+  });
+
+  /* Optional gating, set by the host page through the URL hash: #up=N shows
+     version N, marks earlier versions completed, and disables later ones.
+     With no hash, all four tabs are open (stand-alone behavior). */
+  var DONE=["5/9/27","5/25/29","10/1/29",""];
+  function gate(){
+    var m=/up=([1-4])/.exec(location.hash), up=m?+m[1]:null;
+    tabs.querySelectorAll("button").forEach(function(b,j){
+      var td=b.querySelector(".td"); if(td) td.remove();
+      b.disabled = up!==null && j>=up;
+      b.classList.toggle("done", up!==null && j<up-1);
+      if(up!==null && j<up-1 && DONE[j]){
+        b.insertAdjacentHTML("beforeend",'<span class="td">Completed '+DONE[j]+'</span>');
+      }
+    });
+    show(up?up-1:0);
+  }
+  window.addEventListener("hashchange",gate);
+  gate();
+})();
+</script>
+</body>
+</html>
+
+</body></html>

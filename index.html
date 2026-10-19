@@ -88,10 +88,10 @@
   }
   .brand{
     display:block;width:100%;text-align:left;
-    background:none;border:0;border-bottom:1px solid rgba(255,255,255,.16);
+    background:none;border:0;
     font:inherit;cursor:pointer;
-    padding:0 22px 22px;
-    margin-bottom:14px;
+    padding:0 22px 12px;
+    margin-bottom:0;
     transition:opacity .18s ease;
   }
   .brand:hover{opacity:.82;}
@@ -120,6 +120,7 @@
 
   .nav{list-style:none;margin:0;padding:0;}
   .nav > li{margin:0;}
+  .nav > li.nav-top{border-bottom:1px solid rgba(255,255,255,.16);margin-bottom:14px;padding-bottom:8px;}
   .nav-link{
     display:block;width:100%;text-align:left;
     background:none;border:0;
@@ -130,6 +131,7 @@
     border-left:3px solid transparent;
     transition:color .18s ease,background .18s ease,border-color .18s ease;
   }
+  .nav-note{display:block;font-style:italic;font-weight:400;font-size:calc(.9375rem - 2pt);line-height:1.35;margin-top:2px;}
   .nav-link:hover{color:#fff;background:rgba(255,255,255,.05);}
   .nav-link[aria-current="true"]{
     color:#fff;font-weight:600;
@@ -199,6 +201,287 @@
   }
   .home-rule{width:64px;height:3px;background:var(--gold);border:0;margin:0 0 30px;}
   .home-lead{font-size:1.0625rem;line-height:1.65;margin:0 0 18px;}
+  .home-explore{font-size:1.5rem;font-weight:600;color:var(--navy);line-height:1.3;margin:36px 0 12px;padding-top:28px;border-top:1px solid var(--rule);}
+  .home-list{margin:0 0 22px;}
+  .home-list dt{font-weight:600;color:var(--navy);margin:14px 0 2px;}
+  .home-list dd{margin:0;}
+  .home-link{background:none;border:0;padding:0;font:inherit;font-weight:600;color:var(--navy);cursor:pointer;text-align:left;text-decoration:underline;text-decoration-color:var(--gold);text-decoration-thickness:2px;text-underline-offset:3px;}
+  .home-link:hover{color:#0F1E39;text-decoration-color:var(--navy);}
+  /* landing page: vertical stat figure beside the text */
+  .home-grid{display:grid;grid-template-columns:minmax(0,1fr) 312px;column-gap:clamp(28px,4vw,56px);align-items:start;}
+  .home-grid .stats-wrap{margin:4px 0 0;padding:11px 16px 4px;border-radius:3px;position:sticky;top:24px;}
+  .home-grid .stats-title{font-size:.8125rem;line-height:1.4;margin:0 0 4px;}
+  .home-grid .stat{display:grid;grid-template-columns:clamp(52px,26%,66px) minmax(0,1fr);column-gap:10px;align-items:start;border-top:2px solid var(--accent);padding:6px 0 7px;}
+  .home-grid .stat:first-child{margin-top:7px;}
+  .home-grid .stat-n{font-size:1.5rem;}
+  .home-grid .stat-t{font-size:.75rem;line-height:1.38;}
+  .home-grid .stat-sub{font-size:.6875rem;margin-top:3px;}
+  .home-grid .stats-source{margin:0;padding-top:6px;font-size:.6875rem;line-height:1.45;}
+  @media (max-width:900px){
+    .home-grid{display:block;}
+    .home-grid .stats-wrap{position:static;width:100%;margin:0 0 24px;order:-1;}
+  }
+  .home-tagline{font-size:1.1875rem;line-height:1.55;font-weight:400;color:var(--navy);margin:0 0 22px;text-wrap:pretty;}
+  .home-grid .stats-wrap,.home-grid .stat-t,.home-grid .stats-source,.home-grid .stat-sub{text-wrap:pretty;hyphens:none;}
+  /* ---------- four milestones (native module) ---------- */
+  .msx{
+    --navy-hover:rgba(21,40,75,.72);
+    --sky-hover:rgba(60,180,229,.38);
+    --mute:#8A8A8A;
+    --t02:rgba(21,40,75,.03);
+    --gap:16px;
+    --drop:20px;
+    --planh:100px;
+    font-size:1rem;
+  .prog{
+    display:grid;
+    grid-template-columns:repeat(4,minmax(0,1fr));
+    grid-template-rows:auto auto;
+    column-gap:var(--gap);
+    row-gap:0;
+    margin:0 0 10px;
+  }
+
+  /* ---------- shared button reset ---------- */
+  .msx-card,.plan,.merged{
+    font:inherit;text-align:left;cursor:pointer;padding:0;
+    background:#fff;border:1px solid var(--rule);
+    transition:background .18s ease,border-color .18s ease;
+  }
+
+  /* ---------- the milestone card ---------- */
+  .msx-card{
+    grid-row:1;
+    align-self:stretch;
+    display:flex;flex-direction:column;
+    border-top:3px solid #40C1AC;
+  }
+  .msx-card:hover{background:rgba(64,193,172,.34);border-color:rgba(64,193,172,.34);border-top-color:#40C1AC;}
+  .msx-card.on,.msx-card.on:hover{background:#40C1AC;border-color:#40C1AC;}
+
+  .ms{flex:1 1 auto;padding:15px 15px 17px;}
+  .msx-bar{
+    display:block;width:100%;border:0;cursor:pointer;
+    font:inherit;font-size:var(--t-head);font-weight:600;line-height:1.35;
+    color:var(--navy);text-align:center;padding:16px 28px;
+    transition:filter .18s ease;
+  }
+  .msx-bar:hover{filter:brightness(.94);}
+  .msx-bar-top{background:#40C1AC;margin:0 0 22px;}
+  .msx-bar-bottom{background:var(--sky);margin:26px 0 0;}
+  .ord{
+    display:block;
+    font-size:.8125rem;font-weight:500;font-style:italic;
+    color:var(--navy);line-height:1.3;margin:-5px 0 9px;
+  }
+  .nm{
+    display:block;
+    font-size:1.0625rem;font-weight:600;color:var(--navy);
+    line-height:1.25;margin-bottom:9px;
+    transition:color .18s ease;
+  }
+  .ds{
+    display:block;
+    font-size:.8125rem;line-height:1.4;color:var(--body);
+    transition:color .18s ease;
+  }
+  .ds + .ds{margin-top:8px;}
+  .msx-card.on .nm,.msx-card.on .ds,.msx-card.on .ord{color:var(--navy);}
+
+  /* ---------- the career plan ---------- */
+  .plan{
+    grid-row:2;
+    align-self:start;
+    position:relative;
+    margin-top:var(--drop);
+    min-height:var(--planh);
+    display:block;
+    background:var(--t02);
+    border-left:3px solid var(--sky);
+    padding:12px 14px 13px;
+  }
+  .plan:hover{background:var(--sky-hover);}
+  .plan.on,.plan.on:hover{background:var(--sky);border-color:var(--sky);border-left-color:var(--navy);}
+  .pv{
+    display:block;
+    font-size:.9375rem;font-weight:600;letter-spacing:-.01em;
+    color:var(--navy);line-height:1.2;margin-bottom:6px;
+  }
+  .pn{
+    display:block;
+    font-size:.78125rem;line-height:1.45;color:var(--body);
+    transition:color .18s ease;
+  }
+  .plan.on .pn{color:rgba(21,40,75,.86);}
+
+  /* ---------- the elbow connector ---------- */
+  .link{
+    position:absolute;left:0;right:0;top:calc(var(--drop) * -1);height:var(--drop);
+    pointer-events:none;
+    --arrow:rgba(21,40,75,.3);
+    --aw:2px;
+  }
+  .eb{
+    position:absolute;left:34%;right:16px;top:3px;bottom:9px;
+    border-top:var(--aw) solid var(--arrow);
+    border-right:var(--aw) solid var(--arrow);
+    border-top-right-radius:5px;
+    transition:border-color .18s ease,border-width .18s ease;
+  }
+  .tp{
+    position:absolute;right:12px;bottom:0;width:0;height:0;
+    border-left:5px solid transparent;border-right:5px solid transparent;
+    border-top:7px solid var(--arrow);
+    transition:border-top-color .18s ease;
+  }
+  .msx-card:hover + .plan .link,
+  .plan:hover .link,
+  .plan.lit .link{ --arrow:var(--navy); --aw:3px; }
+
+  /* ---------- merged fourth column ---------- */
+  .merged{
+    grid-column:4;grid-row:1;
+    align-self:stretch;
+    display:flex;flex-direction:column;
+    border-top:3px solid #40C1AC;
+    border-bottom:0;
+    margin-bottom:calc(var(--drop) * -1);
+    padding-bottom:var(--drop);
+  }
+  .mplan{
+    grid-column:4;grid-row:2;
+    align-self:start;
+    margin-top:var(--drop);
+    min-height:var(--planh);
+    display:block;cursor:pointer;
+    background:var(--t02);
+    border:1px solid var(--rule);
+    border-left:3px solid var(--sky);
+    padding:12px 14px 13px;
+    transition:background .18s ease,border-color .18s ease;
+  }
+  .merged.hot{background:rgba(64,193,172,.34);border-color:rgba(64,193,172,.34);border-top-color:#40C1AC;}
+  .mplan.hot{background:var(--sky-hover);}
+  .merged.on,.merged.on.hot{background:#40C1AC;border-color:#40C1AC;}
+  .mplan.on,.mplan.on.hot{background:var(--sky);border-color:var(--sky);border-left-color:var(--navy);}
+  .merged.on .nm,.merged.on .ds,.merged.on .ord{color:var(--navy);}
+  .mplan.on .pn{color:rgba(21,40,75,.86);}
+
+  .hint{font-size:.8125rem;color:var(--mute);margin:0;}
+
+/* ===========================================================
+   MODAL
+   =========================================================== */
+
+  .msx-scrim{
+    position:fixed;inset:0;z-index:40;
+    background:rgba(21,40,75,.42);
+    display:flex;align-items:center;justify-content:center;
+    padding:clamp(12px,4vh,40px) clamp(12px,4vw,40px);
+    opacity:0;transition:opacity .16s ease;
+  }
+  .msx-scrim[hidden]{display:none;}
+  .msx-scrim.open{opacity:1;}
+
+  .modal{
+    position:relative;
+    width:min(100%,720px);
+    /* capped so it always fits inside a short SharePoint iframe */
+    max-height:min(86vh,760px);
+    display:flex;flex-direction:column;
+    background:#fff;
+    border-top:4px solid var(--navy);
+    box-shadow:0 18px 48px rgba(21,40,75,.26);
+    transform:translateY(6px);transition:transform .16s ease;
+  }
+  .msx-scrim.open .modal{transform:none;}
+  .modal.is-plan{border-top-color:var(--sky);}
+
+  .mhead{
+    flex:0 0 auto;
+    padding:20px 54px 16px 26px;
+    border-bottom:1px solid var(--rule);
+  }
+  .mkick{
+    display:block;
+    font-size:.6875rem;font-weight:600;letter-spacing:.09em;text-transform:uppercase;
+    color:var(--gold);margin-bottom:7px;
+  }
+  .modal.is-plan .mkick{color:var(--navy);}
+  .mhead h2{
+    font-size:1.375rem;font-weight:600;color:var(--navy);
+    margin:0 0 6px;line-height:1.25;
+  }
+  .msub{margin:0;font-size:.8125rem;color:var(--mute);}
+
+  .mbody{
+    flex:1 1 auto;overflow-y:auto;
+    padding:20px 26px 26px;
+    -webkit-overflow-scrolling:touch;
+  }
+  .msec + .msec{margin-top:20px;}
+  .msec h3{
+    font-size:.6875rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;
+    color:var(--navy);margin:0 0 8px;padding-bottom:5px;
+    border-bottom:1px solid var(--rule);
+  }
+  .modal.is-plan .msec h3{border-bottom-color:rgba(60,180,229,.45);}
+  .msec p{margin:0 0 9px;font-size:.9375rem;line-height:1.58;}
+  .msec p:last-child{margin-bottom:0;}
+  .msec p.todo{color:var(--mute);font-style:italic;}
+
+  .mclose{
+    position:absolute;top:10px;right:10px;z-index:2;
+    width:32px;height:32px;line-height:1;
+    display:flex;align-items:center;justify-content:center;
+    font:inherit;font-size:1.25rem;color:var(--navy);
+    background:transparent;border:0;border-radius:2px;cursor:pointer;
+    transition:background .15s ease;
+  }
+  .mclose:hover{background:var(--t02);}
+
+  .modal.is-embed{width:min(100%,1180px);height:min(94vh,920px);max-height:none;border-top-color:var(--navy);}
+  .modal.is-embed .mhead,.modal.is-embed .mbody{display:none;}
+  .modal.is-embed .mframe{display:block;flex:1 1 auto;width:100%;border:0;background:#fff;}
+  .mintro{flex:0 0 auto;padding:16px 54px 14px 26px;border-bottom:1px solid var(--rule);}
+  .mintro[hidden]{display:none;}
+  .mintro .mi-sub{font-size:1.0625rem;font-weight:500;color:var(--navy);line-height:1.35;margin:0 0 4px;}
+  .mintro .mi-body{font-size:.9375rem;line-height:1.5;margin:0;}
+  .mintro a{color:var(--navy);font-weight:600;text-decoration:underline;text-decoration-color:var(--gold);text-decoration-thickness:2px;text-underline-offset:3px;cursor:pointer;}
+  .prog.prog-only .plan{grid-row:1;margin-top:0;align-self:stretch;}
+  .msx.msx-plans{margin:18px 0 26px;}
+  .prog.prog-only.prog-uses{grid-template-columns:repeat(auto-fit,minmax(190px,1fr));row-gap:16px;}
+  .prog.prog-only.prog-uses .plan{grid-row:auto;grid-column:auto;border-left-color:#40C1AC;}
+  .prog-uses .plan:hover{background:rgba(64,193,172,.34);}
+  .prog-uses .plan.on,.prog-uses .plan.on:hover{background:#40C1AC;border-color:#40C1AC;border-left-color:var(--navy);}
+  .prog-uses .plan.on .pn{color:rgba(21,40,75,.9);}
+  @media (max-width:900px){
+    .prog{display:flex;flex-direction:column;}
+    .msx-card,.plan,.merged,.mplan{grid-column:auto;grid-row:auto;width:100%;}
+    .plan,.mplan{margin-bottom:26px;}
+    .merged{margin-bottom:calc(var(--drop) * -1);}
+  }
+  @media (prefers-reduced-motion:reduce){
+    &,& *{transition-duration:.01ms !important;}
+  }
+  @media print{
+    .msx-scrim{display:none !important;}
+  }
+
+  }
+  .msx .hint{margin-top:10px;}
+  .msx-page{margin:0 0 44px;}
+  .msx .msx-page h3.sub{background:var(--navy);color:#fff;margin:0 0 20px;padding:14px 22px;border-left:6px solid var(--gold);}
+  .msx .msx-page{margin:0 0 64px;}
+  .msx .msx-page:last-child{margin-bottom:0;}
+  .msx-page p{margin:0 0 10px;}
+  .msx .msx-page .plan{display:block;grid-row:auto;grid-column:auto;width:min(100%,460px);margin:12px 0 0;}
+  .msx-page p.todo{color:#8A8A8A;font-style:italic;}
+  .msx-meta{font-size:var(--t-small);color:#8A8A8A;margin:-6px 0 14px!important;}
+  .msx-h{font-size:.6875rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--navy);margin:20px 0 8px;padding-bottom:5px;border-bottom:1px solid var(--rule);}
+  .msx-plan{font-size:1.0625rem;font-weight:600;color:var(--navy);margin:30px 0 4px;padding-left:12px;border-left:3px solid var(--sky);}
+  hr.msx-divider{border:0;border-top:1px solid var(--rule);margin:40px 0 0;}
+  .home-cta{margin:34px 0 8px;}
   .home-next{margin-top:40px;padding-top:24px;border-top:1px solid var(--rule);}
   .home-next p{font-size:var(--t-small);color:#8A8A8A;margin:0 0 12px;}
   .start{
@@ -537,17 +820,19 @@
     <button class="brand" id="brand" data-panel="home">
       <span class="mark" aria-hidden="true"></span>
       <h1>Career Strategy &amp; Design</h1>
-      <p>Proposal for the Revised Shared Gen Ed Curriculum</p>
     </button>
 
     <ul class="nav" id="nav">
-      <li>
-        <button class="nav-link" data-panel="urgency">What is the urgency?</button>
+      <li class="nav-top">
+        <button class="nav-link" data-panel="urgency">What is the Urgency?<span class="nav-note">The context and research behind the proposal</span></button>
         <ul class="sublist" data-for="urgency">
           <li><button class="sub-link" data-target="u-1">The promise of career opportunity</button></li>
           <li><button class="sub-link" data-target="u-2">Career management skills require explicit instruction</button></li>
           <li><button class="sub-link" data-target="u-3">Ensuring <u>every</u> Suffolk student acquires these skills</button></li>
         </ul>
+      </li>
+      <li>
+        <button class="nav-link" data-panel="overview">CS&amp;D Curriculum Overview</button>
       </li>
       <li>
         <button class="nav-link" data-panel="throughline">The Career Plan</button>
@@ -570,7 +855,7 @@
         </ul>
       </li>
       <li>
-        <button class="nav-link" data-panel="howwork">How the work gets done</button>
+        <button class="nav-link" data-panel="howwork">How the Work Gets Done</button>
         <ul class="sublist" data-for="howwork">
           <li><button class="sub-link" data-target="h-1">Who teaches what</button></li>
           <li><button class="sub-link" data-target="h-2">Support for instructors</button></li>
@@ -594,42 +879,38 @@
         <h2 class="home-title">Career Strategy &amp; Design</h2>
         <p class="home-sub">Proposal for the Revised Shared Gen Ed Curriculum</p>
         <hr class="home-rule">
+        <div class="home-grid">
+          <div class="home-main">
+            <p class="home-tagline">Making career development an intentional, connected part of every student's undergraduate experience. A scaffolded curriculum that prepares students to shape their own futures and equips faculty and advisors to provide proactive support. Ensuring every student has an evolving, actionable plan, wherever they are in their career journey.</p>
+        <p class="home-lead">Career Strategy &amp; Design proposes a connected approach to helping every Suffolk undergraduate translate their education into meaningful work and informed choices about their future. It would make career exploration, preparation, experience, and planning an explicit part of the undergraduate curriculum, building on the disciplinary knowledge and broader capabilities students develop throughout their education.</p>
 
-        <p class="home-lead">Career outcomes carry substantial weight in students’ college decisions and in public scrutiny of the value of higher education. Students increasingly encounter information about graduate earnings alongside decisions about where to enroll, bringing the connection between education and opportunity into sharper institutional focus.<span data-cite="SoHE2025"></span><span data-cite="fafsa"></span> At Suffolk, these expectations are explicit: in a local survey administered to incoming Fall 2026 first-year students during summer orientation, <b>93% of respondents rated obtaining a better job as a very or extremely important reason for attending college, and 84% identified developing professional skills.</b><span data-cite="SU_FY26"></span></p>
-
-        <div class="stats-wrap">
-          <p class="stats-title">Among students entering Suffolk in Fall 2026:</p>
-          <div class="stats stats-row stats-sky">
-            <div class="stat">
-              <span class="stat-n">93%</span>
-              <p class="stat-t">rated getting a better job a <span class="mark">very</span> or <span class="mark">extremely</span> important reason for going to college (the top reason overall).</p>
-            </div>
-            <div class="stat">
-              <span class="stat-n">95%</span>
-              <p class="stat-t">said it is <span class="mark">most important</span> that Suffolk help them find jobs or internships related to their major (the top request).</p>
-            </div>
-            <div class="stat">
-              <span class="stat-n">90%</span>
-              <p class="stat-t">plan to complete an internship during their time at Suffolk.
-                <span class="stat-sub">68% strongly agree, 22% somewhat agree</span>
-              </p>
-            </div>
+        <p>The proposed requirement connects two courses, substantive work-based learning, and a final preparation checkpoint through four curricular milestones. <b>An evolving Career Plan provides continuity across those milestones</b>, helping students document what they are learning, revise their goals, and identify their next steps. It would also give faculty, advisors, and career staff a shared starting point for guidance and help Suffolk identify where students need additional support.</p>
           </div>
-          <p class="stats-source">Entering Student Survey, Office of Institutional Research and Assessment, Summer 2026. n = 556–561.<span data-cite="SU_FY26"></span></p>
+        <figure class="stats-wrap">
+            <p class="stats-title">Among students entering Suffolk in Fall 2026:</p>
+            <div class="stats stats-sky">
+              <div class="stat">
+                <span class="stat-n">93%</span>
+                <p class="stat-t">rated getting a better job a <span class="mark">very</span> or <span class="mark">extremely</span> important reason for going to college (the top reason&nbsp;overall).</p>
+              </div>
+              <div class="stat">
+                <span class="stat-n">95%</span>
+                <p class="stat-t">said it is <span class="mark">most important</span> that Suffolk help them find jobs or internships related to their major (the top&nbsp;request).</p>
+              </div>
+              <div class="stat">
+                <span class="stat-n">90%</span>
+                <p class="stat-t">plan to <span class="mark">complete an internship</span> during their time at&nbsp;Suffolk.
+                  <span class="stat-sub">68% strongly agree, 22% somewhat&nbsp;agree</span>
+                </p>
+              </div>
+            </div>
+            <p class="stats-source">Entering Student Survey, Office of Institutional Research and Assessment, Summer&nbsp;2026. n&nbsp;=&nbsp;556–561.<span data-cite="SU_FY26"></span></p>
+          </figure>
         </div>
-        <p> For students seeking greater opportunity and economic mobility, fulfilling those expectations requires intentional educational support. Students arrive with unequal access to professional networks, familiarity with workplace expectations, and knowledge of how opportunities are found and pursued. First-generation students may be navigating these expectations with less access to guidance grounded in family experience of college and professional careers. Suffolk’s educational responsibility includes helping every student develop the knowledge, relationships, experience, and judgment needed to turn that promise of opportunity into an attainable future. </p>
-        <p>Suffolk already offers substantial career expertise, committed faculty mentorship, and valuable classroom and networking experiences. Yet voluntary Career Center engagement and opportunities embedded at individual instructors’ discretion cannot ensure that every student receives coherent preparation at the right time. National research recognizes faculty’s substantial contributions to career development while identifying opportunities for stronger coordination with campus resources; student surveys also show uneven participation in career guidance.<span data-cite="facattitudes"></span> <span data-cite="NACE2024studentsurvey"></span> Students may encounter excellent experiences without connecting them to a developing plan, while others may miss essential preparation altogether. <b>We need to know what every student can do before graduation puts that preparation to the test.</b>  Can students investigate pathways, communicate evidence of their abilities, build professional relationships, pursue meaningful experience, and act on a realistic plan? These should be visible learning outcomes, assessed throughout the undergraduate experience.<span data-cite="nacecompetency"></span> <span data-cite="soares"></span></p>
+
+        <div class="home-cta"><button type="button" class="start" data-panel="overview">Curriculum Overview</button></div>
 
 
-<p>Career Strategy & Design proposes a universal, longitudinal framework that makes this development an explicit part of a Suffolk education. Intentionally timed instruction, substantive work-based learning, and four connected Career Plan milestones would help students move from exploration through preparation, experience, and transition.<span data-cite="stradaprinciples"></span> <b>Work-based learning would offer multiple routes to a common educational standard</b>, including qualifying internships, faculty-led research, client or community projects, and robust on-campus employment. Through meaningful responsibility, professional feedback, expanded relationships, and reflection, students would connect academic learning with possible futures. These experiences would provide opportunities to apply and extend the critical thinking, communication, ethical judgment, and disciplinary knowledge developed through their education.<span data-cite="stradabeyond"></span>  An evolving Career Plan would give students continuity and, with appropriate access rules, help faculty and advisors connect educational choices and support to students’ current goals. Shared assessment would make gaps visible while students still have time to act.
-</p>
-
-
-
-        <div class="home-next">
-
-          <button class="start" data-panel="urgency">Read: What is the urgency?</button>
-        </div>
       </div>
     </section>
 
@@ -695,25 +976,465 @@
         <p>The plan also provides <strong>a shared starting point for guidance across courses, academic advising, and career services</strong>, allowing each conversation to build on the student’s prior work. For students, it would make progress and next steps explicit; for faculty and advisors, it would reveal opportunities to help; and for Suffolk, aggregate information would help identify patterns in students’ goals, preparation, and unmet needs. This design puts into practice the principle that career guidance should begin early, continue throughout college, and connect across the settings where students learn and seek support.<span data-cite="stradaprinciples"></span></p>
         </div>
 
-        <h3 class="sub" id="t-1">Career Plan: Proof-of-Concept Example</h3>
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris.</p>
+        <h2 class="sub" id="t-1">Career Plan: Proof-of-Concept Example</h2>
+        
       
 
-        <!-- Career Plan Portfolio module (stand-alone page, embedded) -->
-        <figure class="fig portfolio">
-          <iframe src="Career%20Plan%20Portfolio%20%E2%80%94%20v1.0%20to%20v4.0.html" title="Career Plan Portfolio, versions 1.0 to 4.0" loading="lazy"></iframe>
-          <figcaption>Figure 1. The Career Plan Portfolio across four stages. Use the buttons to move between versions.</figcaption>
-        </figure>
+        <!-- the four Career Plan cards; built by the msx script, same modals as the Curriculum Overview -->
+        <div class="msx msx-plans">
+          <div class="prog" id="msx-plans"></div>
+          <p class="hint">Select a card to open that version of the example Career Plan.</p>
+        </div>
 
 
         
 
-        <h3 class="sub" id="t-3">How the Career Plan Innovates Career Advising at Suffolk</h3>
-        <p>Temporibus autem quibusdam et aut officiis debitis aut rerum necessitatibus saepe eveniet ut et voluptates repudiandae sint et molestiae non recusandae.</p>
-        <!-- CP_uses module (stand-alone page, embedded; grows to fit its content) -->
-        <figure class="fig portfolio">
-          <iframe src="CP_uses.html" title="What the Career Plan makes possible" loading="lazy" data-autofit></iframe>
-        </figure>
+        <hr class="msx-divider">
+
+        <h2 class="sub" id="t-3">How the Career Plan Innovates Career Advising at Suffolk</h2>
+        <p>Because students answer in structured fields rather than in free-standing essays, the Career Plan can do things a submitted document cannot: carry a student’s own words into their next plan, follow up on the goals they set, show patterns across a cohort, point advisors to the students who most need a conversation, and give instructors a view of what their students are working toward. Select a card to see an illustrative example of each. All names and data are fabricated for demonstration.</p>
+        <div class="msx msx-plans">
+          <div class="prog" id="msx-uses"></div>
+          <p class="hint">Select a card to see that example.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- CURRICULUM OVERVIEW -->
+    <section class="panel" id="panel-overview" tabindex="-1">
+      <div class="panel-inner">
+        <h2 class="sec-title">CS&amp;D Curriculum Overview</h2>
+        <p>One plan, carried forward and revised four times across a student&rsquo;s degree. Select a milestone or a version of the plan for detail.</p>
+        <div class="msx" id="msx">
+          <button type="button" class="msx-bar msx-bar-top" data-go="milestones">Four sequential milestones, each building the foundation for success in the next</button>
+          <div class="prog" id="msx-prog"></div>
+          <button type="button" class="msx-bar msx-bar-bottom" data-go="throughline">An evolving Career Plan that connects student action with assessment and support</button>
+          <p class="hint">Select any card for detail.</p>
+          <div class="msx-scrim" id="msx-scrim" hidden>
+            <div class="modal" id="msx-modal" role="dialog" aria-modal="true" aria-labelledby="msx-mtitle">
+              <button type="button" class="mclose" id="msx-mclose" aria-label="Close">&times;</button>
+              <div class="mhead">
+                <span class="mkick" id="msx-mkick"></span>
+                <h2 id="msx-mtitle"></h2>
+                <p class="msub" id="msx-msub"></p>
+              </div>
+              <div class="mbody" id="msx-mbody"></div>
+              <div class="mintro" id="msx-mintro" hidden></div>
+              <iframe class="mframe" id="msx-mframe" title="Career Plan example" hidden></iframe>
+            </div>
+          </div>
+        </div>
+        <script>
+(function(){
+  "use strict";
+
+  /* =====================================================================
+     EDIT HERE.
+
+     Each of the four entries holds two things:
+
+       the MILESTONE  — card text (ord / nm / ds) and a course-style modal
+       the CAREER PLAN — plan box text (planV / planDs) and a plan-style modal
+
+     Both modals take the same shape:
+
+       { kick: "...",            small uppercase line at the top
+         title:"...",            headline
+         sub:  "...",            grey line under the headline
+         sections:[              as many as you like, in order
+           { h:"Section name", p:"Paragraph text." },
+           { h:"Another one",  p:["First paragraph.","Second paragraph."] }
+         ] }
+
+     A section's p takes either a single string or an array of strings.
+     Add, remove or reorder sections freely — nothing below depends on
+     how many there are or what they are called.
+
+     Optional: add intro:"..." (string or array) to an entry for text that
+     appears only at the top of that milestone's section on the Milestones tab.
+     Everything else here also renders, expanded, on that tab.
+
+     Clicking milestone cards 1 to 3 opens that entry's `modal`.
+     Clicking Career Plan v1 to v3, or the merged fourth column, opens
+     that entry's `planModal`. To make the fourth column open its
+     course-style modal instead, change MERGED_OPENS below to "modal".
+     ===================================================================== */
+
+  var MERGED_OPENS = "planModal";
+
+  var STAGES=[
+    {
+      /* ---------- card ---------- */
+      ord:"2nd semester course",
+      nm:"Career Exploration",
+      ds:[
+        "Students investigate career pathways through personal reflection, conversations with faculty, students, and alumni, and analysis of local and national labor-market data. Whether exploring possibilities or refining an established direction, students develop greater clarity about their career options and goals."
+      ],
+      /* ---------- course-style modal ---------- */
+      modal:{
+        kick:"Milestone 1",
+        title:"Career Exploration",
+        sub:"CE-100 &middot; 1 credit &middot; First year, spring semester",
+        sections:[
+          {h:"Credits",p:"Placeholder. One credit, graded pass/fail. Note here whether the credit sits inside an existing course or stands alone, and what that means for a student's total load."},
+          {h:"Courses",p:"Placeholder. Name the host course or courses, who teaches them, and how a transfer or mid-year entry student picks the requirement up."},
+          {h:"Learning outcomes",p:"Placeholder. Two or three learning outcomes, written so they can be assessed from what the student produces rather than from participation."},
+          {h:"Sequencing",p:"Placeholder. When in the term this falls, what has to come before it, and what it unlocks for Milestone 2."}
+        ]
+      },
+      /* ---------- plan box ---------- */
+      planV:"Career Plan v1.0",
+      planDs:"Students document emerging interests, career goals, and actionable next steps for coursework, connections, and experience, establishing a foundation for ongoing advising.",
+      /* ---------- plan-style modal ---------- */
+      planModal:{
+        kick:"Career Plan v1.0",
+        title:"Career Exploration Plan",
+        sub:"Produced in CE-100 &middot; First year, spring semester",
+        sections:[
+          {h:"What the student produces",p:"Placeholder. Interests, a first set of pathways under consideration, and named next actions for coursework, connections and experience."},
+          {h:"How it is assessed",p:"Placeholder. The plan carries no separate credit. Note whether it is graded inside CE-100 or recorded as a completion artifact."},
+          {h:"What carries forward",p:"Placeholder. Submitted at the end of the first-year spring term and carried into Milestone 2, where the student revises rather than restarts."},
+          {h:"Who sees it",p:"Placeholder. Say where the plan lives once the course ends, and which advisors or faculty can read it."}
+        ]
+      }
+    },
+    {
+      ord:"WBL-preparation course",
+      nm:"Career Navigation",
+      ds:[
+        "Students prepare to secure and succeed in meaningful work-based learning by researching opportunities, assessing their qualifications, and developing professional materials and relationships. They also learn how to demonstrate initiative, communicate effectively, and build credibility in professional settings."
+      ],
+      modal:{
+        kick:"Milestone 2",
+        title:"Career Navigation",
+        sub:"CE-200 &middot; 1 credit &middot; Summer before sophomore year, through fall of junior year",
+        sections:[
+          {h:"Credits",p:"Placeholder. One credit. Note how the credit is handled when the milestone spans more than one term, and who records completion."},
+          {h:"Courses",p:"Placeholder. CE-200, plus any discipline-specific equivalents approved to carry the requirement."},
+          {h:"Learning outcomes",p:"Placeholder. Outcomes should not presuppose an active work-based learning search, since many students take this one to three semesters before they are ready to apply."},
+          {h:"Sequencing",p:"Placeholder. The wide window is deliberate. State the latest point at which a student can complete this and still be positioned for Milestone 3."}
+        ]
+      },
+      planV:"Career Plan v2.0",
+      planDs:"Students identify targeted opportunities, preparation needs, and a timeline of specific actions to secure and succeed in meaningful work-based learning.",
+      planModal:{
+        kick:"Career Plan v2.0",
+        title:"Career Navigation Plan",
+        sub:"Produced in CE-200 &middot; Sophomore summer through junior fall",
+        sections:[
+          {h:"What the student produces",p:"Placeholder. A narrowed direction, named target opportunities, identified preparation gaps, and a dated action timeline."},
+          {h:"How it is assessed",p:"Placeholder. No separate credit. Assessed within CE-200 or an approved equivalent."},
+          {h:"What carries forward",p:"Placeholder. Revised from v1.0 rather than written fresh. State what the student sees of their earlier version while revising."},
+          {h:"Who sees it",p:"Placeholder. Name who reviews the plan when the approved equivalent sits in a school other than the student's own."}
+        ]
+      }
+    },
+    {
+      ord:"Work-Based Learning Experience",
+      nm:"Career Integration",
+      ds:[
+        "Students complete a qualifying work-based learning experience meeting five criteria for meaningful professional engagement. Through substantive, supervised work, they apply academic knowledge, develop professional skills and relationships, and gain firsthand insight into their capabilities, interests, and career possibilities."
+      ],
+      modal:{
+        kick:"Milestone 3",
+        title:"Career Integration",
+        sub:"Work-based learning &middot; 0 to 4 credits &middot; Sophomore spring through the summer before senior year",
+        sections:[
+          {h:"Credits",p:"Placeholder. Variable credit, zero to four, depending on the experience. Explain why zero credit is still a completed milestone and how that is recorded."},
+          {h:"Courses",p:"Placeholder. Not a course in the usual sense. Name the qualifying pathways and who verifies that an experience meets the five criteria."},
+          {h:"Learning outcomes",p:"Placeholder. Three learning outcomes plus two experience conditions, rendered to students as five checkboxes rather than two categories."},
+          {h:"Sequencing",p:"Placeholder. The Experience Accelerator triggers at the end of the third-to-last semester. Set out what happens for a student who reaches that point without a placement."}
+        ]
+      },
+      planV:"Career Plan v3.0",
+      planDs:"Students integrate WBL learning into their career goals and develop a targeted strategy for their remaining time at Suffolk and beyond graduation.",
+      planModal:{
+        kick:"Career Plan v3.0",
+        title:"Career Integration Plan",
+        sub:"Submitted with experience verification &middot; After the qualifying experience",
+        sections:[
+          {h:"What the student produces",p:"Placeholder. Evidence against the five criteria, a reflection on fit, and a revised post-graduation direction."},
+          {h:"How it is assessed",p:"Placeholder. No separate credit. Completion of v3.0 is one of the conditions for the milestone being recorded as met."},
+          {h:"What carries forward",p:"Placeholder. Sets the strategy for the student's remaining semesters, which Milestone 4 then tests against actual outcomes."},
+          {h:"Who sees it",p:"Placeholder. Name who collects and reviews it, since it arrives outside a course."}
+        ]
+      }
+    },
+    {
+      ord:"Assignment in capstone",
+      nm:"Career Launch",
+      ds:[
+        "Embedded in a capstone or other senior-facing course, this culminating assignment ensures every student completes a final Career Plan. It assesses career development, identifies students needing additional support, and informs OIRA's First Destination outcomes tracking."
+      ],
+      modal:{
+        kick:"Milestone 4",
+        title:"Career Launch",
+        sub:"Capstone assignment &middot; No separate credit &middot; Senior year, fall or spring",
+        sections:[
+          {h:"Credits",p:"Placeholder. No separate credit. The milestone is an assignment inside an existing capstone, so note what that asks of capstone instructors."},
+          {h:"Courses",p:"Placeholder. Discipline capstones across each school. Name who coordinates consistency across them."},
+          {h:"Learning outcomes",p:"Placeholder. Outcomes here are about readiness to act rather than readiness to plan. Say what distinguishes this from Milestone 2."},
+          {h:"Sequencing",p:"Placeholder. December and May graduates hit this at different points. Describe both, and how the plan feeds the First Destination Survey."}
+        ]
+      },
+      planV:"Career Plan v4.0",
+      planDs:"Students assess their launch readiness, document postgraduation plans and outstanding needs, and identify immediate next steps and support resources.",
+      planModal:{
+        kick:"Career Plan v4.0",
+        title:"Career Launch Plan",
+        sub:"Capstone assignment &middot; Senior year, fall or spring",
+        sections:[
+          {h:"What the student produces",p:"Placeholder. A readiness self-assessment, a stated destination or search plan, and named outstanding needs."},
+          {h:"How it is assessed",p:"Placeholder. Graded as a capstone assignment against a common rubric. Name who maintains that rubric."},
+          {h:"What carries forward",p:"Placeholder. The final version of a record begun in the first year. Describe what the student keeps after graduation."},
+          {h:"How the institution uses it",p:"Placeholder. Supports outreach to students needing additional assistance and feeds OIRA's First Destination outcomes tracking."}
+        ]
+      }
+    }
+  ];
+
+  /* ===================== nothing below needs editing ===================== */
+
+  var prog=document.getElementById("msx-prog"),
+      scrim=document.getElementById("msx-scrim"),
+      modal=document.getElementById("msx-modal"),
+      mkick=document.getElementById("msx-mkick"),
+      mtitle=document.getElementById("msx-mtitle"),
+      msub=document.getElementById("msx-msub"),
+      mbody=document.getElementById("msx-mbody"),
+      mframe=document.getElementById("msx-mframe"),
+      mintro=document.getElementById("msx-mintro"),
+      mclose=document.getElementById("msx-mclose"),
+      lastFocus=null;
+
+  function cardInner(s){
+    return '<span class="ms">'+
+             '<span class="nm">'+s.nm+'</span>'+
+             '<span class="ord">'+s.ord+'</span>'+
+             s.ds.map(function(p){return '<span class="ds">'+p+'</span>';}).join('')+
+           '</span>';
+  }
+  function planInner(s){
+    return '<span class="pv">'+s.planV+'</span><span class="pn">'+s.planDs+'</span>';
+  }
+  function btn(cls,kind,i,html,col,label){
+    var b=document.createElement("button");
+    b.type="button"; b.className=cls;
+    b.dataset.kind=kind; b.dataset.i=i;
+    b.setAttribute("aria-haspopup","dialog");
+    b.setAttribute("aria-label",label);
+    if(col) b.style.gridColumn=col;
+    b.innerHTML=html;
+    return b;
+  }
+
+  STAGES.forEach(function(s,i){
+    if(i<3){
+      prog.appendChild(btn("msx-card","modal",i,cardInner(s),i+1,s.nm));
+      prog.appendChild(btn("plan","planModal",i,
+        '<span class="link"><i class="eb"></i><i class="tp"></i></span>'+planInner(s),
+        i+1,s.planV));
+    }else{
+      prog.appendChild(btn("merged",MERGED_OPENS,i,cardInner(s),null,s.nm+" and "+s.planV));
+      var d=document.createElement("div");
+      d.className="mplan"; d.dataset.kind=MERGED_OPENS; d.dataset.i=i;
+      d.setAttribute("aria-hidden","true");
+      d.innerHTML=planInner(s);
+      prog.appendChild(d);
+    }
+  });
+
+  /* Career Plan page: the four plan cards on their own */
+  var plansEl=document.getElementById("msx-plans");
+  if(plansEl){
+    plansEl.classList.add("prog-only");
+    STAGES.forEach(function(s,i){
+      plansEl.appendChild(btn("plan","planModal",i,planInner(s),i+1,s.planV));
+    });
+  }
+
+  /* "What the Career Plan makes possible": five cards, each opening an example from CP_uses.html */
+  var USE_CARDS=[
+    ["Piping forward into the next plan","Students revise rather than start over: each plan opens with their own words from the last one, giving the program paired responses as assessment evidence."],
+    ["Piping into follow-up outreach","Goals are stored as records, so a March email can name what a student set in December and compare self-reports with what we already know."],
+    ["Program-level pattern and outcome","Fixed-taxonomy responses can be counted: where students are headed, which obstacles they report, and how self-efficacy moves, for any population we serve."],
+    ["Advisor worklist and triage","The same fields flag students who need a conversation, so advisors start the week with a list ordered by urgency."],
+    ["Shared back to faculty and advisors","A short goal statement becomes a roster that shows instructors and advisors what each student is working toward, before class begins."]
+  ];
+  var usesEl=document.getElementById("msx-uses");
+  if(usesEl){
+    usesEl.classList.add("prog-only","prog-uses");
+    USE_CARDS.forEach(function(c,i){
+      usesEl.appendChild(btn("plan","use",i,'<span class="pv">'+c[0]+'</span><span class="pn">'+c[1]+'</span>',null,c[0]));
+    });
+    usesEl.addEventListener("click", onCardClick);
+  }
+
+  /* the modal lives at the end of <body> so any page can open it */
+  var host=document.createElement("div");
+  host.className="msx";
+  host.appendChild(scrim);
+  document.body.appendChild(host);
+
+  /* the two halves of the fourth column light together */
+  document.querySelectorAll(".msx-bar[data-go]").forEach(function(b){
+    b.addEventListener("click",function(){
+      var n=document.querySelector('.nav-link[data-panel="'+b.dataset.go+'"]');
+      if(n) n.click();
+    });
+  });
+
+  var group=[prog.querySelector(".merged"),prog.querySelector(".mplan")];
+  function hot(on){ group.forEach(function(g){ g.classList.toggle("hot",on); }); }
+  group.forEach(function(el){
+    el.addEventListener("mouseenter",function(){hot(true);});
+    el.addEventListener("mouseleave",function(){hot(false);});
+    el.addEventListener("focus",function(){hot(true);});
+    el.addEventListener("blur",function(){hot(false);});
+  });
+
+  function paras(p){
+    var list = Object.prototype.toString.call(p)==="[object Array]" ? p : [p];
+    return list.map(function(t){
+      return '<p'+(/^Placeholder\./.test(t)?' class="todo"':'')+'>'+t+'</p>';
+    }).join('');
+  }
+
+  function markLive(kind,i){
+    document.querySelectorAll(".msx .msx-card,.msx .plan,.msx .merged,.msx .mplan").forEach(function(b){
+      var isMerged = kind!=="use" && (b.classList.contains("merged")||b.classList.contains("mplan"));
+      var on = i!==null && +b.dataset.i===i && (b.dataset.kind===kind || isMerged);
+      b.classList.toggle("on",on);
+    });
+    document.querySelectorAll(".msx .plan").forEach(function(p){
+      p.classList.toggle("lit", i!==null && +p.dataset.i===i);
+    });
+  }
+
+  /* "when is this plan completed" line shown above each Career Plan example */
+  var PLAN_WHEN=[
+    'This plan is completed during, and as a final assignment to, <a data-ms="1">CE-100</a>.',
+    'This plan is completed during, and as a final assignment to, <a data-ms="2">CE-200</a>.',
+    'This plan is part of the reflective and final work required at the end of <a data-ms="3">internships and other Work-Based Learning</a>.',
+    'This plan is completed as an assignment in a student’s Capstone course.'
+  ];
+  mintro.addEventListener("click",function(e){
+    var a=e.target.closest("a[data-ms]"); if(!a) return;
+    close();
+    document.querySelector('.nav-link[data-panel="milestones"]').click();
+    var n=a.dataset.ms;
+    window.requestAnimationFrame(function(){
+      var panel=document.getElementById("panel-milestones"),
+          t=document.getElementById("ms-"+n);
+      if(panel&&t) panel.scrollTo({top:panel.scrollTop+t.getBoundingClientRect().top-panel.getBoundingClientRect().top-24,behavior:"smooth"});
+    });
+  });
+
+  function openUse(i,source){
+    modal.classList.remove("is-plan");
+    modal.classList.add("is-embed");
+    mintro.hidden=true;
+    mframe.hidden=false;
+    mframe.src="CP_uses.html#use="+(i+1);
+    markLive("use",i);
+    lastFocus=source||document.activeElement;
+    scrim.hidden=false;
+    requestAnimationFrame(function(){ scrim.classList.add("open"); });
+    mclose.focus();
+  }
+
+  function open(kind,i,source){
+    if(kind==="use") return openUse(i,source);
+    var data=STAGES[i][kind];
+    if(!data) return;
+
+    modal.classList.toggle("is-plan", kind==="planModal");
+    /* Career Plan modals show the working example (My Career Plan.html), opened to
+       version i+1 with earlier versions marked completed and later ones disabled */
+    var embed = kind==="planModal";
+    modal.classList.toggle("is-embed", embed);
+    mframe.hidden = !embed;
+    mintro.hidden = !embed;
+    if(embed){
+      mintro.innerHTML='<p class="mi-sub">Proof of Concept. Actual content to be developed.</p>'+
+                       '<p class="mi-body">'+PLAN_WHEN[i]+'</p>';
+    }
+    if(embed) mframe.src = "My%20Career%20Plan.html#up="+(i+1);
+    mkick.innerHTML=data.kick||"";
+    mtitle.innerHTML=data.title||"";
+    msub.innerHTML=data.sub||"";
+    msub.style.display=data.sub?"":"none";
+    mbody.innerHTML=(data.sections||[]).map(function(sec){
+      return '<section class="msec"><h3>'+sec.h+'</h3>'+paras(sec.p)+'</section>';
+    }).join('');
+    mbody.scrollTop=0;
+
+    markLive(kind,i);
+    lastFocus=source||document.activeElement;
+    scrim.hidden=false;
+    
+    requestAnimationFrame(function(){ scrim.classList.add("open"); });
+    mclose.focus();
+  }
+
+  function close(){
+    scrim.classList.remove("open");
+    
+    markLive(null,null);
+    hot(false);
+    window.setTimeout(function(){ scrim.hidden=true; },160);
+    if(lastFocus && lastFocus.focus) lastFocus.focus();
+  }
+
+  function onCardClick(e){
+    var b=e.target.closest(".msx-card,.plan,.merged,.mplan");
+    if(!b) return;
+    var src = b.classList.contains("mplan") ? group[0] : b;
+    open(b.dataset.kind, +b.dataset.i, src);
+  }
+  prog.addEventListener("click", onCardClick);
+  if(plansEl) plansEl.addEventListener("click", onCardClick);
+
+  /* ---------- the same content, laid out as a page (Milestones tab) ---------- */
+  function renderPages(){
+    var pages=document.getElementById("msx-pages");
+    if(!pages) return;
+    pages.innerHTML=STAGES.map(function(s,i){
+      var m=s.modal, p=s.planModal;
+      function secs(d){
+        return (d.sections||[]).map(function(sec){
+          return '<h5 class="msx-h">'+sec.h+'</h5>'+paras(sec.p);
+        }).join('');
+      }
+      return '<section class="msx-page" id="ms-'+(i+1)+'">'+
+        '<h3 class="sub">'+m.kick+': '+m.title+'</h3>'+
+        (s.intro?paras(s.intro):'')+
+        secs(m)+
+        '<h5 class="msx-h">Final Product</h5>'+
+        '<button type="button" class="plan" data-kind="planModal" data-i="'+i+'" aria-haspopup="dialog" aria-label="'+s.planV+'">'+planInner(s)+'</button>'+
+      '</section>';
+    }).join('');
+    pages.addEventListener("click", onCardClick);
+  }
+  if(document.readyState==="loading") document.addEventListener("DOMContentLoaded",renderPages);
+  else renderPages();
+
+  mclose.addEventListener("click", close);
+  scrim.addEventListener("mousedown", function(e){ if(e.target===scrim) close(); });
+
+  document.addEventListener("keydown", function(e){
+    if(scrim.hidden) return;
+    if(e.key==="Escape"){ e.preventDefault(); close(); return; }
+    if(e.key!=="Tab") return;
+    /* keep focus inside the dialog */
+    var f=modal.querySelectorAll('button,[href],input,select,textarea,[tabindex]:not([tabindex="-1"])');
+    if(!f.length) return;
+    var first=f[0], last=f[f.length-1];
+    if(e.shiftKey && document.activeElement===first){ e.preventDefault(); last.focus(); }
+    else if(!e.shiftKey && document.activeElement===last){ e.preventDefault(); first.focus(); }
+  });
+})();
+</script>
       </div>
     </section>
 
@@ -724,10 +1445,8 @@
         <p >Lorem ipsum dolor sit amet, consectetur adipiscing elit. Each milestone is placeholder content pending the working group's draft language.</p>
 
         
-        <!-- milestones module (stand-alone page, embedded; grows to fit its content) -->
-        <figure class="fig portfolio">
-          <iframe src="milestones.html" title="The four milestones" loading="lazy" data-autofit></iframe>
-        </figure>
+        <!-- generated from the STAGES data in the msx script (same source as the front-page cards and modals) -->
+        <div id="msx-pages" class="msx"></div>
       </div>
     </section>
 
@@ -1027,11 +1746,11 @@
   }
 
   var forcedSub=null;
-  var NO_RAIL=["milestones"];   /* panel keys that hide the references rail */
+  var NO_RAIL=["milestones","overview"];   /* panel keys that hide the references rail */
 
   function spy(panel){
     syncRail(panel);
-    var heads=[].slice.call(panel.querySelectorAll("h3.sub"));
+    var heads=[].slice.call(panel.querySelectorAll("h2.sub,h3.sub"));
     if(!heads.length) return;
     /* a subheading goes yellow once it reaches the middle of the panel, or when
        it was clicked directly (kept until the reader scrolls by hand) */
@@ -1085,6 +1804,10 @@
     Object.keys(panels).forEach(function(k){
       panels[k].addEventListener(ev, function(){ forcedSub=null; }, {passive:true});
     });
+  });
+
+  document.querySelectorAll(".home-link").forEach(function(b){
+    b.addEventListener("click", function(){ show(b.dataset.panel); });
   });
 
   document.querySelectorAll(".start").forEach(function(b){
