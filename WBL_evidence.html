@@ -1,0 +1,321 @@
+<!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#faf9f5;color:#141413}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>What the evidence says about work-based learning</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Libre+Franklin:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --navy:#15284B;
+    --gold:#E7AB2A;
+    --blue:#3CB4E5;
+    --teal:#3BBFAD;
+    --ink:#1A1A1A;
+    --body:#4F5663;
+    --mute:#7B8494;
+    --rule:rgba(21,40,75,.16);
+    --hair:rgba(21,40,75,.10);
+    --tint:rgba(21,40,75,.04);
+    --sans:"Libre Franklin","Segoe UI",Helvetica,Arial,sans-serif;
+    box-sizing:border-box;
+  }
+  *,*::before,*::after{box-sizing:border-box;}
+  body{
+    margin:0;background:#fff;color:var(--body);
+    font-family:var(--sans);font-size:15px;line-height:1.55;
+    -webkit-font-smoothing:antialiased;
+    padding:clamp(28px,5vw,56px) clamp(18px,5vw,64px) 90px;
+    padding-top:calc(clamp(28px,5vw,56px) + env(safe-area-inset-top,0px));
+    max-width:1180px;
+  }
+
+  /* ---------- masthead ---------- */
+  .rule{width:52px;height:4px;background:var(--gold);margin-bottom:14px;}
+  h1{
+    font-size:clamp(1.75rem,3.4vw,2.4rem);font-weight:600;color:#000;
+    line-height:1.14;letter-spacing:-.02em;margin:0 0 8px;max-width:22ch;
+  }
+  .standfirst{
+    font-size:clamp(1rem,1.6vw,1.125rem);line-height:1.55;margin:0;max-width:74ch;color:var(--body);
+  }
+  .standfirst b{color:var(--navy);font-weight:600;}
+  .mastfoot{
+    font-size:.8125rem;color:var(--mute);margin:16px 0 0;
+    padding-top:14px;border-top:1px solid var(--rule);
+  }
+
+  /* ---------- section ---------- */
+  .sec{margin-top:46px;}
+  .sechead{
+    display:flex;align-items:baseline;gap:14px;flex-wrap:wrap;
+    padding-bottom:10px;border-bottom:2px solid var(--navy);margin-bottom:26px;
+  }
+  .sechead h2{
+    font-size:1.0625rem;font-weight:600;color:var(--navy);margin:0;
+    letter-spacing:.01em;
+  }
+  .sechead .note{font-size:.8125rem;color:var(--mute);margin-left:auto;}
+
+  /* ---------- stat bands ---------- */
+  .stats{
+    display:grid;grid-template-columns:repeat(3,minmax(0,1fr));
+    gap:clamp(22px,3vw,40px) clamp(22px,3vw,42px);
+  }
+  .stats.two{grid-template-columns:repeat(2,minmax(0,1fr));}
+  .stat{
+    border-top:3px solid var(--blue);padding-top:17px;
+    display:flex;flex-direction:column;gap:11px;
+  }
+  .stat .n{
+    font-size:clamp(2.25rem,4.4vw,3.1rem);font-weight:600;color:var(--navy);
+    line-height:1;letter-spacing:-.03em;font-variant-numeric:lining-nums tabular-nums;
+  }
+  .stat .n small{font-size:.44em;font-weight:600;letter-spacing:-.01em;}
+  .stat p{margin:0;font-size:.9375rem;line-height:1.5;color:var(--body);}
+  .stat p .mark{
+    font-style:normal;font-weight:500;color:var(--navy);
+    box-shadow:inset 0 -2px 0 var(--gold);
+  }
+  .stat .src{
+    font-size:.75rem;color:var(--mute);margin-top:auto;padding-top:4px;
+  }
+
+  /* ---------- statement band ---------- */
+  .say{
+    border-left:4px solid var(--gold);background:var(--tint);
+    padding:18px 22px;margin-top:26px;
+  }
+  .say p{
+    margin:0;font-size:1.0625rem;line-height:1.5;color:var(--navy);font-weight:500;
+    max-width:84ch;
+  }
+  .say .src{font-size:.75rem;color:var(--mute);margin:9px 0 0;font-weight:400;}
+
+  /* ---------- sources ---------- */
+  .sources{
+    margin-top:52px;padding-top:18px;border-top:1px solid var(--rule);
+  }
+  .sources h3{
+    font-size:.6875rem;font-weight:600;letter-spacing:.11em;text-transform:uppercase;
+    color:var(--mute);margin:0 0 10px;
+  }
+  .sources ol{
+    margin:0;padding-left:18px;columns:2;column-gap:40px;
+    font-size:.78125rem;line-height:1.5;color:var(--mute);
+  }
+  .sources li{margin-bottom:7px;break-inside:avoid;}
+  .sources i{font-style:italic;}
+
+  @media (max-width:900px){
+    .stats,.stats.two{grid-template-columns:repeat(2,minmax(0,1fr));}
+    .sources ol{columns:1;}
+  }
+  @media (max-width:560px){
+    .stats,.stats.two{grid-template-columns:1fr;}
+  }
+  @media print{
+    body{padding:0;max-width:none;font-size:10pt;}
+    .sec{margin-top:26px;break-inside:avoid;}
+    .stat{break-inside:avoid;}
+    @page{size:letter;margin:.5in;}
+  }
+</style>
+</head>
+<body>
+
+<div class="rule"></div>
+<h1>What the evidence says about work-based learning</h1>
+<p class="standfirst">Findings from national research on work-based learning and its effect on what happens to students after they graduate. <b>Where a figure applies specifically to paid internships, it is labeled.</b> Several of the strongest effects hold for work-based learning of any kind.</p>
+<p class="mastfoot">Compiled from Strada Education Foundation, the Center for Research on College-Workforce Transitions at the University of Wisconsin&ndash;Madison, and the National Survey of College Internships. Full citations at the end.</p>
+
+<!-- ===================== EARNINGS AND EMPLOYMENT ===================== -->
+<div class="sec">
+  <div class="sechead">
+    <h2>Earnings and the quality of the first job</h2>
+    <span class="note">Effects estimated after matching students on academic and demographic characteristics</span>
+  </div>
+
+  <div class="stats">
+    <div class="stat">
+      <span class="n">+$13,859</span>
+      <p>Higher annual personal income for bachelor's degree holders who had <span class="mark">a work-based learning experience</span>, compared with matched peers who did not.</p>
+      <span class="src">Strada-Gallup Education Survey, 2022 <sup>1</sup></span>
+    </div>
+    <div class="stat">
+      <span class="n">+15<small>%</small></span>
+      <p>Earnings one year after graduation for students who completed a <span class="mark">paid internship</span>, a boost of $5,564 against an average first-year salary of $36,379.</p>
+      <span class="src">Research in Higher Education, 2026 <sup>2</sup></span>
+    </div>
+    <div class="stat">
+      <span class="n">+16<small>%</small></span>
+      <p>The advantage does not fade. Four years out it has <span class="mark">grown to $9,089 a year</span> for those who held a paid internship.</p>
+      <span class="src">Research in Higher Education, 2026 <sup>2</sup></span>
+    </div>
+    <div class="stat">
+      <span class="n">14 <small>points</small></span>
+      <p>More likely to hold a first job that <span class="mark">requires their degree</span>. Students with an unpaid internship are up to six points more likely.</p>
+      <span class="src">Research in Higher Education, 2026 <sup>2</sup></span>
+    </div>
+    <div class="stat">
+      <span class="n">13 <small>points</small></span>
+      <p>More likely to report that their first job is <span class="mark">part of a career</span> rather than just a job. For a practicum, up to twelve points.</p>
+      <span class="src">Research in Higher Education, 2026 <sup>2</sup></span>
+    </div>
+    <div class="stat">
+      <span class="n">14<small>%</small></span>
+      <p>More likely to <span class="mark">receive a callback</span> for a job interview, in an audit study of employer responses to otherwise identical résumés.</p>
+      <span class="src">Nunley et al., 2016 <sup>3</sup></span>
+    </div>
+  </div>
+
+  <div class="say">
+    <p>The earnings advantage for paid internships holds <b>even after accounting for field of study, gender, and race or ethnicity</b>. It is not simply a reflection of which students get internships in the first place.</p>
+    <p class="src">Strada Education Foundation, 2022; Research in Higher Education, 2026 <sup>1,&thinsp;2</sup></p>
+  </div>
+</div>
+
+<!-- ===================== BEYOND EARNINGS ===================== -->
+<div class="sec">
+  <div class="sechead">
+    <h2>What changes beyond pay</h2>
+    <span class="note">Work-based learning of any kind, not only paid internships</span>
+  </div>
+
+  <div class="stats">
+    <div class="stat">
+      <span class="n">+39 <small>points</small></span>
+      <p>Recent graduates with work-based learning are far more likely to say <span class="mark">their education helped them achieve their goals</span>. Across all degree holders, the gain is 19 points.</p>
+      <span class="src">Strada-Gallup Education Survey, 2022 <sup>1</sup></span>
+    </div>
+    <div class="stat">
+      <span class="n">+11 <small>points</small></span>
+      <p>More likely to agree that <span class="mark">their education was worth the cost</span>.</p>
+      <span class="src">Strada-Gallup Education Survey, 2022 <sup>1</sup></span>
+    </div>
+    <div class="stat">
+      <span class="n">+7 <small>points</small></span>
+      <p>Higher <span class="mark">career satisfaction</span> years after graduation.</p>
+      <span class="src">Strada-Gallup Education Survey, 2022 <sup>1</sup></span>
+    </div>
+  </div>
+
+  <div class="say">
+    <p>Researchers found <b>no statistically significant difference in the benefit of work-based learning by race, gender, or socioeconomic status</b>, which suggests the advantage is strong across demographic groups. What differs is who gets access to the experience.</p>
+    <p class="src">Strada Education Foundation, 2022 <sup>1</sup></p>
+  </div>
+</div>
+
+<!-- ===================== WHAT STUDENTS SAY ===================== -->
+<div class="sec">
+  <div class="sechead">
+    <h2>What students say the experience is worth</h2>
+    <span class="note">Students rating their own most valuable work-based learning experience</span>
+  </div>
+
+  <div class="stats">
+    <div class="stat">
+      <span class="n">81<small>%</small></span>
+      <p>Rated their experience <span class="mark">at least 7 out of 10</span> on making them a stronger candidate for the job they want. Two in five rated it a perfect 10.</p>
+      <span class="src">Strada Education Foundation, 2025 <sup>4</sup></span>
+    </div>
+    <div class="stat">
+      <span class="n">74<small>%</small></span>
+      <p>Were <span class="mark">extremely or very satisfied</span> with their internship. Satisfaction tracks with supervisor support, mentoring, and chances to build durable skills.</p>
+      <span class="src">National Survey of College Internships, 2023 <sup>5</sup></span>
+    </div>
+    <div class="stat">
+      <span class="n">8 <small>in 10</small></span>
+      <p>Said a supervisor gave them <span class="mark">quite a bit or a great deal of mentorship</span> toward their career goals, across internships, practica, project-based learning, and undergraduate research.</p>
+      <span class="src">Strada Education Foundation, 2025 <sup>4</sup></span>
+    </div>
+    <div class="stat">
+      <span class="n">9.3 <small>vs 5.5</small></span>
+      <p>Career value, on a ten-point scale, for students whose experience <span class="mark">expanded their professional network a great deal</span> against those whose did not expand it at all. The single largest driver of perceived value.</p>
+      <span class="src">Strada Education Foundation, 2025 <sup>4</sup></span>
+    </div>
+    <div class="stat">
+      <span class="n">76<small>%</small></span>
+      <p>Of students in a paid internship said it helped them <span class="mark">develop technical skills</span> relevant to their career goals. Practica rated 81% and project-based learning 80%.</p>
+      <span class="src">Strada Education Foundation, 2025 <sup>4</sup></span>
+    </div>
+    <div class="stat">
+      <span class="n">70<small>%</small></span>
+      <p>Of interns, paid and unpaid alike, said the experience built <span class="mark">broad skills relevant across careers</span>, including communication, teamwork, and problem-solving.</p>
+      <span class="src">Strada Education Foundation, 2025 <sup>4</sup></span>
+    </div>
+  </div>
+
+  <div class="say">
+    <p>Of everything researchers measured, <b>expanding a student's professional network was the dimension most strongly linked to the career value of the experience</b>, and paid internships delivered the strongest boost.</p>
+    <p class="src">Strada Education Foundation, 2025 <sup>4</sup></p>
+  </div>
+</div>
+
+<!-- ===================== DEMAND AND ACCESS ===================== -->
+<div class="sec">
+  <div class="sechead">
+    <h2>Students want this, and most cannot get it</h2>
+    <span class="note">The gap a shared requirement is designed to close</span>
+  </div>
+
+  <div class="stats">
+    <div class="stat">
+      <span class="n">96<small>%</small></span>
+      <p>Of students who took an internship did so <span class="mark">to connect their education with career opportunities</span>: to gain experience in a specific career, or to test whether a field was a good fit.</p>
+      <span class="src">National Survey of College Internships, 2023 <sup>5</sup></span>
+    </div>
+    <div class="stat">
+      <span class="n">70<small>%</small></span>
+      <p>Of first-year students <span class="mark">plan to complete an internship</span> during college.</p>
+      <span class="src">Strada Education Foundation, 2024 <sup>5</sup></span>
+    </div>
+    <div class="stat">
+      <span class="n">&lt; 1 <small>in 4</small></span>
+      <p>Actually secure a <span class="mark">paid internship</span>. Fewer than half complete an internship of any kind.</p>
+      <span class="src">Strada Education Foundation, 2024 <sup>5</sup></span>
+    </div>
+    <div class="stat">
+      <span class="n">6 <small>in 10</small></span>
+      <p>Students at four-year institutions who did not intern <span class="mark">wanted to but could not</span>. In an earlier national sample the figure was 67%.</p>
+      <span class="src">NSCI 2023 and 2021 <sup>5,&thinsp;6</sup></span>
+    </div>
+    <div class="stat">
+      <span class="n">21.5<small>%</small></span>
+      <p>Measured internship participation across 12,130 students, <span class="mark">well below the 50 to 60% long assumed</span> from earlier estimates.</p>
+      <span class="src">National Survey of College Internships, 2021 <sup>6</sup></span>
+    </div>
+    <div class="stat">
+      <span class="n">55<small>%</small></span>
+      <p>Of students who did not intern reported <span class="mark">a strong interest in doing so</span>. Interest is not the constraint.</p>
+      <span class="src">Center for Research on College-Workforce Transitions, 2024 <sup>7</sup></span>
+    </div>
+  </div>
+
+  <div class="say">
+    <p>Across studies, the obstacles students name are the same and they are structural: <b>a heavy course load is the single most-cited barrier</b>, followed by not knowing how to find an internship, too few opportunities in their field, and the need to keep a paying job.</p>
+    <p class="src">Strada Education Foundation, 2024; NSCI, 2021 <sup>5,&thinsp;6</sup></p>
+  </div>
+</div>
+
+<!-- ===================== SOURCES ===================== -->
+<div class="sources">
+  <h3>Sources</h3>
+  <ol>
+    <li>Nichole Torpey-Saboe, Elaine Leigh, and Dave Clayton, <i>The Power of Work-Based Learning</i> (Indianapolis: Strada Education Foundation, March 2022). Estimated effects based on the Strada-Gallup Education Survey, September to November 2021, bachelor's degree completers, n = 1,941, matched on race and ethnicity, gender, age, and field of study, with cost-of-living adjustment for income.</li>
+    <li>Nichole Torpey-Saboe, Hee Song, and Mindi Thompson, "Work-Based Learning and Early Career Outcomes: Evidence on Earnings, College-Level Employment, and Career Progression," <i>Research in Higher Education</i> 67, no. 14 (2026). Nearest-neighbor matching on restricted-access NCES Baccalaureate and Beyond data (B&amp;B:2016/20).</li>
+    <li>John M. Nunley et al. (2016), as cited in the NSCI 2021 report. Résumé audit study of employer callback rates.</li>
+    <li>Nichole Torpey-Saboe, Kevin Grubb, and Akua Amankwah-Ayeh, <i>Internships and Beyond: Strengthening Career Value Across Diverse Models of Work-Based Learning</i> (Strada Education Foundation, 2025).</li>
+    <li><i>Building Better Internships: Understanding and Improving the Internship Experience</i> (Indianapolis: Strada Education Foundation, May 2024). Based on the 2023 National Survey of College Internships; third- and fourth-year students at four-year institutions, n = 2,824, and students of all class years at two-year institutions, n = 2,531, weighted to be nationally representative.</li>
+    <li>Matthew T. Hora, Jared Colston, Zhidong Chen, and Alexandra Pasqualone, <i>National Survey of College Internships (NSCI) 2021 Report</i> (Madison: Center for Research on College-Workforce Transitions, University of Wisconsin&ndash;Madison). n = 12,130 students across 17 institutions.</li>
+    <li>Hee Song and Matthew Hora, <i>Navigating Barriers to Access Internships: Challenges for Thwarted Interns Across Institution Types and Student Demographics</i> (Madison: CCWT, October 2024). n = 2,083 students who had not interned but wanted to.</li>
+  </ol>
+</div>
+
+</body>
+</html>
+
+</body></html>
