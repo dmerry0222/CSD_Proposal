@@ -208,15 +208,15 @@
   .home-link{background:none;border:0;padding:0;font:inherit;font-weight:600;color:var(--navy);cursor:pointer;text-align:left;text-decoration:underline;text-decoration-color:var(--gold);text-decoration-thickness:2px;text-underline-offset:3px;}
   .home-link:hover{color:#0F1E39;text-decoration-color:var(--navy);}
   /* landing page: vertical stat figure beside the text */
-  .home-grid{display:grid;grid-template-columns:minmax(0,1fr) 312px;column-gap:clamp(28px,4vw,56px);align-items:start;}
-  .home-grid .stats-wrap{margin:4px 0 0;padding:11px 16px 4px;border-radius:3px;position:sticky;top:24px;}
-  .home-grid .stats-title{font-size:.8125rem;line-height:1.4;margin:0 0 4px;}
-  .home-grid .stat{display:grid;grid-template-columns:clamp(52px,26%,66px) minmax(0,1fr);column-gap:10px;align-items:start;border-top:2px solid var(--accent);padding:6px 0 7px;}
-  .home-grid .stat:first-child{margin-top:7px;}
-  .home-grid .stat-n{font-size:1.5rem;}
-  .home-grid .stat-t{font-size:.75rem;line-height:1.38;}
-  .home-grid .stat-sub{font-size:.6875rem;margin-top:3px;}
-  .home-grid .stats-source{margin:0;padding-top:6px;font-size:.6875rem;line-height:1.45;}
+  .home-grid{display:grid;grid-template-columns:minmax(0,1fr) 368px;column-gap:clamp(28px,4vw,56px);align-items:start;}
+  .home-grid .stats-wrap{margin:4px 0 0;padding:13px 19px 5px;border-radius:3px;position:sticky;top:24px;}
+  .home-grid .stats-title{font-size:.9625rem;line-height:1.4;margin:0 0 5px;}
+  .home-grid .stat{display:grid;grid-template-columns:clamp(61px,26%,78px) minmax(0,1fr);column-gap:12px;align-items:start;border-top:2px solid var(--accent);padding:7px 0 8px;}
+  .home-grid .stat:first-child{margin-top:8px;}
+  .home-grid .stat-n{font-size:1.77rem;}
+  .home-grid .stat-t{font-size:.885rem;line-height:1.38;}
+  .home-grid .stat-sub{font-size:.81rem;margin-top:3px;}
+  .home-grid .stats-source{margin:0;padding-top:7px;font-size:.81rem;line-height:1.45;}
   @media (max-width:900px){
     .home-grid{display:block;}
     .home-grid .stats-wrap{position:static;width:100%;margin:0 0 24px;order:-1;}
@@ -236,7 +236,7 @@
   .prog{
     display:grid;
     grid-template-columns:repeat(4,minmax(0,1fr));
-    grid-template-rows:auto auto;
+    grid-template-rows:auto auto auto;
     column-gap:var(--gap);
     row-gap:0;
     margin:0 0 10px;
@@ -251,7 +251,7 @@
 
   /* ---------- the milestone card ---------- */
   .msx-card{
-    grid-row:1;
+    grid-row:2;
     align-self:stretch;
     display:flex;flex-direction:column;
     border-top:3px solid #40C1AC;
@@ -290,7 +290,7 @@
 
   /* ---------- the career plan ---------- */
   .plan{
-    grid-row:2;
+    grid-row:3;
     align-self:start;
     position:relative;
     margin-top:var(--drop);
@@ -340,7 +340,7 @@
 
   /* ---------- merged fourth column ---------- */
   .merged{
-    grid-column:4;grid-row:1;
+    grid-column:4;grid-row:2;
     align-self:stretch;
     display:flex;flex-direction:column;
     border-top:3px solid #40C1AC;
@@ -349,7 +349,7 @@
     padding-bottom:var(--drop);
   }
   .mplan{
-    grid-column:4;grid-row:2;
+    grid-column:4;grid-row:3;
     align-self:start;
     margin-top:var(--drop);
     min-height:var(--planh);
@@ -429,6 +429,8 @@
   .msec p{margin:0 0 9px;font-size:.9375rem;line-height:1.58;}
   .msec p:last-child{margin-bottom:0;}
   .msec p.todo{color:var(--mute);font-style:italic;}
+  .msec.msec2{margin:10px 0 0 16px;}
+  .msec2 h4{font-size:.6875rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--mute);margin:0 0 5px;}
 
   .mclose{
     position:absolute;top:10px;right:10px;z-index:2;
@@ -449,7 +451,6 @@
   .mintro .mi-body{font-size:.9375rem;line-height:1.5;margin:0;}
   .mintro a{color:var(--navy);font-weight:600;text-decoration:underline;text-decoration-color:var(--gold);text-decoration-thickness:2px;text-underline-offset:3px;cursor:pointer;}
   .prog.prog-only .plan{grid-row:1;margin-top:0;align-self:stretch;}
-  .msx.msx-plans{margin:18px 0 26px;}
   .prog.prog-only.prog-uses{grid-template-columns:repeat(auto-fit,minmax(190px,1fr));row-gap:16px;}
   .prog.prog-only.prog-uses .plan{grid-row:auto;grid-column:auto;border-left-color:#40C1AC;}
   .prog-uses .plan:hover{background:rgba(64,193,172,.34);}
@@ -457,7 +458,7 @@
   .prog-uses .plan.on .pn{color:rgba(21,40,75,.9);}
   @media (max-width:900px){
     .prog{display:flex;flex-direction:column;}
-    .msx-card,.plan,.merged,.mplan{grid-column:auto;grid-row:auto;width:100%;}
+    .msx-card,.plan,.merged,.mplan,.msx-group{grid-column:auto;grid-row:auto;width:100%;}
     .plan,.mplan{margin-bottom:26px;}
     .merged{margin-bottom:calc(var(--drop) * -1);}
   }
@@ -470,17 +471,108 @@
 
   }
   .msx .hint{margin-top:10px;}
+  .open-ico{position:absolute;top:9px;right:9px;display:inline-flex;color:rgba(21,40,75,.5);transition:color .18s ease;pointer-events:none;}
+  .msx .msx-card:hover .open-ico,.msx .plan:hover .open-ico,.asg:hover .open-ico,.asg:focus-visible .open-ico{color:var(--navy);}
+  .msx .msx-card,.asg{position:relative;}
+  .msx-card .nm,.plan .pv,.plan .nm{padding-right:22px;}
+  .asg-top{padding-right:22px;box-sizing:border-box;}
+
+  /* floating "back to top" button (Four Curricular Milestones page) */
+  .msx-top{position:fixed;right:34px;bottom:30px;z-index:30;display:inline-flex;align-items:center;gap:8px;
+    padding:11px 18px 11px 15px;background:var(--navy);color:#fff;border:0;border-bottom:3px solid #40C1AC;
+    font:inherit;font-size:.9375rem;font-weight:600;cursor:pointer;box-shadow:0 6px 18px rgba(21,40,75,.28);
+    opacity:0;visibility:hidden;transform:translateY(8px);transition:opacity .22s ease,transform .22s ease,visibility .22s;}
+  .msx-top.show{opacity:1;visibility:visible;transform:none;}
+  .msx-top:hover{background:#0F1E39;}
+
+  /* overview cards: divider and italic line under the description, the "main event" card, and the stand-alone plan card */
+  .ds-sep{display:block;height:1px;background:rgba(21,40,75,.1);margin:12px 12% 10px;}
+  .ds-tag{display:block;font-size:.8125rem;line-height:1.4;font-style:italic;color:var(--navy);}
+  .msx .plan.l4{grid-row:2 / 4;align-self:end;margin-top:0;}
+  .msx .plan.l4 .nm{margin-bottom:9px;}
+  .msx .plan.l4 .ord{margin:-5px 0 9px;}
+
+  /* group label above the two course cards */
+  .msx-group{grid-row:1;grid-column:1 / 3;display:flex;align-items:center;gap:12px;margin:0 0 8px;font-size:.6875rem;font-weight:600;letter-spacing:.09em;text-transform:uppercase;color:var(--navy);}
+  .msx-group::before,.msx-group::after{content:"";flex:1;height:2px;background:#40C1AC;}
+  .msx-clarify{margin:14px 0 0;font-size:.875rem;line-height:1.55;color:var(--body);max-width:78ch;}
+
+  /* signature assignment cards */
+  .asg-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px;margin:10px 0 4px;}
+  .asg{display:flex;flex-direction:column;align-items:flex-start;gap:8px;text-align:left;font:inherit;cursor:pointer;
+    background:#fff;border:1px solid var(--rule);border-top:3px solid #40C1AC;padding:13px 14px 14px;color:var(--body);
+    transition:background .18s ease,border-color .18s ease;}
+  .asg:hover,.asg:focus-visible{background:rgba(64,193,172,.16);border-color:#40C1AC;}
+  .asg.cap{background:rgba(64,193,172,.12);border:2px solid #40C1AC;border-top-width:4px;}
+  .asg.cap:hover,.asg.cap:focus-visible{background:rgba(64,193,172,.28);}
+  .asg-top{display:flex;width:100%;align-items:center;justify-content:space-between;gap:8px;}
+  .asg-eyebrow{font-size:.6875rem;font-weight:600;letter-spacing:.09em;text-transform:uppercase;color:var(--navy);}
+  .asg-ico{color:#2A9A89;display:inline-flex;}
+  .asg-cap-tag{font-size:.6875rem;font-weight:600;letter-spacing:.04em;color:var(--navy);background:#40C1AC;padding:2px 8px;}
+  .asg-title{font-size:1rem;font-weight:600;line-height:1.3;color:var(--navy);}
+  .asg-teaser{font-size:.8125rem;line-height:1.45;}
+  .asg-tags{display:flex;flex-wrap:wrap;gap:5px;}
+  .asg-tags span{font-size:.6875rem;color:var(--navy);background:var(--tint-02);border:1px solid var(--rule);padding:1px 7px;}
+  .asg-go{margin-top:auto;padding-top:2px;font-size:.8125rem;font-weight:600;color:var(--navy);text-decoration:underline;text-decoration-color:#40C1AC;text-decoration-thickness:2px;text-underline-offset:3px;}
+  .modal .asg-grid{grid-template-columns:repeat(2,minmax(0,1fr));}
+  @media (max-width:900px){.asg-grid{grid-template-columns:repeat(2,minmax(0,1fr));}}
+  @media (max-width:560px){.asg-grid,.modal .asg-grid{grid-template-columns:1fr;}}
+
+  /* assignment detail pane (reuses the one modal) */
+  .modal.is-asg{width:min(100%,860px);}
+  .mback{display:block;margin:0 0 10px;padding:0;background:none;border:0;font:inherit;font-size:.8125rem;font-weight:600;color:var(--navy);text-decoration:underline;text-decoration-color:#40C1AC;text-decoration-thickness:2px;text-underline-offset:3px;cursor:pointer;}
+  .mback[hidden]{display:none;}
+  .modal.is-asg .msub{color:var(--navy);font-style:italic;font-size:.9375rem;margin:2px 0 0;}
+  .modal.is-asg .msub .asg-tags{margin-top:9px;font-style:normal;}
+  .modal.is-asg .mhead h2{font-size:1.375rem;}
+  .asg-steps{margin:0 0 6px;padding-left:22px;}
+  .asg-steps li{margin:0 0 6px;font-size:.9375rem;line-height:1.55;}
+  .asg-note{font-size:.8125rem!important;color:#7A7A7A;}
+  .asg-rubric{width:100%;border-collapse:collapse;font-size:.875rem;margin:2px 0 8px;}
+  .asg-rubric th{text-align:left;font-size:.6875rem;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--navy);background:var(--tint-02);padding:7px 10px;border-bottom:1px solid var(--rule);}
+  .asg-rubric td{padding:7px 10px;border-bottom:1px solid var(--rule);}
+  .asg-rubric td:last-child,.asg-rubric th:last-child{text-align:right;width:84px;}
+  .asg-rubric tr.tot td{font-weight:600;color:var(--navy);border-bottom:0;}
+  .asg-conn{margin:0;}
+  .asg-conn dt{font-size:.6875rem;font-weight:600;letter-spacing:.09em;text-transform:uppercase;color:var(--navy);margin:10px 0 2px;}
+  .asg-conn dd{margin:0;font-size:.9375rem;line-height:1.55;}
+  .asg-badge{display:inline-block;font-size:.6875rem;font-weight:600;letter-spacing:.07em;text-transform:uppercase;color:#7A5A12;background:rgba(231,171,42,.22);padding:2px 9px;}
+  .asg-notes{margin-top:10px;border:1px solid var(--rule);background:var(--tint-02);padding:0;}
+  .asg-notes summary{cursor:pointer;padding:9px 12px;font-size:.8125rem;font-weight:600;color:var(--navy);}
+  .asg-notes p{margin:0;padding:0 12px 11px;font-size:.875rem;}
+
+  .modal.is-asg .mkick{color:var(--navy);}
+  .msx-page a[data-panel],.modal a[data-panel]{color:var(--navy);font-weight:600;text-decoration:underline;text-decoration-color:#40C1AC;text-decoration-thickness:2px;text-underline-offset:3px;cursor:pointer;}
+  h3.sub#ov-1{margin-top:46px;}
+  /* overview page: course comparison and notes */
+  .ovx-scroll{overflow-x:auto;margin:6px 0 18px;}
+  .ovx-tbl{width:100%;border-collapse:collapse;font-size:.9375rem;line-height:1.5;}
+  .ovx-tbl th{text-align:left;font-size:.6875rem;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--navy);background:var(--tint-02);padding:9px 12px;border-bottom:2px solid #40C1AC;}
+  .ovx-tbl td{padding:9px 12px;border-bottom:1px solid var(--rule);vertical-align:top;}
+  .ovx-tbl td:first-child{font-weight:600;color:var(--navy);width:21%;}
+  .ovx-det{margin:10px 0;border:1px solid var(--rule);border-left:4px solid #40C1AC;background:#fff;}
+  .ovx-det summary{cursor:pointer;padding:12px 16px;font-weight:600;color:var(--navy);}
+  .ovx-det > div{padding:0 16px 14px;}
+  .ovx-det ul{margin:6px 0 10px;padding-left:22px;}
+  .msx.msx-plans{margin:18px 0 26px;}
+  .msx.msx-jump{margin:4px 0 40px;padding-bottom:40px;border-bottom:1px solid var(--rule);}
+  #panel-milestones .sec-title::after{display:none;}
   .msx-page{margin:0 0 44px;}
-  .msx .msx-page h3.sub{background:var(--navy);color:#fff;margin:0 0 20px;padding:14px 22px;border-left:6px solid var(--gold);}
+  .msx .msx-page h3.sub{background:var(--tint-02);color:var(--navy);margin:0 0 20px;padding:14px 22px;border:1px solid var(--rule);border-left:6px solid #40C1AC;}
   .msx .msx-page{margin:0 0 64px;}
   .msx .msx-page:last-child{margin-bottom:0;}
-  .msx-page p{margin:0 0 10px;}
-  .msx .msx-page .plan{display:block;grid-row:auto;grid-column:auto;width:min(100%,460px);margin:12px 0 0;}
+  .msx-page p{margin:0 0 6px;}
+  .msx .msx-page .plan,.modal .mbody .plan{display:block;grid-row:auto;grid-column:auto;width:min(calc(100% - 30px),460px);margin:6px 0 0;}
   .msx-page p.todo{color:#8A8A8A;font-style:italic;}
   .msx-meta{font-size:var(--t-small);color:#8A8A8A;margin:-6px 0 14px!important;}
-  .msx-h{font-size:.6875rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--navy);margin:20px 0 8px;padding-bottom:5px;border-bottom:1px solid var(--rule);}
+  .msx-h{font-size:1.0625rem;font-weight:600;color:var(--navy);margin:14px 0 3px;padding-top:9px;border-top:1px solid var(--rule);}
+  .msx-h:first-of-type{margin-top:0;padding-top:0;border-top:0;}
+  .msx .msx-page > :not(h3.sub){margin-left:30px;}
+  .msx-sub2{padding-left:20px;}
+  .msx-sub2 .msx-h2{font-size:.9375rem;font-weight:600;color:var(--navy);margin:8px 0 2px;}
   .msx-plan{font-size:1.0625rem;font-weight:600;color:var(--navy);margin:30px 0 4px;padding-left:12px;border-left:3px solid var(--sky);}
-  hr.msx-divider{border:0;border-top:1px solid var(--rule);margin:40px 0 0;}
+  #panel-throughline .sec-standfirst{border-bottom:0;padding-bottom:0;}
+  .msx .prog.prog-only .plan{display:flex;flex-direction:column;justify-content:flex-start;}
   .home-cta{margin:34px 0 8px;}
   .home-next{margin-top:40px;padding-top:24px;border-top:1px solid var(--rule);}
   .home-next p{font-size:var(--t-small);color:#8A8A8A;margin:0 0 12px;}
@@ -489,6 +581,10 @@
     font-size:.9375rem;padding:11px 20px;cursor:pointer;
   }
   .start:hover{background:#0F1E39;}
+  .home-cta .start{font-size:1.3125rem;font-weight:600;letter-spacing:.005em;padding:20px 44px;border-bottom:4px solid var(--gold);box-shadow:0 6px 18px rgba(21,40,75,.22);transition:background .18s ease,transform .18s ease,box-shadow .18s ease;}
+  .home-cta .start::after{content:"→";margin-left:14px;display:inline-block;transition:transform .18s ease;}
+  .home-cta .start:hover{transform:translateY(-1px);box-shadow:0 8px 22px rgba(21,40,75,.3);}
+  .home-cta .start:hover::after{transform:translateX(4px);}
   @media (max-width:760px){
     .home-title{font-size:2.125rem;}
     .home-inner{padding-top:56px;}
@@ -806,6 +902,7 @@
     .panel{scroll-behavior:auto;}
   }
 </style>
+<script src="assignments.js"></script>
 </head>
 <body>
 
@@ -824,7 +921,7 @@
 
     <ul class="nav" id="nav">
       <li class="nav-top">
-        <button class="nav-link" data-panel="urgency">What is the Urgency?<span class="nav-note">The context and research behind the proposal</span></button>
+        <button class="nav-link" data-panel="urgency">What is the Urgency?<span class="nav-note">The context and research <br>behind this proposal</span></button>
         <ul class="sublist" data-for="urgency">
           <li><button class="sub-link" data-target="u-1">The promise of career opportunity</button></li>
           <li><button class="sub-link" data-target="u-2">Career management skills require explicit instruction</button></li>
@@ -836,10 +933,6 @@
       </li>
       <li>
         <button class="nav-link" data-panel="throughline">The Career Plan</button>
-        <ul class="sublist" data-for="throughline">
-          <li><button class="sub-link" data-target="t-1">Career Plan proof of concept example</button></li>
-          <li><button class="sub-link" data-target="t-3">How the Career Plan innovates career advising</button></li>
-        </ul>
       </li>
       <li>
         <button class="nav-link" data-panel="milestones">Four Curricular Milestones</button>
@@ -885,6 +978,7 @@
         <p class="home-lead">Career Strategy &amp; Design proposes a connected approach to helping every Suffolk undergraduate translate their education into meaningful work and informed choices about their future. It would make career exploration, preparation, experience, and planning an explicit part of the undergraduate curriculum, building on the disciplinary knowledge and broader capabilities students develop throughout their education.</p>
 
         <p>The proposed requirement connects two courses, substantive work-based learning, and a final preparation checkpoint through four curricular milestones. <b>An evolving Career Plan provides continuity across those milestones</b>, helping students document what they are learning, revise their goals, and identify their next steps. It would also give faculty, advisors, and career staff a shared starting point for guidance and help Suffolk identify where students need additional support.</p>
+          <div class="home-cta"><button type="button" class="start" data-panel="overview">Curriculum Overview</button></div>
           </div>
         <figure class="stats-wrap">
             <p class="stats-title">Among students entering Suffolk in Fall 2026:</p>
@@ -904,11 +998,10 @@
                 </p>
               </div>
             </div>
-            <p class="stats-source">Entering Student Survey, Office of Institutional Research and Assessment, Summer&nbsp;2026. n&nbsp;=&nbsp;556–561.<span data-cite="SU_FY26"></span></p>
+            <p class="stats-source">Entering Student Survey, OIRA, Summer&nbsp;2026. n&nbsp;=&nbsp;556–561.<span data-cite="SU_FY26"></span></p>
           </figure>
         </div>
 
-        <div class="home-cta"><button type="button" class="start" data-panel="overview">Curriculum Overview</button></div>
 
 
       </div>
@@ -976,26 +1069,22 @@
         <p>The plan also provides <strong>a shared starting point for guidance across courses, academic advising, and career services</strong>, allowing each conversation to build on the student’s prior work. For students, it would make progress and next steps explicit; for faculty and advisors, it would reveal opportunities to help; and for Suffolk, aggregate information would help identify patterns in students’ goals, preparation, and unmet needs. This design puts into practice the principle that career guidance should begin early, continue throughout college, and connect across the settings where students learn and seek support.<span data-cite="stradaprinciples"></span></p>
         </div>
 
-        <h2 class="sub" id="t-1">Career Plan: Proof-of-Concept Example</h2>
+        <h2 class="sub" id="t-1">Proof-of-Concept Examples of the Career Plan at Each of the Four Milestones</h2>
         
       
 
         <!-- the four Career Plan cards; built by the msx script, same modals as the Curriculum Overview -->
         <div class="msx msx-plans">
           <div class="prog" id="msx-plans"></div>
-          <p class="hint">Select a card to open that version of the example Career Plan.</p>
         </div>
 
 
         
 
-        <hr class="msx-divider">
-
         <h2 class="sub" id="t-3">How the Career Plan Innovates Career Advising at Suffolk</h2>
         <p>Because students answer in structured fields rather than in free-standing essays, the Career Plan can do things a submitted document cannot: carry a student’s own words into their next plan, follow up on the goals they set, show patterns across a cohort, point advisors to the students who most need a conversation, and give instructors a view of what their students are working toward. Select a card to see an illustrative example of each. All names and data are fabricated for demonstration.</p>
         <div class="msx msx-plans">
           <div class="prog" id="msx-uses"></div>
-          <p class="hint">Select a card to see that example.</p>
         </div>
       </div>
     </section>
@@ -1004,16 +1093,19 @@
     <section class="panel" id="panel-overview" tabindex="-1">
       <div class="panel-inner">
         <h2 class="sec-title">CS&amp;D Curriculum Overview</h2>
-        <p>One plan, carried forward and revised four times across a student&rsquo;s degree. Select a milestone or a version of the plan for detail.</p>
         <div class="msx" id="msx">
-          <button type="button" class="msx-bar msx-bar-top" data-go="milestones">Four sequential milestones, each building the foundation for success in the next</button>
+          <!-- Optional link bars, currently hidden. To restore, delete this comment wrapper.
+            <button type="button" class="msx-bar msx-bar-top" data-go="milestones">Four sequential milestones, each building the foundation for success in the next</button>
+          -->
           <div class="prog" id="msx-prog"></div>
-          <button type="button" class="msx-bar msx-bar-bottom" data-go="throughline">An evolving Career Plan that connects student action with assessment and support</button>
-          <p class="hint">Select any card for detail.</p>
+          <!-- Optional link bar, currently hidden. To restore, delete this comment wrapper.
+            <button type="button" class="msx-bar msx-bar-bottom" data-go="throughline">An evolving Career Plan that connects student action with assessment and support</button>
+          -->
           <div class="msx-scrim" id="msx-scrim" hidden>
             <div class="modal" id="msx-modal" role="dialog" aria-modal="true" aria-labelledby="msx-mtitle">
               <button type="button" class="mclose" id="msx-mclose" aria-label="Close">&times;</button>
               <div class="mhead">
+                <button type="button" class="mback" id="msx-mback" hidden></button>
                 <span class="mkick" id="msx-mkick"></span>
                 <h2 id="msx-mtitle"></h2>
                 <p class="msub" id="msx-msub"></p>
@@ -1065,21 +1157,29 @@
   var STAGES=[
     {
       /* ---------- card ---------- */
-      ord:"2nd semester course",
+      ord:"CE-100 · 1 credit · First-year 2nd semester",
       nm:"Career Exploration",
       ds:[
-        "Students investigate career pathways through personal reflection, conversations with faculty, students, and alumni, and analysis of local and national labor-market data. Whether exploring possibilities or refining an established direction, students develop greater clarity about their career options and goals."
+        "Students investigate career pathways through personal reflection, conversations with faculty, students, and alumni, and analysis of local and national labor-market data. Whether exploring broad possibilities or deepening knowledge an established direction, students develop greater clarity about their career options and goals."
       ],
+      tag:"A common course and curriculum, with student-led exploration across or within particular disciplines.",
       /* ---------- course-style modal ---------- */
       modal:{
         kick:"Milestone 1",
         title:"Career Exploration",
         sub:"CE-100 &middot; 1 credit &middot; First year, spring semester",
         sections:[
-          {h:"Credits",p:"Placeholder. One credit, graded pass/fail. Note here whether the credit sits inside an existing course or stands alone, and what that means for a student's total load."},
-          {h:"Courses",p:"Placeholder. Name the host course or courses, who teaches them, and how a transfer or mid-year entry student picks the requirement up."},
-          {h:"Learning outcomes",p:"Placeholder. Two or three learning outcomes, written so they can be assessed from what the student produces rather than from participation."},
-          {h:"Sequencing",p:"Placeholder. When in the term this falls, what has to come before it, and what it unlocks for Milestone 2."}
+          {h:"Credits",p:"1 credit; proposed as new credit-bearing instruction for CAS and SBS. The interaction with existing degree and Shared General Education credit structures requires college-level review."},
+          {h:"Sequencing",p:"Second semester of students' first year. Currently proposed as the second half of a First Year Experience sequence. Adapted pathways for transfer students and other entry patterns would require implementation design."},
+          {h:"Product",card:true,p:"<b>Career Exploration Plan (CP1)</b> is the culminating student product of CE-100. It captures emerging academic and professional interests; research-supported options; strengths and experience evidence; faculty, alumni, or professional connections; unresolved questions; and specific actions involving course choices, relationship-building, and further experiences. It is built progressively from the signature assignments, rather than written from scratch at the end."},
+          {h:"Satisfied By",p:"There are no existing courses that currently meet the criteria for this portion of the CS&D requirement. This proposal suggests developing <b>CE-100: Career Exploration</b> as a course open to all Suffolk students. Like any Gen Ed requirement, however, this requirement could be satisfied by another course that meets the necessary criteria and learning objectives."},
+          {h:"Course(s)",p:"<b>CE-100: Career Exploration</b> or other course that meets this requirement's criteria (below).<br>See the <a data-panel='howwork'>How the Work Gets Done</a> section for more information about how this course would be designed and managed, who would teach the course, and how it would be paid for."},
+          {h:"Instructional Identity",lvl:2,p:"<b>Common first-year curriculum; mixed-major cohorts; individualized exploration.</b> The course does not ask students to choose a major or commit to one profession. It teaches the habits of inquiry required to connect academic choices, lived experiences, and possible futures. Departments participate as subjects of exploration and contributors of intellectual expertise, events, and opportunities."},
+          {h:"Description",lvl:2,p:"Through guided self-assessment, exploration of Suffolk's academic programs and disciplinary opportunities, labor-market research, analysis of professional roles, and conversations with faculty, professionals, and other students, students investigate multiple academic and career pathways and learn to evaluate the evidence informing their choices. Students practice initiating professional relationships, develop foundational career materials, and consider how compensation, educational costs, and personal circumstances affect possible directions. They examine how majors, courses, faculty expertise, and research or creative opportunities can help them test emerging interests. Students complete a <b>Career Exploration Plan (CP1)</b> documenting their findings, promising directions, outstanding questions, and specific next steps for coursework, relationships, and experience. The course prepares students to pursue more focused professional development in CE-200."},
+          {h:"Scheduling and Modality",lvl:2,p:"This draft is designed to minimize the number of instructors required while accommodating limited classroom space. One proposed spring model uses approximately <b>25 sections of 40 students</b>, each attached to a weekly 75-minute classroom block. Each section is divided into two cohorts of about 20 students, with cohorts attending in person on alternating weeks. Between in-person meetings, students complete research, assignments, departmental or career events, and informational conversations. From the student's perspective, the in-person cohort of approximately 20 is their regular class group. Additional delivery models can be considered after validating staffing, access, time-on-task, and room availability."},
+          {h:"Academic Department and Faculty Engagement",lvl:2,p:"CE-100 intentionally introduces students to the University's intellectual and disciplinary communities. Departments may contribute concise program exploration profiles, identify representative courses and research or creative opportunities, publicize accessible academic events, and facilitate appropriate faculty or upper-level student conversations. These are <b>opportunities for participation, not a requirement that every faculty member meet individually with every first-year student</b>. Students already committed to a major should explore deeper or adjacent possibilities, not be compelled to reconsider a satisfactory choice."},
+          {h:"Signature Assignments",asg:"CE-100",p:"Seven signature assignments build on one another, and the seventh is the culminating Career Exploration Plan (CP1). CE-100 students should have access to a curated menu of department events, alumni panels, introductory career programs, employer talks, and other engagement opportunities. Preparation, purposeful participation, follow-through, and synthesis determine educational value; mere attendance is not the full assessment. Practical alternatives are provided for inaccessible times or formats."},
+          {h:"Criteria for Satisfying the Requirement",p:"To satisfy the <b>Career Exploration</b> requirement, a course must ensure that students demonstrate the ability to:</p><ol><li><b>Analyze themselves as developing learners and professionals.</b> Explain how interests, strengths, values, experiences, and circumstances inform at least two potential academic or career directions, supported by specific evidence rather than unsupported self-description.</li><li><b>Explore academic and professional pathways.</b> Research and compare multiple possibilities, including at least two academic pathways available through Suffolk and at least three professional roles or career pathways, considering curricular opportunities, work responsibilities, qualifications, entry routes, working conditions, and potential growth.</li><li><b>Evaluate career and academic information critically.</b> Locate, interpret, compare, and appropriately qualify information from credible sources, including program information, job postings, labor-market data, and professional perspectives, to reach evidence-based conclusions about opportunities and constraints.</li><li><b>Investigate communities and initiate professional engagement.</b> Identify relevant faculty, academic communities, professional associations, alumni, and other contacts; initiate appropriate outreach; complete at least one substantive career-focused conversation or approved equivalent; and reflect on insights gained through purposeful engagement.</li><li><b>Communicate a foundational professional identity.</b> Develop a foundational resume that accurately represents education, experiences, and skills; and deliver a concise professional introduction suited to an appropriate audience or context.</li><li><b>Integrate learning into an actionable plan.</b> Synthesize self-assessment, academic and career research, and professional engagement into a completed <b>Career Exploration Plan (CP1)</b>, with prioritized possibilities, unresolved questions, and specific next steps for academic study, relationships, and experience.</li></ol>"}
         ]
       },
       /* ---------- plan box ---------- */
@@ -1099,21 +1199,31 @@
       }
     },
     {
-      ord:"WBL-preparation course",
+      ord:"CE-200 · 1 credit · Sophomore (or Junior) year",
       nm:"Career Navigation",
       ds:[
-        "Students prepare to secure and succeed in meaningful work-based learning by researching opportunities, assessing their qualifications, and developing professional materials and relationships. They also learn how to demonstrate initiative, communicate effectively, and build credibility in professional settings."
+        "Students prepare to secure and succeed in meaningful work-based learning by researching opportunities, assessing their qualifications, and developing professional materials and relationships. They also develop skills and plans for demonstrating initiative, communicating effectively, and building credibility in their professional WBL setting."
       ],
+      tag:"A centralized curricular spine, with a mix of industry-focused and generalized sections",
       modal:{
         kick:"Milestone 2",
         title:"Career Navigation",
         sub:"CE-200 &middot; 1 credit &middot; Summer before sophomore year, through fall of junior year",
-        sections:[
-          {h:"Credits",p:"Placeholder. One credit. Note how the credit is handled when the milestone spans more than one term, and who records completion."},
-          {h:"Courses",p:"Placeholder. CE-200, plus any discipline-specific equivalents approved to carry the requirement."},
-          {h:"Learning outcomes",p:"Placeholder. Outcomes should not presuppose an active work-based learning search, since many students take this one to three semesters before they are ready to apply."},
-          {h:"Sequencing",p:"Placeholder. The wide window is deliberate. State the latest point at which a student can complete this and still be positioned for Milestone 3."}
+
+sections:[
+          {h:"Credits",p:"1 credit; proposed as new credit-bearing instruction for CAS and SBS. College-level degree-credit effects require review."},
+          {h:"Sequencing",p:"Prerequisite: CE-100.<br>Sophomore year, following CE-100, and ideally before the student's principal qualifying work-based learning experience. Students with accelerated recruiting calendars and transfer pathways may need appropriate timing accommodations."},
+          {h:"Product",card:true,p:"<b>Career Readiness Plan (CP2)</b> is the culminating student product of CE-200. It carries forward selected CP1 content and records more focused target roles and qualifying experience pathways, current professional materials, evidence of skill development, specific outreach and engagement, a projected internship or other WBL term, application and approval milestones, professional contacts, plans to address barriers, and contingency strategies. A student need not already have secured an internship to demonstrate CE-200 achievement. The course assesses a credible, enacted preparation strategy and readiness to participate in a supervised professional experience."},
+          {h:"Satisfied By",p:"There are no existing courses currently approved as satisfying this portion of the CS&D requirement. The closest match are the CAS courses that meet the CAS-201 requirement, but those do not meet all the criteria while also covering material from CE-100. This proposal suggests developing <b>CE-200: Career Navigation</b> as a course open to all Suffolk students. Like any Gen Ed requirement, however, this requirement could be satisfied by another course that meets the necessary criteria and learning objectives."},
+          {h:"Course(s)",p:"<b>CE-200: Career Navigation</b> or other course that meets this requirement's criteria (below).<br>See the <a data-panel='howwork'>How the Work Gets Done</a> section for more information about how this course would be designed and managed, who would teach the course, and how it would be paid for."},
+          {h:"Instructional Identity",lvl:2,p:"<b>One coordinated CE-200 course family; common outcomes, industry-aligned application.</b> Every undergraduate is expected to take CE-200 through the proposed Career Education academic unit. Sections may align with broad career communities, and a generalist or interdisciplinary option serves students who are undecided or pursuing cross-sector interests. Students should be able to select alignment according to intended professional opportunities rather than major alone."},
+          {h:"Description",lvl:2,p:"Building directly on CE-100, this course prepares students to <b>secure, succeed in, and maximize the value of</b> an internship or other meaningful work-based learning experience. Students assess their qualifications and readiness, identify career-relevant opportunities, develop targeted search strategies, and strengthen their professional materials, networking, and interviewing skills. They also develop strategies for navigating workplace expectations, communicating effectively, establishing professional credibility, seeking and responding to feedback, building relationships, and maximizing their learning before, during, and after an experience. Students complete an individualized Career Navigation Plan that builds on their earlier Exploration Plan and establishes specific goals, preparation priorities, and actionable steps for securing and succeeding in work-based learning."},
+          {h:"Industry Alignment and Instructional Delivery",lvl:2,p:"CE-200 uses a <b>common academic architecture with differentiated professional applications</b>. The Career Education academic unit would coordinate course identity, syllabi, required assignments, CP2, learning outcomes, assessment, and continuous improvement. Broad industry-aligned sections may use relevant employers, recruiting timelines, job descriptions, professional organizations, portfolios, technical skills, and interview practices. Generalist or interdisciplinary sections must be available. Students are not assigned an industry solely based on their current major.<br><b>Potential section families, subject to demand and staffing:</b> Business, Finance &amp; Accounting; Healthcare &amp; Life Sciences; Technology &amp; Analytics; Arts, Media &amp; Design; Government, Law &amp; Public Service; and Generalist / Interdisciplinary. These examples are not a finalized set of section types.<br><b>Collaborative delivery without fragmented equivalencies:</b> Faculty and departments may teach, contribute expertise, or arrange linked meeting times with existing courses, but the proposed default is that students are enrolled in <b>CE-200 itself</b> and that its common expectations remain intact. The existing CAS-201 courses and departmental variants taught in practice by Career Center staff may offer a useful transition path into this coordinated model. SBS does not currently have a directly equivalent required course, so implementation there will require different scheduling and credit decisions. Formal equivalency policies, transfer cases, and exceptions remain for faculty governance discussion."},
+          {h:"Scheduling and Modality",lvl:2,p:"A hybrid model similar to CE-100 could combine alternating small-group in-person sessions with independent applied work, professional events, interviews, applications, and coaching. Sessions prioritize feedback on materials, interview rehearsal, industry-specific opportunity analysis, and peer problem-solving. The exact number and enrollment size of CE-200 sections, assignment review staffing, and use of existing course meeting blocks remain implementation decisions. Shared curriculum does not require every section to use the same examples, employer events, or instructional techniques."},
+          {h:"Signature Assignments",asg:"CE-200",p:"Six signature assignments build toward the culminating Career Readiness Plan (CP2). They share common outcomes, assessment expectations, and a common syllabus framework across all CE-200 sections, while examples, employers, and events can be industry-specific. A student can choose a career community based on interests, regardless of declared major."},
+          {h:"Criteria for Satisfying the Requirement",p:"To satisfy the <b>Career Navigation</b> requirement, a course must ensure that students demonstrate the ability to:</p><ol><li><b>Assess readiness and act on identified needs.</b> Review their developing career direction, analyze professional and practical readiness challenges, and complete two or three approved actions selected to address relevant needs, documenting results and next steps.</li><li><b>Evaluate specific WBL opportunities and qualifications.</b> Investigate at least three specific internships or other qualifying WBL opportunities; assess duties, eligibility under the five criteria, qualifications, recruiting timelines, application requirements, and alignment with current goals.</li><li><b>Develop targeted professional materials.</b> Refine an accurate resume and professional profile or appropriate equivalent, tailoring evidence of relevant capabilities to specific opportunities and industry expectations.</li><li><b>Demonstrate application and interview effectiveness.</b> Interpret position descriptions, prepare tailored application responses, and practice evidence-based behavioral or situational interview responses, incorporating feedback.</li><li><b>Activate professional relationships.</b> Develop and implement a networking and opportunity-engagement strategy through appropriate outreach, a relevant employer or professional event or equivalent interaction, purposeful follow-up, and documentation of next steps.</li><li><b>Produce a realistic WBL action strategy.</b> Synthesize opportunity research, readiness actions, professional materials, networking, anticipated challenges, and contingency pathways into a completed <b>Career Readiness Plan (CP2)</b> with prioritized options, a projected completion term, and actionable milestones.</li></ol>"}
         ]
+
       },
       planV:"Career Plan v2.0",
       planDs:"Students identify targeted opportunities, preparation needs, and a timeline of specific actions to secure and succeed in meaningful work-based learning.",
@@ -1140,10 +1250,15 @@
         title:"Career Integration",
         sub:"Work-based learning &middot; 0 to 4 credits &middot; Sophomore spring through the summer before senior year",
         sections:[
-          {h:"Credits",p:"Placeholder. Variable credit, zero to four, depending on the experience. Explain why zero credit is still a completed milestone and how that is recorded."},
-          {h:"Courses",p:"Placeholder. Not a course in the usual sense. Name the qualifying pathways and who verifies that an experience meets the five criteria."},
-          {h:"Learning outcomes",p:"Placeholder. Three learning outcomes plus two experience conditions, rendered to students as five checkboxes rather than two categories."},
-          {h:"Sequencing",p:"Placeholder. The Experience Accelerator triggers at the end of the third-to-last semester. Set out what happens for a student who reaches that point without a placement."}
+          {h:"Credits",p:"::Placeholder::"},
+          {h:"Sequencing",p:"::Placeholder::"},
+          {h:"Product",card:true},
+          {h:"Satisfied By",p:"::Placeholder::"},
+          {h:"Course(s)",p:"::Placeholder::"},
+          {h:"Description",lvl:2,p:"::Placeholder::"},
+          {h:"Modality",lvl:2,p:"::Placeholder::"},
+          {h:"Criteria",p:"::Placeholder::"},
+          {h:"Other Considerations",p:"::Placeholder::"}
         ]
       },
       planV:"Career Plan v3.0",
@@ -1161,7 +1276,7 @@
       }
     },
     {
-      ord:"Assignment in capstone",
+      ord:"Senior Course Assignment",
       nm:"Career Launch",
       ds:[
         "Embedded in a capstone or other senior-facing course, this culminating assignment ensures every student completes a final Career Plan. It assesses career development, identifies students needing additional support, and informs OIRA's First Destination outcomes tracking."
@@ -1171,10 +1286,7 @@
         title:"Career Launch",
         sub:"Capstone assignment &middot; No separate credit &middot; Senior year, fall or spring",
         sections:[
-          {h:"Credits",p:"Placeholder. No separate credit. The milestone is an assignment inside an existing capstone, so note what that asks of capstone instructors."},
-          {h:"Courses",p:"Placeholder. Discipline capstones across each school. Name who coordinates consistency across them."},
-          {h:"Learning outcomes",p:"Placeholder. Outcomes here are about readiness to act rather than readiness to plan. Say what distinguishes this from Milestone 2."},
-          {h:"Sequencing",p:"Placeholder. December and May graduates hit this at different points. Describe both, and how the plan feeds the First Destination Survey."}
+          {h:"Assignment",card:true}
         ]
       },
       planV:"Career Plan v4.0",
@@ -1204,18 +1316,22 @@
       mbody=document.getElementById("msx-mbody"),
       mframe=document.getElementById("msx-mframe"),
       mintro=document.getElementById("msx-mintro"),
+      mback=document.getElementById("msx-mback"),
       mclose=document.getElementById("msx-mclose"),
       lastFocus=null;
 
-  function cardInner(s){
-    return '<span class="ms">'+
-             '<span class="nm">'+s.nm+'</span>'+
+  var OPEN_ICO='<span class="open-ico" aria-hidden="true"><svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7"/><path d="M8 7h9v9"/></svg></span>';
+  var DOWN_ICO='<span class="open-ico" aria-hidden="true"><svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14"/><path d="M6 13l6 6 6-6"/></svg></span>';
+  function cardInner(s,ico){
+    return (ico||'')+'<span class="ms">'+
+             '<span class="nm">'+(STAGES.indexOf(s)+1)+': '+s.nm+'</span>'+
              '<span class="ord">'+s.ord+'</span>'+
              s.ds.map(function(p){return '<span class="ds">'+p+'</span>';}).join('')+
+             (s.tag?'<span class="ds-sep"></span><span class="ds-tag">'+s.tag+'</span>':'')+
            '</span>';
   }
   function planInner(s){
-    return '<span class="pv">'+s.planV+'</span><span class="pn">'+s.planDs+'</span>';
+    return '<span class="pv">'+s.planV+'</span><span class="pn">'+s.planDs+'</span>'+OPEN_ICO;
   }
   function btn(cls,kind,i,html,col,label){
     var b=document.createElement("button");
@@ -1228,21 +1344,62 @@
     return b;
   }
 
+  /* Optional label bar above the first two cards. To restore, delete the comment markers.
+  var grp=document.createElement("div");
+  grp.className="msx-group";
+  grp.innerHTML="<span>Two connected one-credit courses</span>";
+  prog.appendChild(grp);
+  */
   STAGES.forEach(function(s,i){
     if(i<3){
-      prog.appendChild(btn("msx-card","modal",i,cardInner(s),i+1,s.nm));
+      prog.appendChild(btn("msx-card","modal",i,cardInner(s,OPEN_ICO),i+1,s.nm));
       prog.appendChild(btn("plan","planModal",i,
         '<span class="link"><i class="eb"></i><i class="tp"></i></span>'+planInner(s),
         i+1,s.planV));
     }else{
-      prog.appendChild(btn("merged",MERGED_OPENS,i,cardInner(s),null,s.nm+" and "+s.planV));
-      var d=document.createElement("div");
-      d.className="mplan"; d.dataset.kind=MERGED_OPENS; d.dataset.i=i;
-      d.setAttribute("aria-hidden","true");
-      d.innerHTML=planInner(s);
-      prog.appendChild(d);
+      /* milestone 4 is shown as a Career Plan card alone */
+      var c4=btn("plan","planModal",i,
+        '<span class="nm">'+(i+1)+': '+s.nm+'</span><span class="ord">'+s.ord+'</span>'+planInner(s),
+        i+1,s.nm+", "+s.planV);
+      c4.classList.add("l4");
+      prog.appendChild(c4);
     }
   });
+
+  /* Four Curricular Milestones page: the four class cards, each scrolling to its section */
+  function buildJump(){
+    var jumpEl=document.getElementById("msx-jump");
+    if(!jumpEl) return;
+    STAGES.forEach(function(s,i){
+      var c=btn("msx-card","jump",i,cardInner(s,DOWN_ICO),i+1,"Go to "+s.nm);
+      c.removeAttribute("aria-haspopup");
+      jumpEl.appendChild(c);
+    });
+    jumpEl.addEventListener("click",function(e){
+      var b=e.target.closest(".msx-card"); if(!b) return;
+      var panel=document.getElementById("panel-milestones"), t=document.getElementById("ms-"+(+b.dataset.i+1));
+      if(panel&&t) panel.scrollTo({top:panel.scrollTop+t.getBoundingClientRect().top-panel.getBoundingClientRect().top-24,behavior:"smooth"});
+    });
+  }
+  if(document.readyState==="loading") document.addEventListener("DOMContentLoaded",buildJump);
+  else buildJump();
+
+  /* "Top" button: visible once the four jump cards have scrolled above the top of the page */
+  function initTop(){
+    var panel=document.getElementById("panel-milestones"),
+        jump=document.getElementById("msx-jump"),
+        top=document.getElementById("msx-top");
+    if(!panel||!jump||!top) return;
+    function update(){
+      top.classList.toggle("show", jump.getBoundingClientRect().bottom < panel.getBoundingClientRect().top);
+    }
+    panel.addEventListener("scroll",update,{passive:true});
+    window.addEventListener("resize",update);
+    top.addEventListener("click",function(){ panel.scrollTo({top:0,behavior:"smooth"}); });
+    update();
+  }
+  if(document.readyState==="loading") document.addEventListener("DOMContentLoaded",initTop);
+  else initTop();
 
   /* Career Plan page: the four plan cards on their own */
   var plansEl=document.getElementById("msx-plans");
@@ -1265,7 +1422,7 @@
   if(usesEl){
     usesEl.classList.add("prog-only","prog-uses");
     USE_CARDS.forEach(function(c,i){
-      usesEl.appendChild(btn("plan","use",i,'<span class="pv">'+c[0]+'</span><span class="pn">'+c[1]+'</span>',null,c[0]));
+      usesEl.appendChild(btn("plan","use",i,'<span class="pv">'+c[0]+'</span><span class="pn">'+c[1]+'</span>'+OPEN_ICO,null,c[0]));
     });
     usesEl.addEventListener("click", onCardClick);
   }
@@ -1284,7 +1441,7 @@
     });
   });
 
-  var group=[prog.querySelector(".merged"),prog.querySelector(".mplan")];
+  var group=[prog.querySelector(".merged"),prog.querySelector(".mplan")].filter(Boolean);
   function hot(on){ group.forEach(function(g){ g.classList.toggle("hot",on); }); }
   group.forEach(function(el){
     el.addEventListener("mouseenter",function(){hot(true);});
@@ -1296,7 +1453,7 @@
   function paras(p){
     var list = Object.prototype.toString.call(p)==="[object Array]" ? p : [p];
     return list.map(function(t){
-      return '<p'+(/^Placeholder\./.test(t)?' class="todo"':'')+'>'+t+'</p>';
+      return '<p'+(/^(::Placeholder::|Placeholder\.)/.test(t)?' class="todo"':'')+'>'+t+'</p>';
     }).join('');
   }
 
@@ -1331,7 +1488,8 @@
   });
 
   function openUse(i,source){
-    modal.classList.remove("is-plan");
+    modal.classList.remove("is-plan","is-asg");
+    mback.hidden=true; backTo=null; curModal={kind:"use",i:i};
     modal.classList.add("is-embed");
     mintro.hidden=true;
     mframe.hidden=false;
@@ -1349,6 +1507,8 @@
     if(!data) return;
 
     modal.classList.toggle("is-plan", kind==="planModal");
+    modal.classList.remove("is-asg"); mback.hidden=true; backTo=null;
+    curModal={kind:kind,i:i};
     /* Career Plan modals show the working example (My Career Plan.html), opened to
        version i+1 with earlier versions marked completed and later ones disabled */
     var embed = kind==="planModal";
@@ -1364,9 +1524,7 @@
     mtitle.innerHTML=data.title||"";
     msub.innerHTML=data.sub||"";
     msub.style.display=data.sub?"":"none";
-    mbody.innerHTML=(data.sections||[]).map(function(sec){
-      return '<section class="msec"><h3>'+sec.h+'</h3>'+paras(sec.p)+'</section>';
-    }).join('');
+    mbody.innerHTML=(data.sections||[]).map(function(sec){ return secModal(sec,i); }).join('');
     mbody.scrollTop=0;
 
     markLive(kind,i);
@@ -1387,15 +1545,112 @@
   }
 
   function onCardClick(e){
+    var ag=e.target.closest(".asg");
+    if(ag){ openAsg(ag.dataset.asg,null,ag); return; }
     var b=e.target.closest(".msx-card,.plan,.merged,.mplan");
     if(!b) return;
-    var src = b.classList.contains("mplan") ? group[0] : b;
+    var src = b.classList.contains("mplan") && group[0] ? group[0] : b;
     open(b.dataset.kind, +b.dataset.i, src);
   }
   prog.addEventListener("click", onCardClick);
   if(plansEl) plansEl.addEventListener("click", onCardClick);
 
   /* ---------- the same content, laid out as a page (Milestones tab) ---------- */
+
+  /* ---------- signature assignments (data lives in assignments.js) ---------- */
+  var ASG = window.ASSIGNMENTS || [];
+  var curModal = null, backTo = null;
+  function e(t){ return String(t).replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;"); }
+  function pad2(n){ return (n<10?"0":"")+n; }
+  var IC = function(d){ return '<svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">'+d+'</svg>'; };
+  var ICONS = {
+    "compass":IC('<circle cx="12" cy="12" r="9"/><path d="M16 8l-2.5 5.5L8 16l2.5-5.5z"/>'),
+    "search":IC('<circle cx="11" cy="11" r="7"/><path d="M21 21l-4.7-4.7"/>'),
+    "signpost":IC('<path d="M12 3v18"/><path d="M4 5h12l3 3-3 3H4z"/><path d="M20 14H8l-3 3 3 3h12z"/>'),
+    "users-round":IC('<circle cx="9" cy="8" r="3.5"/><path d="M3 20a6 6 0 0 1 12 0"/><circle cx="17" cy="9" r="2.5"/><path d="M16 14.5a5 5 0 0 1 5 5"/>'),
+    "messages-square":IC('<path d="M4 5h16v11H9l-5 4z"/>'),
+    "contact-round":IC('<rect x="3" y="4" width="18" height="16" rx="2"/><circle cx="9" cy="11" r="2.5"/><path d="M5.5 17a4 4 0 0 1 7 0"/><path d="M15 9h3M15 13h3"/>'),
+    "map":IC('<path d="M3 6l6-2 6 2 6-2v14l-6 2-6-2-6 2z"/><path d="M9 4v14M15 6v14"/>'),
+    "clipboard-check":IC('<rect x="5" y="4" width="14" height="17" rx="2"/><rect x="9" y="2" width="6" height="4"/><path d="M9 13l2 2 4-4"/>'),
+    "list-filter":IC('<path d="M3 6h18M6 12h12M10 18h4"/>'),
+    "file-user":IC('<path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8z"/><path d="M14 3v5h5"/><circle cx="12" cy="13" r="2"/><path d="M8.5 19a3.5 3.5 0 0 1 7 0"/>'),
+    "mic":IC('<rect x="9" y="3" width="6" height="11" rx="3"/><path d="M5 11a7 7 0 0 0 14 0M12 18v3"/>'),
+    "network":IC('<circle cx="12" cy="5" r="2"/><circle cx="5" cy="19" r="2"/><circle cx="19" cy="19" r="2"/><path d="M12 7v5M12 12l-6 5M12 12l6 5"/>'),
+    "calendar-check":IC('<rect x="3" y="5" width="18" height="16" rx="2"/><path d="M3 10h18M8 3v4M16 3v4M9 15l2 2 4-4"/>')
+  };
+  function asgFind(id){ for(var k=0;k<ASG.length;k++) if(ASG[k].id===id) return ASG[k]; return null; }
+  function asgCard(a){
+    return '<button type="button" class="asg'+(a.capstone?' cap':'')+'" data-asg="'+a.id+'" aria-haspopup="dialog">'+
+      OPEN_ICO+'<span class="asg-top"><span class="asg-eyebrow">'+e(a.course)+' &middot; '+pad2(a.ordinal)+' / '+pad2(a.total)+'</span><span class="asg-ico">'+(ICONS[a.icon]||'')+'</span></span>'+
+      (a.capstone?'<span class="asg-cap-tag">Course capstone &middot; Career Plan</span>':'')+
+      '<span class="asg-title">'+e(a.title)+'</span>'+
+      '<span class="asg-teaser">'+e(a.teaser)+'</span>'+
+      '<span class="asg-tags">'+a.tags.map(function(t){return '<span>'+e(t)+'</span>';}).join('')+'</span>'+
+      '<span class="asg-go">Explore assignment &rarr;</span>'+
+    '</button>';
+  }
+  function asgBlock(course){
+    return '<div class="asg-grid">'+ASG.filter(function(a){return a.course===course;}).map(asgCard).join('')+'</div>';
+  }
+  function asgSec(h,inner){ return '<section class="msec"><h3>'+h+'</h3>'+inner+'</section>'; }
+  function asgDetail(a){
+    var guard=(a.rubricNote?e(a.rubricNote)+' ':'')+'Grades assess learning and documented actions rather than external success.';
+    var h='';
+    h+=asgSec('At a glance','<p>'+e(a.overview)+'</p>');
+    h+=asgSec('What students do','<ol class="asg-steps">'+a.steps.map(function(t){return '<li>'+e(t)+'</li>';}).join('')+'</ol>'+
+      (a.actionMenu?'<p><b>Possible action menu:</b> '+e(a.actionMenu)+'</p>':''));
+    h+=asgSec('Student products and evidence','<p>'+e(a.deliverables)+'</p>');
+    h+=asgSec('Learning outcomes','<p>'+e(a.learningOutcomes)+'</p><p class="asg-note">Proposed assignment-level outcomes that operationalize the course-level criteria. They are not separately adopted policy.</p>');
+    h+=asgSec('Assessment','<table class="asg-rubric"><tr><th>Criterion</th><th>Weight</th></tr>'+
+      a.rubric.map(function(r){return '<tr><td>'+e(r.criterion)+'</td><td>'+r.weight+'%</td></tr>';}).join('')+
+      '<tr class="tot"><td>Total</td><td>100%</td></tr></table><p class="asg-note">'+guard+'</p>');
+    h+=asgSec('Curricular connection','<dl class="asg-conn"><dt>Before</dt><dd>'+e(a.connections.before)+'</dd><dt>Into the Career Plan</dt><dd>'+e(a.connections.cp)+'</dd><dt>Next</dt><dd>'+e(a.connections.next)+'</dd></dl>');
+    h+=asgSec('Student journey example','<p><span class="asg-badge">Illustrative / fictional scenario</span></p><p><b>'+e(a.example.student)+' ('+e(a.example.major)+')</b> '+e(a.example.text)+'</p>'+
+      (a.example.note?'<p class="asg-note">'+e(a.example.note)+'</p>':''));
+    h+=asgSec('Implementation and access','<p>'+e(a.implementation.access)+'</p><details class="asg-notes"><summary>Instructor notes</summary><p>'+e(a.implementation.note)+'</p></details>');
+    return h;
+  }
+  function openAsg(id,back,source){
+    var a=asgFind(id); if(!a) return;
+    backTo=back||null;
+    modal.classList.remove("is-plan","is-embed");
+    modal.classList.add("is-asg");
+    mintro.hidden=true; mframe.hidden=true;
+    mkick.textContent=a.course+" · Assignment "+a.ordinal+" of "+a.total;
+    mtitle.textContent=a.title;
+    msub.style.display="";
+    msub.innerHTML='Essential question: '+e(a.essentialQuestion)+'<span class="asg-tags" style="display:flex">'+a.tags.map(function(t){return '<span>'+e(t)+'</span>';}).join('')+'</span>';
+    mbody.innerHTML=asgDetail(a);
+    mbody.scrollTop=0;
+    if(backTo){ mback.textContent="← Back to "+STAGES[backTo.i].modal.title; mback.hidden=false; }
+    else { mback.hidden=true; }
+    curModal={kind:"asg",id:id};
+    markLive(null,null);
+    if(scrim.hidden){
+      lastFocus=source||document.activeElement;
+      scrim.hidden=false;
+      requestAnimationFrame(function(){ scrim.classList.add("open"); });
+    }
+    mclose.focus();
+  }
+
+  /* one section, as a page block or as a modal block */
+  function secBody(sec,i){
+    return (sec.p!==undefined ? paras(sec.p) : '')+(sec.card ? cardBtn(STAGES[i],i) : '')+(sec.asg ? asgBlock(sec.asg) : '');
+  }
+  function secPage(sec,i){
+    if(sec.lvl===2) return '<div class="msx-sub2"><h6 class="msx-h2">'+sec.h+'</h6>'+secBody(sec,i)+'</div>';
+    return '<h5 class="msx-h">'+sec.h+'</h5>'+secBody(sec,i);
+  }
+  function secModal(sec,i){
+    if(sec.lvl===2) return '<section class="msec msec2"><h4>'+sec.h+'</h4>'+secBody(sec,i)+'</section>';
+    return '<section class="msec"><h3>'+sec.h+'</h3>'+secBody(sec,i)+'</section>';
+  }
+
+  function cardBtn(s,i){
+    return '<button type="button" class="plan" data-kind="planModal" data-i="'+i+'" aria-haspopup="dialog" aria-label="'+s.planV+'">'+planInner(s)+'</button>';
+  }
+
   function renderPages(){
     var pages=document.getElementById("msx-pages");
     if(!pages) return;
@@ -1409,15 +1664,23 @@
       return '<section class="msx-page" id="ms-'+(i+1)+'">'+
         '<h3 class="sub">'+m.kick+': '+m.title+'</h3>'+
         (s.intro?paras(s.intro):'')+
-        secs(m)+
-        '<h5 class="msx-h">Final Product</h5>'+
-        '<button type="button" class="plan" data-kind="planModal" data-i="'+i+'" aria-haspopup="dialog" aria-label="'+s.planV+'">'+planInner(s)+'</button>'+
+        (m.sections||[]).map(function(sec){ return secPage(sec,i); }).join('')+
       '</section>';
     }).join('');
     pages.addEventListener("click", onCardClick);
   }
   if(document.readyState==="loading") document.addEventListener("DOMContentLoaded",renderPages);
   else renderPages();
+
+  mback.addEventListener("click",function(){
+    if(backTo) open(backTo.kind,backTo.i,lastFocus); else close();
+  });
+  mbody.addEventListener("click",function(e){
+    var ag=e.target.closest(".asg");
+    if(ag){ openAsg(ag.dataset.asg, (curModal&&curModal.kind==="modal")?{kind:"modal",i:curModal.i}:null, ag); return; }
+    var b=e.target.closest(".plan"); if(!b) return;
+    open("planModal",+b.dataset.i,b);
+  });
 
   mclose.addEventListener("click", close);
   scrim.addEventListener("mousedown", function(e){ if(e.target===scrim) close(); });
@@ -1435,14 +1698,78 @@
   });
 })();
 </script>
+
+        <h3 class="sub" id="ov-1">Two connected courses. Two different jobs.</h3>
+        <p><b>CE-100: Career Exploration</b> helps students examine themselves, explore Suffolk's academic possibilities, investigate professional pathways, evaluate evidence, and begin professional conversations. A common first-year curriculum encourages broad exploration without expecting students to commit prematurely to a major or occupation. Students complete <b>Career Exploration Plan (CP1)</b>.</p>
+        <p><b>CE-200: Career Navigation</b> takes students from broad exploration to informed action. Students identify specific opportunities, strengthen professional materials, address personal readiness gaps, engage with professionals and employers, and build a workable plan for qualifying WBL. A coordinated family of industry-aligned and generalist CE-200 sections shares core outcomes, signature assignments, assessment expectations, and <b>Career Readiness Plan (CP2)</b>.</p>
+        <p><b>The progression:</b> Explore broadly &rarr; prepare specifically &rarr; learn through substantive work &rarr; integrate and launch.</p>
+
+        <h3 class="sub" id="ov-2">One program, different educational layers</h3>
+        <div class="ovx-scroll"><table class="ovx-tbl">
+          <tr><th></th><th>CE-100: Career Exploration</th><th>CE-200: Career Navigation</th></tr>
+          <tr><td>Central question</td><td>What could I study and do, and how can I make informed choices?</td><td>How can I prepare for, pursue, and succeed in relevant opportunities?</td></tr>
+          <tr><td>Instruction</td><td>Common first-year curriculum, mixed-major exploration</td><td>Common standards and course identity, tailored professional contexts</td></tr>
+          <tr><td>Relationship to major</td><td>Introduces and broadens academic choices</td><td>Applies career skills to student-selected industries and fields</td></tr>
+          <tr><td>Research</td><td>Disciplines, pathways, occupations, labor markets, associations</td><td>Specific organizations, opportunities, requirements, recruiting calendars</td></tr>
+          <tr><td>Relationships</td><td>Faculty, academic community, informational conversations</td><td>Employers, relevant alumni, professional networks, opportunity referrals</td></tr>
+          <tr><td>Professional materials</td><td>Foundational resume and introduction</td><td>Targeted materials, professional presence, interview evidence</td></tr>
+          <tr><td>Work-based learning</td><td>Understand possible future experiences</td><td>Choose and execute a realistic route to qualifying WBL</td></tr>
+          <tr><td>Student product</td><td>Career Exploration Plan, CP1 (assignment 7 of 7)</td><td>Career Readiness Plan, CP2 (assignment 6 of 6)</td></tr>
+        </table></div>
+
+        <details class="ovx-det"><summary>How the course outcomes map to the signature assignments</summary><div>
+          <p>Assignments are labeled CE100-01 through CE100-07 and CE200-01 through CE200-06. These are <i>primary evidence sources</i>, not the only places where a skill is practiced.</p>
+          <div class="ovx-scroll"><table class="ovx-tbl">
+            <tr><th>Course outcome</th><th>Strongest signature assignment evidence</th></tr>
+            <tr><td>CE-100 1: reflective self-analysis</td><td>100-01; 100-07</td></tr>
+            <tr><td>CE-100 2: academic and professional pathway exploration</td><td>100-02; 100-03; 100-07</td></tr>
+            <tr><td>CE-100 3: evaluating information and labor markets</td><td>100-02; 100-03; 100-04; 100-07</td></tr>
+            <tr><td>CE-100 4: academic and professional community engagement</td><td>100-03; 100-04; 100-05</td></tr>
+            <tr><td>CE-100 5: foundational communication</td><td>100-05; 100-06</td></tr>
+            <tr><td>CE-100 6: synthesis and CP1</td><td>100-07</td></tr>
+            <tr><td>CE-200 1: readiness plus actions</td><td>200-01; 200-06</td></tr>
+            <tr><td>CE-200 2: WBL targeting and qualifications</td><td>200-02; 200-06</td></tr>
+            <tr><td>CE-200 3: targeted materials</td><td>200-03; 200-06</td></tr>
+            <tr><td>CE-200 4: applications and interviews</td><td>200-04</td></tr>
+            <tr><td>CE-200 5: networking and professional engagement</td><td>200-05; 200-06</td></tr>
+            <tr><td>CE-200 6: WBL strategy and CP2</td><td>200-06</td></tr>
+          </table></div>
+        </div></details>
+
+        <details class="ovx-det"><summary>From CE-100 to CE-200: a course-to-course crosswalk and suggested pacing</summary><div>
+          <div class="ovx-scroll"><table class="ovx-tbl">
+            <tr><th>Progression</th><th>CE-100: Exploration</th><th>CE-200: Navigation</th></tr>
+            <tr><td>Self-knowledge</td><td>CE100-01 starting point</td><td>CE200-01 challenges and 2 to 3 actions</td></tr>
+            <tr><td>Opportunity research</td><td>CE100-02 careers and labor-market sources</td><td>CE200-02 specific WBL opportunities and gaps</td></tr>
+            <tr><td>Academic integration</td><td>CE100-03 majors, minors, departments, faculty</td><td>Applied in CE200-02 target qualifications and WBL plans</td></tr>
+            <tr><td>Communities and professional contacts</td><td>CE100-04 professional association</td><td>CE200-05 targeted employer and professional engagement</td></tr>
+            <tr><td>Applied conversations and events</td><td>CE100-05 exploratory conversation and event</td><td>CE200-05 job fair or employer engagement and follow-up</td></tr>
+            <tr><td>Professional story</td><td>CE100-06 foundational resume and introduction</td><td>CE200-03 tailored materials and CE200-04 interviews</td></tr>
+            <tr><td>Integrative product</td><td>CE100-07 CP1 exploration plan</td><td>CE200-06 CP2 WBL readiness plan</td></tr>
+          </table></div>
+          <p><b>Student-facing thesis.</b> CE-100: &ldquo;What might I do, study, and investigate, and why?&rdquo; CE-200: &ldquo;What will I pursue, how will I prepare, and what will I do next?&rdquo; WBL: &ldquo;What did I learn by doing authentic work?&rdquo;</p>
+          <p><b>Suggested 12-week pacing</b> (not a finalized syllabus):</p>
+          <ul>
+            <li><b>CE-100:</b> Weeks 1&ndash;2 CE100-01; weeks 2&ndash;5 CE100-02; weeks 4&ndash;7 CE100-03; weeks 5&ndash;8 CE100-04; weeks 5&ndash;10 CE100-05 (calendar-dependent); weeks 8&ndash;10 CE100-06; weeks 11&ndash;12 CE100-07. Several items should overlap intentionally.</li>
+            <li><b>CE-200:</b> Weeks 1&ndash;2 CE200-01 diagnostic and action commitments, with completion by weeks 10&ndash;11; weeks 2&ndash;5 CE200-02; weeks 4&ndash;7 CE200-03; weeks 6&ndash;9 CE200-04; weeks 3&ndash;10 CE200-05 based on event schedules; weeks 10&ndash;12 CE200-06.</li>
+          </ul>
+        </div></details>
+
+        <h3 class="sub" id="ov-3">Operational details and open decisions</h3>
+        <p><b>Ready to portray as the core proposed design:</b> two one-credit courses; broad exploratory CE-100; coordinated industry-aligned and generalist CE-200; 13 signature assignments including CP1 and CP2; documented student learning, professional engagement, and readiness to pursue qualifying WBL.</p>
+        <p><b>Specified as preferred proposals rather than final determinations:</b> required event and conversation counts and allowable equivalents; CE-100 size and alternating-week instruction; CE-200 section families, capacity, and scheduling; rubrics and pass thresholds; the Career Education academic unit's formal authority; credit impacts and treatment of existing CAS-201; shared Career Plan technology; details of department participation; governance rules for transfer and equivalency.</p>
+        <p><b>Guardrails:</b> No student's grade depends on securing an employer offer, having an influential network at entry, selecting a particular major, paying for professional membership, or revealing private hardship. Student work can be revisited and revised. Reasonable equivalent ways to participate in professional or departmental engagement are maintained where access requires flexibility.</p>
+        <p><b>A note on workload.</b> Each signature assignment can bundle several small tasks and reuse outputs from prior assignments. This page describes the learning architecture, not 13 independent essays or 13 additional event visits. The learning products should be structured, concise, and cumulative. Faculty and instructional design review should calibrate the actual hours of work, event access, feedback capacity, and scoring requirements before final adoption. Student stories on this site are fictional, and any technology workflows described in them are illustrative future capabilities, not assurances of current Suffolk systems.</p>
       </div>
     </section>
 
     <!-- MILESTONES -->
     <section class="panel" id="panel-milestones" tabindex="-1">
       <div class="panel-inner">
-        <h2 class="sec-title">Four milestones</h2>
-        <p >Lorem ipsum dolor sit amet, consectetur adipiscing elit. Each milestone is placeholder content pending the working group's draft language.</p>
+        <h2 class="sec-title">Four Curricular Milestones</h2>
+        <button type="button" class="msx-top" id="msx-top" aria-label="Back to the top of the page"><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 19V5"/><path d="M6 11l6-6 6 6"/></svg>Top</button>
+        <!-- jump cards, built by the msx script from STAGES -->
+        <div class="msx msx-jump"><div class="prog prog-nav" id="msx-jump"></div></div>
 
         
         <!-- generated from the STAGES data in the msx script (same source as the front-page cards and modals) -->
@@ -1703,7 +2030,7 @@
     var panel=panels[key];
     panel.scrollTop=0;
     forcedSub=null;
-    document.body.classList.toggle("no-rail", NO_RAIL.indexOf(key)>=0);
+    document.body.classList.toggle("no-rail", RAIL_PANELS.indexOf(key)<0);
     closeRail();
     clearLit();
     watch(panel);
@@ -1746,7 +2073,7 @@
   }
 
   var forcedSub=null;
-  var NO_RAIL=["milestones","overview"];   /* panel keys that hide the references rail */
+  var RAIL_PANELS=["urgency"];   /* the only panels that show the references rail */
 
   function spy(panel){
     syncRail(panel);
