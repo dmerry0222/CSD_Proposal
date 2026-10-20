@@ -1,5 +1,5 @@
 /* ==========================================================================
-   Signature assignments: the single source of truth for the 13 assignment
+   Illustrative assignments: the single source of truth for the 13 assignment
    cards and their detail views (CE-100: seven, CE-200: six).
 
    index.html renders every card and every detail pane from this list.
@@ -27,7 +27,7 @@ window.ASSIGNMENTS = [
   id:"CE100-01", course:"CE-100", ordinal:1, total:7, icon:"compass",
   title:"Starting Point Reflection & Career Diagnostic",
   teaser:"Examine your interests, strengths, experiences, values, assumptions, and open questions. Capture a starting point for exploration, not a prediction about what you should become.",
-  tags:["Self-assessment","Reflection","CP1 baseline"],
+  tags:["Self-assessment","Reflection","v1.0 baseline"],
   essentialQuestion:"What do I know about myself and possible futures, and what do I still need to learn?",
   overview:"Students produce a specific, evidence-grounded account of their starting point. They distinguish interests from strengths, interests from occupational stereotypes, and certainty from actual knowledge. The assignment is formative: it establishes questions they can answer through later academic and career investigation.",
   steps:[
@@ -94,7 +94,7 @@ window.ASSIGNMENTS = [
   id:"CE100-03", course:"CE-100", ordinal:3, total:7, icon:"signpost",
   title:"Academic Pathways & Possibilities",
   teaser:"Investigate how Suffolk majors, minors, courses, faculty expertise, and scholarly opportunities connect to your interests and potential futures, without having to choose one “correct” major.",
-  tags:["Academic exploration","Faculty engagement","CP1 input"],
+  tags:["Academic exploration","Faculty engagement","v1.0 input"],
   essentialQuestion:"How can the academic choices I make at Suffolk expand the possibilities I am exploring?",
   overview:"Students explore at least two academic pathways within Suffolk, including the intellectual questions disciplines investigate, the work students do within them, and the possibilities those paths may support. This makes academic departments visible partners in career exploration while respecting that majors do not map one-to-one to occupations.",
   steps:[
@@ -104,7 +104,7 @@ window.ASSIGNMENTS = [
     "Compare what each pathway would help them learn and how it connects to their interests or researched professional directions.",
     "Identify one or two realistic next steps, such as a course to investigate, faculty contact, advisor discussion, or academic experience to explore."
   ],
-  deliverables:"Academic Pathway Map; two-pathway comparison; short engagement summary; student-authored next steps linked to CP1.",
+  deliverables:"Academic Pathway Map; two-pathway comparison; short engagement summary; student-authored next steps linked to v1.0.",
   learningOutcomes:"Interpret curricular and departmental information; explain academic-professional connections without oversimplification; conduct purposeful academic inquiry; make informed academic exploration choices.",
   rubric:[
     {criterion:"Accurate academic research",weight:25},
@@ -171,7 +171,7 @@ window.ASSIGNMENTS = [
     "Compare the insights from conversations and events with occupational research, noting useful perspectives and possible limits or biases.",
     "Send appropriate thanks or follow-up and identify one contact or avenue worth maintaining."
   ],
-  deliverables:"Outreach message and question set; interview or conversation summary; event preparation-and-reflection record; appropriate follow-up and key insights for CP1.",
+  deliverables:"Outreach message and question set; interview or conversation summary; event preparation-and-reflection record; appropriate follow-up and key insights for v1.0.",
   learningOutcomes:"Initiate ethical, professional outreach; pose informed questions; communicate respectfully; interpret experiential perspectives critically; act on new information.",
   rubric:[
     {criterion:"Preparation and quality of questions",weight:25},
@@ -226,34 +226,34 @@ window.ASSIGNMENTS = [
 },
 {
   id:"CE100-07", course:"CE-100", ordinal:7, total:7, icon:"map", capstone:true,
-  title:"Career Exploration Plan (CP1): Evidence & Next Steps",
+  title:"Career Exploration Plan (v1.0): Evidence & Next Steps",
   teaser:"Integrate what you learned about yourself, careers, academics, and professional communities into a student-authored plan for what to investigate next.",
   tags:["Synthesis","Evidence-based decisions","Career Plan 1"],
   essentialQuestion:"Given what I have learned, what should I explore, try, and revisit next?",
-  overview:"CP1 is the culminating intellectual product of CE-100, not a duplicate submission of every earlier assignment. Students synthesize findings, choose next experiments, and document their reasoning, including what remains uncertain. The output becomes a living resource for advisers and the student, subject to student-controlled sharing.",
+  overview:"v1.0 is the culminating intellectual product of CE-100, not a duplicate submission of every earlier assignment. Students synthesize findings, choose next experiments, and document their reasoning, including what remains uncertain. The output becomes a living resource for advisers and the student, subject to student-controlled sharing.",
   steps:[
     "Revisit their starting assumptions and identify at least two meaningful changes or confirmations supported by evidence.",
     "Prioritize one or more career and academic possibilities without requiring a single final decision.",
     "Integrate comparative occupational research, academic exploration, and professional conversations, identifying contradictions and information gaps.",
     "Select three specific next actions spanning coursework, relationships, skills, or experience, with realistic timing or checkpoints.",
-    "Complete and submit CP1 using structured fields and links to existing work products rather than reauthoring them wholesale."
+    "Complete and submit v1.0 using structured fields and links to existing work products rather than reauthoring them wholesale."
   ],
-  deliverables:"Career Exploration Plan (CP1) in the proposed Suffolk Career Plan portal (or equivalent launch workflow); prioritized directions, documented evidence, open questions, and time-bound exploration goals.",
+  deliverables:"Career Exploration Plan (v1.0) in the proposed Suffolk Career Plan portal (or equivalent launch workflow); prioritized directions, documented evidence, open questions, and time-bound exploration goals.",
   learningOutcomes:"Synthesize credible career and academic evidence; justify plausible choices; articulate uncertainty responsibly; create feasible, revisable next-step plans.",
   rubric:[
     {criterion:"Quality of evidence integration",weight:30},
     {criterion:"Reasoning and reflection",weight:30},
     {criterion:"Actionable next steps and sequencing",weight:30},
-    {criterion:"Completion and organization of CP1",weight:10}
+    {criterion:"Completion and organization of v1.0",weight:10}
   ],
   connections:{
     before:"Draws explicitly from CE100-01 through CE100-06.",
     cp:"The final consolidated artifact itself.",
-    next:"CE200-01 reopens the plan as a starting point; later CP2 compares original hypotheses with WBL targets. Faculty and advisers can use student-shared parts of CP1 for timely opportunities."
+    next:"CE200-01 reopens the plan as a starting point; later v2.0 compares original hypotheses with WBL targets. Faculty and advisers can use student-shared parts of v1.0 for timely opportunities."
   },
-  example:{student:"Lena",major:"Marketing",text:"arrives confident about marketing but uses exploration to refine what kinds of roles, environments, and experiences actually appeal to her. CP1 records an evolving hypothesis, not a fixed identity."},
+  example:{student:"Lena",major:"Marketing",text:"arrives confident about marketing but uses exploration to refine what kinds of roles, environments, and experiences actually appeal to her. v1.0 records an evolving hypothesis, not a fixed identity."},
   implementation:{
-    access:"Use a common, brief CP1 schema so data are interpretable without turning students into form-fillers. Allow selective sharing, clear privacy guidance, and an alternate submission route if the future portal is unavailable at launch.",
+    access:"Use a common, brief v1.0 schema so data are interpretable without turning students into form-fillers. Allow selective sharing, clear privacy guidance, and an alternate submission route if the future portal is unavailable at launch.",
     note:"Assess synthesis and reasoning, not the perceived prestige of the chosen field."
   }
 },
@@ -262,16 +262,16 @@ window.ASSIGNMENTS = [
 {
   id:"CE200-01", course:"CE-200", ordinal:1, total:6, icon:"clipboard-check",
   title:"Career Readiness Audit & Action Challenge",
-  teaser:"Revisit CP1, identify the obstacles most relevant to your WBL search, and choose two or three concrete actions to strengthen your readiness during the semester.",
-  tags:["Reflection to action","Personalized challenge","CP2 baseline"],
+  teaser:"Revisit v1.0, identify the obstacles most relevant to your WBL search, and choose two or three concrete actions to strengthen your readiness during the semester.",
+  tags:["Reflection to action","Personalized challenge","v2.0 baseline"],
   essentialQuestion:"What could realistically keep me from securing and succeeding in WBL, and what will I do about it now?",
   overview:"Rather than repeating generic self-assessment, students use a short diagnostic to select two or three actions from an approved menu or propose equivalents. Credit is based on defining reasonable commitments, documenting completed actions, and reflecting on results, not on whether confidence rises or circumstances disappear. This is a term-long assignment with an early proposal and a later completion check.",
   steps:[
-    "Revisit CP1 and assess developments in direction, skills, relationships, practical availability, confidence, and timeline for WBL.",
+    "Revisit v1.0 and assess developments in direction, skills, relationships, practical availability, confidence, and timeline for WBL.",
     "Privately identify two or three meaningful challenge areas (for example unfamiliarity with recruiting timelines, limited network, materials quality, interviewing, transportation or scheduling, financial constraints, or uncertainty about qualifying pathways).",
     "Choose two to three concrete and feasible actions from a menu, each related to an identified challenge; obtain an equivalent option when needed.",
     "Complete the actions throughout the semester, recording minimal appropriate evidence such as revised materials, workshop participation plus reflection, outreach documentation, or a feasible alternative-pathway plan.",
-    "Compare starting expectations with what the actions revealed and feed outstanding needs into CP2."
+    "Compare starting expectations with what the actions revealed and feed outstanding needs into v2.0."
   ],
   actionMenu:"Schedule resume feedback and submit a revised resume; complete a mock interview and revise three examples; attend a networking practice session and thoughtfully engage two people; identify and contact alumni or professionals and complete one exchange; research five real opportunities with deadlines; create an affordable WBL pathway plan with advising; investigate a relevant professional association and one viable event; speak with a campus job supervisor about a potential qualifying project; design a weekly opportunity-search practice.",
   deliverables:"Short readiness diagnostic; selected action commitments with due dates; completion evidence for two or three actions; brief outcomes reflection and updated readiness notes.",
@@ -284,7 +284,7 @@ window.ASSIGNMENTS = [
   ],
   rubricNote:"Missing external responses or lack of confidence gain should not lower grades when genuine effort and an approved alternative are documented.",
   connections:{
-    before:"Reopens CE100-07 CP1, the CE100-06 initial resume, and prior conversations.",
+    before:"Reopens CE100-07 v1.0, the CE100-06 initial resume, and prior conversations.",
     cp:"Personalized remaining readiness gaps, completed actions, and next actions.",
     next:"Reinforces CE200-02 through CE200-05 and supports realistic CE200-06 WBL planning."
   },
@@ -352,7 +352,7 @@ window.ASSIGNMENTS = [
   connections:{
     before:"CE100-06 foundational materials and CE200-02 target analysis.",
     cp:"Current professional documents, target fit, remaining evidence gaps.",
-    next:"CE200-04 uses the same examples in interviews; WBL and CP3 later add verified work accomplishments."
+    next:"CE200-04 uses the same examples in interviews; WBL and v3.0 later add verified work accomplishments."
   },
   example:{student:"Nico",major:"Graphic Design",text:"revises a portfolio so hiring audiences can see his design process, not merely a gallery of completed visuals; CE-200 makes that portfolio useful for targeting studios."},
   implementation:{
@@ -428,34 +428,34 @@ window.ASSIGNMENTS = [
 },
 {
   id:"CE200-06", course:"CE-200", ordinal:6, total:6, icon:"calendar-check", capstone:true,
-  title:"Career Readiness Plan (CP2) & WBL Action Strategy",
+  title:"Career Readiness Plan (v2.0) & WBL Action Strategy",
   teaser:"Combine target opportunities, professional evidence, contacts, readiness actions, and constraints into a feasible plan for securing and succeeding in a qualifying WBL experience.",
   tags:["Strategic synthesis","WBL readiness","Career Plan 2"],
   essentialQuestion:"What exactly will I pursue, when will I act, and how will I adapt if my first route doesn't work?",
-  overview:"CP2 consolidates learning from the course into a practical opportunity pursuit plan. It includes the student's projected WBL term, plausible alternative routes, and preparation for what meaningful supervised work requires. This bridges search readiness and workplace readiness, and it does not require obtaining a placement before the course ends.",
+  overview:"v2.0 consolidates learning from the course into a practical opportunity pursuit plan. It includes the student's projected WBL term, plausible alternative routes, and preparation for what meaningful supervised work requires. This bridges search readiness and workplace readiness, and it does not require obtaining a placement before the course ends.",
   steps:[
     "Prioritize target roles and opportunities and state how each could satisfy the five WBL criteria or what needs further verification.",
     "Build a realistic timeline for application, employer outreach, faculty or project approval if needed, follow-up, and likely WBL completion; identify a projected term.",
     "Summarize two or three readiness actions completed in CE200-01 and prioritize remaining skill, experience, or access gaps.",
     "Identify a preferred WBL route and at least one credible backup, including campus work, faculty research, an approved existing-workplace project, or institutional support where appropriate.",
-    "Draft provisional WBL learning goals and a plan to seek feedback, build professional relationships beyond a direct supervisor, and document work-based learning; submit CP2 with links to existing materials."
+    "Draft provisional WBL learning goals and a plan to seek feedback, build professional relationships beyond a direct supervisor, and document work-based learning; submit v2.0 with links to existing materials."
   ],
-  deliverables:"CP2 Career Readiness Plan in the proposed portal (or equivalent launch workflow); target list and applications and approval calendar; projected WBL term; contingency route; provisional work-learning goals; links to resume, interaction tracker, and readiness evidence.",
+  deliverables:"v2.0 Career Readiness Plan in the proposed portal (or equivalent launch workflow); target list and applications and approval calendar; projected WBL term; contingency route; provisional work-learning goals; links to resume, interaction tracker, and readiness evidence.",
   learningOutcomes:"Integrate research, skills evidence, outreach, and constraints into a coherent plan; evaluate WBL fit; sequence and prioritize actions; identify realistic alternatives; anticipate professional responsibilities and learning.",
   rubric:[
     {criterion:"Evidence-based opportunity strategy",weight:30},
     {criterion:"Feasibility, timing, and backup pathways",weight:30},
     {criterion:"Integration of readiness and professional evidence",weight:20},
-    {criterion:"Quality of provisional WBL learning goals and CP2 completion",weight:20}
+    {criterion:"Quality of provisional WBL learning goals and v2.0 completion",weight:20}
   ],
   connections:{
-    before:"Synthesizes CE200-01 through CE200-05 and builds on CE100-07 CP1.",
+    before:"Synthesizes CE200-01 through CE200-05 and builds on CE100-07 v1.0.",
     cp:"Complete student-authored readiness and WBL action plan.",
-    next:"Provides an approved starting point for WBL application and project approval; CP3 later documents actual learning and impact; CP4 provides the final launch check."
+    next:"Provides an approved starting point for WBL application and project approval; v3.0 later documents actual learning and impact; v4.0 provides the final launch check."
   },
-  example:{student:"Marcus",major:"Business Management and Leadership",text:"uses his existing employment as a starting point but identifies a separately scoped, substantive employer project to propose for WBL approval; CP2 distinguishes qualifying new duties from routine work."},
+  example:{student:"Marcus",major:"Business Management and Leadership",text:"uses his existing employment as a starting point but identifies a separately scoped, substantive employer project to propose for WBL approval; v2.0 distinguishes qualifying new duties from routine work."},
   implementation:{
-    access:"Use structured CP2 fields with document links and student-controlled information sharing. Incorporate a clear referral path for students without an actionable placement plan; avoid implying that automatic placement or a fully built portal is required for first launch.",
+    access:"Use structured v2.0 fields with document links and student-controlled information sharing. Incorporate a clear referral path for students without an actionable placement plan; avoid implying that automatic placement or a fully built portal is required for first launch.",
     note:"A credible plan with necessary contingencies merits full course credit even if the student's first internship applications are unsuccessful."
   }
 }
