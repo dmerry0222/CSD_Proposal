@@ -1,0 +1,961 @@
+<!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#fff;color:#000}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
+<meta name="claude:viewport-fit-sides" content="cover">
+<title>Six-Term WBL Sankey</title>
+<script>if(/[?&]embed\b/.test(location.search))document.documentElement.classList.add("embed");</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Libre+Franklin:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --navy:#15284B; --gold:#E7AB2A; --sky:#3CB4E5; --teal:#40C1AC; --slate:#7A6E9B; --brick:#B0543E;
+  --body:#595959; --ink:#000000; --bg:#FFFFFF;
+  --rule:rgba(21,40,75,.14); --t02:rgba(21,40,75,.03); --t05:rgba(21,40,75,.05);
+  --sans:"Libre Franklin","Segoe UI",Helvetica,Arial,sans-serif;
+  color-scheme:light;
+}
+*,*::before,*::after{box-sizing:border-box}
+body{
+  background:var(--bg);color:var(--body);font-family:var(--sans);font-size:1rem;line-height:1.65;
+  -webkit-font-smoothing:antialiased;margin:0;
+  padding-left:max(22px,env(safe-area-inset-left,0px));
+  padding-right:max(22px,env(safe-area-inset-right,0px));
+  padding-block:40px 96px;
+}
+.wrap{max-width:1180px;margin:0 auto}
+h1{font-size:1.75rem;font-weight:600;color:var(--ink);letter-spacing:-.012em;line-height:1.22;margin:0 0 8px;text-wrap:balance}
+.lede{font-size:1.0625rem;max-width:74ch;margin:0 0 26px;padding-bottom:22px;border-bottom:1px solid var(--rule)}
+h2{font-size:1.25rem;font-weight:600;color:var(--navy);margin:0 0 4px;line-height:1.3}
+h2::after{content:"";display:block;width:64px;height:3px;background:var(--gold);margin:9px 0 16px}
+h3{font-size:.9375rem;font-weight:600;color:var(--navy);margin:0 0 10px;line-height:1.35}
+
+.chartbox{position:relative;border-top:3px solid var(--navy);padding-top:16px}
+.chartscroll{transition:opacity .18s ease}
+.chartbox.invalid .chartscroll{opacity:.12;filter:grayscale(1)}
+#overbox{position:absolute;inset:16px 0 0;display:flex;align-items:center;justify-content:center;z-index:4}
+#overbox[hidden]{display:none}
+#overmsg{margin:0;max-width:34ch;text-align:center;background:#fff;border:1px solid var(--rule);
+  border-left:3px solid var(--brick);padding:16px 20px;font-size:.9375rem;line-height:1.5;color:#1a1a1a;
+  box-shadow:0 8px 26px rgba(21,40,75,.12)}
+#overmsg b{color:var(--brick);font-weight:600}
+.stale{opacity:.22;pointer-events:none;transition:opacity .18s ease}
+.chartscroll{overflow-x:auto}
+svg{display:block;width:100%;min-width:900px;height:auto}
+.lanelab{font:500 10.5px var(--sans);fill:var(--navy)}
+.lanenum{font:400 10px var(--sans);fill:#8A8A8A;font-variant-numeric:tabular-nums}
+.nodenum{font:600 9.5px var(--sans);fill:var(--navy);font-variant-numeric:tabular-nums}
+.perlab{font:600 11px var(--sans);fill:var(--navy)}
+.perlab.ghostlab{font:400 10px var(--sans);fill:#9A9A9A}
+.prenote{font:italic 400 11px/1.42 var(--sans);color:#1F6FA3;display:flex;flex-direction:column;justify-content:flex-end;height:100%}
+.prenote p{margin:0 0 6px}
+.prenote ul{margin:0;padding-left:13px}
+.prenote li{margin:0 0 5px}
+.prenote b{font-weight:600}
+.resnum{font:600 28px var(--sans);fill:var(--navy);font-variant-numeric:tabular-nums;letter-spacing:-.02em}
+.resnum.warn{fill:var(--brick)}
+.resk{font:400 11.5px var(--sans);fill:#6B6B6B}
+.yearlab{font:500 11px var(--sans);fill:var(--navy)}
+.grouplab{font:600 10.5px var(--sans);fill:#8A8A8A}
+.headlab{font:500 10.5px var(--sans);fill:var(--body)}
+.colband{cursor:pointer}
+.colband:hover{fill:rgba(21,40,75,.04)}
+
+.stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(185px,1fr));gap:1px;background:var(--rule);border:1px solid var(--rule);margin:28px 0 0}
+.stat{background:var(--bg);padding:16px 18px}
+.stat .n{display:block;font-size:1.5rem;font-weight:600;color:var(--navy);line-height:1.1;font-variant-numeric:tabular-nums}
+.stat .k{display:block;font-size:.8125rem;line-height:1.4;margin-top:5px}
+.stat.warn .n{color:var(--brick)}
+
+.panel{margin-top:44px;border-top:1px solid var(--rule);padding-top:28px}
+.ctrls{display:grid;grid-template-columns:repeat(auto-fit,minmax(255px,1fr));gap:30px 42px}
+.grp{min-width:0}
+.row{display:grid;grid-template-columns:1fr auto;align-items:baseline;gap:8px;margin-bottom:3px}
+.row label{font-size:.8125rem;line-height:1.35;color:#1a1a1a}
+.row output{font-size:.8125rem;font-weight:600;color:var(--navy);font-variant-numeric:tabular-nums}
+input[type=range]{width:100%;margin:0 0 13px;accent-color:#15284B;height:20px}
+input[type=range]:focus-visible{outline:2px solid var(--navy);outline-offset:2px}
+.sub{font-size:.75rem;color:#8A8A8A;margin:-4px 0 12px;line-height:1.45}
+.sub.over{color:var(--brick);font-weight:600;font-size:.8125rem}
+.capwrap{position:relative}
+input[type=range]:disabled{cursor:default}
+.row output.over{color:var(--brick)}
+.capwrap .capzone{position:absolute;top:0;height:20px;right:0;pointer-events:none;
+  left:calc(8px + (100% - 16px) * var(--cap,100) / 100);
+  border-left:1px solid rgba(21,40,75,.38);background:rgba(21,40,75,.06)}
+.swd{display:inline-block;width:10px;height:10px;margin-right:6px;vertical-align:baseline}
+.btns{display:flex;gap:10px;flex-wrap:wrap}
+.btn{appearance:none;background:none;border:1px solid var(--rule);font:600 .8125rem var(--sans);color:var(--navy);padding:8px 16px;cursor:pointer;transition:background .18s ease}
+.btn:hover{background:var(--t05)}
+.btn:focus-visible{outline:2px solid var(--navy);outline-offset:2px}
+.togrow{display:flex;align-items:center;gap:10px;margin:0 0 16px;font-size:.8125rem;color:#1a1a1a}
+.togrow input{width:16px;height:16px;accent-color:#15284B}
+
+#tip{position:absolute;opacity:0;pointer-events:none;transition:opacity .12s ease;background:#fff;
+  border:1px solid var(--rule);border-top:3px solid var(--navy);padding:12px 14px 12px;font-size:.8125rem;
+  line-height:1.5;min-width:236px;z-index:5;box-shadow:0 8px 26px rgba(21,40,75,.16)}
+#tip.open{opacity:1;pointer-events:auto}
+#tip .tt{font-weight:600;color:var(--navy);font-size:.875rem;display:block;margin-bottom:7px;padding-right:22px}
+#tip table{border-collapse:collapse;width:100%}
+#tip th{font-size:.625rem;font-weight:600;text-transform:uppercase;letter-spacing:.06em;color:#8A8A8A;
+  text-align:left;padding:0 6px 5px 10px;line-height:1.25;vertical-align:bottom}
+#tip th:first-child{padding-left:6px}
+#tip th.c{width:52px}
+#tip thead tr{border-bottom:1px solid var(--rule)}
+#tip tbody td{padding:3px 6px;font-variant-numeric:tabular-nums;vertical-align:baseline}
+#tip tbody tr:nth-child(even){background:rgba(21,40,75,.045)}
+#tip td.v{text-align:left;padding-left:10px;color:#1a1a1a;white-space:nowrap}
+#tip td.v.all{font-weight:600;color:var(--navy)}
+#tip td.lab{color:var(--body);padding-left:6px}
+#tip tr.head td.lab{font-weight:600;color:var(--navy)}
+#tip td.i1{padding-left:19px}
+#tip td.i2{padding-left:33px}
+#tip .dot{display:inline-block;width:9px;height:9px;margin-right:6px;vertical-align:baseline}
+.tipx{position:absolute;top:7px;right:8px;appearance:none;background:none;border:0;cursor:pointer;
+  font:400 17px/1 var(--sans);color:#8A8A8A;padding:3px 5px}
+.tipx:hover{color:var(--navy)}
+.tipx:focus-visible{outline:2px solid var(--navy);outline-offset:1px}
+
+table.terms{width:100%;border-collapse:collapse;border-top:3px solid var(--navy);font-size:.875rem}
+table.terms th{text-align:left;font-size:.6875rem;font-weight:600;letter-spacing:.09em;text-transform:uppercase;color:var(--navy);padding:11px 11px 8px;border-bottom:1px solid var(--rule);background:var(--t02)}
+table.terms th:first-child{padding-left:0;background:none}
+table.terms td{padding:10px 11px;border-bottom:1px solid var(--rule);font-variant-numeric:tabular-nums}
+table.terms td:first-child{padding-left:0;font-weight:600;color:var(--navy);font-variant-numeric:normal}
+.tablescroll{overflow-x:auto;margin-top:34px}
+
+.notes{margin-top:44px;border-left:3px solid var(--rule);background:var(--t02);padding:18px 20px;font-size:.875rem;max-width:80ch}
+.notes p{margin:0 0 10px}
+.notes p:last-child{margin:0}
+.notes b{color:var(--navy);font-weight:600}
+.notes code{font:600 .8125rem ui-monospace,SFMono-Regular,Menlo,monospace;color:var(--navy);background:var(--t05);padding:1px 4px}
+@media (prefers-reduced-motion:reduce){*{transition:none!important}}
+
+/* wide screens: the variables sit beside the diagram instead of below it */
+@media (min-width:1360px){
+  .wrap{max-width:1600px}
+  .layout{display:grid;grid-template-columns:minmax(0,1fr) 340px;gap:40px;align-items:start}
+  .layout .panel{margin-top:0;border-top:3px solid var(--navy);padding-top:18px;position:sticky;top:16px;max-height:calc(100vh - 32px);overflow-y:auto;padding-right:6px}
+  .layout .ctrls{grid-template-columns:1fr;gap:24px}
+}
+
+/* ?embed shows the diagram only, sized to its container with no scroll box (used on the Work-Based Learning page) */
+html.embed body{padding:0;overflow:hidden}
+html.embed .wrap{max-width:none}
+html.embed .layout{display:block!important}
+html.embed .wrap>h1,html.embed .lede,html.embed .stats,html.embed .panel,html.embed .tablescroll,html.embed .notes{display:none}
+html.embed .chartbox{border-top:0;padding-top:0;container-type:inline-size}
+.embed-cta{display:none}
+html.embed .embed-cta{display:block;position:absolute;z-index:3;left:1cqw;top:5%;width:22cqw;
+  font-size:clamp(10px,1.35cqw,15px);font-weight:600;line-height:1.3;text-decoration:none;color:#fff;
+  background:var(--navy);padding:.8em 1em;border-bottom:3px solid var(--gold);transition:background .18s ease}
+html.embed .embed-cta:hover{background:#0F1E39}
+html.embed .embed-cta::after{content:"↗";margin-left:.5em}
+/* the concurrent-class toggle moves onto the chart in the embedded view */
+html.embed .chartbox .togrow{position:absolute;z-index:3;left:84.5cqw;top:5.5%;width:15cqw;margin:0;align-items:flex-start;
+  gap:.6em;font-size:clamp(9px,1.1cqw,12.5px);line-height:1.35}
+html.embed .chartbox .togrow input{flex:0 0 auto;margin-top:.15em}
+html.embed .chartscroll{overflow:visible}
+html.embed svg{min-width:0}
+</style>
+
+<div class="wrap">
+<h1>Modeling Required Work-Based Learning Experiences</h1>
+<p class="lede">This diagram follows one class of students as they search for, and secure, various approved types of WBL experiences. It also shows concurrent placements for students in neighboring class years, assigning those values using the same variables. You can update the sliders on the right to change the variables and model different scenarios.</p>
+
+<div class="layout">
+<div class="col-chart">
+<div class="chartbox">
+  <a class="embed-cta" href="WBL_Sankey.html" target="_blank" rel="noopener">Model this scenario with different variables</a>
+  <div class="chartscroll"><svg id="chart" role="img" aria-label="Sankey of student work-based learning placement across six terms"></svg></div>
+  <div id="tip" role="dialog" aria-label="Term detail"></div>
+  <div id="overbox" hidden><p id="overmsg"></p></div>
+</div>
+
+</div>
+
+<div class="panel">
+  <h2>Adjustable variables</h2>
+  <div class="togrow"><input type="checkbox" id="ghost"><label for="ghost">Show concurrent placements from other class years</label></div>
+  <div class="ctrls">
+
+    <div class="grp">
+      <h3>Class Size</h3>
+      <div class="row"><span></span><output id="size_o"></output></div>
+      <input type="range" id="size" min="500" max="1600" step="25" aria-label="Students in the class">
+      <h3 style="margin-top:20px">% of the class planning to have their first WBL experience during...</h3>
+      <div id="att"></div>
+    </div>
+
+    <div class="grp">
+      <h3>% of successful placements for students on their first WBL search who are seeking experiences during...</h3>
+      <div id="suc"></div>
+      <h3 style="margin-top:20px">Repeat searchers' relative success rate</h3>
+      <p class="sub">How much more/less likely will students be during their...</p>
+      <div id="mods"></div>
+    </div>
+
+    <div class="grp">
+      <h3>Summer WBL Composition</h3>
+      <div id="mixS"></div>
+      <h3 style="margin-top:20px">Fall/Spring WBL Composition</h3>
+      <div id="mixA"></div>
+      <div class="btns">
+        <button class="btn" id="reset">Reset to defaults</button>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+</div>
+
+<div class="tablescroll"><table class="terms" id="tbl"></table></div>
+
+
+</div>
+
+<script>
+(function(){
+"use strict";
+
+/* ============================================================
+   1. PARAMS: the modeled assumptions. These are the sliders.
+   ============================================================ */
+var DEFAULTS={
+  size:1000,
+  att:[10,25,15,15,35,0],     /* share of the WHOLE class searching for a first placement, by term. Index 5 is forced to 0. */
+  suc:[75,75,75,75,75,75],   /* first-search success rate by term */
+  mod2:125, modC:125,        /* repeat-search multipliers, percent */
+  retry:100,
+  mixS:[72,16,6,4,2],
+  mixA:[44,32,16,6,2],
+  ghost:true
+};
+var PARAMS=JSON.parse(JSON.stringify(DEFAULTS));
+
+var TERMS=[
+  {id:"t1",label:"Sophomore spring",       tick:"SP",short:"Soph Spring",kind:"acad"},
+  {id:"t2",label:"Summer after sophomore", tick:"SU",short:"Soph-Jr Summer",kind:"summer"},
+  {id:"t3",label:"Junior fall",            tick:"FL",short:"Junior Fall",kind:"acad"},
+  {id:"t4",label:"Junior spring",          tick:"SP",short:"Junior Spring",kind:"acad"},
+  {id:"t5",label:"Summer after junior",    tick:"SU",short:"Jr-Sr Summer",kind:"summer"},
+  {id:"t6",label:"Senior fall",            tick:"FL",short:"Senior Fall",kind:"acad"}
+];
+var OFFSET=3;
+var FIRST_SEARCH_TERMS=5;
+
+/* ============================================================
+   2. CONFIG: every visual decision.
+   ============================================================ */
+var CONFIG={
+
+  canvas:{ width:1120, targetHeight:900, padLeft:272, padRight:190, padTop:34, padBottom:40 },
+
+  /* Three bands, top to bottom. Inside a band the members stack contiguously,
+     so color alone separates them. members run from the baseline upward. */
+  groups:[
+    {id:"wbl", label:"WBL types", kind:"wbl", shared:true, gapAbove:22,
+     members:[{id:"oth",label:"Other approved"},
+              {id:"spc",label:"Project at current job"},
+              {id:"onc",label:"On-campus employment"},
+              {id:"res",label:"Faculty-led research"},
+              {id:"int",label:"Internship"}]},
+    {id:"failed", label:"Unsuccessful searches", kind:"state", shared:false, gapAbove:36,
+     members:[{id:"f1",label:"1st search unsuccessful, searching 2nd time"},
+              {id:"coach",label:"2nd search unsuccessful, 3rd search with intensive, structured coaching"}]},
+    {id:"pool", label:"Students who have not yet searched for a WBL experience", kind:"state", shared:false, gapAbove:16,
+     members:[{id:"pool",label:"Students who have not yet searched for a WBL experience"}]}
+  ],
+
+  colors:{
+    int:"#15284B", res:"#3CB4E5", onc:"#40C1AC", spc:"#E7AB2A", oth:"#7A6E9B",
+    coach:"#B0543E", f1:"#E0B5A9", pool:"#B9B7B1",
+    rule:"rgba(21,40,75,.20)", separator:"rgba(21,40,75,.08)",
+    headRule:"rgba(21,40,75,.35)", yearRule:"#15284B"
+  },
+
+  column:{ stateX:0.14, typeX:0.70, nodeWidth:13, terminalPad:0.55 },
+
+  ribbon:{ curve:0.5, opacity:0.34, failOpacity:0.5, colorBy:"target" },  /* "target" or "source" */
+
+  /* The neighbouring class: a key above a rule over each half of the chart. */
+  offsetClass:{ show:true, opacity:0.30, aheadColumns:3, headerHeight:76, swatch:9, bracket:8,
+                labelAhead:["Concurrent WBL placements from students","in the “older” class year"],
+                labelBehind:["Concurrent WBL placements from students","in the “younger” class year"] },
+
+  axis:{ tickY:24, topReach:8, ruleReach:28 },
+
+  labels:{ laneGutter:84, swatch:9, keyLeading:15, itemGap:19, lineHeight:12.5, wrapChars:30, wblBottomGap:14, minNodeHeightForNumber:13 },
+
+  stats:{ warnUnresolvedShare:0.05, warnPlacedShare:0.90 }
+};
+
+var TYPE_IDS=["int","res","onc","spc","oth"];   /* top to bottom on screen */
+var STATE_IDS=["coach","f1","pool"];            /* top to bottom on screen */
+var FAIL_TO={pool:"f1",f1:"coach",coach:"coach"};
+function laneLabel(id){
+  var out=id;
+  CONFIG.groups.forEach(function(g){g.members.forEach(function(m){if(m.id===id)out=m.label;});});
+  return out;
+}
+
+/* ============================================================
+   3. model(): params in, numbers out. No pixels.
+   ============================================================ */
+function model(P){
+  var pool=P.size,f1=0,co=0,terms=[];
+  var mS=P.mixS, mA=P.mixA;
+  for(var t=0;t<TERMS.length;t++){
+    var mixArr=TERMS[t].kind==="summer"?mS:mA, mix={};
+    TYPE_IDS.forEach(function(id,k){mix[id]=mixArr[k]/100;});
+
+    var attempt=(t<FIRST_SEARCH_TERMS)?P.att[t]:0;
+    var attempts={pool:Math.min(pool,P.size*attempt/100), f1:f1*P.retry/100, coach:co*P.retry/100};
+    var b=P.suc[t]/100;
+    var rates={pool:Math.min(.95,b), f1:Math.min(.95,b*P.mod2/100), coach:Math.min(.95,b*P.modC/100)};
+    var placedFrom={}, failedFrom={}, placed=0;
+    STATE_IDS.forEach(function(id){
+      placedFrom[id]=attempts[id]*rates[id];
+      failedFrom[id]=attempts[id]-placedFrom[id];
+      placed+=placedFrom[id];
+    });
+
+    var row={
+      index:t, term:TERMS[t], mix:mix,
+      stockIn:{pool:pool,f1:f1,coach:co},
+      attempts:attempts, rates:rates,
+      placedFrom:placedFrom, failedFrom:failedFrom,
+      placed:placed,
+      failed:STATE_IDS.reduce(function(a,id){return a+failedFrom[id];},0),
+      byType:{}
+    };
+    TYPE_IDS.forEach(function(id){row.byType[id]=placed*mix[id];});
+
+    pool-=attempts.pool;
+    f1 = f1-attempts.f1+failedFrom.pool;
+    co = co-attempts.coach+failedFrom.f1+failedFrom.coach;
+    row.stockOut={pool:pool,f1:f1,coach:co};
+    terms.push(row);
+  }
+  var placedTotal=terms.reduce(function(a,r){return a+r.placed;},0);
+  return {terms:terms, end:{pool:pool,f1:f1,coach:co},
+          placed:placedTotal, unresolved:pool+f1+co, size:P.size};
+}
+
+/* ============================================================
+   4. graph(): nodes and links. The handoff any renderer reads.
+   ============================================================ */
+function graph(M){
+  var n=TERMS.length;
+  var cols=TERMS.map(function(T,c){
+    return {index:c, id:T.id, label:T.label, tick:T.tick, short:T.short, kind:T.kind,
+            main:M.terms[c], offset:M.terms[(c+OFFSET)%n]};
+  });
+
+  var nodes=[], links=[];
+  cols.forEach(function(col){
+    STATE_IDS.forEach(function(id){
+      nodes.push({column:col.index,lane:id,kind:"state",cohort:"main",value:col.main.stockIn[id]});
+    });
+    TYPE_IDS.forEach(function(id){
+      nodes.push({column:col.index,lane:id,kind:"wbl",cohort:"main",value:col.main.byType[id]});
+      nodes.push({column:col.index,lane:id,kind:"wbl",cohort:"offset",value:col.offset.byType[id]});
+    });
+  });
+  STATE_IDS.forEach(function(id){
+    nodes.push({column:n,lane:id,kind:"state",cohort:"main",value:M.end[id]});
+  });
+
+  cols.forEach(function(col){
+    var r=col.main;
+    STATE_IDS.forEach(function(id){
+      TYPE_IDS.forEach(function(ty){
+        var v=r.placedFrom[id]*r.mix[ty];
+        if(v>0) links.push({column:col.index,from:id,to:ty,toColumn:col.index,value:v,kind:"place"});
+      });
+      var carry=r.stockIn[id]-r.attempts[id]+(FAIL_TO[id]===id?r.failedFrom[id]:0);
+      if(carry>0) links.push({column:col.index,from:id,to:id,toColumn:col.index+1,value:carry,kind:"carry"});
+      if(FAIL_TO[id]!==id && r.failedFrom[id]>0)
+        links.push({column:col.index,from:id,to:FAIL_TO[id],toColumn:col.index+1,value:r.failedFrom[id],kind:"fail"});
+    });
+  });
+
+  return {columns:cols, groups:CONFIG.groups, nodes:nodes, links:links,
+          terminalColumn:n, end:M.end, placed:M.placed, unresolved:M.unresolved, size:M.size};
+}
+
+/* ============================================================
+   5. layout(): config plus data in, geometry out.
+   ============================================================ */
+function layout(G){
+  var C=CONFIG, cv=C.canvas, n=G.columns.length;
+  var plotW=cv.width-cv.padLeft-cv.padRight;
+  var cw=plotW/(n+C.column.terminalPad);
+  var show=C.offsetClass.show;
+
+  function memberValue(gr,col,id,coh){
+    var r=col[coh];
+    return gr.kind==="wbl"?r.byType[id]:r.stockIn[id];
+  }
+  var max={};
+  C.groups.forEach(function(gr){
+    var vals=G.columns.map(function(col){
+      return gr.members.reduce(function(a,m){
+        return a+memberValue(gr,col,m.id,"main")+((gr.shared&&show)?memberValue(gr,col,m.id,"offset"):0);
+      },0);
+    });
+    if(gr.kind==="state")vals.push(gr.members.reduce(function(a,m){return a+G.end[m.id];},0));
+    if(gr.id==="pool")vals.push(G.size);
+    max[gr.id]=Math.max.apply(null,vals.concat([1]));
+  });
+
+  var units=C.groups.reduce(function(a,g){return a+max[g.id];},0);
+  var gaps =C.groups.reduce(function(a,g){return a+g.gapAbove;},0);
+  var topOffset=cv.padTop+C.offsetClass.headerHeight;
+  var s=(cv.targetHeight-cv.padBottom-topOffset-gaps)/units;
+  var MBOT=topOffset+gaps+units*s;
+
+  var base={}, order=C.groups.slice().reverse(), prev=null;
+  order.forEach(function(gr,i){
+    base[gr.id]=(i===0)?MBOT:(base[prev.id]-max[prev.id]*s-gr.gapAbove);
+    prev=gr;
+  });
+
+  return {
+    s:s, cw:cw, max:max, base:base, MBOT:MBOT, nodeW:C.column.nodeWidth,
+    topEdge:base[C.groups[0].id]-max[C.groups[0].id]*s,
+    height:MBOT+cv.padBottom,
+    colLeft:function(c){return cv.padLeft+c*cw;},
+    colMid:function(c){return cv.padLeft+c*cw+cw*0.5;},
+    xState:function(c){return cv.padLeft+c*cw+cw*C.column.stateX;},
+    xType:function(c){return cv.padLeft+c*cw+cw*C.column.typeX;},
+    ghostBelow:function(c){return c>=C.offsetClass.aheadColumns;},
+    stack:function(gr,c,values,ghostValues,baseY){
+      var y=(baseY==null)?this.base[gr.id]:baseY, s=this.s, out={}, below=this.ghostBelow(c);
+      gr.members.forEach(function(m){
+        var mv=values[m.id]||0, gv=(ghostValues&&ghostValues[m.id])||0, r;
+        if(below) r={gBot:y,gTop:y-gv*s,mBot:y-gv*s,mTop:y-(gv+mv)*s};
+        else      r={mBot:y,mTop:y-mv*s,gBot:y-mv*s,gTop:y-(mv+gv)*s};
+        r.v=mv; r.gv=gv;
+        out[m.id]=r; y-=(mv+gv)*s;
+      });
+      return out;
+    }
+  };
+}
+
+/* ============================================================
+   6. render(): geometry in, SVG out.
+   ============================================================ */
+var NS="http://www.w3.org/2000/svg";
+function el(n,a){var e=document.createElementNS(NS,n);for(var k in a)e.setAttribute(k,a[k]);return e;}
+function tx(x,y,s,cls,anchor){var e=el("text",{x:x,y:y,"class":cls||"lanenum"});if(anchor)e.setAttribute("text-anchor",anchor);e.textContent=s;return e;}
+function r0(v){return Math.round(v).toLocaleString();}
+function pct(v){return Math.round(v*100)+"%";}
+
+function ribbon(x0,ya0,ya1,x1,yb0,yb1,fill,op){
+  var dx=(x1-x0)*CONFIG.ribbon.curve;
+  var d="M "+x0+" "+ya0+
+        " C "+(x0+dx)+" "+ya0+" "+(x1-dx)+" "+yb0+" "+x1+" "+yb0+
+        " L "+x1+" "+yb1+
+        " C "+(x1-dx)+" "+yb1+" "+(x0+dx)+" "+ya1+" "+x0+" "+ya1+" Z";
+  var e=el("path",{d:d,fill:fill});
+  if(op!=null)e.setAttribute("opacity",op);
+  return e;
+}
+
+/* The neighbouring class: a hatched fill and a dashed border drawn inside the box's edges. */
+function ghostBox(parent,x,y,w,h,id){
+  if(h<=0.2)return;
+  parent.appendChild(el("rect",{x:x,y:y,width:w,height:h,fill:"url(#gh-"+id+")"}));
+  if(h>3)parent.appendChild(el("rect",{x:x+0.5,y:y+0.5,width:w-1,height:h-1,fill:"none",
+    stroke:CONFIG.colors[id],"stroke-opacity":0.85,"stroke-width":1,"stroke-dasharray":"2.2 2"}));
+}
+
+function renderChart(G,L,svg){
+  var C=CONFIG, s=L.s, nW=L.nodeW, show=C.offsetClass.show;
+  var gridLayer=el("g",{}), linkLayer=el("g",{}), nodeLayer=el("g",{}), labelLayer=el("g",{});
+  [gridLayer,linkLayer,nodeLayer,labelLayer].forEach(function(g){svg.appendChild(g);});
+
+  var defs=el("defs",{});
+  TYPE_IDS.forEach(function(id){
+    var pt=el("pattern",{id:"gh-"+id,width:4,height:4,patternUnits:"userSpaceOnUse",patternTransform:"rotate(45)"});
+    pt.appendChild(el("rect",{width:4,height:4,fill:C.colors[id],"fill-opacity":0.10}));
+    pt.appendChild(el("rect",{width:1.6,height:4,fill:C.colors[id],"fill-opacity":0.62}));
+    defs.appendChild(pt);
+  });
+  svg.insertBefore(defs,svg.firstChild);
+
+  for(var i=1;i<G.columns.length;i++){
+    gridLayer.appendChild(el("line",{x1:L.colLeft(i),x2:L.colLeft(i),y1:L.topEdge-C.axis.topReach,y2:L.MBOT+C.axis.ruleReach+8,
+      stroke:C.colors.separator,"stroke-width":1}));
+  }
+
+  var wblG=C.groups.filter(function(g){return g.kind==="wbl";})[0];
+  var failedG=C.groups.filter(function(g){return g.id==="failed";})[0];
+  var poolG=C.groups.filter(function(g){return g.id==="pool";})[0];
+  var tc=G.terminalColumn;
+
+  var N={};
+  function buildColumn(c){
+    var o={state:{},type:{},ghost:{}};
+    var col=(c<tc)?G.columns[c]:null;
+    var fv={};
+    failedG.members.forEach(function(m){fv[m.id]=col?col.main.stockIn[m.id]:G.end[m.id];});
+    var fs=L.stack(failedG,c,fv,null);
+    failedG.members.forEach(function(m){
+      var r=fs[m.id];
+      o.state[m.id]={x:L.xState(c),v:r.v,top:r.mTop,bot:r.mBot,out:r.mTop,inn:r.mBot};
+    });
+    var pv=col?col.main.stockIn.pool:G.end.pool;
+    if(c===tc){
+      /* the never-searched remainder sits flush under the failed searchers */
+      o.state.pool={x:L.xState(c),v:pv,top:L.base.failed,bot:L.base.failed+pv*s,
+                    out:L.base.failed,inn:L.base.failed+pv*s};
+    }else{
+      var ps=L.stack(poolG,c,{pool:pv},null);
+      o.state.pool={x:L.xState(c),v:pv,top:ps.pool.mTop,bot:ps.pool.mBot,out:ps.pool.mTop,inn:ps.pool.mBot};
+    }
+    if(col){
+      var mv={},gv={};
+      wblG.members.forEach(function(m){
+        mv[m.id]=col.main.byType[m.id];
+        gv[m.id]=show?col.offset.byType[m.id]:0;
+      });
+      var ts=L.stack(wblG,c,mv,gv);
+      wblG.members.forEach(function(m){
+        var r=ts[m.id];
+        o.type[m.id]={x:L.xType(c),v:r.v,top:r.mTop,bot:r.mBot,inn:r.mTop};
+        o.ghost[m.id]={v:r.gv,top:r.gTop,bot:r.gBot};
+      });
+    }
+    return o;
+  }
+  for(var c0=0;c0<=tc;c0++)N[c0]=buildColumn(c0);
+  L.nodes=N;
+
+  /* source cursors run down from each node's top: placements, then the fail
+     step, then the carry, which leaves along the node's bottom edge. */
+  var draw=[], byLink={};
+  G.columns.forEach(function(col){
+    var c=col.index;
+    STATE_IDS.forEach(function(id){
+      var src=N[c].state[id], here=G.links.filter(function(k){return k.column===c&&k.from===id;});
+      here.filter(function(k){return k.kind==="place";})
+          .sort(function(a,b){return TYPE_IDS.indexOf(a.to)-TYPE_IDS.indexOf(b.to);})
+          .concat(here.filter(function(k){return k.kind==="fail";}))
+          .concat(here.filter(function(k){return k.kind==="carry";}))
+          .forEach(function(k){
+            var h=k.value*s, d={link:k,x0:src.x+nW,y0:src.out,h:h};
+            draw.push(d); byLink[k.column+"|"+k.from+"|"+k.to+"|"+k.kind]=d;
+            src.out+=h;
+          });
+    });
+  });
+  /* placement nodes fill from the top, highest source first.
+     state nodes fill from the bottom: arrival lowest, carry on top of it. */
+  G.columns.forEach(function(col){
+    var c=col.index;
+    TYPE_IDS.forEach(function(ty){
+      var dst=N[c].type[ty];
+      STATE_IDS.forEach(function(src){
+        var d=byLink[c+"|"+src+"|"+ty+"|place"]; if(!d)return;
+        d.x1=dst.x; d.y1=dst.inn; dst.inn+=d.h;
+      });
+    });
+    STATE_IDS.forEach(function(id){
+      var dst=N[c+1].state[id];
+      G.links.filter(function(k){return k.toColumn===c+1&&k.to===id&&k.kind==="fail";}).forEach(function(k){
+        var d=byLink[k.column+"|"+k.from+"|"+k.to+"|fail"]; if(!d)return;
+        dst.inn-=d.h; d.x1=dst.x; d.y1=dst.inn;
+      });
+      var cd=byLink[c+"|"+id+"|"+id+"|carry"];
+      if(cd){dst.inn-=cd.h; cd.x1=dst.x; cd.y1=dst.inn;}
+    });
+  });
+  draw.forEach(function(d){
+    if(d.x1==null)return;
+    var k=d.link;
+    var byTarget=(k.kind==="place"&&C.ribbon.colorBy==="target")||k.kind==="fail";
+    var color=C.colors[byTarget?k.to:k.from];
+    linkLayer.appendChild(ribbon(d.x0,d.y0,d.y0+d.h,d.x1,d.y1,d.y1+d.h,color,k.kind==="fail"?C.ribbon.failOpacity:C.ribbon.opacity));
+  });
+
+  function nodeRect(x,top,bot,fill,op){
+    if(bot-top<=0.2)return;
+    var e=el("rect",{x:x,y:top,width:nW,height:bot-top,fill:fill});
+    if(op!=null)e.setAttribute("opacity",op);
+    nodeLayer.appendChild(e);
+  }
+  for(var cc=0;cc<=tc;cc++){
+    (function(c){
+      STATE_IDS.forEach(function(id){
+        var nd=N[c].state[id];
+        nodeRect(nd.x,nd.top,nd.bot,C.colors[id]);
+        if(nd.bot-nd.top>C.labels.minNodeHeightForNumber)
+          labelLayer.appendChild(tx(nd.x-4,(nd.top+nd.bot)/2+3.5,r0(nd.v),"nodenum","end"));
+      });
+      if(c===tc)return;
+      TYPE_IDS.forEach(function(id){
+        var g=N[c].ghost[id], t=N[c].type[id];
+        if(g.v>0.05)ghostBox(nodeLayer,t.x,g.top,nW,g.bot-g.top,id);
+        nodeRect(t.x,t.top,t.bot,C.colors[id]);
+        if(t.bot-t.top>C.labels.minNodeHeightForNumber)
+          labelLayer.appendChild(tx(t.x+nW+4,(t.top+t.bot)/2+3.5,r0(t.v),"nodenum"));
+      });
+    })(cc);
+  }
+}
+
+function renderChrome(G,L,svg){
+  var C=CONFIG, s=L.s, gut=C.canvas.padLeft-C.labels.laneGutter;
+  var right=C.canvas.width-C.canvas.padRight+46;
+  var LH=C.labels.lineHeight;
+
+  function wrap(text,max){
+    var words=text.split(" "), lines=[], cur="";
+    words.forEach(function(w){
+      if(cur&&(cur+" "+w).length>max){lines.push(cur);cur=w;}else cur=cur?cur+" "+w:w;
+    });
+    if(cur)lines.push(cur);
+    return lines;
+  }
+  /* one legend entry, wrapped to the gutter; returns the baseline for the next entry */
+  function entry(label,color,y){
+    var lines=wrap(label,C.labels.wrapChars);
+    lines.forEach(function(ln,k){svg.appendChild(tx(gut,y+k*LH,ln,"lanelab","end"));});
+    svg.appendChild(el("rect",{x:gut+5,y:y-8,width:C.labels.swatch,height:C.labels.swatch,fill:color}));
+    return y+(lines.length-1)*LH+C.labels.itemGap;
+  }
+
+  C.groups.forEach(function(gr){
+    var b=L.base[gr.id], top=b-L.max[gr.id]*s;
+    svg.appendChild(el("line",{x1:C.canvas.padLeft-76,x2:right,y1:b+2,y2:b+2,
+      stroke:C.colors.rule,"stroke-width":1,"stroke-dasharray":"2 4"}));
+    if(gr.kind==="wbl"){
+      /* the key sits low in its lane, leaving a gap above the unsuccessful searches */
+      var items=gr.members.slice().reverse(), y=b-C.labels.wblBottomGap-items.length*C.labels.keyLeading+12;
+      svg.appendChild(tx(gut,y-19,gr.label,"grouplab","end"));
+      items.forEach(function(m){
+        svg.appendChild(tx(gut,y,m.label,"lanelab","end"));
+        svg.appendChild(el("rect",{x:gut+5,y:y-8,width:C.labels.swatch,height:C.labels.swatch,fill:C.colors[m.id]}));
+        y+=C.labels.keyLeading;
+      });
+    }else if(gr.members.length>1){
+      svg.appendChild(tx(gut,top-9,gr.label,"grouplab","end"));
+      var y2=top+12;
+      gr.members.slice().reverse().forEach(function(m){ y2=entry(m.label,C.colors[m.id],y2); });
+    }else{
+      /* a single entry: centred on the lane's midline, level with the starting count */
+      var m0=gr.members[0], n=wrap(m0.label,C.labels.wrapChars).length;
+      entry(m0.label,C.colors[m0.id],top+(b-top)*0.30-(n-1)*LH/2+4);
+      var fo=el("foreignObject",{x:10,y:b-310,width:254,height:300});
+      fo.setAttribute("style","overflow:visible");
+      var note=document.createElementNS("http://www.w3.org/1999/xhtml","div");
+      note.setAttribute("class","prenote");
+      note.innerHTML="<p>These students will engage in planful and informed WBL searches:</p><ul>"+
+        "<li>After completing <b>CE-100</b>, where they spend a semester connecting with faculty, alums, professionals, developing their professional materials, and gaining a better understanding of their intended field(s).</li>"+
+        "<li>During/after <b>CE-200</b>, where they spend a semester meeting with current interns, analyzing live job descriptions, mock interviews, professionalism and WBL preparation, and in many cases live-searching for WBL positions with instructor’s support.</li></ul>";
+      fo.appendChild(note);
+      svg.appendChild(fo);
+    }
+  });
+
+  /* concurrent-class key: a rule over each half with a stacked key above it */
+  var ax=C.axis;
+  if(C.offsetClass.show){
+    var oc=C.offsetClass, na=oc.aheadColumns, sw=oc.swatch;
+    var lineY=L.topEdge-ax.topReach-8, stackBot=lineY-11, stackTop=stackBot-sw*TYPE_IDS.length;
+    [[0,na,oc.labelAhead],[na,G.columns.length,oc.labelBehind]].forEach(function(seg){
+      var x0=L.colLeft(seg[0])+2, x1=L.colLeft(seg[1])-2, br=oc.bracket;
+      svg.appendChild(el("path",{d:"M "+x0+" "+(lineY+br)+" Q "+x0+" "+lineY+" "+(x0+br)+" "+lineY+
+                                  " L "+(x1-br)+" "+lineY+" Q "+x1+" "+lineY+" "+x1+" "+(lineY+br),
+        fill:"none",stroke:C.colors.headRule,"stroke-width":1.25,"stroke-linecap":"round"}));
+      TYPE_IDS.forEach(function(id,i){ ghostBox(svg,x0+2,stackTop+i*sw,sw,sw,id); });
+      var mid=(stackTop+stackBot)/2;
+      svg.appendChild(tx(x0+2+sw+9,mid-1,seg[2][0],"headlab"));
+      svg.appendChild(tx(x0+2+sw+9,mid+13,seg[2][1],"headlab"));
+    });
+  }
+
+  /* terms outside the model: illustrative only, in the label row, with light separators that stop at the axis */
+  var pre=[["FY","Fall"],["FY","Spring"],["FY-Soph","Summer"],["Soph","Fall"]], x0=6, cellW=(L.colLeft(0)-x0)/pre.length;
+  function sepLine(x){
+    svg.appendChild(el("line",{x1:x,x2:x,y1:L.MBOT+6,y2:L.MBOT+ax.ruleReach+8,stroke:"rgba(21,40,75,.10)","stroke-width":1}));
+  }
+  pre.forEach(function(pt,i){
+    var cx=x0+cellW*(i+0.5);
+    svg.appendChild(tx(cx,L.MBOT+ax.tickY-4,pt[0],"perlab ghostlab","middle"));
+    svg.appendChild(tx(cx,L.MBOT+ax.tickY+8,pt[1],"perlab ghostlab","middle"));
+    if(i>0)sepLine(x0+cellW*i);
+  });
+  sepLine(L.colLeft(0));
+  var tcol=G.terminalColumn;
+  sepLine(L.colLeft(tcol));
+  svg.appendChild(tx(L.colMid(tcol),L.MBOT+ax.tickY-4,"Senior","perlab ghostlab","middle"));
+  svg.appendChild(tx(L.colMid(tcol),L.MBOT+ax.tickY+8,"Spring","perlab ghostlab","middle"));
+
+  /* the six modeled periods, below the chart */
+  G.columns.forEach(function(col){
+    svg.appendChild(tx(L.colMid(col.index),L.MBOT+ax.tickY,col.short,"perlab","middle"));
+    var hit=el("rect",{x:L.colLeft(col.index),y:L.topEdge-ax.topReach,width:L.cw,
+      height:L.MBOT-L.topEdge+ax.topReach+ax.ruleReach+8,fill:"transparent","class":"colband"});
+    hit.addEventListener("click",function(ev){openPanel(col,ev);});
+    svg.appendChild(hit);
+  });
+
+  /* the result of the whole model, beside the final column */
+  var tc=G.terminalColumn, nd=L.nodes[tc], xr=L.xState(tc)+L.nodeW+14;
+  var top=nd.state[STATE_IDS[0]].top, bot=nd.state.pool.bot;
+  STATE_IDS.forEach(function(id){ if(nd.state[id].top<top)top=nd.state[id].top; });
+  function result(y,num,l1,l2,warn){
+    svg.appendChild(tx(xr,y,num,warn?"resnum warn":"resnum"));
+    svg.appendChild(tx(xr,y+18,l1,"resk"));
+    svg.appendChild(tx(xr,y+32,l2,"resk"));
+  }
+  var wblMid=L.base.wbl-L.max.wbl*s/2;
+  result(wblMid,pct(G.placed/G.size),"of the class is placed","within the six terms",
+         G.placed<G.size*C.stats.warnPlacedShare);
+  result((top+bot)/2-8,r0(G.unresolved),"unresolved at the end","of senior fall",
+         G.unresolved>G.size*C.stats.warnUnresolvedShare);
+}
+
+/* ---------- click panel ---------- */
+var tip=document.getElementById("tip"), cbox=document.querySelector(".chartbox");
+function panelBody(col){
+  var r=col.main, o=col.offset;
+  function seeking(x){return x.attempts.pool+x.attempts.f1+x.attempts.coach;}
+  function row(label,mine,all,cls,head){
+    return "<tr"+(head?" class='head'":"")+"><td class='lab "+(cls||"")+"'>"+label+"</td>"+
+      "<td class='v'>"+r0(mine)+"</td><td class='v all'>"+r0(all)+"</td></tr>";
+  }
+  var out="<span class='tt'>"+col.label+"</span><table>"+
+    "<thead><tr><th></th><th class='c'>This<br>class</th><th class='c'>All<br>classes</th></tr></thead><tbody>"+
+    row("Seeking WBL this term",seeking(r),seeking(r)+seeking(o),"",true)+
+    row("Unsuccessful search",r.failed,r.failed+o.failed,"i1")+
+    row("Placed",r.placed,r.placed+o.placed,"i1");
+  TYPE_IDS.forEach(function(id){
+    out+=row("<span class='dot' style='background:"+CONFIG.colors[id]+"'></span>"+laneLabel(id),
+             r.byType[id],r.byType[id]+o.byType[id],"i2");
+  });
+  return out+"</tbody></table>";
+}
+
+function openPanel(col,ev){
+  tip.innerHTML="<button class='tipx' type='button' aria-label='Close'>×</button>"+panelBody(col);
+  tip.querySelector(".tipx").addEventListener("click",closePanel);
+  tip.classList.add("open");
+  var b=cbox.getBoundingClientRect();
+  var x=ev.clientX-b.left+16, y=ev.clientY-b.top-10;
+  if(x+268>b.width)x=ev.clientX-b.left-268;
+  if(x<0)x=4;
+  tip.style.left=x+"px";
+  tip.style.top=Math.max(0,Math.min(y,b.height-tip.offsetHeight-6))+"px";
+}
+function closePanel(){tip.classList.remove("open");}
+document.addEventListener("keydown",function(e){if(e.key==="Escape")closePanel();});
+
+function render(G,L){
+  var svg=document.getElementById("chart");
+  svg.setAttribute("viewBox","0 0 "+CONFIG.canvas.width+" "+Math.round(L.height));
+  while(svg.firstChild)svg.removeChild(svg.firstChild);
+  closePanel();
+  renderChart(G,L,svg);
+  renderChrome(G,L,svg);
+}
+
+/* ============================================================
+   7. panels and controls
+   ============================================================ */
+function table(G){
+  var head="<tr><th>Term</th><th>Searching</th><th>First time</th><th>Repeat</th>"+
+    TYPE_IDS.map(function(id){return "<th>"+laneLabel(id)+"</th>";}).join("")+
+    "<th>Unsuccessful</th><th>Both classes</th></tr>";
+  var rows=G.columns.map(function(col){
+    var r=col.main, rep=r.attempts.f1+r.attempts.coach;
+    return "<tr><td>"+col.label+"</td><td>"+r0(r.attempts.pool+rep)+"</td><td>"+r0(r.attempts.pool)+"</td><td>"+r0(rep)+"</td>"+
+      TYPE_IDS.map(function(id){return "<td>"+r0(r.byType[id])+"</td>";}).join("")+
+      "<td>"+r0(r.failed)+"</td><td>"+r0(r.placed+col.offset.placed)+"</td></tr>";
+  }).join("");
+  document.getElementById("tbl").innerHTML=head+rows;
+}
+
+function buildControls(){
+  var a="";
+  TERMS.forEach(function(T,i){
+    if(i>=FIRST_SEARCH_TERMS)return;
+    var slider="<input type='range' id='at"+i+"' min='0' max='100' step='1'>";
+    if(i===FIRST_SEARCH_TERMS-1)slider="<div class='capwrap' id='capwrap'>"+slider+"<span class='capzone'></span></div>";
+    a+="<div class='row'><label for='at"+i+"'>"+T.label+"</label><output id='at"+i+"_o'></output></div>"+slider;
+  });
+  a+="<p class='sub' id='att_total'></p>";
+  document.getElementById("att").innerHTML=a;
+
+  var u="";
+  TERMS.forEach(function(T,i){
+    u+="<div class='row'><label for='su"+i+"'>"+T.label+"</label><output id='su"+i+"_o'></output></div>"+
+       "<input type='range' id='su"+i+"' min='5' max='100' step='1'>";
+  });
+  document.getElementById("suc").innerHTML=u;
+
+  var m="";
+  [["mod2","Second search"],["modC","3rd+ search while engaged in intensive 1:1 career coaching"]].forEach(function(p){
+    m+="<div class='row'><label for='"+p[0]+"'>"+p[1]+"</label><output id='"+p[0]+"_o'></output></div>"+
+       "<input type='range' id='"+p[0]+"' min='30' max='200' step='5'>";
+  });
+  document.getElementById("mods").innerHTML=m;
+
+  ["mixS","mixA"].forEach(function(key){
+    var h="", last=TYPE_IDS.length-1;
+    TYPE_IDS.forEach(function(id,i){
+      var sl="<input type='range' id='"+key+i+"' min='0' max='100' step='1'"+(i===last?" disabled":"")+">";
+      if(i===last)sl="<div class='capwrap' id='cap_"+key+"'>"+sl+"<span class='capzone'></span></div>";
+      h+="<div class='row'><label for='"+key+i+"'><span class='swd' style='background:"+CONFIG.colors[id]+"'></span>"+laneLabel(id)+"</label><output id='"+key+i+"_o'></output></div>"+sl;
+    });
+    document.getElementById(key).innerHTML=h;
+  });
+
+  document.querySelectorAll("input[type=range]").forEach(function(r){r.addEventListener("input",readUI);});
+  document.getElementById("ghost").addEventListener("change",readUI);
+  document.getElementById("reset").addEventListener("click",function(){
+    PARAMS=JSON.parse(JSON.stringify(DEFAULTS));writeUI();go();
+  });
+}
+function writeUI(){
+  document.getElementById("size").value=PARAMS.size;
+  document.getElementById("ghost").checked=PARAMS.ghost;
+  TERMS.forEach(function(T,i){
+    if(i<FIRST_SEARCH_TERMS){var e=document.getElementById("at"+i);e.max=100;e.value=PARAMS.att[i];}
+    document.getElementById("su"+i).value=PARAMS.suc[i];
+  });
+  capLastShare();
+  ["mod2","modC"].forEach(function(k){document.getElementById(k).value=PARAMS[k];});
+  TYPE_IDS.forEach(function(id,i){
+    document.getElementById("mixS"+i).value=PARAMS.mixS[i];
+    document.getElementById("mixA"+i).value=PARAMS.mixA[i];
+  });
+  capMix("mixS");capMix("mixA");
+  labels();
+}
+var MIX_LAST=TYPE_IDS.length-1;
+function mixHead(key){
+  var a=PARAMS[key],t=0;
+  for(var i=0;i<MIX_LAST;i++)t+=a[i];
+  return t;
+}
+function capMix(key){
+  var cap=Math.max(0,100-mixHead(key));
+  document.getElementById("cap_"+key).style.setProperty("--cap",cap);
+  document.getElementById(key+MIX_LAST).value=cap;
+  PARAMS[key][MIX_LAST]=cap;
+  return cap;
+}
+function firstSearchTotal(){
+  return PARAMS.att.slice(0,FIRST_SEARCH_TERMS).reduce(function(a,b){return a+b;},0);
+}
+/* The first four terms move freely. The last one keeps a full 0 to 100 track
+   so its thumb sits at the same scale as the others, but it can only claim
+   what the first four leave; the shaded zone marks the rest of the track. */
+function capLastShare(){
+  var head=0;
+  for(var i=0;i<FIRST_SEARCH_TERMS-1;i++)head+=PARAMS.att[i];
+  var cap=Math.max(0,100-head);
+  document.getElementById("capwrap").style.setProperty("--cap",cap);
+  return cap;
+}
+
+function readUI(){
+  PARAMS.size=+document.getElementById("size").value;
+  PARAMS.ghost=document.getElementById("ghost").checked;
+  for(var i=0;i<FIRST_SEARCH_TERMS-1;i++)PARAMS.att[i]=+document.getElementById("at"+i).value;
+  var cap=capLastShare();
+  var last=document.getElementById("at"+(FIRST_SEARCH_TERMS-1));
+  PARAMS.att[FIRST_SEARCH_TERMS-1]=Math.min(+last.value,cap);
+  last.value=PARAMS.att[FIRST_SEARCH_TERMS-1];
+  PARAMS.att[FIRST_SEARCH_TERMS]=0;
+  TERMS.forEach(function(T,j){PARAMS.suc[j]=+document.getElementById("su"+j).value;});
+  ["mod2","modC"].forEach(function(k){PARAMS[k]=+document.getElementById(k).value;});
+  for(var k=0;k<MIX_LAST;k++){
+    PARAMS.mixS[k]=+document.getElementById("mixS"+k).value;
+    PARAMS.mixA[k]=+document.getElementById("mixA"+k).value;
+  }
+  capMix("mixS");capMix("mixA");
+  labels();go();
+}
+function labels(){
+  document.getElementById("size_o").textContent=r0(PARAMS.size);
+  var tot=firstSearchTotal(), left=100-tot, out=document.getElementById("att_total");
+  out.classList.toggle("over",left<0);
+  out.textContent = left<0
+    ? "Remaining share: "+left+"%. These terms claim more students than the class has."
+    : (left===0 ? ""
+                : "Remaining share: "+left+"%, about "+r0(PARAMS.size*left/100)+" students who never search a first time.");
+  out.style.display=out.textContent?"":"none";
+  TERMS.forEach(function(T,i){
+    if(i<FIRST_SEARCH_TERMS)document.getElementById("at"+i+"_o").textContent=PARAMS.att[i]+"%";
+    document.getElementById("su"+i+"_o").textContent=PARAMS.suc[i]+"%";
+  });
+  ["mod2","modC"].forEach(function(k){
+    document.getElementById(k+"_o").textContent=(PARAMS[k]/100).toFixed(2)+"x";});
+  ["mixS","mixA"].forEach(function(key){
+    var left=100-mixHead(key);
+    TYPE_IDS.forEach(function(id,i){
+      var o=document.getElementById(key+i+"_o");
+      o.textContent=(i===MIX_LAST?Math.max(0,left):PARAMS[key][i])+"%";
+      if(i===MIX_LAST){
+        o.classList.toggle("over",left<0);
+        if(left<0)o.textContent=left+"%";
+      }
+    });
+  });
+}
+
+/* ============================================================
+   8. go(): the whole pipeline in four calls
+   ============================================================ */
+/* Any budget that overshoots 100 holds the chart until it is resolved. */
+function problems(){
+  var out=[], t=firstSearchTotal();
+  if(t>100)out.push("The first four first-search shares add up to <b>"+t+"%</b>.");
+  var ms=mixHead("mixS"); if(ms>100)out.push("The summer type mix adds up to <b>"+ms+"%</b> before Other approved.");
+  var ma=mixHead("mixA"); if(ma>100)out.push("The fall and spring type mix adds up to <b>"+ma+"%</b> before Other approved.");
+  return out;
+}
+function setInvalid(list){
+  var over=list.length>0;
+  document.querySelector(".chartbox").classList.toggle("invalid",over);
+  document.querySelector(".tablescroll").classList.toggle("stale",over);
+  document.getElementById("overbox").hidden=!over;
+  if(over){
+    closePanel();
+    document.getElementById("overmsg").innerHTML=
+      list.join(" ")+" Bring "+(list.length>1?"them":"that")+" back under 100 and the chart returns.";
+  }
+}
+
+function go(){
+  var list=problems();
+  setInvalid(list);
+  if(list.length)return;
+  CONFIG.offsetClass.show=PARAMS.ghost;
+  var M=model(PARAMS);
+  var G=graph(M);
+  var L=layout(G);
+  render(G,L);
+  table(G);
+}
+
+buildControls();writeUI();go();
+})();
+</script>
+
+<script>
+(function(){
+  if(!document.documentElement.classList.contains("embed")) return;
+  var tg=document.querySelector(".togrow"), cb=document.querySelector(".chartbox");
+  if(tg&&cb) cb.appendChild(tg);
+  function send(){ parent.postMessage({sankeyHeight:document.documentElement.scrollHeight},"*"); }
+  window.addEventListener("load",send);
+  window.addEventListener("resize",send);
+  if(window.ResizeObserver) new ResizeObserver(send).observe(document.body);
+})();
+</script>
+</body></html>

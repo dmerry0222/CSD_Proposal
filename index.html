@@ -476,6 +476,15 @@
   #panel-throughline h2.sub{margin:40px 0 8px;}
   #panel-throughline h2.sub#t-1{margin-top:0;}
   .home-cta a.start{display:inline-block;text-decoration:none;color:#fff;}
+  .wbl-intro{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:20px 40px;align-items:center;}
+  .wbl-intro .home-cta{margin:0;}
+  .wbl-intro .home-cta a.start{font-size:1.0625rem;padding:16px 24px;max-width:250px;line-height:1.3;}
+  .wbl-intro .home-cta a.start::after{margin-left:8px;}
+  @media (max-width:900px){.wbl-intro{grid-template-columns:1fr;}.wbl-intro .home-cta a.start{max-width:none;}}
+  .cta-sm{display:inline-block;margin:4px 0 14px;background:var(--navy);color:#fff;font-size:.9375rem;font-weight:600;padding:10px 18px;text-decoration:none;border-bottom:3px solid var(--gold);transition:background .18s ease;}
+  .cta-sm:hover{background:#0F1E39;}
+  .cta-sm::after{content:"\2197";margin-left:8px;}
+  .sankey-frame{display:block;width:100%;height:560px;border:0;}
   .home-cta a.start::after{content:"\2197";}
   /* five criteria, shown as part of the page */
   .crit-wrap{margin:18px 0 8px;}
@@ -486,7 +495,8 @@
   .crit-wrap .crit tbody tr:last-child{border-bottom:0;}
   .crit-wrap .crit td{vertical-align:top;padding:18px 16px;font-size:.9375rem;line-height:1.55;}
   .crit-wrap .crit td.c-name{padding-left:0;width:19%;}
-  .crit-wrap .c-name .num{display:block;width:26px;height:26px;line-height:26px;text-align:center;background:var(--navy);color:#fff;font-size:.75rem;font-weight:600;margin-bottom:9px;}
+  .crit-wrap .c-name .cn{display:flex;align-items:center;gap:10px;}
+  .crit-wrap .c-name .num{flex:0 0 auto;display:block;width:26px;height:26px;line-height:26px;text-align:center;background:var(--navy);color:#fff;font-size:.75rem;font-weight:600;}
   .crit-wrap .c-name .cnm{display:block;font-size:1.0625rem;font-weight:600;color:var(--navy);line-height:1.25;letter-spacing:-.005em;}
   .crit-wrap .crit td.c-desc{width:42%;color:#1a1a1a;}
   .crit-wrap .crit td.c-ver{width:39%;background:var(--tint-02);border-left:1px solid var(--tint-08);font-size:.875rem;}
@@ -977,7 +987,7 @@
         <ul class="sublist" data-for="wbl">
           <li><button class="sub-link" data-ext="evidence">Explore the Evidence for Work-Based Learning &#8599;</button></li>
           <li><button class="sub-link" data-target="w-1">Five Criteria for Work-Based Learning</button></li>
-          <li><button class="sub-link" data-target="w-2">Work-based learning placeholder two</button></li>
+          <li><button class="sub-link" data-target="w-2">Ensuring Students Secure a WBL Experience</button></li>
           <li><button class="sub-link" data-target="w-3">Work-based learning placeholder three</button></li>
           <li><button class="sub-link" data-target="w-4">Work-based learning placeholder four</button></li>
         </ul>
@@ -1842,13 +1852,13 @@ sections:[
     <section class="panel" id="panel-wbl" tabindex="-1">
       <div class="panel-inner">
         <h2 class="sec-title">Work-Based Learning</h2>
-        <div class="sec-standfirst">
+        <div class="sec-standfirst wbl-intro">
           <p>A substantial and growing body of research demonstrates the value of internships and other forms of work-based learning in strengthening students&rsquo; academic learning, professional development, and post-graduation career outcomes. This evidence spans research from the career education field, leading higher education organizations such as AAC&amp;U, and studies conducted by labor-market researchers, employers, and workforce consulting organizations.</p>
           <div class="home-cta"><a class="start" data-evidence target="_blank" rel="noopener">Explore the Evidence for Work-Based Learning</a></div>
         </div>
 
         <h3 class="sub" id="w-1">Five Criteria for Work-Based Learning in the SGE Core</h3>
-        <p>While it is sometimes useful shorthand to refer to this as "the internship requirement," it is important to clarify that work-based learning encompasses a broader range of experiences that provide students with opportunities to apply their knowledge and skills in real-world settings. To create a consistent definition of work-based learning that distinguishes it from other (very valuable!) forms of experiential education, the SGE committee posited these five criteria, which have reviewed and revisedbased on faculty feedback:</p>
+        <p>While it is sometimes useful shorthand to refer to this as "the internship requirement," it is important to clarify that work-based learning encompasses a broader range of experiences that provide students with opportunities to apply their knowledge and skills in real-world settings. To create a consistent definition of work-based learning that distinguishes it from other (very valuable!) forms of experiential education, the SGE committee posited these five criteria, which have been reviewed and revised based on faculty feedback:</p>
 
         <div class="crit-wrap">
           <table class="crit">
@@ -1857,27 +1867,27 @@ sections:[
             </thead>
             <tbody>
               <tr>
-                <td class="c-name"><span class="num">1</span><span class="cnm">Real Work</span></td>
+                <td class="c-name"><div class="cn"><span class="num">1</span><span class="cnm">Real Work</span></div></td>
                 <td class="c-desc">A majority of the student's responsibilities consist of substantive, career-relevant work that draws upon or extends academic learning and advances career exploration or preparation.</td>
                 <td class="c-ver">The student submits a job description and three student-authored learning goals for approval by the relevant faculty member or other designated party.</td>
               </tr>
               <tr>
-                <td class="c-name"><span class="num">2</span><span class="cnm">Meaningful Time</span></td>
+                <td class="c-name"><div class="cn"><span class="num">2</span><span class="cnm">Meaningful Time</span></div></td>
                 <td class="c-desc">The student completes at least <b class="hrs">120 hours</b>, including required training and activities integral to the role. With prior approval, two experiences may be combined to reach 120 hours, provided each independently satisfies all other criteria.</td>
                 <td class="c-ver">Anticipated dates and hours are approved in advance. The student and supervisor confirm completion at the end; hourly logging is not required.</td>
               </tr>
               <tr>
-                <td class="c-name"><span class="num">3</span><span class="cnm">Professional Supervision</span></td>
+                <td class="c-name"><div class="cn"><span class="num">3</span><span class="cnm">Professional Supervision</span></div></td>
                 <td class="c-desc">A qualified professional or field-specific equivalent provides appropriate training, ongoing guidance and feedback, and an end-of-experience performance evaluation.</td>
                 <td class="c-ver">Site approval confirms the supervisor's qualifications and responsibilities. The supervisor completes an evaluation administered or supported by the Career Center.</td>
               </tr>
               <tr>
-                <td class="c-name"><span class="num">4</span><span class="cnm">Expanded Network</span></td>
+                <td class="c-name"><div class="cn"><span class="num">4</span><span class="cnm">Expanded Network</span></div></td>
                 <td class="c-desc">The student engages with at least <b>two professionals beyond existing classroom, peer, and immediate supervisory relationships</b>, gaining exposure to perspectives, pathways, communities, or opportunities relevant to their goals.</td>
                 <td class="c-ver">Off-campus experiences are generally expected to provide these interactions through the work itself. For on-campus roles, the student and supervisor identify a plan for at least three purposeful interactions, such as informational interviews, professional meetings, external collaborations, conferences, or site visits.</td>
               </tr>
               <tr>
-                <td class="c-name"><span class="num">5</span><span class="cnm">Integrated Learning</span></td>
+                <td class="c-name"><div class="cn"><span class="num">5</span><span class="cnm">Integrated Learning</span></div></td>
                 <td class="c-desc">The student identifies what they learned, connects it to academic and career development, and communicates the experience's value in a professional context.</td>
                 <td class="c-ver">Through an internship course or analogous academic mechanism, the student completes structured reflection, updates their resume and professional profile, and submits <b>Career Plan v3.0</b>, connecting the experience to prior learning, strengths, development needs, and future goals.</td>
               </tr>
@@ -1885,8 +1895,10 @@ sections:[
           </table>
         </div>
 
-        <h3 class="sub" id="w-2">Work-based learning placeholder two</h3>
-        <p>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+        <h3 class="sub" id="w-2">Ensuring Students Secure a WBL Experience</h3>
+        <p>There are many students, and entire departments, who are already engaging in internship, research, or other experiences that would satisfy the WBL requirement, or could do so with some minor adjustments to meet the five criteria above. But by far the most common question this proposal meets with is, &ldquo;But what if we can&rsquo;t find experiences for every student?&rdquo;</p>
+        <p>It is important to remember that students in this updated curriculum will have had two classes dedicated to planning for this experience. They will not start looking for an internship 3 months before they want to do one, as is the case for many students today. But it is important to map out what this looks like as a throughput. The diagram below attempts to model this, and you can play with almost all of the variables to mock up various scenarios yourself.</p>
+        <iframe class="sankey-frame" id="sankeyFrame" src="WBL_Sankey.html?embed=1" title="Model of how students move through six terms toward a work-based learning experience" loading="lazy" scrolling="no"></iframe>
 
         <h3 class="sub" id="w-3">Work-based learning placeholder three</h3>
         <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.</p>
@@ -2312,6 +2324,10 @@ sections:[
   /* where the "evidence for work-based learning" pages live (opens in a new tab); change it here only */
   var WBL_EVIDENCE_URL="WBLEvidence.html";
   document.querySelectorAll("a[data-evidence]").forEach(function(a){ a.setAttribute("href",WBL_EVIDENCE_URL); });
+  window.addEventListener("message",function(e){
+    var f=document.getElementById("sankeyFrame");
+    if(f && e.source===f.contentWindow && e.data && e.data.sankeyHeight) f.style.height=Math.ceil(e.data.sankeyHeight)+"px";
+  });
   var SLUG={throughline:"career-plan",howwork:"how-the-work-gets-done"}, KEYOF={}, applyingHash=false;
   Object.keys(SLUG).forEach(function(k){ KEYOF[SLUG[k]]=k; });
   function hashFor(key,sub){ return "#"+(SLUG[key]||key)+(sub?"/"+sub:""); }
