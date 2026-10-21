@@ -1,0 +1,606 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>What the evidence says about work-based learning</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Libre+Franklin:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --navy:#15284B;
+    --gold:#E7AB2A;
+    --blue:#3CB4E5;
+    --ink:#1A1A1A;
+    --body:#4F5663;
+    --mute:#7B8494;
+    --rule:rgba(21,40,75,.16);
+    --hair:rgba(21,40,75,.10);
+    --tint:rgba(21,40,75,.035);
+    --tint-02:rgba(21,40,75,.03);
+    --tint-08:rgba(21,40,75,.08);
+    --t-small:.8125rem;
+    --sans:"Libre Franklin","Segoe UI",Helvetica,Arial,sans-serif;
+    box-sizing:border-box;
+  }
+  *,*::before,*::after{box-sizing:border-box;}
+  body{
+    margin:0;background:#fff;color:var(--body);
+    font-family:var(--sans);font-size:16px;line-height:1.65;
+    -webkit-font-smoothing:antialiased;
+  }
+  .wrap{display:grid;grid-template-columns:minmax(0,1fr) 320px;min-height:100vh;}
+  .main{
+    width:100%;max-width:980px;margin:0 auto;
+    padding:clamp(30px,5vw,60px) clamp(20px,5vw,56px) 96px;
+  }
+  :focus-visible{outline:2px solid var(--navy);outline-offset:2px;}
+
+  .rule{width:52px;height:4px;background:var(--gold);margin-bottom:14px;}
+  h1{
+    font-size:clamp(1.8rem,3.4vw,2.4rem);font-weight:600;color:#000;
+    line-height:1.14;letter-spacing:-.02em;margin:0 0 12px;max-width:30ch;
+  }
+  .standfirst{
+    font-size:1.0625rem;line-height:1.6;margin:0 0 6px;max-width:66ch;
+    padding-bottom:26px;border-bottom:1px solid var(--rule);
+  }
+  .standfirst b{color:var(--navy);font-weight:600;}
+
+  h2{
+    font-size:1.1875rem;font-weight:600;color:var(--navy);
+    line-height:1.3;letter-spacing:-.005em;
+    margin:44px 0 16px;max-width:34ch;clear:both;text-wrap:balance;
+  }
+  p{margin:0 0 17px;max-width:68ch;}
+  .sec:last-of-type p{max-width:68ch;}
+
+  /* inline citation marker (built by script) */
+  .cite-mark{
+    display:inline-block;min-width:11px;height:11px;line-height:11px;text-align:center;
+    font-size:.5rem;font-weight:600;color:var(--navy);background:var(--gold);
+    border-radius:50%;margin-left:2px;cursor:pointer;border:0;font-family:inherit;
+    padding:0 2px;position:relative;top:-.5em;
+  }
+  .cite-mark.lit{outline:2px solid var(--navy);outline-offset:1px;}
+
+  /* ---------- floated stat figure ---------- */
+  .fig{
+    float:right;width:300px;max-width:100%;
+    margin:6px 0 20px 34px;
+    padding:12px 15px 6px;
+    background:var(--tint);
+    border:1px solid var(--hair);
+    border-radius:3px;
+    text-wrap:pretty;
+  }
+  .fig.left{float:left;margin:6px 34px 20px 0;}
+  .fig.wide{width:344px;}
+  .fhead{
+    font-size:.8125rem;font-weight:500;line-height:1.4;
+    color:var(--navy);margin:0 0 8px;
+  }
+  .fstat{
+    display:grid;grid-template-columns:var(--ncol,clamp(56px,30%,86px)) minmax(0,1fr);
+    column-gap:11px;align-items:start;
+    border-top:2px solid var(--blue);
+    padding:7px 0 8px;
+  }
+  .fn{
+    font-size:1.5rem;font-weight:600;line-height:.98;letter-spacing:-.035em;
+    color:var(--navy);font-variant-numeric:lining-nums tabular-nums;
+  }
+  .fn small{font-size:.5em;font-weight:600;letter-spacing:0;}
+  .fstat p{
+    margin:0;font-size:.75rem;line-height:1.4;color:var(--body);
+    max-width:none;text-wrap:pretty;hyphens:none;
+  }
+  .fstat .mark{
+    font-style:normal;font-weight:500;color:var(--navy);
+    box-shadow:inset 0 -1.5px 0 var(--gold);
+  }
+  .fsrc{
+    margin:0;padding-top:6px;border-top:1px solid var(--hair);
+    font-size:.6875rem;line-height:1.45;color:var(--mute);max-width:none;
+  }
+
+  /* list figure */
+  .flist{margin:0;padding:0 0 0 17px;}
+  .flist li{
+    font-size:.75rem;line-height:1.38;color:var(--body);
+    margin-bottom:6px;padding-left:1px;
+  }
+  .flist li b{color:var(--navy);font-weight:600;}
+  .fig .flist{margin-top:2px;}
+  .fig .flist + .fsrc{margin-top:8px;}
+
+  /* single-number figure */
+  .fig.solo .fstat{grid-template-columns:1fr;row-gap:6px;}
+  .fig.solo .fn{font-size:2.125rem;}
+
+  /* ---------- pull quote ---------- */
+  .pull{
+    clear:both;
+    margin:30px 0 30px;max-width:64ch;
+    padding:2px 0 2px 22px;
+    border-left:3px solid var(--blue);
+  }
+  .pull p{
+    margin:0;font-size:1.125rem;line-height:1.5;color:var(--navy);
+    font-weight:400;max-width:none;
+  }
+  .pull p b{font-weight:600;}
+  .pull .psrc{
+    margin:9px 0 0;font-size:.75rem;line-height:1.45;color:var(--mute);
+  }
+
+  /* ---------- sources ---------- */
+  .sources{
+    clear:both;margin-top:52px;padding-top:22px;border-top:2px solid var(--navy);
+  }
+  .sources h2{margin:0 0 14px;}
+  .sources ol{margin:0;padding-left:20px;}
+  .sources li{
+    font-size:.8125rem;line-height:1.55;color:var(--body);
+    margin-bottom:11px;max-width:84ch;
+  }
+  .sources li:target{background:rgba(231,171,42,.16);}
+  .sources i{font-style:italic;}
+
+  @media (max-width:720px){
+    .fig,.fig.left{float:none;width:100%;margin:22px 0;}
+    p,.standfirst,.pull{max-width:none;}
+  }
+
+  /* ---------- right-hand references rail ---------- */
+  .rail{
+    position:sticky;top:0;height:100vh;overflow-y:auto;
+    border-left:1px solid var(--rule);padding:30px 18px 40px;background:#fff;
+  }
+  .rail h2{font-size:var(--t-small);font-weight:600;color:var(--navy);margin:0 0 16px;max-width:none;clear:none;}
+  .doc{
+    display:block;width:100%;text-align:left;position:relative;
+    background:#fff;border:1px solid var(--rule);
+    padding:10px;margin-bottom:12px;cursor:pointer;font:inherit;
+    transition:transform .2s ease,box-shadow .2s ease,border-color .2s ease;
+  }
+  .doc:hover{border-color:rgba(21,40,75,.4);}
+  .doc.lit{transform:translateY(-3px);box-shadow:0 4px 14px rgba(21,40,75,.16);border-color:var(--navy);}
+  .doc .num{
+    position:absolute;top:10px;right:10px;z-index:3;
+    width:18px;height:18px;line-height:18px;text-align:center;
+    font-size:.6875rem;font-weight:600;background:var(--gold);color:var(--navy);
+  }
+  .doc .thumb{
+    display:block;width:100%;height:84px;background:var(--tint-02);border:1px solid var(--rule);
+    margin-bottom:8px;overflow:hidden;line-height:0;
+  }
+  .doc.lit .thumb{background:var(--tint-08);}
+  .doc .thumb svg,.doc .thumb img{display:block;width:100%;height:100%;object-fit:cover;object-position:top center;}
+  .doc .dt{display:block;font-size:var(--t-small);color:var(--navy);font-weight:500;line-height:1.35;padding-right:22px;}
+  .doc .dm{display:block;font-size:.75rem;color:#7B8494;margin-top:3px;line-height:1.35;}
+  .doc .da{
+    font-size:.75rem;color:#7B8494;margin-top:1px;line-height:1.35;
+    display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;
+  }
+  .doc .dp{display:block;font-size:.6875rem;color:#7B8494;font-style:italic;margin-top:4px;}
+  .doc.portrait{padding:0;overflow:hidden;}
+  .doc.portrait .thumb{height:auto;max-height:260px;border:0;margin:0;background:#fff;}
+  .doc.portrait .thumb img{height:auto;}
+  .doc.portrait .dmeta{position:absolute;left:0;right:0;bottom:0;z-index:2;background:rgba(255,255,255,.9);padding:9px 11px 10px;}
+  .doc.portrait .dt{color:#000;padding-right:0;}
+  .doc.portrait .dm,.doc.portrait .da,.doc.portrait .dp{color:#000;}
+
+  /* viewer for references with no file linked yet */
+  .veil{position:fixed;inset:0;background:rgba(21,40,75,.45);display:none;align-items:center;justify-content:center;padding:32px;z-index:60;}
+  .veil.open{display:flex;}
+  .viewer{background:#fff;max-width:560px;width:100%;border-top:3px solid var(--gold);padding:28px 30px 26px;max-height:86vh;overflow-y:auto;}
+  .viewer h3{margin:0 0 4px;font-size:1.25rem;color:var(--navy);font-weight:600;}
+  .viewer .vm{font-size:.8125rem;color:#7B8494;margin:0 0 18px;}
+  .viewer-close{margin-top:22px;background:var(--navy);color:#fff;border:0;font:inherit;font-size:.9375rem;padding:9px 18px;cursor:pointer;}
+  .viewer-close:hover{background:#0F1E39;}
+
+  .rail-toggle{
+    display:none;position:fixed;right:12px;top:calc(12px + env(safe-area-inset-top,0px));
+    z-index:50;background:var(--navy);color:#fff;border:0;font:inherit;font-size:.875rem;padding:9px 14px;cursor:pointer;
+  }
+  .scrim{position:fixed;inset:0;background:rgba(0,0,0,.35);z-index:44;display:none;}
+  .scrim.on{display:block;}
+  @media (max-width:1100px){
+    .wrap{grid-template-columns:minmax(0,1fr);}
+    .rail{
+      position:fixed;inset:0 0 0 auto;height:auto;width:min(320px,86vw);z-index:45;
+      padding-top:calc(64px + env(safe-area-inset-top,0px));
+      transform:translateX(100%);transition:transform .26s ease;visibility:hidden;
+    }
+    .rail.open{transform:translateX(0);visibility:visible;}
+    .rail-toggle{display:block;}
+  }
+  @media (prefers-reduced-motion:reduce){*{transition-duration:.01ms !important;}}
+</style>
+</head>
+<body>
+<button class="rail-toggle" id="railToggle" aria-expanded="false" aria-controls="rail">References</button>
+<div class="scrim" id="scrim"></div>
+<div class="wrap">
+<main class="main">
+
+<div class="rule"></div>
+<h1>What the evidence says about work-based learning</h1>
+<p class="standfirst">National research on work-based learning and what it does to students' outcomes after graduation. <b>The strongest causal evidence applies to paid internships and is labeled as such.</b> Several of the largest effects hold for work-based learning of any kind.</p>
+
+<!-- ============================ HIGH-IMPACT PRACTICE ============================ -->
+<div class="sec">
+<h2>A practice the curriculum already recognizes</h2>
+
+<figure class="fig">
+  <p class="fhead">The eight conditions Kuh and O'Donnell argue a practice must meet to be high-impact:</p>
+  <ol class="flist">
+    <li><b>Performance expectations</b> set at appropriately high levels</li>
+    <li><b>Significant effort</b> sustained over an extended period</li>
+    <li><b>Substantive interaction</b> with faculty and peers</li>
+    <li><b>Encounters with difference</b>, working alongside unfamiliar people and perspectives</li>
+    <li><b>Frequent, timely, constructive feedback</b></li>
+    <li><b>Structured reflection</b> and integration of learning</li>
+    <li><b>Real-world application</b> of what has been learned</li>
+    <li><b>Public demonstration</b> of competence</li>
+  </ol>
+  <p class="fsrc">Kuh and O'Donnell, AAC&amp;U, 2013.</p>
+</figure>
+
+<p>Internships are not an idea arriving from outside the academy. They are one of the eleven high-impact educational practices named in George Kuh's 2008 report for the Association of American Colleges and Universities,<span data-cite="kuh2008hip"></span> alongside first-year seminars, undergraduate research, writing-intensive courses, and capstone projects. Four of those eleven appear somewhere in the milestone structure proposed here. The question in front of the faculty is not whether to adopt an unfamiliar practice. It is whether to extend one already on the list to every student rather than to the students who find their own way to it.</p>
+
+<p>The more useful contribution from that literature is the quality standard that followed it. Kuh and O'Donnell argued in 2013 that calling a practice high-impact guarantees nothing on its own, because the benefits depend on eight conditions actually being met.<span data-cite="kuh2013quality"></span> An experience that fails those conditions is not a high-impact practice. It is a job.</p>
+
+<p>That is the case for a defined set of criteria rather than an open requirement satisfied by any work experience. The five criteria proposed for a qualifying experience are a work-based translation of the AAC&amp;U conditions: substantive work held to a real standard, sustained effort across a defined period, supervision and professional relationships, structured reflection, and application of academic learning in a professional setting. Faculty asked to approve this requirement are being asked to apply a quality framework most of them already accept in a setting where it has not previously been enforced.</p>
+</div>
+
+<!-- ============================ EARNINGS ============================ -->
+<div class="sec">
+<h2>The return on a work-based experience</h2>
+
+<figure class="fig wide" style="--ncol:106px">
+  <p class="fhead">Earnings advantage, measured against matched peers:</p>
+  <div class="fstat">
+    <span class="fn">+$13,859</span>
+    <p>in annual personal income for bachelor's degree holders who had <span class="mark">any work-based learning</span> experience.</p>
+  </div>
+  <div class="fstat">
+    <span class="fn">+15<small>%</small></span>
+    <p>one year out for a <span class="mark">paid internship</span>, worth $5,564 on an average first-year salary of $36,379.</p>
+  </div>
+  <div class="fstat">
+    <span class="fn">+16<small>%</small></span>
+    <p>four years out. The advantage <span class="mark">widens</span> rather than fades, reaching $9,089 a year.</p>
+  </div>
+  <p class="fsrc">Strada-Gallup Education Survey, 2022; Research in Higher Education, 2026.</p>
+</figure>
+
+<p>Work-based learning shows up in graduates' paychecks, and it keeps showing up years later. Bachelor's degree holders who had a work-based learning experience report $13,859 more in annual personal income than peers matched on race and ethnicity, gender, age, and field of study.<span data-cite="stradapowerwbl"></span> The matching matters: this is not a comparison of business majors with art history majors.</p>
+
+<p>The most rigorous causal evidence narrows to paid internships specifically. Drawing on restricted-access federal data covering a national cohort of bachelor's completers, researchers found a 15 percent earnings advantage one year after graduation for students who had completed a paid internship.<span data-cite="rhe2026earnings"></span> That gap does not close with time. Four years out it has widened to 16 percent.</p>
+
+<p>Earnings are the easiest outcome to measure but not the most revealing one. The same study found that students with a paid internship were 14 percentage points more likely to hold a first job that actually requires their degree, and 13 points more likely to describe that job as part of a career rather than simply a job.<span data-cite="rhe2026earnings"></span> Unpaid internships and practica produce smaller versions of the same effect, up to six points and twelve points respectively. That distinction matters for a requirement that will have to recognize more than one kind of qualifying experience.</p>
+
+<p>Some of the mechanism is visible before a student's first day of work. In an audit study that sent otherwise identical résumés to employers, the versions listing an internship drew 14 percent more callbacks.<span data-cite="nsci2021"></span> The line on the page is doing work in the screening pile, independent of anything the student learned on the job.</p>
+
+<div class="pull">
+  <p>The earnings advantage holds <b>even after accounting for field of study, gender, and race or ethnicity.</b> It is not a reflection of which students manage to get internships in the first place.</p>
+  <p class="psrc">Strada Education Foundation, 2022; Research in Higher Education, 2026.</p>
+</div>
+</div>
+
+<!-- ============================ BEYOND PAY ============================ -->
+<div class="sec">
+<h2>What changes that salary does not capture</h2>
+
+<figure class="fig left">
+  <p class="fhead">Graduates with work-based learning, against those without:</p>
+  <div class="fstat">
+    <span class="fn">+39<small> pts</small></span>
+    <p>more likely to say <span class="mark">their education helped them achieve their goals</span>. Across all degree holders the gap is 19 points.</p>
+  </div>
+  <div class="fstat">
+    <span class="fn">+11<small> pts</small></span>
+    <p>more likely to agree their education was <span class="mark">worth the cost</span>.</p>
+  </div>
+  <div class="fstat">
+    <span class="fn">+7<small> pts</small></span>
+    <p>higher <span class="mark">career satisfaction</span> years after graduation.</p>
+  </div>
+  <p class="fsrc">Strada-Gallup Education Survey, 2022. Work-based learning of any kind.</p>
+</figure>
+
+<p>The effects that have nothing to do with salary are, if anything, larger. Recent graduates who had work-based learning are 39 percentage points more likely to say their education helped them achieve their goals.<span data-cite="stradapowerwbl"></span> They are 11 points more likely to agree the education was worth the cost, and they report higher career satisfaction years afterward.</p>
+
+<p>Worth-the-cost is not a soft measure. It is the question that drives enrollment decisions, alumni giving, and the public argument about whether a degree pays for itself. An eleven-point swing on that item, attributable to an experience the institution can require, is a consequential finding for any university making its case to families and to the state.</p>
+
+<div class="pull">
+  <p>Researchers found <b>no statistically significant difference in the benefit by race, gender, or socioeconomic status.</b> The advantage is consistent across groups. What differs sharply is who gets access to the experience.</p>
+  <p class="psrc">Strada Education Foundation, 2022.</p>
+</div>
+</div>
+
+<!-- ============================ STUDENT VALUE ============================ -->
+<div class="sec">
+<h2>What students say the experience is worth</h2>
+
+<figure class="fig solo">
+  <p class="fhead">Career value of the experience, rated out of 10:</p>
+  <div class="fstat">
+    <span class="fn">9.3 <small>vs 5.5</small></span>
+    <p>Students whose experience <span class="mark">expanded their professional network a great deal</span>, against those whose did not expand it at all. The single largest driver of how students rate the value of the experience.</p>
+  </div>
+  <p class="fsrc">Strada Education Foundation, 2025.</p>
+</figure>
+
+<p>Students who complete these experiences rate them highly and specifically. Eighty-one percent scored their experience at least 7 out of 10 on making them a stronger candidate for the job they want, and two in five gave it a perfect 10.<span data-cite="stradabeyond"></span> Three quarters report being extremely or very satisfied with an internship.<span data-cite="stradabuildingbetter"></span> Eight in ten say a supervisor gave them quite a bit or a great deal of mentorship toward their career goals, and that holds across internships, practica, project-based learning, and undergraduate research alike.<span data-cite="stradabeyond"></span></p>
+
+<p>More useful than the overall ratings is what separates a valuable experience from a forgettable one, because that is what a set of criteria can actually govern. Students whose experience expanded their professional network a great deal rated its career value 9.3 out of 10. Students whose experience did not expand their network at all rated it 5.5.<span data-cite="stradabeyond"></span> Skill development follows a similar pattern: 76 percent of paid interns said the experience built technical skills relevant to their goals, with practica at 81 percent, and 70 percent of interns said it built broad skills that transfer across careers.</p>
+
+<p>The implication is that quality is not mysterious. Supervisor support, genuine mentorship, substantive work, and contact with people in the field are the dimensions that separate the experiences students value from the ones they do not, and those are the dimensions a qualifying-experience standard can be written around.</p>
+</div>
+
+<!-- ============================ EMPLOYERS ============================ -->
+<div class="sec">
+<h2>What employers do with the credential</h2>
+
+<figure class="fig left">
+  <p class="fhead">Employer response to an internship on a graduate's record:</p>
+  <div class="fstat">
+    <span class="fn">81<small>%</small></span>
+    <p>of employers say they would be <span class="mark">more likely to consider hiring</span> a graduate who completed an internship or apprenticeship, tied for first on the list.</p>
+  </div>
+  <div class="fstat">
+    <span class="fn">62<small>%</small></span>
+    <p>of the 2024 intern class <span class="mark">received a full-time offer</span> from the employer that hosted them.</p>
+  </div>
+  <div class="fstat">
+    <span class="fn">72<small>%</small></span>
+    <p>offer rate for <span class="mark">in-person programs</span>, against roughly 56% where the work mixed remote and in-person.</p>
+  </div>
+  <p class="fsrc">AAC&amp;U and Morning Consult, 2025; NACE Internship and Co-op Report, 2025.</p>
+</figure>
+
+<p>AAC&amp;U's most recent employer survey, conducted with Morning Consult in August 2025 among 1,030 employers, found that 81 percent would be more likely to consider hiring a graduate who had completed an internship or apprenticeship, tied with having held a leadership role at the top of the list.<span data-cite="agility"></span> An earlier AAC&amp;U survey of 496 executives and hiring managers reached the same conclusion in softer terms, with more than four in five saying that completing an applied learning experience would make them more likely to consider a candidate.<span data-cite="aacuworkforce2021"></span></p>
+
+<p>The most frequently cited study in this area is also the one to handle most carefully. Gallup and Purdue surveyed 29,560 bachelor's degree holders in 2014 and found that graduates who had an internship or job applying what they learned in class, worked on a project lasting a semester or more, and were actively involved in extracurricular activities had roughly double the odds of being engaged at work. Only 6 percent could say they had all three.<span data-cite="gallupppurdue2014"></span> Two cautions apply. The internship item is bundled with two others, so the study cannot isolate what the internship itself contributed, and the design is retrospective self-report rather than the matched comparison used in the earnings research above. It is the most quotable finding in the field and not the most rigorous one.</p>
+
+<p>From the employer side, 62 percent of the 2024 intern class received a full-time offer from their host organization.<span data-cite="nace2025internship"></span> That rate varies sharply by format: 72 percent for in-person programs against roughly 56 percent where the work mixed remote and in-person. For a requirement that will need to accept remote placements, the gap is worth tracking.</p>
+</div>
+
+<!-- ============================ ACCESS ============================ -->
+<div class="sec">
+<h2>Demand far exceeds access</h2>
+
+<figure class="fig">
+  <p class="fhead">Intent against actual participation:</p>
+  <div class="fstat">
+    <span class="fn">70<small>%</small></span>
+    <p>of first-year students <span class="mark">plan to complete an internship</span> during college.</p>
+  </div>
+  <div class="fstat">
+    <span class="fn">&lt;1<small> in 4</small></span>
+    <p>actually secure a <span class="mark">paid internship</span>. Fewer than half complete one of any kind.</p>
+  </div>
+  <div class="fstat">
+    <span class="fn">21.5<small>%</small></span>
+    <p>measured participation across 12,130 students, <span class="mark">well below the 50 to 60%</span> long assumed from earlier estimates.</p>
+  </div>
+  <p class="fsrc">Strada Education Foundation, 2024; National Survey of College Internships, 2021.</p>
+</figure>
+
+<p>Students are not ambivalent about this. Ninety-six percent of those who took an internship did so to connect their education with career opportunities, either to gain experience in a specific field or to test whether that field was a good fit.<span data-cite="stradabuildingbetter"></span> Seventy percent of first-year students arrive planning to complete one.<span data-cite="stradabuildingbetter"></span></p>
+
+<p>Far fewer manage it. Fewer than one in four secure a paid internship and fewer than half complete an internship of any kind. The most careful participation measure available, taken across 12,130 students at seventeen institutions, put the rate at 21.5 percent, well below the 50 to 60 percent long assumed from older and looser estimates.<span data-cite="nsci2021"></span> Institutions have generally been working from a number roughly twice the real one.</p>
+
+<figure class="fig left solo">
+  <p class="fhead">Among students at four-year institutions who did not intern:</p>
+  <div class="fstat">
+    <span class="fn">6 <small>in 10</small></span>
+    <p><span class="mark">wanted to but could not.</span> In an earlier national sample the figure was 67 percent, and 55 percent of non-interns report a strong interest in doing so.</p>
+  </div>
+  <p class="fsrc">National Survey of College Internships, 2023 and 2021; CCWT, 2024.</p>
+</figure>
+
+<p>The gap is not a motivation problem. Six in ten students at four-year institutions who did not intern wanted to but could not,<span data-cite="stradabuildingbetter"></span> and 55 percent of non-interns report strong interest in doing so.<span data-cite="ccwtbarriers2024"></span> Interest is not the binding constraint, which means interventions aimed at persuading students to care will not move the number.</p>
+
+<div class="pull">
+  <p>The obstacles students name are consistent across studies and they are structural: <b>a heavy course load is the single most-cited barrier,</b> followed by not knowing how to find an internship, too few opportunities in their field, and the need to hold a paying job.</p>
+  <p class="psrc">Strada Education Foundation, 2024; National Survey of College Internships, 2021.</p>
+</div>
+
+<p>Each of those four barriers is institutional rather than personal. Course load is a curricular design question. Not knowing how to find an opportunity is a preparation question. Thin opportunity supply in a given field is an employer development question. The need to earn is a question of whether the experience is paid or carries credit. None of them is addressed by encouragement, and all of them are addressed by structure.</p>
+</div>
+
+<!-- ============================ SYNTHESIS ============================ -->
+<div class="sec">
+<h2>What the evidence does and does not settle</h2>
+
+<p>Three claims here are well supported. Paid internships raise early-career earnings and improve the quality of the first job, and those effects survive careful matching on student characteristics. Work-based learning of any kind improves how graduates assess the value of their education, by margins large enough to matter institutionally. And the benefits appear to be distributed evenly across demographic groups, while access to the experiences is not.</p>
+
+<p>Two things the evidence does not settle are worth stating plainly. The causal estimates are strongest for paid internships, so claims about unpaid or for-credit experiences should be made more cautiously and at the smaller effect sizes the research actually reports. And none of this research tests a required experience, because no national dataset describes a population where participation was universal. The findings describe what happens to students who complete these experiences, under conditions where roughly one in five does.</p>
+
+<p>A third caution belongs here because a faculty member who follows this literature will raise it. Kilgo, Sheets, and Pascarella, working with longitudinal data from the Wabash National Study, found the measured effects of high-impact practices uneven across practices and across outcomes rather than uniformly strong.<span data-cite="kilgo2015wabash"></span> The designation is not a guarantee, which is the same point Kuh and O'Donnell made about quality conditions. The case for this requirement does not rest on high-impact status. It rests on matched-design evidence about earnings and employment that the high-impact literature does not itself contain, and the two should not be conflated when the proposal is defended.</p>
+
+<p>What the evidence establishes well enough to act on is the shape of the problem: students want the experience, the experience works, and most students do not get it for reasons the institution controls.</p>
+</div>
+
+<!-- ============================ SOURCES ============================ -->
+<div class="sources">
+  <h2>Sources</h2>
+  <ol>
+    <li id="s1">George D. Kuh, <i>High-Impact Educational Practices: What They Are, Who Has Access to Them, and Why They Matter</i> (Washington, DC: Association of American Colleges and Universities, 2008). Internships appear as one of eleven named high-impact practices.</li>
+    <li id="s2">George D. Kuh and Ken O'Donnell, <i>Ensuring Quality and Taking High-Impact Practices to Scale</i> (Washington, DC: Association of American Colleges and Universities, 2013). Source of the eight key elements.</li>
+    <li id="s3">Nichole Torpey-Saboe, Elaine Leigh, and Dave Clayton, <i>The Power of Work-Based Learning</i> (Indianapolis: Strada Education Foundation, March 2022). Estimated effects based on the Strada-Gallup Education Survey, September to November 2021, bachelor's degree completers, n = 1,941, matched on race and ethnicity, gender, age, and field of study, with cost-of-living adjustment for income.</li>
+    <li id="s4">Nichole Torpey-Saboe, Hee Song, and Mindi Thompson, "Work-Based Learning and Early Career Outcomes: Evidence on Earnings, College-Level Employment, and Career Progression," <i>Research in Higher Education</i> 67, no. 14 (2026). Nearest-neighbor matching on restricted-access NCES Baccalaureate and Beyond data (B&amp;B:2016/20).</li>
+    <li id="s5">Matthew T. Hora, Jared Colston, Zhidong Chen, and Alexandra Pasqualone, <i>National Survey of College Internships (NSCI) 2021 Report</i> (Madison: Center for Research on College-Workforce Transitions, University of Wisconsin&ndash;Madison). n = 12,130 students across 17 institutions. The r&eacute;sum&eacute; audit study of employer callback rates (John M. Nunley et al., 2016) is cited in this report. The callback figure is drawn from the citing report rather than the original study.</li>
+    <li id="s6">Nichole Torpey-Saboe, Kevin Grubb, and Akua Amankwah-Ayeh, <i>Internships and Beyond: Strengthening Career Value Across Diverse Models of Work-Based Learning</i> (Strada Education Foundation, 2025).</li>
+    <li id="s7"><i>Building Better Internships: Understanding and Improving the Internship Experience</i> (Indianapolis: Strada Education Foundation, May 2024). Based on the 2023 National Survey of College Internships; third- and fourth-year students at four-year institutions, n = 2,824, and students of all class years at two-year institutions, n = 2,531, weighted to be nationally representative.</li>
+    <li id="s8"><i>The Agility Imperative: How Employers View Preparation for an Uncertain Future</i> (Washington, DC: Association of American Colleges and Universities, December 2025). Conducted online by Morning Consult, August 11 to 24, 2025, n = 1,030 employers, margin of error plus or minus 3 percentage points.</li>
+    <li id="s9">Ashley Finley, <i>How College Contributes to Workforce Success: Employer Views on What Matters Most</i> (Washington, DC: Association of American Colleges and Universities, 2021). Conducted with Hanover Research, October 2020, n = 496 executives and hiring managers. Note that the per-experience percentages in Figures 7 and 21 are not consistent with each other; the "more than four in five" figure cited here comes from the report's body text.</li>
+    <li id="s10">Julie Ray and Stephanie Marken, "Life in College Matters for Life After College," Gallup, May 6, 2014. Gallup-Purdue Index, February 4 to March 7, 2014, n = 29,560 bachelor's degree holders. The internship item is reported in combination with two other experiences and cannot be isolated.</li>
+    <li id="s11"><i>2025 Internship &amp; Co-op Report</i> (Bethlehem, PA: National Association of Colleges and Employers, 2025). Data collected October 16, 2024 to January 2, 2025, n = 247 organizations.</li>
+    <li id="s13">Hee Song and Matthew Hora, <i>Navigating Barriers to Access Internships: Challenges for Thwarted Interns Across Institution Types and Student Demographics</i> (Madison: CCWT, October 2024). n = 2,083 students who had not interned but wanted to.</li>
+    <li id="s14">Cindy A. Kilgo, Jessica K. Ezell Sheets, and Ernest T. Pascarella, "The Link Between High-Impact Practices and Student Learning: Some Longitudinal Evidence," <i>Higher Education</i> 69 (2015): 509&ndash;525. Longitudinal analysis of Wabash National Study data. Full text not verified here; confirm the specific findings before citing them in a published document.</li>
+  </ol>
+</div>
+
+</main>
+
+<aside class="rail" id="rail" aria-label="Referenced documents">
+  <h2>Referenced Documents</h2>
+</aside>
+</div>
+
+<div class="veil" id="veil" role="dialog" aria-modal="true" aria-labelledby="viewerTitle">
+  <div class="viewer">
+    <h3 id="viewerTitle">Document title</h3>
+    <p class="vm" id="viewerMeta"></p>
+    <p>No file is linked to this reference yet. Add an entry for it in the DOCS list in docs.js and the card will open the document directly.</p>
+    <button class="viewer-close" id="viewerClose">Close</button>
+  </div>
+</div>
+
+<script src="docs.js"></script>
+<script>
+(function(){
+  "use strict";
+
+  /* Shown only for a reference that has no entry in docs.js yet. An entry in docs.js with the same label replaces it. */
+  var PENDING={
+    kuh2008hip:{title:"High-Impact Educational Practices: What They Are, Who Has Access to Them, and Why They Matter",date:"2008",author:"George D. Kuh, AAC&U"},
+    kuh2013quality:{title:"Ensuring Quality and Taking High-Impact Practices to Scale",date:"2013",author:"George D. Kuh and Ken O'Donnell, AAC&U"},
+    stradapowerwbl:{title:"The Power of Work-Based Learning",date:"March 2022",author:"Strada Education Foundation"},
+    rhe2026earnings:{title:"Work-Based Learning and Early Career Outcomes: Evidence on Earnings, College-Level Employment, and Career Progression",date:"2026",author:"Torpey-Saboe, Song, and Thompson, Research in Higher Education"},
+    stradabuildingbetter:{title:"Building Better Internships: Understanding and Improving the Internship Experience",date:"May 2024",author:"Strada Education Foundation"},
+    aacuworkforce2021:{title:"How College Contributes to Workforce Success: Employer Views on What Matters Most",date:"2021",author:"Ashley Finley, AAC&U"},
+    gallupppurdue2014:{title:"Life in College Matters for Life After College",date:"May 2014",author:"Gallup and Purdue University"},
+    nace2025internship:{title:"2025 Internship & Co-op Report",date:"2025",author:"NACE"},
+    nsci2021:{title:"National Survey of College Internships (NSCI) 2021 Report",date:"2021",author:"Center for Research on College-Workforce Transitions, UW\u2013Madison"},
+    ccwtbarriers2024:{title:"Navigating Barriers to Access Internships: Challenges for Thwarted Interns Across Institution Types and Student Demographics",date:"October 2024",author:"Hee Song and Matthew Hora, CCWT"},
+    kilgo2015wabash:{title:"The Link Between High-Impact Practices and Student Learning: Some Longitudinal Evidence",date:"2015",author:"Kilgo, Ezell Sheets, and Pascarella, Higher Education"}
+  };
+  function docOf(id){
+    var d=(window.DOCS&&window.DOCS[id]);
+    if(d) return d;
+    var f=PENDING[id];
+    return f ? {title:f.title,date:f.date,author:f.author,file:"",thumb:"",pending:true} : null;
+  }
+  function esc(s){return String(s).replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;").replace(/"/g,"&quot;");}
+
+  var rail=document.getElementById("rail"), numbers={}, order=[], n=0;
+
+  /* numbered markers, in order of first use, plus the matching cards in the rail */
+  [].slice.call(document.querySelectorAll("[data-cite]")).forEach(function(span){
+    var id=span.dataset.cite, d=docOf(id);
+    if(!d && window.console) console.warn('Citation "'+id+'" is not in docs.js or the pending list.');
+    if(!(id in numbers)){ numbers[id]=++n; order.push(id); }
+    var b=document.createElement("button");
+    b.className="cite-mark";
+    b.dataset.doc=id;
+    b.textContent=numbers[id];
+    b.setAttribute("aria-label","Reference "+numbers[id]+(d?": "+d.title:""));
+    span.parentNode.replaceChild(b,span);
+    var block=b.closest("p,li,figure,.pull")||b.parentElement;
+    var list=(block.getAttribute("data-cites")||"").split(",").filter(Boolean);
+    if(list.indexOf(id)<0) list.push(id);
+    block.setAttribute("data-cites",list.join(","));
+  });
+  order.forEach(function(id){
+    var d=docOf(id); if(!d) return;
+    var b=document.createElement("button");
+    b.className="doc"; b.dataset.doc=id;
+    b.innerHTML=
+      '<span class="num">'+numbers[id]+'</span>'+
+      (d.thumb?'<span class="thumb"><img src="'+esc(d.thumb)+'" alt=""></span>':'<span class="thumb"></span>')+
+      '<span class="dmeta">'+
+        '<span class="dt">'+esc(d.title)+'</span>'+
+        (d.date?'<span class="dm">'+esc(d.date)+'</span>':'')+
+        (d.author?'<span class="da" title="'+esc(d.author)+'">'+esc(d.author)+'</span>':'')+
+        (d.pending?'<span class="dp">Link pending</span>':'')+
+      '</span>';
+    if(d.portrait) b.classList.add("portrait");
+    rail.appendChild(b);
+  });
+
+  /* generic page graphic for cards with no thumbnail image */
+  (function(){
+    var NS="http://www.w3.org/2000/svg";
+    document.querySelectorAll(".thumb:empty").forEach(function(t){
+      var svg=document.createElementNS(NS,"svg");
+      svg.setAttribute("viewBox","0 0 120 84"); svg.setAttribute("preserveAspectRatio","none"); svg.setAttribute("aria-hidden","true");
+      [6,10,14,18,22,26,30,38,42,46,50,54,62,66,70].forEach(function(y,i){
+        var r=document.createElementNS(NS,"rect");
+        r.setAttribute("x","12"); r.setAttribute("y",String(y)); r.setAttribute("height","2");
+        r.setAttribute("width",String(i%5===3?54:(i%4===0?90:78))); r.setAttribute("fill","rgba(21,40,75,.22)");
+        svg.appendChild(r);
+      });
+      var head=document.createElementNS(NS,"rect");
+      head.setAttribute("x","12"); head.setAttribute("y","-2"); head.setAttribute("width","40"); head.setAttribute("height","3"); head.setAttribute("fill","#E7AB2A");
+      svg.appendChild(head); t.appendChild(svg);
+    });
+    /* taller than wide: let the cover fill the card */
+    document.querySelectorAll(".doc .thumb img").forEach(function(img){
+      function check(){ if(img.naturalWidth && img.naturalHeight>img.naturalWidth*1.15) img.closest(".doc").classList.add("portrait"); }
+      if(img.complete) check(); else img.addEventListener("load",check,{once:true});
+    });
+  })();
+
+  /* opening a reference */
+  var veil=document.getElementById("veil");
+  function openDoc(id){
+    var d=docOf(id);
+    if(d && d.file){ window.open(d.file,"_blank","noopener"); return; }
+    document.getElementById("viewerTitle").textContent=d?d.title:"Unknown reference";
+    document.getElementById("viewerMeta").textContent=d?[d.date,d.author].filter(Boolean).join(" \u00b7 "):id;
+    veil.classList.add("open");
+    document.getElementById("viewerClose").focus();
+  }
+  function closeDoc(){ veil.classList.remove("open"); }
+  document.addEventListener("click",function(e){
+    var d=e.target.closest(".doc, .cite-mark");
+    if(d){ openDoc(d.dataset.doc); return; }
+    if(e.target===veil) closeDoc();
+  });
+  document.getElementById("viewerClose").addEventListener("click",closeDoc);
+
+  /* the rail card for whatever is being read lifts, and the rail scrolls along with the page */
+  var cited=[].slice.call(document.querySelectorAll("[data-cites]"));
+  if("IntersectionObserver" in window && cited.length){
+    var io=new IntersectionObserver(function(entries){
+      entries.forEach(function(en){
+        en.target.dataset.cites.split(",").forEach(function(id){
+          var doc=rail.querySelector('.doc[data-doc="'+id+'"]');
+          var mark=en.target.querySelector('.cite-mark[data-doc="'+id+'"]');
+          if(doc) doc.classList.toggle("lit",en.isIntersecting);
+          if(mark) mark.classList.toggle("lit",en.isIntersecting);
+        });
+      });
+    },{rootMargin:"-18% 0px -52% 0px",threshold:0});
+    cited.forEach(function(el){ io.observe(el); });
+  }
+  function syncRail(){
+    var pMax=document.documentElement.scrollHeight-window.innerHeight;
+    var rMax=rail.scrollHeight-rail.clientHeight;
+    if(pMax<=0||rMax<=0||window.innerWidth<=1100){ return; }
+    rail.scrollTop=(window.scrollY/pMax)*rMax;
+  }
+  window.addEventListener("scroll",syncRail,{passive:true});
+  window.addEventListener("resize",syncRail);
+
+  /* narrow screens: the rail is a drawer */
+  var scrim=document.getElementById("scrim"), toggle=document.getElementById("railToggle");
+  function closeRail(){ rail.classList.remove("open"); scrim.classList.remove("on"); toggle.setAttribute("aria-expanded","false"); }
+  toggle.addEventListener("click",function(){
+    var open=rail.classList.toggle("open");
+    scrim.classList.toggle("on",open);
+    toggle.setAttribute("aria-expanded",open?"true":"false");
+  });
+  scrim.addEventListener("click",closeRail);
+  document.addEventListener("keydown",function(e){ if(e.key==="Escape"){ closeDoc(); closeRail(); } });
+})();
+</script>
+</body>
+</html>

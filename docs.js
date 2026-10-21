@@ -212,4 +212,94 @@ window.DOCS = {
   thumb:"thumb/nacm.png"
 },
 
+/* ===== References for WBLEvidence.html. Entries marked "check" were matched by hand; confirm before going live. =====
+   check: stradapowerwbl, rhe2026earnings, stradabuildingbetter and nsci2021 point to PDFs whose file names differ from their labels.
+   check: kuh2008hip points to files/kuh2008hips.pdf (the file name has an extra "s").
+   nsci2021 and nunley2016audit share one thumbnail (thumb/nunley2016audit.png), the cover of the NSCI report. */
+
+"kuh2008hip": {
+  title:"High-Impact Educational Practices: What They Are, Who Has Access to Them, and Why They Matter",
+  date:"2008",
+  author:"George D. Kuh, AAC&U",
+  file:"files/kuh2008hips.pdf",
+  thumb:"thumb/kuh2008hip.png"
+},
+"kuh2013quality": {
+  title:"Ensuring Quality and Taking High-Impact Practices to Scale",
+  date:"2013",
+  author:"George D. Kuh and Ken O'Donnell, AAC&U",
+  file:"files/kuh2013quality.pdf",
+  thumb:"thumb/kuh2013quality.png"
+},
+"stradapowerwbl": {
+  title:"The Power of Work-Based Learning",
+  date:"March 2022",
+  author:"Strada Education Foundation",
+  file:"files/powerwbl.pdf",
+  thumb:"thumb/stradapowerwbl.png"
+},
+"rhe2026earnings": {
+  title:"Work-Based Learning and Early Career Outcomes: Evidence on Earnings, College-Level Employment, and Career Progression",
+  date:"2026",
+  author:"Torpey-Saboe, Song, and Thompson, Research in Higher Education",
+  file:"files/wblevidence.pdf",
+  thumb:"thumb/rhe2026earnings.png"
+},
+"nunley2016audit": {
+  title:"Resume audit study of employer callback rates (Nunley et al.), as cited in the NSCI 2021 report",
+  date:"2016",
+  author:"John M. Nunley et al.",
+  file:"files/nunley2016audit.pdf",
+  thumb:"thumb/nunley2016audit.png"
+},
+"stradabuildingbetter": {
+  title:"Building Better Internships: Understanding and Improving the Internship Experience",
+  date:"May 2024",
+  author:"Strada Education Foundation",
+  file:"files/stradabuilding.pdf",
+  thumb:"thumb/stradabuildingbetter.png"
+},
+"aacuworkforce2021": {
+  title:"How College Contributes to Workforce Success: Employer Views on What Matters Most",
+  date:"2021",
+  author:"Ashley Finley, AAC&U",
+  file:"files/aacuworkforce2021.pdf",
+  thumb:"thumb/aacuworkforce2021.png"
+},
+"gallupppurdue2014": {
+  title:"Life in College Matters for Life After College",
+  date:"May 2014",
+  author:"Gallup and Purdue University",
+  file:"files/gallupppurdue2014.pdf",
+  thumb:"thumb/gallupppurdue2014.png"
+},
+"nace2025internship": {
+  title:"2025 Internship & Co-op Report",
+  date:"2025",
+  author:"NACE",
+  file:"files/nace2025internship.pdf",
+  thumb:"thumb/nace2025internship.png"
+},
+"nsci2021": {
+  title:"National Survey of College Internships (NSCI) 2021 Report",
+  date:"2021",
+  author:"Center for Research on College-Workforce Transitions, UW-Madison",
+  file:"files/nsci.pdf",
+  thumb:"thumb/nunley2016audit.png"
+},
+"ccwtbarriers2024": {
+  title:"Navigating Barriers to Access Internships: Challenges for Thwarted Interns Across Institution Types and Student Demographics",
+  date:"October 2024",
+  author:"Hee Song and Matthew Hora, CCWT",
+  file:"files/ccwt1.pdf",
+  thumb:"thumb/ccwtbarriers2024.png"
+},
+"kilgo2015wabash": {
+  title:"The Link Between High-Impact Practices and Student Learning: Some Longitudinal Evidence",
+  date:"2015",
+  author:"Kilgo, Ezell Sheets, and Pascarella, Higher Education",
+  file:"https://www.researchgate.net/publication/273705261_The_link_between_high-impact_practices_and_student_learning_Some_longitudinal_evidence",
+  thumb:"thumb/kilgo2015wabash.png"
+},
+
   };
