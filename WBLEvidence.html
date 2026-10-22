@@ -30,7 +30,9 @@
     font-family:var(--sans);font-size:16px;line-height:1.65;
     -webkit-font-smoothing:antialiased;
   }
-  .wrap{display:grid;grid-template-columns:minmax(0,1fr) 320px;min-height:100vh;}
+  html,body{height:100%;overflow:hidden;}
+  .wrap{display:grid;grid-template-columns:minmax(0,1fr) 320px;height:100vh;height:100dvh;}
+  .scroller{height:100%;overflow-y:auto;min-width:0;}
   .main{
     width:100%;max-width:980px;margin:0 auto;
     padding:clamp(30px,5vw,60px) clamp(20px,5vw,56px) 96px;
@@ -155,7 +157,7 @@
 
   /* ---------- right-hand references rail ---------- */
   .rail{
-    position:sticky;top:0;height:100vh;overflow-y:auto;
+    height:100%;overflow-y:auto;
     border-left:1px solid var(--rule);padding:30px 18px 40px;background:#fff;
   }
   .rail h2{font-size:var(--t-small);font-weight:600;color:var(--navy);margin:0 0 16px;max-width:none;clear:none;}
@@ -224,6 +226,7 @@
 <button class="rail-toggle" id="railToggle" aria-expanded="false" aria-controls="rail">References</button>
 <div class="scrim" id="scrim"></div>
 <div class="wrap">
+<div class="scroller" id="scroller">
 <main class="main">
 
 <div class="rule"></div>
@@ -448,6 +451,7 @@
 </div>
 
 </main>
+</div>
 
 <aside class="rail" id="rail" aria-label="Referenced documents">
   <h2>Referenced Documents</h2>
@@ -567,6 +571,7 @@
   document.getElementById("viewerClose").addEventListener("click",closeDoc);
 
   /* the rail card for whatever is being read lifts, and the rail scrolls along with the page */
+  var scroller=document.getElementById("scroller");
   var cited=[].slice.call(document.querySelectorAll("[data-cites]"));
   if("IntersectionObserver" in window && cited.length){
     var io=new IntersectionObserver(function(entries){
@@ -578,16 +583,16 @@
           if(mark) mark.classList.toggle("lit",en.isIntersecting);
         });
       });
-    },{rootMargin:"-18% 0px -52% 0px",threshold:0});
+    },{root:scroller,rootMargin:"-18% 0px -52% 0px",threshold:0});
     cited.forEach(function(el){ io.observe(el); });
   }
   function syncRail(){
-    var pMax=document.documentElement.scrollHeight-window.innerHeight;
+    var pMax=scroller.scrollHeight-scroller.clientHeight;
     var rMax=rail.scrollHeight-rail.clientHeight;
     if(pMax<=0||rMax<=0||window.innerWidth<=1100){ return; }
-    rail.scrollTop=(window.scrollY/pMax)*rMax;
+    rail.scrollTop=(scroller.scrollTop/pMax)*rMax;
   }
-  window.addEventListener("scroll",syncRail,{passive:true});
+  scroller.addEventListener("scroll",syncRail,{passive:true});
   window.addEventListener("resize",syncRail);
 
   /* narrow screens: the rail is a drawer */

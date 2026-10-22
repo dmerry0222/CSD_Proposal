@@ -128,6 +128,36 @@ table.terms td:first-child{padding-left:0;font-weight:600;color:var(--navy);font
 .notes code{font:600 .8125rem ui-monospace,SFMono-Regular,Menlo,monospace;color:var(--navy);background:var(--t05);padding:1px 4px}
 @media (prefers-reduced-motion:reduce){*{transition:none!important}}
 
+/* academic departments */
+.depts{margin-top:44px;border-top:1px solid var(--rule);padding-top:28px}
+.deptlede{font-size:.9375rem;max-width:80ch;margin:0 0 14px}
+.depttools{display:flex;flex-wrap:wrap;align-items:center;gap:10px;margin:0 0 14px}
+.deptcount{font-size:.8125rem;color:#6B6B6B}
+.deptscroll{overflow-x:auto}
+.dept-table{width:100%;min-width:820px;border-collapse:collapse;font-size:.875rem}
+.dept-table th,.dept-table td{padding:5px 8px;border-bottom:1px solid var(--rule);text-align:left;vertical-align:middle}
+.dept-table thead th{font-size:.6875rem;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:var(--navy);background:var(--t02);border-bottom:1px solid var(--rule)}
+.dept-table thead .c-cap{text-transform:none;letter-spacing:0;font-size:.8125rem;text-align:center}
+.dept-table thead tr.sub th{font-size:.6875rem;text-align:center}
+.dept-table thead tr.sub th.c-name,.dept-table thead tr.sub th.c-pct{text-align:left}
+.dept-table .c-chk{width:34px;text-align:center}
+.dept-table .c-chk input{width:16px;height:16px;accent-color:#15284B}
+.dept-table .c-name{font-weight:500;color:var(--navy)}
+.dept-table .c-name span{display:block;font-weight:400;font-size:.75rem;color:#7A7A7A}
+.dept-table .c-pct{width:84px;font-variant-numeric:tabular-nums;color:#444}
+.dept-table .c-att{width:78px;text-align:center}
+.dept-table input.att{width:64px;font:inherit;font-size:.875rem;text-align:center;padding:5px 4px;border:1px solid #BFC5CF;background:#fff;border-radius:0;font-variant-numeric:tabular-nums}
+.dept-table input.att:focus{outline:2px solid var(--navy);outline-offset:1px}
+.dept-table input.att.bad{border-color:var(--brick);background:rgba(176,84,62,.07)}
+.dept-table .c-rem{width:130px;font-size:.8125rem;color:#6B6B6B;white-space:nowrap}
+.dept-table .c-rem.over{color:var(--brick);font-weight:600}
+.dept-table .all-row th,.dept-table .all-row td{background:var(--t02)}
+.dept-table .grp-row th,.dept-table .grp-row td{background:var(--t05);font-weight:600;color:var(--navy);border-top:2px solid var(--navy)}
+.dept-table .grp-row .c-pct{font-weight:600}
+.dept-table .dept-row.off .c-name,.dept-table .dept-row.off .c-pct{color:#9A9A9A}
+.dept-table .dept-row.off input.att{opacity:.55}
+html.embed .depts{display:none}
+
 /* wide screens: the variables sit beside the diagram instead of below it */
 @media (min-width:1360px){
   .wrap{max-width:1600px}
@@ -180,8 +210,8 @@ html.embed svg{min-width:0}
       <h3>Class Size</h3>
       <div class="row"><span></span><output id="size_o"></output></div>
       <input type="range" id="size" min="500" max="1600" step="25" aria-label="Students in the class">
-      <h3 style="margin-top:20px">% of the class planning to have their first WBL experience during...</h3>
-      <div id="att"></div>
+      <p class="sub" id="size_note"></p>
+      <p class="sub">First-search timing is set for each academic department in the table below the diagram.</p>
     </div>
 
     <div class="grp">
@@ -207,6 +237,17 @@ html.embed svg{min-width:0}
 
 </div>
 
+<section class="depts" id="depts">
+  <h2>Academic departments</h2>
+  <p class="deptlede">Choose which departments' students appear in the diagram, and set when each department's students first search for a work-based learning experience. Each department's share of the entering class scales the diagram; students from several departments combine into one picture.</p>
+  <div class="depttools">
+    <button type="button" class="btn" id="dept-all">Select all</button>
+    <button type="button" class="btn" id="dept-none">Select none</button>
+    <span class="deptcount" id="dept-count"></span>
+  </div>
+  <div class="deptscroll"><table class="dept-table" id="dept-table"></table></div>
+</section>
+
 <div class="tablescroll"><table class="terms" id="tbl"></table></div>
 
 
@@ -219,9 +260,40 @@ html.embed svg{min-width:0}
 /* ============================================================
    1. PARAMS: the modeled assumptions. These are the sliders.
    ============================================================ */
+/* Each department's share of the entering class (the multipliers), by college, alphabetical within each. */
+var DEPTS=[
+  {school:"CAS",name:"Advertising PR & Social Media",pct:4.78},
+  {school:"CAS",name:"Art and Design",pct:3.90},
+  {school:"CAS",name:"Biology",pct:5.41},
+  {school:"CAS",name:"Chemistry and Biochemistry",pct:1.26},
+  {school:"CAS",name:"Comm Journalism and Media",pct:3.52},
+  {school:"CAS",name:"Economics",pct:1.76},
+  {school:"CAS",name:"English",pct:1.13},
+  {school:"CAS",name:"Env Science and Studies",pct:1.13},
+  {school:"CAS",name:"Global Humanities",pct:1.26},
+  {school:"CAS",name:"Math and Computer Science",pct:1.89},
+  {school:"CAS",name:"Political Science and Legal",pct:17.11},
+  {school:"CAS",name:"Psychology",pct:9.31},
+  {school:"CAS",name:"Radiation Sciences",pct:1.01},
+  {school:"CAS",name:"Sociology and Criminal Justice",pct:7.55},
+  {school:"CAS",name:"Theatre",pct:1.26},
+  {school:"SBS",name:"Accounting",pct:3.14},
+  {school:"SBS",name:"Business Economics",pct:2.14},
+  {school:"SBS",name:"Entrepreneurship",pct:1.76},
+  {school:"SBS",name:"Finance",pct:9.81},
+  {school:"SBS",name:"ISOM",pct:4.15},
+  {school:"SBS",name:"Management Studies",pct:3.65},
+  {school:"SBS",name:"Marketing",pct:9.18},
+  {school:"SBS",name:"Sawyer Business School",pct:1.38},
+  {school:"SBS",name:"Strategy and IntBusiness",pct:2.52}
+];
+DEPTS.forEach(function(d){ d.id=d.name.toLowerCase().replace(/[^a-z0-9]+/g,"-").replace(/^-|-$/g,""); });
+var COLLEGES={CAS:"College of Arts and Sciences",SBS:"Sawyer Business School"};
+
 var DEFAULTS={
   size:1000,
-  att:[10,25,15,15,35,0],     /* share of the WHOLE class searching for a first placement, by term. Index 5 is forced to 0. */
+  att:[10,25,15,15,35,0],     /* the "all departments" row: share of a department searching for a first placement, by term */
+  dept:{},                    /* per department: {on, att:[six terms]} */
   suc:[75,75,75,75,75,75],   /* first-search success rate by term */
   mod2:125, modC:125,        /* repeat-search multipliers, percent */
   retry:100,
@@ -229,6 +301,7 @@ var DEFAULTS={
   mixA:[44,32,16,6,2],
   ghost:true
 };
+DEPTS.forEach(function(d){ DEFAULTS.dept[d.id]={on:true,att:DEFAULTS.att.slice()}; });
 var PARAMS=JSON.parse(JSON.stringify(DEFAULTS));
 
 var TERMS=[
@@ -240,7 +313,7 @@ var TERMS=[
   {id:"t6",label:"Senior fall",            tick:"FL",short:"Senior Fall",kind:"acad"}
 ];
 var OFFSET=3;
-var FIRST_SEARCH_TERMS=5;
+var FIRST_SEARCH_TERMS=6;   /* a first search can happen in any of the six terms */
 
 /* ============================================================
    2. CONFIG: every visual decision.
@@ -252,16 +325,16 @@ var CONFIG={
   /* Three bands, top to bottom. Inside a band the members stack contiguously,
      so color alone separates them. members run from the baseline upward. */
   groups:[
-    {id:"wbl", label:"WBL types", kind:"wbl", shared:true, gapAbove:22,
+    {id:"wbl", label:"WBL types", kind:"wbl", shared:true, gapAbove:44,
      members:[{id:"oth",label:"Other approved"},
               {id:"spc",label:"Project at current job"},
               {id:"onc",label:"On-campus employment"},
               {id:"res",label:"Faculty-led research"},
               {id:"int",label:"Internship"}]},
-    {id:"failed", label:"Unsuccessful searches", kind:"state", shared:false, gapAbove:36,
+    {id:"failed", label:"Unsuccessful searches", kind:"state", shared:false, gapAbove:44,
      members:[{id:"f1",label:"1st search unsuccessful, searching 2nd time"},
-              {id:"coach",label:"2nd search unsuccessful, 3rd search with intensive, structured coaching"}]},
-    {id:"pool", label:"Students who have not yet searched for a WBL experience", kind:"state", shared:false, gapAbove:16,
+              {id:"coach",label:"2nd search unsuccessful, 3rd search with intensive coaching"}]},
+    {id:"pool", label:"Students who have not yet searched for a WBL experience", kind:"state", shared:false, gapAbove:0,
      members:[{id:"pool",label:"Students who have not yet searched for a WBL experience"}]}
   ],
 
@@ -626,38 +699,44 @@ function renderChrome(G,L,svg){
     return y+(lines.length-1)*LH+C.labels.itemGap;
   }
 
-  C.groups.forEach(function(gr){
-    var b=L.base[gr.id], top=b-L.max[gr.id]*s;
-    svg.appendChild(el("line",{x1:C.canvas.padLeft-76,x2:right,y1:b+2,y2:b+2,
-      stroke:C.colors.rule,"stroke-width":1,"stroke-dasharray":"2 4"}));
-    if(gr.kind==="wbl"){
-      /* the key sits low in its lane, leaving a gap above the unsuccessful searches */
-      var items=gr.members.slice().reverse(), y=b-C.labels.wblBottomGap-items.length*C.labels.keyLeading+12;
-      svg.appendChild(tx(gut,y-19,gr.label,"grouplab","end"));
-      items.forEach(function(m){
-        svg.appendChild(tx(gut,y,m.label,"lanelab","end"));
-        svg.appendChild(el("rect",{x:gut+5,y:y-8,width:C.labels.swatch,height:C.labels.swatch,fill:C.colors[m.id]}));
-        y+=C.labels.keyLeading;
-      });
-    }else if(gr.members.length>1){
-      svg.appendChild(tx(gut,top-9,gr.label,"grouplab","end"));
-      var y2=top+12;
-      gr.members.slice().reverse().forEach(function(m){ y2=entry(m.label,C.colors[m.id],y2); });
-    }else{
-      /* a single entry: centred on the lane's midline, level with the starting count */
-      var m0=gr.members[0], n=wrap(m0.label,C.labels.wrapChars).length;
-      entry(m0.label,C.colors[m0.id],top+(b-top)*0.30-(n-1)*LH/2+4);
-      var fo=el("foreignObject",{x:10,y:b-310,width:254,height:300});
-      fo.setAttribute("style","overflow:visible");
-      var note=document.createElementNS("http://www.w3.org/1999/xhtml","div");
-      note.setAttribute("class","prenote");
-      note.innerHTML="<p>These students will engage in planful and informed WBL searches:</p><ul>"+
-        "<li>After completing <b>CE-100</b>, where they spend a semester connecting with faculty, alums, professionals, developing their professional materials, and gaining a better understanding of their intended field(s).</li>"+
-        "<li>During/after <b>CE-200</b>, where they spend a semester meeting with current interns, analyzing live job descriptions, mock interviews, professionalism and WBL preparation, and in many cases live-searching for WBL positions with instructor’s support.</li></ul>";
-      fo.appendChild(note);
-      svg.appendChild(fo);
-    }
+  /* Dotted rules run from the legend edge across the chart, midway through the gaps between
+     the three bands: WBL placements, unsuccessful searches, and students not yet searching.
+     Each legend sits inside its own band. */
+  var wblG=C.groups.filter(function(g){return g.id==="wbl";})[0];
+  var failG=C.groups.filter(function(g){return g.id==="failed";})[0];
+  var poolG=C.groups.filter(function(g){return g.id==="pool";})[0];
+  var sep1=L.base.wbl+wblG.gapAbove/2, sep2=L.base.failed+failG.gapAbove/2, sep3=L.base.pool+2;
+  [sep1,sep2,sep3].forEach(function(y){
+    svg.appendChild(el("line",{x1:6,x2:right,y1:y,y2:y,stroke:C.colors.rule,"stroke-width":1,"stroke-dasharray":"2 4"}));
   });
+
+  /* WBL types: bottom of the top band */
+  var wItems=wblG.members.slice().reverse(), wy=sep1-14-(wItems.length-1)*C.labels.keyLeading;
+  wItems.forEach(function(m){
+    svg.appendChild(tx(gut,wy,m.label,"lanelab","end"));
+    svg.appendChild(el("rect",{x:gut+5,y:wy-8,width:C.labels.swatch,height:C.labels.swatch,fill:C.colors[m.id]}));
+    wy+=C.labels.keyLeading;
+  });
+
+  /* unsuccessful searches: centred in the middle band */
+  var fItems=failG.members.slice().reverse();
+  var fH=0; fItems.forEach(function(m,k){ fH+=(wrap(m.label,C.labels.wrapChars).length-1)*LH+(k<fItems.length-1?C.labels.itemGap:0); });
+  var fy=(sep1+sep2)/2-fH/2+4;
+  fItems.forEach(function(m){ fy=entry(m.label,C.colors[m.id],fy); });
+
+  /* not yet searched: a single entry in the bottom band, with the note beneath it */
+  var pTop=L.base.pool-L.max.pool*s, pB=L.base.pool;
+  var m0=poolG.members[0], n=wrap(m0.label,C.labels.wrapChars).length;
+  entry(m0.label,C.colors[m0.id],pTop+(pB-pTop)*0.30-(n-1)*LH/2+4);
+  var fo=el("foreignObject",{x:10,y:pB-310,width:254,height:300});
+  fo.setAttribute("style","overflow:visible");
+  var note=document.createElementNS("http://www.w3.org/1999/xhtml","div");
+  note.setAttribute("class","prenote");
+  note.innerHTML="<p>These students will engage in planful and informed WBL searches:</p><ul>"+
+    "<li>After completing <b>CE-100</b>, where they spend a semester connecting with faculty, alums, professionals, developing their professional materials, and gaining a better understanding of their intended field(s).</li>"+
+    "<li>During/after <b>CE-200</b>, where they spend a semester meeting with current interns, analyzing live job descriptions, mock interviews, professionalism and WBL preparation, and in many cases live-searching for WBL positions with instructor’s support.</li></ul>";
+  fo.appendChild(note);
+  svg.appendChild(fo);
 
   /* concurrent-class key: a rule over each half with a stacked key above it */
   var ax=C.axis;
@@ -729,8 +808,8 @@ function panelBody(col){
   }
   var out="<span class='tt'>"+col.label+"</span><table>"+
     "<thead><tr><th></th><th class='c'>This<br>class</th><th class='c'>All<br>classes</th></tr></thead><tbody>"+
-    row("Seeking WBL this term",seeking(r),seeking(r)+seeking(o),"",true)+
-    row("Unsuccessful search",r.failed,r.failed+o.failed,"i1")+
+    row("Seeking a WBL for this term",seeking(r),seeking(r)+seeking(o),"",true)+
+    row("<span class='dot' style='background:"+CONFIG.colors.coach+"'></span>Unsuccessful search",r.failed,r.failed+o.failed,"i1")+
     row("Placed",r.placed,r.placed+o.placed,"i1");
   TYPE_IDS.forEach(function(id){
     out+=row("<span class='dot' style='background:"+CONFIG.colors[id]+"'></span>"+laneLabel(id),
@@ -779,16 +858,6 @@ function table(G){
 }
 
 function buildControls(){
-  var a="";
-  TERMS.forEach(function(T,i){
-    if(i>=FIRST_SEARCH_TERMS)return;
-    var slider="<input type='range' id='at"+i+"' min='0' max='100' step='1'>";
-    if(i===FIRST_SEARCH_TERMS-1)slider="<div class='capwrap' id='capwrap'>"+slider+"<span class='capzone'></span></div>";
-    a+="<div class='row'><label for='at"+i+"'>"+T.label+"</label><output id='at"+i+"_o'></output></div>"+slider;
-  });
-  a+="<p class='sub' id='att_total'></p>";
-  document.getElementById("att").innerHTML=a;
-
   var u="";
   TERMS.forEach(function(T,i){
     u+="<div class='row'><label for='su"+i+"'>"+T.label+"</label><output id='su"+i+"_o'></output></div>"+
@@ -820,13 +889,12 @@ function buildControls(){
   });
 }
 function writeUI(){
+  syncDepts();
   document.getElementById("size").value=PARAMS.size;
   document.getElementById("ghost").checked=PARAMS.ghost;
   TERMS.forEach(function(T,i){
-    if(i<FIRST_SEARCH_TERMS){var e=document.getElementById("at"+i);e.max=100;e.value=PARAMS.att[i];}
     document.getElementById("su"+i).value=PARAMS.suc[i];
   });
-  capLastShare();
   ["mod2","modC"].forEach(function(k){document.getElementById(k).value=PARAMS[k];});
   TYPE_IDS.forEach(function(id,i){
     document.getElementById("mixS"+i).value=PARAMS.mixS[i];
@@ -848,29 +916,9 @@ function capMix(key){
   PARAMS[key][MIX_LAST]=cap;
   return cap;
 }
-function firstSearchTotal(){
-  return PARAMS.att.slice(0,FIRST_SEARCH_TERMS).reduce(function(a,b){return a+b;},0);
-}
-/* The first four terms move freely. The last one keeps a full 0 to 100 track
-   so its thumb sits at the same scale as the others, but it can only claim
-   what the first four leave; the shaded zone marks the rest of the track. */
-function capLastShare(){
-  var head=0;
-  for(var i=0;i<FIRST_SEARCH_TERMS-1;i++)head+=PARAMS.att[i];
-  var cap=Math.max(0,100-head);
-  document.getElementById("capwrap").style.setProperty("--cap",cap);
-  return cap;
-}
-
 function readUI(){
   PARAMS.size=+document.getElementById("size").value;
   PARAMS.ghost=document.getElementById("ghost").checked;
-  for(var i=0;i<FIRST_SEARCH_TERMS-1;i++)PARAMS.att[i]=+document.getElementById("at"+i).value;
-  var cap=capLastShare();
-  var last=document.getElementById("at"+(FIRST_SEARCH_TERMS-1));
-  PARAMS.att[FIRST_SEARCH_TERMS-1]=Math.min(+last.value,cap);
-  last.value=PARAMS.att[FIRST_SEARCH_TERMS-1];
-  PARAMS.att[FIRST_SEARCH_TERMS]=0;
   TERMS.forEach(function(T,j){PARAMS.suc[j]=+document.getElementById("su"+j).value;});
   ["mod2","modC"].forEach(function(k){PARAMS[k]=+document.getElementById(k).value;});
   for(var k=0;k<MIX_LAST;k++){
@@ -882,15 +930,9 @@ function readUI(){
 }
 function labels(){
   document.getElementById("size_o").textContent=r0(PARAMS.size);
-  var tot=firstSearchTotal(), left=100-tot, out=document.getElementById("att_total");
-  out.classList.toggle("over",left<0);
-  out.textContent = left<0
-    ? "Remaining share: "+left+"%. These terms claim more students than the class has."
-    : (left===0 ? ""
-                : "Remaining share: "+left+"%, about "+r0(PARAMS.size*left/100)+" students who never search a first time.");
-  out.style.display=out.textContent?"":"none";
+  var share=selectedShare(PARAMS);
+  document.getElementById("size_note").textContent="Showing "+r0(PARAMS.size*share)+" students ("+(share*100).toFixed(1)+"% of the class), from the departments selected below.";
   TERMS.forEach(function(T,i){
-    if(i<FIRST_SEARCH_TERMS)document.getElementById("at"+i+"_o").textContent=PARAMS.att[i]+"%";
     document.getElementById("su"+i+"_o").textContent=PARAMS.suc[i]+"%";
   });
   ["mod2","modC"].forEach(function(k){
@@ -911,12 +953,18 @@ function labels(){
 /* ============================================================
    8. go(): the whole pipeline in four calls
    ============================================================ */
-/* Any budget that overshoots 100 holds the chart until it is resolved. */
+/* Any budget that overshoots 100, or an empty selection, holds the chart until it is resolved. */
 function problems(){
-  var out=[], t=firstSearchTotal();
-  if(t>100)out.push("The first four first-search shares add up to <b>"+t+"%</b>.");
-  var ms=mixHead("mixS"); if(ms>100)out.push("The summer type mix adds up to <b>"+ms+"%</b> before Other approved.");
-  var ma=mixHead("mixA"); if(ma>100)out.push("The fall and spring type mix adds up to <b>"+ma+"%</b> before Other approved.");
+  var out=[];
+  if(!DEPTS.some(function(d){return PARAMS.dept[d.id].on;}))
+    out.push({html:"No department is selected. Choose at least one to see its students in the diagram.",fix:false});
+  var ov=DEPTS.filter(function(d){ var st=PARAMS.dept[d.id]; return st.on&&sumFirst(st.att)>100; });
+  if(ov.length){
+    var names=ov.slice(0,3).map(function(d){return d.name+" (+"+r1(sumFirst(PARAMS.dept[d.id].att)-100)+"%)";}).join(", ")+(ov.length>3?", and "+(ov.length-3)+" more":"");
+    out.push({html:"First-search shares add up to more than 100% for <b>"+names+"</b>.",fix:true});
+  }
+  var ms=mixHead("mixS"); if(ms>100)out.push({html:"The summer type mix adds up to <b>"+ms+"%</b> before Other approved.",fix:true});
+  var ma=mixHead("mixA"); if(ma>100)out.push({html:"The fall and spring type mix adds up to <b>"+ma+"%</b> before Other approved.",fix:true});
   return out;
 }
 function setInvalid(list){
@@ -926,8 +974,9 @@ function setInvalid(list){
   document.getElementById("overbox").hidden=!over;
   if(over){
     closePanel();
+    var fix=list.some(function(x){return x.fix;});
     document.getElementById("overmsg").innerHTML=
-      list.join(" ")+" Bring "+(list.length>1?"them":"that")+" back under 100 and the chart returns.";
+      list.map(function(x){return x.html;}).join(" ")+(fix?" Bring "+(list.length>1?"them":"that")+" back under 100 and the chart returns.":"");
   }
 }
 
@@ -936,14 +985,120 @@ function go(){
   setInvalid(list);
   if(list.length)return;
   CONFIG.offsetClass.show=PARAMS.ghost;
-  var M=model(PARAMS);
+  var M=model(effective(PARAMS));
   var G=graph(M);
   var L=layout(G);
   render(G,L);
   table(G);
 }
 
-buildControls();writeUI();go();
+/* ---------- departments ---------- */
+function sumFirst(att){ var h=0; for(var t=0;t<FIRST_SEARCH_TERMS-1;t++)h+=att[t]; return h; }
+function selectedShare(P){
+  var T=0,S=0;
+  DEPTS.forEach(function(d){ T+=d.pct; if(P.dept[d.id].on)S+=d.pct; });
+  return T?S/T:0;
+}
+/* what the model sees: the selected departments combined into one class */
+function effective(P){
+  var T=0,S=0,agg=[0,0,0,0,0,0];
+  DEPTS.forEach(function(d){
+    T+=d.pct;
+    var st=P.dept[d.id];
+    if(st.on){ S+=d.pct; for(var t=0;t<6;t++)agg[t]+=d.pct*st.att[t]; }
+  });
+  var E=JSON.parse(JSON.stringify(P));
+  E.att=agg.map(function(v){return S?v/S:0;});
+  E.size=P.size*(T?S/T:0);
+  return E;
+}
+function r1(v){ return String(Math.round(v*10)/10); }
+
+function buildDepts(){
+  var tbl=document.getElementById("dept-table");
+  function attCells(label,attr){
+    return TERMS.map(function(T,t){
+      return '<td class="c-att"><input type="number" class="att" '+attr+' data-t="'+t+'" min="0" max="100" step="1" aria-label="'+label+', first search in '+T.label.toLowerCase()+'"></td>';
+    }).join('');
+  }
+  var h='<thead><tr><th class="c-chk"></th><th class="c-name">Department</th><th class="c-pct">Share of class</th>'+
+    '<th class="c-cap" colspan="6">% of the department searching for a first WBL experience during...</th><th class="c-rem"></th></tr>'+
+    '<tr class="sub"><th class="c-chk"></th><th class="c-name"></th><th class="c-pct"></th>'+
+    TERMS.map(function(T){return '<th class="c-att">'+T.short+'</th>';}).join('')+'<th class="c-rem">Not searching</th></tr></thead><tbody>';
+  h+='<tr class="all-row"><td class="c-chk"></td><th class="c-name" scope="row">All departments<span>Set the same schedule for every row</span></th><td class="c-pct"></td>'+
+     attCells("All departments",'data-all="1"')+'<td class="c-rem"></td></tr>';
+  ["CAS","SBS"].forEach(function(sc){
+    h+='<tr class="grp-row" data-school="'+sc+'"><td class="c-chk"><input type="checkbox" data-school="'+sc+'" aria-label="Select all '+sc+' departments"></td>'+
+       '<th class="c-name" scope="rowgroup">'+sc+'<span>'+COLLEGES[sc]+'</span></th><td class="c-pct"></td><td colspan="7"></td></tr>';
+    DEPTS.filter(function(d){return d.school===sc;}).forEach(function(d){
+      h+='<tr class="dept-row" data-id="'+d.id+'"><td class="c-chk"><input type="checkbox" data-dept="'+d.id+'" aria-label="Show '+d.name+' in the diagram"></td>'+
+         '<th class="c-name" scope="row">'+d.name+'</th><td class="c-pct">'+d.pct.toFixed(2)+'%</td>'+
+         attCells(d.name,'data-d="'+d.id+'"')+'<td class="c-rem"></td></tr>';
+    });
+  });
+  tbl.innerHTML=h+'</tbody>';
+
+  /* the sixth field can claim only what the first five leave; a value typed above that drops to it */
+  function setAtt(st,t,v,el){
+    if(t===5){ var cap=Math.max(0,100-sumFirst(st.att)); if(v>cap){ v=cap; if(el)el.value=cap; } }
+    st.att[t]=v;
+    if(t<5){ var cap2=Math.max(0,100-sumFirst(st.att)); if(st.att[5]>cap2)st.att[5]=cap2; }
+  }
+  tbl.addEventListener("input",function(e){
+    var el=e.target; if(!el.classList||!el.classList.contains("att")) return;
+    var t=+el.dataset.t, v=el.value===""?0:parseFloat(el.value);
+    if(isNaN(v)||v<0)v=0; if(v>100)v=100;
+    if(el.dataset.all){
+      setAtt({att:PARAMS.att},t,v,el);
+      DEPTS.forEach(function(d){ setAtt(PARAMS.dept[d.id],t,v,null); });
+    }else setAtt(PARAMS.dept[el.dataset.d],t,v,el);
+    syncDepts(el); labels(); go();
+  });
+  tbl.addEventListener("change",function(e){
+    var el=e.target;
+    if(el.dataset.dept){ PARAMS.dept[el.dataset.dept].on=el.checked; }
+    else if(el.dataset.school){ DEPTS.forEach(function(d){ if(d.school===el.dataset.school)PARAMS.dept[d.id].on=el.checked; }); }
+    else return;
+    syncDepts(); labels(); go();
+  });
+  function setAll(on){ DEPTS.forEach(function(d){PARAMS.dept[d.id].on=on;}); syncDepts(); labels(); go(); }
+  document.getElementById("dept-all").addEventListener("click",function(){setAll(true);});
+  document.getElementById("dept-none").addEventListener("click",function(){setAll(false);});
+}
+
+function syncDepts(skip){
+  var tbl=document.getElementById("dept-table");
+  function fillRow(row,att){
+    var h=sumFirst(att), over=h>100;
+    [].forEach.call(row.querySelectorAll("input.att"),function(el,t){
+      if(el!==skip)el.value=att[t];
+      if(t===5)el.max=Math.max(0,100-h);
+      el.classList.toggle("bad",over&&t<5);
+    });
+    var rc=row.querySelector(".c-rem");
+    rc.classList.toggle("over",over);
+    rc.textContent = over ? r1(h-100)+"% too many" : r1(100-h-att[5])+"% not searching";
+  }
+  fillRow(tbl.querySelector(".all-row"),PARAMS.att);
+  var n=0;
+  DEPTS.forEach(function(d){
+    var st=PARAMS.dept[d.id], row=tbl.querySelector('tr[data-id="'+d.id+'"]');
+    if(st.on)n++;
+    row.classList.toggle("off",!st.on);
+    row.querySelector("input[data-dept]").checked=st.on;
+    fillRow(row,st.att);
+  });
+  ["CAS","SBS"].forEach(function(sc){
+    var ds=DEPTS.filter(function(d){return d.school===sc;}), on=ds.filter(function(d){return PARAMS.dept[d.id].on;}).length;
+    var cb=tbl.querySelector('input[data-school="'+sc+'"]');
+    cb.checked=on===ds.length; cb.indeterminate=on>0&&on<ds.length;
+    var tot=ds.reduce(function(a,d){return a+d.pct;},0);
+    tbl.querySelector('.grp-row[data-school="'+sc+'"] .c-pct').textContent=tot.toFixed(2)+"%";
+  });
+  document.getElementById("dept-count").textContent=n+" of "+DEPTS.length+" departments selected";
+}
+
+buildControls();buildDepts();writeUI();go();
 })();
 </script>
 

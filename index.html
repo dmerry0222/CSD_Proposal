@@ -35,6 +35,8 @@
     --sky:#3CB4E5;
     --teal:#40C1AC;          /* accent used for cards, rules and highlights */
     --teal-rgb:64,193,172;   /* same color, for translucent tints */
+    --amber:#FDB924;         /* search support */
+    --crimson:#C63663;       /* the "what if we cannot find enough" thread */
     --body:#595959;
     --ink:#000000;
     --rule:rgba(21,40,75,.14);
@@ -184,7 +186,9 @@
   }
 
   /* landing page */
-  .home-inner{padding-top:42px;}
+  .home-inner{padding-top:42px;padding-bottom:26px;min-height:100%;display:flex;flex-direction:column;}
+  .home-foot{margin-top:auto;padding-top:12px;border-top:1px solid var(--rule);font-size:.75rem;line-height:1.45;color:#A3A3A3;}
+  .home-foot sup{font-size:.75em;margin-right:2px;}
   .home-title{
     font-size:2.875rem;
     line-height:1.12;
@@ -209,22 +213,30 @@
   .home-list dd{margin:0;}
   .home-link{background:none;border:0;padding:0;font:inherit;font-weight:600;color:var(--navy);cursor:pointer;text-align:left;text-decoration:underline;text-decoration-color:var(--gold);text-decoration-thickness:2px;text-underline-offset:3px;}
   .home-link:hover{color:#0F1E39;text-decoration-color:var(--navy);}
-  /* landing page: vertical stat figure beside the text */
-  .home-grid{display:grid;grid-template-columns:minmax(0,1fr) 368px;column-gap:clamp(28px,4vw,56px);align-items:start;}
-  .home-grid .stats-wrap{margin:4px 0 0;padding:13px 19px 5px;border-radius:3px;position:sticky;top:24px;}
-  .home-grid .stats-title{font-size:.9625rem;line-height:1.4;margin:0 0 5px;}
-  .home-grid .stat{display:grid;grid-template-columns:clamp(61px,26%,78px) minmax(0,1fr);column-gap:12px;align-items:start;border-top:2px solid var(--accent);padding:7px 0 8px;}
-  .home-grid .stat:first-child{margin-top:8px;}
-  .home-grid .stat-n{font-size:1.77rem;}
-  .home-grid .stat-t{font-size:.885rem;line-height:1.38;}
-  .home-grid .stat-sub{font-size:.81rem;margin-top:3px;}
-  .home-grid .stats-source{margin:0;padding-top:7px;font-size:.81rem;line-height:1.45;}
-  @media (max-width:900px){
-    .home-grid{display:block;}
-    .home-grid .stats-wrap{position:static;width:100%;margin:0 0 24px;order:-1;}
+  /* landing page: tagline, darker body text, and the stat band between the paragraphs */
+  .home-grid{display:block;}
+  .home-tagline{font-size:clamp(1.625rem,3.2vw,2.375rem);line-height:1.2;font-weight:600;letter-spacing:-.018em;color:var(--navy);margin:0 0 26px;text-wrap:balance;}
+  .home-lead,.home-main > p:not(.home-tagline){color:#3B3B3B;}
+  /* four columns: the lead-in, then three statistics; no box, inset on both sides */
+  .home-grid .stats-wrap{
+    display:grid;grid-template-columns:minmax(150px,.78fr) repeat(3,minmax(0,1fr));column-gap:clamp(22px,2.6vw,36px);row-gap:14px;
+    margin:32px 0 34px;padding:0 clamp(16px,3vw,36px);background:none;border:0;border-radius:0;
   }
-  .home-tagline{font-size:1.1875rem;line-height:1.55;font-weight:400;color:var(--navy);margin:0 0 22px;text-wrap:pretty;}
-  .home-grid .stats-wrap,.home-grid .stat-t,.home-grid .stats-source,.home-grid .stat-sub{text-wrap:pretty;hyphens:none;}
+  .home-grid .stats{display:contents;}
+  .home-grid .stats-title{margin:0;padding-top:12px;font-size:1.1875rem;font-weight:500;line-height:1.3;color:var(--navy);text-wrap:balance;}
+  .home-grid .stat{display:grid;grid-template-columns:auto minmax(0,1fr);column-gap:14px;align-items:start;border-top:3px solid var(--accent);padding:12px 0 0;}
+  .home-grid .stat{--accent:var(--sky);}
+  .home-grid .stat-n{font-size:2.25rem;line-height:.95;}
+  .home-grid .stat-t{font-size:.9rem;line-height:1.4;}
+  .home-grid .stat-sub{font-size:.8125rem;margin-top:4px;}
+  @media (max-width:1280px){
+    .home-grid .stats-wrap{grid-template-columns:1fr;row-gap:16px;}
+    .home-grid .stat{max-width:560px;}
+  }
+  @media (max-width:760px){
+    .home-grid .stats-wrap{padding:0;}
+  }
+  .home-grid .stats-wrap,.home-grid .stat-t,.home-grid .stat-sub{text-wrap:pretty;hyphens:none;}
   /* ---------- four milestones (native module) ---------- */
   .msx{
     --navy-hover:rgba(21,40,75,.72);
@@ -432,7 +444,7 @@
   .msec p:last-child{margin-bottom:0;}
   .msec p.todo{color:var(--mute);font-style:italic;}
   .msec.msec2{margin:10px 0 0 16px;}
-  .msec2 h4{font-size:.6875rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--mute);margin:0 0 5px;}
+  .msec2 h4{font-size:.6875rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--navy);margin:0 0 5px;}
 
   .mclose{
     position:absolute;top:10px;right:10px;z-index:2;
@@ -489,17 +501,17 @@
   /* five criteria, shown as part of the page */
   .crit-wrap{margin:18px 0 8px;}
   .crit-wrap .crit{width:100%;border-collapse:collapse;border-top:3px solid var(--navy);}
-  .crit-wrap .crit thead th{text-align:left;vertical-align:bottom;font-size:.6875rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--navy);padding:12px 16px 9px;border-bottom:1px solid var(--rule);background:var(--tint-02);}
+  .crit-wrap .crit thead th{text-align:left;vertical-align:bottom;font-size:.6875rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--navy);padding:8px 14px 6px;border-bottom:1px solid var(--rule);background:var(--tint-02);}
   .crit-wrap .crit thead th:first-child{padding-left:0;background:none;}
   .crit-wrap .crit tbody tr{border-bottom:1px solid var(--rule);}
   .crit-wrap .crit tbody tr:last-child{border-bottom:0;}
-  .crit-wrap .crit td{vertical-align:top;padding:18px 16px;font-size:.9375rem;line-height:1.55;}
+  .crit-wrap .crit td{vertical-align:top;padding:9px 14px;font-size:.875rem;line-height:1.45;}
   .crit-wrap .crit td.c-name{padding-left:0;width:19%;}
   .crit-wrap .c-name .cn{display:flex;align-items:center;gap:10px;}
-  .crit-wrap .c-name .num{flex:0 0 auto;display:block;width:26px;height:26px;line-height:26px;text-align:center;background:var(--navy);color:#fff;font-size:.75rem;font-weight:600;}
-  .crit-wrap .c-name .cnm{display:block;font-size:1.0625rem;font-weight:600;color:var(--navy);line-height:1.25;letter-spacing:-.005em;}
+  .crit-wrap .c-name .num{flex:0 0 auto;display:block;width:22px;height:22px;line-height:22px;text-align:center;background:var(--navy);color:#fff;font-size:.75rem;font-weight:600;}
+  .crit-wrap .c-name .cnm{display:block;font-size:.9375rem;font-weight:600;color:var(--navy);line-height:1.25;letter-spacing:-.005em;}
   .crit-wrap .crit td.c-desc{width:42%;color:#1a1a1a;}
-  .crit-wrap .crit td.c-ver{width:39%;background:var(--tint-02);border-left:1px solid var(--tint-08);font-size:.875rem;}
+  .crit-wrap .crit td.c-ver{width:39%;background:var(--tint-02);border-left:1px solid var(--tint-08);font-size:.8125rem;}
   .crit-wrap .crit b{font-weight:600;color:var(--navy);}
   .crit-wrap .crit .hrs{white-space:nowrap;box-shadow:inset 0 -3px 0 rgba(231,171,42,.5);}
   @media (max-width:820px){
@@ -511,6 +523,102 @@
     .crit-wrap .crit td.c-ver{background:var(--tint-02);border-left:3px solid var(--rule);padding:12px 14px;margin-top:4px;}
     .crit-wrap .crit td.c-ver::before{content:"Verification and validation";display:block;font-size:.6875rem;font-weight:600;letter-spacing:.09em;text-transform:uppercase;color:#8A8A8A;margin-bottom:5px;}
   }
+  /* ---------- on-campus employment ---------- */
+  .oe{display:grid;grid-template-columns:3fr 3fr 4fr;gap:28px;align-items:start;margin:22px 0 34px;}
+  .oe-card{display:flex;flex-direction:column;align-items:flex-start;gap:10px;text-align:left;font:inherit;cursor:pointer;color:var(--body);
+    background:#fff;border:1px solid var(--rule);border-top:3px solid var(--teal);padding:18px 18px 18px;transition:background .18s ease,border-color .18s ease;}
+  .oe-card:hover,.oe-card:focus-visible{background:rgba(var(--teal-rgb),.12);border-color:var(--teal);}
+  .oe-card-ico{display:inline-flex;color:#2A9A89;}
+  .oe-card-title{font-size:1.125rem;font-weight:600;line-height:1.25;color:var(--navy);}
+  .oe-card-sub{font-size:.9rem;line-height:1.45;font-style:italic;color:var(--navy);}
+  .oe-card-go{margin-top:6px;font-size:.875rem;font-weight:600;color:var(--navy);text-decoration:underline;text-decoration-color:var(--teal);text-decoration-thickness:2px;text-underline-offset:3px;}
+  .oe-card-go::after{content:"\2197";margin-left:6px;text-decoration:none;display:inline-block;}
+  .oe-steps{list-style:none;margin:0;padding:0;position:relative;}
+  .oe-steps::before{content:"";position:absolute;left:14px;top:18px;bottom:18px;width:2px;background:var(--rule);}
+  .oe-steps li{position:relative;margin:0 0 4px;}
+  .oe-step{display:flex;align-items:flex-start;gap:12px;width:100%;text-align:left;font:inherit;background:none;border:0;padding:8px 10px 8px 0;cursor:pointer;color:var(--body);}
+  .oe-dot{position:relative;z-index:1;flex:0 0 auto;display:inline-flex;align-items:center;justify-content:center;width:30px;height:30px;border-radius:50%;background:#fff;border:2px solid #B5B9C2;font-size:.8125rem;font-weight:600;color:var(--navy);transition:background .18s ease,border-color .18s ease,color .18s ease;}
+  .oe-step-t{display:flex;flex-direction:column;gap:2px;padding-top:3px;}
+  .oe-step-t b{font-size:1rem;font-weight:600;color:var(--navy);line-height:1.25;}
+  .oe-step-t span{font-size:.8125rem;line-height:1.4;color:#6B6B6B;}
+  .oe-step:hover .oe-dot{border-color:var(--teal);}
+  .oe-step.on .oe-dot{background:var(--teal);border-color:var(--teal);color:var(--navy);}
+  .oe-step.on .oe-step-t b{text-decoration:underline;text-decoration-color:var(--teal);text-decoration-thickness:2px;text-underline-offset:3px;}
+  .oe-detail{border-left:4px solid var(--teal);background:var(--tint-02);padding:16px 20px 14px;}
+  .oe-detail h4{font-size:1.125rem;font-weight:600;color:var(--navy);margin:0 0 8px;line-height:1.3;}
+  .oe-detail p{font-size:.9375rem;margin:0 0 10px;}
+  .oe-detail .oe-out-h{font-weight:600;color:var(--navy);margin:12px 0 4px;font-size:.9rem;}
+  .oe-detail ul{margin:0 0 8px;padding-left:20px;font-size:.9375rem;}
+  .oe-detail li{margin-bottom:3px;}
+  .oe-detail .oe-note{font-size:.875rem;color:#555;margin:10px 0 0;padding-top:10px;border-top:1px solid var(--rule);}
+
+  .oe-scrim{position:fixed;inset:0;z-index:40;background:rgba(21,40,75,.42);display:flex;align-items:center;justify-content:center;padding:clamp(12px,4vh,40px) clamp(12px,4vw,40px);opacity:0;transition:opacity .16s ease;}
+  .oe-scrim[hidden]{display:none;}
+  .oe-scrim.open{opacity:1;}
+  .oe-modal{position:relative;width:min(100%,760px);max-height:min(90vh,860px);display:flex;flex-direction:column;background:#fff;border-top:4px solid var(--teal);box-shadow:0 18px 48px rgba(21,40,75,.26);}
+  .oe-x{position:absolute;top:10px;right:10px;z-index:2;width:32px;height:32px;line-height:1;display:flex;align-items:center;justify-content:center;font:inherit;font-size:1.25rem;color:var(--navy);background:transparent;border:0;cursor:pointer;}
+  .oe-x:hover{background:var(--tint-02);}
+  .oe-mhead{flex:0 0 auto;padding:22px 54px 14px 28px;border-bottom:1px solid var(--rule);}
+  .oe-mhead h2{font-size:1.375rem;font-weight:600;color:var(--navy);margin:0 0 6px;line-height:1.25;}
+  .oe-mhead p{margin:0;font-size:.9rem;font-style:italic;color:var(--navy);}
+  .oe-mbody{flex:1 1 auto;overflow-y:auto;overscroll-behavior:contain;padding:8px 28px 18px;}
+  .oe-mbody fieldset{border:0;border-bottom:1px solid var(--rule);margin:0;padding:18px 0 20px;min-width:0;}
+  .oe-mbody fieldset:last-child{border-bottom:0;}
+  .oe-mbody legend{font-size:1.0625rem;font-weight:600;color:var(--navy);padding:0;margin:0 0 10px;}
+  .oe-mbody label{display:block;font-size:.9rem;font-weight:500;color:var(--navy);margin:12px 0 4px;line-height:1.4;}
+  .oe-mbody input[type=text],.oe-mbody input[type=date],.oe-mbody input[type=number],.oe-mbody select,.oe-mbody textarea{width:100%;font:inherit;font-size:.9375rem;color:#222;background:#fff;border:1px solid #BFC5CF;border-radius:0;padding:8px 10px;box-sizing:border-box;}
+  .oe-mbody textarea{resize:vertical;line-height:1.5;}
+  .oe-mbody input:focus,.oe-mbody select:focus,.oe-mbody textarea:focus{outline:2px solid var(--navy);outline-offset:1px;border-color:var(--navy);}
+  .oe-mbody .oe-crit{margin:0 0 4px;padding:9px 13px;background:var(--tint-02);border-left:3px solid var(--teal);font-size:.9rem;font-style:italic;color:var(--navy);}
+  .oe-mbody .oe-q{margin:14px 0 6px;font-size:.9rem;color:var(--navy);}
+  .oe-mbody .oe-q b{font-weight:500;}
+  .oe-mbody .oe-radios{display:flex;flex-wrap:wrap;gap:6px 22px;}
+  .oe-mbody .oe-radios label,.oe-mbody .oe-chk{display:flex;align-items:flex-start;gap:8px;font-weight:400;color:#333;margin:4px 0;}
+  .oe-mbody input[type=radio],.oe-mbody input[type=checkbox]{margin-top:.25em;accent-color:var(--navy);}
+  .oe-mbody .oe-row{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:0 14px;}
+  .oe-mbody .oe-est{margin:12px 0 4px;padding:9px 13px;background:var(--tint-02);border-left:3px solid var(--sky);font-size:.9375rem;color:var(--navy);}
+  .oe-mbody .oe-hint{margin:8px 0 0;font-size:.8125rem;color:#6B6B6B;line-height:1.45;}
+  .oe-mbody fieldset p:not([class]){font-size:.9375rem;margin:8px 0;}
+  .oe-mbody .oe-nettext{margin:0 0 6px 26px;}
+  .oe-mbody [hidden]{display:none;}
+  .oe-mfoot{flex:0 0 auto;padding:12px 28px 16px;border-top:1px solid var(--rule);display:flex;justify-content:flex-end;}
+  .oe-close{font:inherit;font-size:.9375rem;font-weight:600;color:#fff;background:var(--navy);border:0;padding:10px 22px;cursor:pointer;}
+  .oe-close:hover{background:#0F1E39;}
+  @media (max-width:1100px){
+    .oe{grid-template-columns:minmax(0,1fr) minmax(0,1.3fr);}
+    .oe-card{grid-column:1 / -1;}
+  }
+  @media (max-width:760px){
+    .oe{grid-template-columns:1fr;}
+    .oe-mbody .oe-row{grid-template-columns:1fr;}
+    .oe-mhead{padding:20px 50px 12px 18px;} .oe-mbody{padding:6px 18px 14px;} .oe-mfoot{padding:12px 18px 16px;}
+  }
+  @media (prefers-reduced-motion:reduce){.oe-card,.oe-dot,.oe-scrim{transition-duration:.01ms !important;}}
+  /* ---------- work-based learning: experience cards and sections ---------- */
+  .wbl-intro-p{margin:22px 0 16px;}
+  .wbl-map{margin-top:26px;display:grid;grid-template-columns:2.3fr auto 1fr auto 1fr;align-items:stretch;gap:0 14px;margin:0 0 6px;}
+  .wbl-zone{--ac:var(--teal);border:1px solid var(--rule);border-top:4px solid var(--ac);padding:12px 16px 14px;background:#fff;}
+  .wbl-z-help{--ac:var(--amber);}
+  .wbl-z-worry{--ac:var(--crimson);}
+  .wbl-zone-t{margin:0 0 8px;font-size:.8125rem;font-style:italic;color:#6B6B6B;}
+  .wbl-links{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:6px 18px;}
+  .wbl-z-help .wbl-links,.wbl-z-worry .wbl-links{grid-template-columns:1fr;}
+  .wbl-z-help,.wbl-z-worry{display:flex;align-items:center;}
+  .wbl-z-help .wbl-links,.wbl-z-worry .wbl-links{width:100%;}
+  .wbl-link{display:flex;align-items:flex-start;gap:8px;text-align:left;font:inherit;font-size:.9375rem;font-weight:600;line-height:1.3;color:var(--navy);background:none;border:0;padding:3px 0;cursor:pointer;}
+  .wbl-link .wbl-ico{flex:0 0 auto;margin-top:.2em;color:var(--ac);display:inline-flex;}
+  .wbl-link:hover span,.wbl-link:focus-visible span{text-decoration:underline;text-decoration-color:var(--ac);text-decoration-thickness:2px;text-underline-offset:3px;}
+  .wbl-arrow{align-self:center;width:14px;height:14px;border-top:2px solid #9AA2B1;border-right:2px solid #9AA2B1;transform:rotate(45deg) scale(.9);margin:0 4px 0 -6px;}
+  .wbl-rule{border:0;border-top:1px solid var(--rule);margin:30px 0 0;}
+  .wsec{padding-top:38px;margin-top:0;}
+  .wsec + .wsec{margin-top:44px;border-top:1px solid var(--rule);}
+  .wsec > h3.sub:first-child{margin-top:0;}
+  .wsec-todo{font-style:italic;color:#8A8A8A;}
+  @media (max-width:1100px){
+    .wbl-map{grid-template-columns:1fr;gap:12px 0;}
+    .wbl-arrow{display:none;}
+  }
+  @media (max-width:560px){.wbl-links{grid-template-columns:1fr;}}
   .open-ico{position:absolute;top:9px;right:9px;display:inline-flex;color:rgba(21,40,75,.5);transition:color .18s ease;pointer-events:none;}
   .msx .msx-card:hover .open-ico,.msx .plan:hover .open-ico,.asg:hover .open-ico,.asg:focus-visible .open-ico{color:var(--navy);}
   .msx .msx-card,.asg{position:relative;}
@@ -586,7 +694,8 @@
   .asg-notes p{margin:0;padding:0 12px 11px;font-size:.875rem;}
 
   .modal.is-asg .mkick{color:var(--navy);}
-  .msx-page a[data-panel],.modal a[data-panel]{color:var(--navy);font-weight:600;text-decoration:underline;text-decoration-color:var(--teal);text-decoration-thickness:2px;text-underline-offset:3px;cursor:pointer;}
+  .msx-page a[data-panel],.msx-page a[data-jump],.modal a[data-panel],.modal a[data-jump]{color:var(--sky);font-weight:inherit;text-decoration:underline;text-decoration-color:var(--sky);text-decoration-thickness:1px;text-underline-offset:2px;cursor:pointer;}
+  .msx-page a[data-panel]:hover,.msx-page a[data-jump]:hover,.modal a[data-panel]:hover,.modal a[data-jump]:hover{text-decoration-thickness:2px;}
   h3.sub#ov-1{margin-top:46px;}
   /* overview page: course comparison and notes */
   .ovx-scroll{overflow-x:auto;margin:6px 0 18px;}
@@ -717,6 +826,7 @@
   }
   .stat-t{margin:0;font-size:1rem;line-height:1.4;color:var(--body);}
   .stat-t .mark,
+  .home-lead .mark,
   .hl{
     font-style:normal;font-weight:500;color:var(--navy);
     box-shadow:inset 0 -2px 0 var(--gold);
@@ -987,9 +1097,12 @@
         <ul class="sublist" data-for="wbl">
           <li><button class="sub-link" data-ext="evidence">Explore the Evidence for Work-Based Learning &#8599;</button></li>
           <li><button class="sub-link" data-target="w-1">Five Criteria for Work-Based Learning</button></li>
-          <li><button class="sub-link" data-target="w-2">Ensuring Students Secure a WBL Experience</button></li>
-          <li><button class="sub-link" data-target="w-3">Work-based learning placeholder three</button></li>
-          <li><button class="sub-link" data-target="w-4">Work-based learning placeholder four</button></li>
+          <li><button class="sub-link" data-target="w-internships">Internships</button></li>
+          <li><button class="sub-link" data-target="w-research">Faculty-Led Research</button></li>
+          <li><button class="sub-link" data-target="w-oncampus">Robust On-Campus Employment</button></li>
+          <li><button class="sub-link" data-target="w-worksite">Approved Projects at Existing Employers</button></li>
+          <li><button class="sub-link" data-target="w-support">Support, Interventions &amp; Petitions</button></li>
+          <li><button class="sub-link" data-target="w-enough">&ldquo;But What If We Can&rsquo;t Find Enough?&rdquo;</button></li>
         </ul>
       </li>
       <li>
@@ -1019,14 +1132,11 @@
         <hr class="home-rule">
         <div class="home-grid">
           <div class="home-main">
-            <p class="home-tagline">Making career development an intentional, connected part of every student's undergraduate experience. A scaffolded curriculum that prepares students to shape their own futures and equips faculty and advisors to provide proactive support. Ensuring every student has an evolving, actionable plan, wherever they are in their career journey.</p>
-        <p class="home-lead">Career Strategy &amp; Design proposes a connected approach to helping every Suffolk undergraduate translate their education into meaningful work and informed choices about their future. It would make career exploration, preparation, experience, and planning an explicit part of the undergraduate curriculum, building on the disciplinary knowledge and broader capabilities students develop throughout their education.</p>
+            <p class="home-tagline">An outcome this consequential requires an intentional curriculum.</p>
+        <p class="home-lead">Suffolk's academic programs prepare students to think critically, engage with complex questions, and develop expertise within and across disciplines. <b>Career Strategy & Design</b> builds on that foundation by ensuring <span class="mark">every</span> undergraduate receives structured opportunities to explore career pathways, develop professional skills and relationships, and gain meaningful work experience. Career preparation and postgraduation opportunities are central considerations for prospective students and families. At Suffolk, the expectations are especially clear: our entering students overwhelmingly identify career advancement, relevant employment, and internship experience as priorities for their college education.</p>
 
-        <p>The proposed requirement connects two courses, substantive work-based learning, and a final preparation checkpoint through four curricular milestones. <b>An evolving Career Plan provides continuity across those milestones</b>, helping students document what they are learning, revise their goals, and identify their next steps. It would also give faculty, advisors, and career staff a shared starting point for guidance and help Suffolk identify where students need additional support.</p>
-          <div class="home-cta"><button type="button" class="start" data-panel="overview">Curriculum Overview</button></div>
-          </div>
         <figure class="stats-wrap">
-            <p class="stats-title">Among students entering Suffolk in Fall 2026:</p>
+            <p class="stats-title">Among students entering Suffolk in Fall 2026:<span data-cite="SU_FY26"></span></p>
             <div class="stats stats-sky">
               <div class="stat">
                 <span class="stat-n">93%</span>
@@ -1043,11 +1153,14 @@
                 </p>
               </div>
             </div>
-            <p class="stats-source">Entering Student Survey, OIRA, Summer&nbsp;2026. n&nbsp;=&nbsp;556–561.<span data-cite="SU_FY26"></span></p>
           </figure>
+
+        <p>The proposed requirement establishes a common progression through two one-credit courses, qualifying work-based learning, and a final launch checkpoint, supported by one evolving Career Plan that students author throughout their undergraduate experience.</p>
+          <div class="home-cta"><button type="button" class="start" data-panel="overview">Curriculum Overview</button></div>
+          </div>
         </div>
 
-
+        <footer class="home-foot"><sup>1</sup> Entering Student Survey, OIRA, Summer&nbsp;2026. n&nbsp;=&nbsp;556&ndash;561.</footer>
 
       </div>
     </section>
@@ -1215,16 +1328,16 @@
         title:"Career Exploration",
         sub:"CE-100 &middot; 1 credit &middot; First year, spring semester",
         sections:[
-          {h:"Credits",p:"1 credit; proposed as new credit-bearing instruction for CAS and SBS. The interaction with existing degree and Shared General Education credit structures requires college-level review."},
-          {h:"Sequencing",p:"Second semester of students' first year. Currently proposed as the second half of a First Year Experience sequence. Adapted pathways for transfer students and other entry patterns would require implementation design."},
-          {h:"Satisfied By",p:"There are no existing courses that currently meet the criteria for this portion of the CS&D requirement. This proposal suggests developing <b>CE-100: Career Exploration</b> as a course open to all Suffolk students. Like any Gen Ed requirement, however, this requirement could be satisfied by another course that meets the necessary criteria and learning objectives."},
-          {h:"Proposed Course",p:"<b>CE-100: Career Exploration</b> or other course that meets this requirement's criteria (below).<br>See the <a data-panel='howwork'>How the Work Gets Done</a> section for more information about how this course would be designed and managed, who would teach the course, and how it would be paid for."},
-          {h:"Instructional Identity",lvl:2,p:"<b>Common first-year curriculum; mixed-major cohorts; individualized exploration.</b> The course does not ask students to choose a major or commit to one profession. It teaches the habits of inquiry required to connect academic choices, lived experiences, and possible futures. Departments participate as subjects of exploration and contributors of intellectual expertise, events, and opportunities."},
-          {h:"Description",lvl:2,p:"Through guided self-assessment, exploration of Suffolk's academic programs and disciplinary opportunities, labor-market research, analysis of professional roles, and conversations with faculty, professionals, and other students, students investigate multiple academic and career pathways and learn to evaluate the evidence informing their choices. Students practice initiating professional relationships, develop foundational career materials, and consider how compensation, educational costs, and personal circumstances affect possible directions. They examine how majors, courses, faculty expertise, and research or creative opportunities can help them test emerging interests. Students complete a <b>Career Exploration Plan (v1.0)</b> documenting their findings, promising directions, outstanding questions, and specific next steps for coursework, relationships, and experience. The course prepares students to pursue more focused professional development in CE-200."},
+          {h:"Credits",p:"1 credit; new for CAS and SBS."},
+          {h:"Sequencing",p:"Second semester of students' first year. Currently proposed as the second half of a First Year Experience sequence. Adapted pathways for transfer students and other entry patterns will require implementation design."},
+          {h:"Satisfied By",p:"There are no existing courses that currently meet the criteria for the Career Exploration component of the CS&D requirement. This proposal suggests developing <b>CE-100: Career Exploration</b> as a course available to all Suffolk students. Like any Gen Ed requirement, however, this requirement could be satisfied by another course that meets the necessary <a data-jump='criteria'>criteria and learning objectives</a>."},
+          {h:"Proposed Course",p:"<b>CE-100: Career Exploration</b> or other course that meets this requirement's criteria (below).<br>See the <a data-panel='howwork'>How the Work Gets Done</a> section for information about how this course would be designed and managed, who would teach the course, and how it would be paid for."},
+          {h:"Instructional Identity",lvl:2,p:"<b>A common course and curriculum, with student-led exploration across or within particular disciplines.</b> The course is designed to support students' developing professional identity, whether starting from a set of broad interests or with a very focused academic and career goal. It teaches the habits of inquiry required to connect academic choices, lived experiences, and possible futures. Faculty from across the university contribute to the course by providing information about their disciplines, research, and professional pathways, and by helping students identify and pursue opportunities for exploration. The course is designed to be inclusive of students with a wide range of prior experience, access to professional networks, and clarity about their goals."},
+          {h:"Description",lvl:2,p:"Through guided self-assessment, exploration of Suffolk's academic programs and disciplinary opportunities, labor-market research, analysis of professional roles, and conversations with faculty, alumni, and other students, students investigate multiple academic and career pathways and learn to evaluate the evidence informing their choices. Students practice initiating professional relationships, develop foundational career materials, and consider how compensation, educational costs, and personal circumstances affect possible directions. They examine how majors, courses, faculty expertise, and research or creative opportunities can help them test emerging interests. Students complete a <b>Career Exploration Plan (v1.0)</b> documenting their findings, promising directions, outstanding questions, and specific next steps for coursework, relationships, and experience. The course prepares students to pursue more focused professional development in CE-200."},
           {h:"Scheduling and Modality",lvl:2,p:"This draft is designed to minimize the number of instructors required while accommodating limited classroom space. One proposed spring model uses approximately <b>25 sections of 40 students</b>, each attached to a weekly 75-minute classroom block. Each section is divided into two cohorts of about 20 students, with cohorts attending in person on alternating weeks. Between in-person meetings, students complete research, assignments, departmental or career events, and informational conversations. From the student's perspective, the in-person cohort of approximately 20 is their regular class group. Additional delivery models can be considered after validating staffing, access, time-on-task, and room availability."},
           {h:"Academic Department and Faculty Engagement",lvl:2,p:"CE-100 intentionally introduces students to the University's intellectual and disciplinary communities. Departments may contribute concise program exploration profiles, identify representative courses and research or creative opportunities, publicize accessible academic events, and facilitate appropriate faculty or upper-level student conversations. These are <b>opportunities for participation, not a requirement that every faculty member meet individually with every first-year student</b>. Students already committed to a major should explore deeper or adjacent possibilities, not be compelled to reconsider a satisfactory choice."},
           {h:"Illustrative Assignments",asg:"CE-100",p:"Seven illustrative assignments build on one another, and the seventh is the culminating Career Exploration Plan (v1.0). CE-100 students should have access to a curated menu of department events, alumni panels, introductory career programs, employer talks, and other engagement opportunities. Preparation, purposeful participation, follow-through, and synthesis determine educational value; mere attendance is not the full assessment. Practical alternatives are provided for inaccessible times or formats."},
-          {h:"Criteria for Satisfying the Requirement",p:"To satisfy the <b>Career Exploration</b> requirement, a course must ensure that students demonstrate the ability to:</p><ol><li><b>Analyze themselves as developing learners and professionals.</b> Explain how interests, strengths, values, experiences, and circumstances inform at least two potential academic or career directions, supported by specific evidence rather than unsupported self-description.</li><li><b>Explore academic and professional pathways.</b> Research and compare multiple possibilities, including at least two academic pathways available through Suffolk and at least three professional roles or career pathways, considering curricular opportunities, work responsibilities, qualifications, entry routes, working conditions, and potential growth.</li><li><b>Evaluate career and academic information critically.</b> Locate, interpret, compare, and appropriately qualify information from credible sources, including program information, job postings, labor-market data, and professional perspectives, to reach evidence-based conclusions about opportunities and constraints.</li><li><b>Investigate communities and initiate professional engagement.</b> Identify relevant faculty, academic communities, professional associations, alumni, and other contacts; initiate appropriate outreach; complete at least one substantive career-focused conversation or approved equivalent; and reflect on insights gained through purposeful engagement.</li><li><b>Communicate a foundational professional identity.</b> Develop a foundational resume that accurately represents education, experiences, and skills; and deliver a concise professional introduction suited to an appropriate audience or context.</li><li><b>Integrate learning into an actionable plan.</b> Synthesize self-assessment, academic and career research, and professional engagement into a completed <b>Career Exploration Plan (v1.0)</b>, with prioritized possibilities, unresolved questions, and specific next steps for academic study, relationships, and experience.</li></ol>"}
+          {id:"criteria",h:"Criteria for Satisfying the Requirement",p:"To satisfy the <b>Career Exploration</b> requirement, a course must ensure that students demonstrate the ability to:</p><ol><li>Identify and explain how their interests, strengths, values, experiences, and circumstances inform potential academic and career directions.</li><li>Investigate multiple professional fields or roles, including responsibilities, qualifications, entry routes, working conditions, and opportunities for growth.</li><li>Locate, interpret, and critically compare and assess job postings, labor-market data, and firsthand professional perspectives to inform career decisions.</li><li>Identify appropriate professional contacts, initiate outreach, and engage in a career-related conversation to gather information and develop networking confidence.</li><li>Develop introductory professional materials and articulate their interests, relevant experiences, and developing skills to an appropriate audience.</li><li>Use the <b>Suffolk Career Plan</b> portal to synthesize self-assessment, career research, and professional insights into a reasoned exploration strategy with specific next steps.</li></ol>"}
         ]
       },
       /* ---------- plan box ---------- */
@@ -1258,14 +1371,14 @@
 sections:[
           {h:"Credits",p:"1 credit; proposed as new credit-bearing instruction for CAS and SBS. College-level degree-credit effects require review."},
           {h:"Sequencing",p:"Prerequisite: CE-100.<br>Sophomore year, following CE-100, and ideally before the student's principal qualifying work-based learning experience. Students with accelerated recruiting calendars and transfer pathways may need appropriate timing accommodations."},
-          {h:"Satisfied By",p:"There are no existing courses currently approved as satisfying this portion of the CS&D requirement. The closest match are the CAS courses that meet the CAS-201 requirement, but those do not meet all the criteria while also covering material from CE-100. This proposal suggests developing <b>CE-200: Career Navigation</b> as a course open to all Suffolk students. Like any Gen Ed requirement, however, this requirement could be satisfied by another course that meets the necessary criteria and learning objectives."},
+          {h:"Satisfied By",p:"There are no existing courses currently approved as satisfying this portion of the CS&D requirement. The closest match are the CAS courses that meet the CAS-201 requirement, but those do not meet all the criteria while also covering material from CE-100. This proposal suggests developing <b>CE-200: Career Navigation</b> as a course open to all Suffolk students. Like any Gen Ed requirement, however, this requirement could be satisfied by another course that meets the necessary <a data-jump='criteria'>criteria and learning objectives</a>."},
           {h:"Proposed Course",p:"<b>CE-200: Career Navigation</b> or other course that meets this requirement's criteria (below).<br>See the <a data-panel='howwork'>How the Work Gets Done</a> section for more information about how this course would be designed and managed, who would teach the course, and how it would be paid for."},
           {h:"Instructional Identity",lvl:2,p:"<b>One coordinated CE-200 course family; common outcomes, industry-aligned application.</b> Every undergraduate is expected to take CE-200 through the proposed Career Education academic unit. Sections may align with broad career communities, and a generalist or interdisciplinary option serves students who are undecided or pursuing cross-sector interests. Students should be able to select alignment according to intended professional opportunities rather than major alone."},
           {h:"Description",lvl:2,p:"Building directly on CE-100, this course prepares students to <b>secure, succeed in, and maximize the value of</b> an internship or other meaningful work-based learning experience. Students assess their qualifications and readiness, identify career-relevant opportunities, develop targeted search strategies, and strengthen their professional materials, networking, and interviewing skills. They also develop strategies for navigating workplace expectations, communicating effectively, establishing professional credibility, seeking and responding to feedback, building relationships, and maximizing their learning before, during, and after an experience. Students complete an individualized Career Navigation Plan that builds on their earlier Exploration Plan and establishes specific goals, preparation priorities, and actionable steps for securing and succeeding in work-based learning."},
           {h:"Industry Alignment and Instructional Delivery",lvl:2,p:"CE-200 uses a <b>common academic architecture with differentiated professional applications</b>. The Career Education academic unit would coordinate course identity, syllabi, required assignments, v2.0, learning outcomes, assessment, and continuous improvement. Broad industry-aligned sections may use relevant employers, recruiting timelines, job descriptions, professional organizations, portfolios, technical skills, and interview practices. Generalist or interdisciplinary sections must be available. Students are not assigned an industry solely based on their current major.<br><b>Potential section families, subject to demand and staffing:</b> Business, Finance &amp; Accounting; Healthcare &amp; Life Sciences; Technology &amp; Analytics; Arts, Media &amp; Design; Government, Law &amp; Public Service; and Generalist / Interdisciplinary. These examples are not a finalized set of section types.<br><b>Collaborative delivery without fragmented equivalencies:</b> Faculty and departments may teach, contribute expertise, or arrange linked meeting times with existing courses, but the proposed default is that students are enrolled in <b>CE-200 itself</b> and that its common expectations remain intact. The existing CAS-201 courses and departmental variants taught in practice by Career Center staff may offer a useful transition path into this coordinated model. SBS does not currently have a directly equivalent required course, so implementation there will require different scheduling and credit decisions. Formal equivalency policies, transfer cases, and exceptions remain for faculty governance discussion."},
           {h:"Scheduling and Modality",lvl:2,p:"A hybrid model similar to CE-100 could combine alternating small-group in-person sessions with independent applied work, professional events, interviews, applications, and coaching. Sessions prioritize feedback on materials, interview rehearsal, industry-specific opportunity analysis, and peer problem-solving. The exact number and enrollment size of CE-200 sections, assignment review staffing, and use of existing course meeting blocks remain implementation decisions. Shared curriculum does not require every section to use the same examples, employer events, or instructional techniques."},
           {h:"Illustrative Assignments",asg:"CE-200",p:"Six illustrative assignments build toward the culminating Career Readiness Plan (v2.0). They share common outcomes, assessment expectations, and a common syllabus framework across all CE-200 sections, while examples, employers, and events can be industry-specific. A student can choose a career community based on interests, regardless of declared major."},
-          {h:"Criteria for Satisfying the Requirement",p:"To satisfy the <b>Career Navigation</b> requirement, a course must ensure that students demonstrate the ability to:</p><ol><li><b>Assess readiness and act on identified needs.</b> Review their developing career direction, analyze professional and practical readiness challenges, and complete two or three approved actions selected to address relevant needs, documenting results and next steps.</li><li><b>Evaluate specific WBL opportunities and qualifications.</b> Investigate at least three specific internships or other qualifying WBL opportunities; assess duties, eligibility under the five criteria, qualifications, recruiting timelines, application requirements, and alignment with current goals.</li><li><b>Develop targeted professional materials.</b> Refine an accurate resume and professional profile or appropriate equivalent, tailoring evidence of relevant capabilities to specific opportunities and industry expectations.</li><li><b>Demonstrate application and interview effectiveness.</b> Interpret position descriptions, prepare tailored application responses, and practice evidence-based behavioral or situational interview responses, incorporating feedback.</li><li><b>Activate professional relationships.</b> Develop and implement a networking and opportunity-engagement strategy through appropriate outreach, a relevant employer or professional event or equivalent interaction, purposeful follow-up, and documentation of next steps.</li><li><b>Produce a realistic WBL action strategy.</b> Synthesize opportunity research, readiness actions, professional materials, networking, anticipated challenges, and contingency pathways into a completed <b>Career Readiness Plan (v2.0)</b> with prioritized options, a projected completion term, and actionable milestones.</li></ol>"}
+          {id:"criteria",h:"Criteria for Satisfying the Requirement",p:"To satisfy the <b>Career Navigation</b> requirement, a course must ensure that students demonstrate the ability to:</p><ol><li><b>Assess readiness and act on identified needs.</b> Review their developing career direction, analyze professional and practical readiness challenges, and complete two or three approved actions selected to address relevant needs, documenting results and next steps.</li><li><b>Evaluate specific WBL opportunities and qualifications.</b> Investigate at least three specific internships or other qualifying WBL opportunities; assess duties, eligibility under the five criteria, qualifications, recruiting timelines, application requirements, and alignment with current goals.</li><li><b>Develop targeted professional materials.</b> Refine an accurate resume and professional profile or appropriate equivalent, tailoring evidence of relevant capabilities to specific opportunities and industry expectations.</li><li><b>Demonstrate application and interview effectiveness.</b> Interpret position descriptions, prepare tailored application responses, and practice evidence-based behavioral or situational interview responses, incorporating feedback.</li><li><b>Activate professional relationships.</b> Develop and implement a networking and opportunity-engagement strategy through appropriate outreach, a relevant employer or professional event or equivalent interaction, purposeful follow-up, and documentation of next steps.</li><li><b>Produce a realistic WBL action strategy.</b> Synthesize opportunity research, readiness actions, professional materials, networking, anticipated challenges, and contingency pathways into a completed <b>Career Readiness Plan (v2.0)</b> with prioritized options, a projected completion term, and actionable milestones.</li></ol>"}
         ]
 
       },
@@ -1702,12 +1815,14 @@ sections:[
     return (sec.p!==undefined ? paras(sec.p) : '')+(sec.card ? cardBtn(STAGES[i],i) : '')+(sec.asg ? asgBlock(sec.asg) : '');
   }
   function secPage(sec,i){
-    if(sec.lvl===2) return '<div class="msx-sub2"><h6 class="msx-h2">'+sec.h+'</h6>'+secBody(sec,i)+'</div>';
-    return '<h5 class="msx-h">'+sec.h+'</h5>'+secBody(sec,i);
+    var d=sec.id?' data-sec="'+sec.id+'"':'';
+    if(sec.lvl===2) return '<div class="msx-sub2"'+d+'><h6 class="msx-h2">'+sec.h+'</h6>'+secBody(sec,i)+'</div>';
+    return '<h5 class="msx-h"'+d+'>'+sec.h+'</h5>'+secBody(sec,i);
   }
   function secModal(sec,i){
-    if(sec.lvl===2) return '<section class="msec msec2"><h4>'+sec.h+'</h4>'+secBody(sec,i)+'</section>';
-    return '<section class="msec"><h3>'+sec.h+'</h3>'+secBody(sec,i)+'</section>';
+    var d=sec.id?' data-sec="'+sec.id+'"':'';
+    if(sec.lvl===2) return '<section class="msec msec2"'+d+'><h4>'+sec.h+'</h4>'+secBody(sec,i)+'</section>';
+    return '<section class="msec"'+d+'><h3>'+sec.h+'</h3>'+secBody(sec,i)+'</section>';
   }
 
   function cardBtn(s,i){
@@ -1749,6 +1864,15 @@ sections:[
     open("planModal",+b.dataset.i,b);
   });
 
+  /* <a data-jump="criteria"> scrolls to the section with that id, inside the popup or on the milestones page */
+  document.addEventListener("click",function(e){
+    var a=e.target.closest("a[data-jump]"); if(!a) return;
+    var scope=a.closest(".mbody, .msx-page"); if(!scope) return;
+    e.preventDefault();
+    var t=scope.querySelector('[data-sec="'+a.dataset.jump+'"]'); if(!t) return;
+    var box=scope.classList.contains("mbody") ? scope : document.getElementById("panel-milestones");
+    box.scrollTo({top:box.scrollTop+t.getBoundingClientRect().top-box.getBoundingClientRect().top-(box===scope?6:24),behavior:"smooth"});
+  });
   window.__msx={openAsg:openAsg,closeModal:function(){ if(!scrim.hidden) close(); }};
   mclose.addEventListener("click", close);
   scrim.addEventListener("mousedown", function(e){ if(e.target===scrim) close(); });
@@ -1895,16 +2019,216 @@ sections:[
           </table>
         </div>
 
-        <h3 class="sub" id="w-2">Ensuring Students Secure a WBL Experience</h3>
+        <div class="wbl-map" id="wbl-cards">
+          <div class="wbl-zone wbl-z-go">
+            <p class="wbl-zone-t">Some experiences that may satisfy the requirement, when structured to meet the criteria, include:</p>
+            <div class="wbl-links">
+              <button type="button" class="wbl-link" data-jump="w-internships"><span class="wbl-ico" aria-hidden="true"><svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14"/><path d="M6 13l6 6 6-6"/></svg></span><span>Internships</span></button>
+              <button type="button" class="wbl-link" data-jump="w-research"><span class="wbl-ico" aria-hidden="true"><svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14"/><path d="M6 13l6 6 6-6"/></svg></span><span>Faculty-Led Research</span></button>
+              <button type="button" class="wbl-link" data-jump="w-oncampus"><span class="wbl-ico" aria-hidden="true"><svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14"/><path d="M6 13l6 6 6-6"/></svg></span><span>Robust On-Campus Employment</span></button>
+              <button type="button" class="wbl-link" data-jump="w-worksite"><span class="wbl-ico" aria-hidden="true"><svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14"/><path d="M6 13l6 6 6-6"/></svg></span><span>Approved Projects at Existing Employers</span></button>
+            </div>
+          </div>
+          <span class="wbl-arrow" aria-hidden="true"></span>
+          <div class="wbl-zone wbl-z-help">
+            <div class="wbl-links"><button type="button" class="wbl-link" data-jump="w-support"><span class="wbl-ico" aria-hidden="true"><svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14"/><path d="M6 13l6 6 6-6"/></svg></span><span>Support, Interventions &amp; Petitions</span></button></div>
+          </div>
+          <span class="wbl-arrow" aria-hidden="true"></span>
+          <div class="wbl-zone wbl-z-worry">
+            <div class="wbl-links"><button type="button" class="wbl-link" data-jump="w-enough"><span class="wbl-ico" aria-hidden="true"><svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14"/><path d="M6 13l6 6 6-6"/></svg></span><span>&ldquo;But What If We Can&rsquo;t Find Enough?&rdquo;</span></button></div>
+          </div>
+        </div>
+        <script>
+        (function(){
+          document.getElementById("wbl-cards").addEventListener("click",function(e){
+            var b=e.target.closest("[data-jump]"); if(!b) return;
+            var panel=document.getElementById("panel-wbl"), t=document.getElementById(b.dataset.jump);
+            if(panel&&t) panel.scrollTo({top:panel.scrollTop+t.getBoundingClientRect().top-panel.getBoundingClientRect().top-24,behavior:"smooth"});
+          });
+        })();
+        </script>
+        <hr class="wbl-rule">
+
+        <section class="wsec" id="sec-w-internships">
+        <h3 class="sub" id="w-internships">Internships</h3>
+        <p class="wsec-todo">Placeholder. Section content to come.</p>
+        </section>
+
+        <section class="wsec" id="sec-w-research">
+        <h3 class="sub" id="w-research">Faculty-Led Research</h3>
+        <p class="wsec-todo">Placeholder. Section content to come.</p>
+        </section>
+
+        <section class="wsec" id="sec-oncampus">
+        <h3 class="sub" id="w-oncampus">Robust On-Campus Employment</h3>
+        <p>On-campus employment can satisfy Suffolk&rsquo;s Work-Based Learning requirement when an individual student&rsquo;s experience meets the five WBL criteria. Qualifying experiences must involve substantive responsibilities, at least 120 hours, professional supervision, opportunities to expand professional relationships, and intentional integration of learning.</p>
+        <p>Approval applies to the <b>individual student&rsquo;s experience, not the position itself</b>. Students propose how the experience will meet the criteria, faculty assess its suitability, and supervisors confirm the proposed arrangements. A position that qualified for one student does not automatically qualify for another.</p>
+
+        <div class="oe" id="oe">
+          <button type="button" class="oe-card" id="oe-open" aria-haspopup="dialog">
+            <span class="oe-card-ico" aria-hidden="true"><svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8z"/><path d="M14 3v5h5"/><path d="M9 13h6M9 17h6"/></svg></span>
+            <span class="oe-card-title">On-Campus Employment WBL Vetting Form</span>
+            <span class="oe-card-sub">Preview the five-criteria form students use to propose a qualifying experience.</span>
+            <span class="oe-card-go">Open Form</span>
+          </button>
+
+          <ol class="oe-steps" id="oe-steps">
+            <li><button type="button" class="oe-step on" data-n="1" aria-pressed="true"><span class="oe-dot">1</span><span class="oe-step-t"><b>Student Proposal</b><span>Student completes the WBL Vetting Form.</span></span></button></li>
+            <li><button type="button" class="oe-step" data-n="2" aria-pressed="false"><span class="oe-dot">2</span><span class="oe-step-t"><b>Faculty Review</b><span>Faculty assesses the proposed experience against the five criteria.</span></span></button></li>
+            <li><button type="button" class="oe-step" data-n="3" aria-pressed="false"><span class="oe-dot">3</span><span class="oe-step-t"><b>Supervisor Confirmation</b><span>Following hiring, the supervisor confirms responsibilities and commitments.</span></span></button></li>
+            <li><button type="button" class="oe-step" data-n="4" aria-pressed="false"><span class="oe-dot">4</span><span class="oe-step-t"><b>Final Approval</b><span>The experience is approved for WBL.</span></span></button></li>
+            <li><button type="button" class="oe-step" data-n="5" aria-pressed="false"><span class="oe-dot">5</span><span class="oe-step-t"><b>WBL Completion</b><span>Student completes approved hours and learning requirements.</span></span></button></li>
+          </ol>
+
+          <div class="oe-detail" id="oe-detail" aria-live="polite"></div>
+        </div>
+
+        <script>
+        (function(){
+          var STAGES={
+            1:{t:"Stage 1: Student Proposal",
+               p:["Before applying or accepting a position, the student completes the Vetting Form to propose how the experience will meet the five criteria."],
+               out:["Submitted for faculty consideration."]},
+            2:{t:"Stage 2: Faculty Review",
+               p:["The designated faculty reviewer assesses the proposal in the context of the student’s academic program and career development."],
+               out:["Provisionally approved","Revision requested","Not approved"],
+               note:"Provisional approval indicates that the proposed experience could qualify if the student is hired and the supervisor confirms the arrangements."},
+            3:{t:"Stage 3: Supervisor Confirmation",
+               p:["After hiring, the supervisor reviews the proposed responsibilities, schedule, supervision expectations, and professional development opportunities."],
+               out:["Confirm as proposed","Request modifications","Unable to support the plan"]},
+            4:{t:"Stage 4: Final Approval",
+               p:["A proposal confirmed without substantive changes proceeds to final approval. Material changes return to faculty for review."],
+               note:"Approved hours begin counting from the authorized start date."},
+            5:{t:"Stage 5: WBL Completion",
+               p:["The student completes at least 120 approved hours, documents professional connections, and completes Career Plan v3.0. The supervisor provides a performance evaluation."],
+               note:"The requirement is satisfied after the University’s designated academic verification process."}
+          };
+          var detail=document.getElementById("oe-detail"), steps=document.getElementById("oe-steps");
+          function show(n){
+            var st=STAGES[n];
+            detail.innerHTML="<h4>"+st.t+"</h4>"+st.p.map(function(x){return "<p>"+x+"</p>";}).join("")+
+              (st.out?"<p class='oe-out-h'>"+(st.out.length>1?"Possible outcomes":"Outcome")+"</p><ul>"+st.out.map(function(x){return "<li>"+x+"</li>";}).join("")+"</ul>":"")+
+              (st.note?"<p class='oe-note'>"+st.note+"</p>":"");
+            [].forEach.call(steps.querySelectorAll(".oe-step"),function(b){
+              var on=+b.dataset.n===n; b.classList.toggle("on",on); b.setAttribute("aria-pressed",on?"true":"false");
+            });
+          }
+          steps.addEventListener("click",function(e){ var b=e.target.closest(".oe-step"); if(b) show(+b.dataset.n); });
+          show(1);
+
+          /* ---- the form, in a modal ---- */
+          var NET=[["conf","Attend a professional conference or gathering"],["mentor","Connect with an alumni or professional mentor"],["conv","Conduct career conversations with professionals"],["collab","Collaborate with professionals from an external organization"],["assoc","Participate in a professional association"],["client","Work with external clients, partners, or other stakeholders"],["cross","Participate in a cross-departmental project"],["other","Other"]];
+          var scrim=document.createElement("div");
+          scrim.className="oe-scrim"; scrim.hidden=true;
+          scrim.innerHTML=
+            '<div class="oe-modal" role="dialog" aria-modal="true" aria-labelledby="oe-mtitle">'+
+              '<button type="button" class="oe-x" aria-label="Close">&times;</button>'+
+              '<div class="oe-mhead"><h2 id="oe-mtitle">On-Campus Employment WBL Vetting Form</h2>'+
+                '<p>Students use this form to propose how an on-campus employment experience will meet Suffolk’s five Work-Based Learning criteria. Faculty review the proposal before the supervisor confirms the arrangements.</p></div>'+
+              '<div class="oe-mbody"><form onsubmit="return false" autocomplete="off">'+
+                '<fieldset><legend>Basic Information</legend>'+
+                  '<label for="oe-pt">Position title</label><input id="oe-pt" type="text">'+
+                  '<label for="oe-dept">Employing department</label><input id="oe-dept" type="text">'+
+                  '<label for="oe-major">Student’s major</label><input id="oe-major" type="text">'+
+                  '<label for="oe-status">Employment status</label><select id="oe-status"><option value=""></option><option>Considering/applying</option><option>Offered position</option><option>Currently employed</option></select>'+
+                '</fieldset>'+
+                '<fieldset><legend>1. Real Work</legend>'+
+                  '<p class="oe-crit">A majority of the student’s responsibilities consist of substantive, career-relevant work that draws upon or extends academic learning and advances career exploration or preparation.</p>'+
+                  '<label for="oe-jd">Job description</label><textarea id="oe-jd" rows="5"></textarea>'+
+                  '<p class="oe-q">Do a majority of the responsibilities meet this standard?</p>'+
+                  '<div class="oe-radios"><label><input type="radio" name="oe-maj" value="Yes"> Yes</label><label><input type="radio" name="oe-maj" value="No"> No</label><label><input type="radio" name="oe-maj" value="Unsure"> Unsure</label></div>'+
+                  '<div id="oe-add" hidden><label for="oe-addt">What additional responsibilities or projects could be added?</label><textarea id="oe-addt" rows="4"></textarea></div>'+
+                '</fieldset>'+
+                '<fieldset><legend>2. Meaningful Time</legend>'+
+                  '<p class="oe-crit">The student completes at least 120 hours, including required training and activities integral to the role. With prior approval, two experiences may be combined to reach 120 hours, provided each independently satisfies all other criteria.</p>'+
+                  '<div class="oe-row"><div><label for="oe-start">Anticipated start date</label><input id="oe-start" type="date"></div>'+
+                    '<div><label for="oe-hpw">Expected hours per week</label><input id="oe-hpw" type="number" min="1" max="40" step="1"></div>'+
+                    '<div><label for="oe-end">Expected end date (optional)</label><input id="oe-end" type="date"></div></div>'+
+                  '<p class="oe-q">Already employed in this position?</p>'+
+                  '<div class="oe-radios"><label><input type="radio" name="oe-emp" value="Yes"> Yes</label><label><input type="radio" name="oe-emp" value="No"> No</label></div>'+
+                  '<div id="oe-begin" hidden><label for="oe-begind">When would the proposed WBL experience begin?</label><input id="oe-begind" type="date"></div>'+
+                  '<p class="oe-est" id="oe-est">Enter your weekly hours to estimate how many weeks 120 hours would take.</p>'+
+                  '<p class="oe-hint">On-campus employment may span multiple semesters and does not need to follow a conventional internship calendar.</p>'+
+                '</fieldset>'+
+                '<fieldset><legend>3. Professional Supervision</legend>'+
+                  '<p class="oe-crit">A qualified professional or field-specific equivalent provides appropriate training, ongoing guidance and feedback, and an end-of-experience performance evaluation.</p>'+
+                  '<label for="oe-sn">Supervisor name</label><input id="oe-sn" type="text">'+
+                  '<label for="oe-st">Supervisor title</label><input id="oe-st" type="text">'+
+                  '<label for="oe-se">Supervisor email</label><input id="oe-se" type="text">'+
+                  '<p class="oe-hint">Following hiring, the supervisor will be asked to confirm their ability to provide ongoing guidance, feedback, and a performance evaluation after the approved WBL experience.</p>'+
+                '</fieldset>'+
+                '<fieldset><legend>4. Expanded Network</legend>'+
+                  '<p class="oe-crit">The student engages with at least two professionals beyond existing classroom, peer, and immediate supervisory relationships, gaining exposure to perspectives, pathways, communities, or opportunities relevant to their goals.</p>'+
+                  '<p class="oe-q"><b>How do you plan to develop at least two meaningful professional connections through this experience? Select all that apply.</b></p>'+
+                  NET.map(function(n){
+                    return '<div class="oe-net"><label class="oe-chk"><input type="checkbox" data-net="'+n[0]+'"> '+n[1]+'</label>'+
+                      '<div class="oe-nettext" data-for="'+n[0]+'" hidden><label for="oe-nt-'+n[0]+'">Tell us more about this activity.</label><input id="oe-nt-'+n[0]+'" type="text"></div></div>';
+                  }).join('')+
+                  '<p class="oe-hint">You do not need to name specific individuals in advance.</p>'+
+                '</fieldset>'+
+                '<fieldset><legend>5. Integrated Learning</legend>'+
+                  '<p class="oe-crit">The student identifies what they learned, connects it to academic and career development, and communicates the experience’s value in a professional context.</p>'+
+                  '<p>Following the experience, students complete Career Plan v3.0, reflecting on their learning, documenting professional connections, and updating their resume and LinkedIn to communicate their accomplishments.</p>'+
+                  '<label class="oe-chk"><input type="checkbox"> I understand that completing employment hours alone does not satisfy the WBL requirement.</label>'+
+                '</fieldset>'+
+              '</form></div>'+
+              '<div class="oe-mfoot"><button type="button" class="oe-close">Close</button></div>'+
+            '</div>';
+          document.body.appendChild(scrim);
+          var modal=scrim.querySelector(".oe-modal"), openBtn=document.getElementById("oe-open");
+          function q(sel){return scrim.querySelector(sel);}
+          /* the form's own small interactions */
+          function maj(){ var v=q('input[name="oe-maj"]:checked'); q("#oe-add").hidden=!(v&&(v.value==="No"||v.value==="Unsure")); }
+          function emp(){ var v=q('input[name="oe-emp"]:checked'); q("#oe-begin").hidden=!(v&&v.value==="Yes"); }
+          function est(){
+            var h=+q("#oe-hpw").value, out=q("#oe-est");
+            out.textContent = h>0 ? "At "+h+" hours per week, 120 hours would take about "+Math.ceil(120/h)+" weeks."
+                                  : "Enter your weekly hours to estimate how many weeks 120 hours would take.";
+          }
+          scrim.addEventListener("change",function(e){
+            var t=e.target;
+            if(t.name==="oe-maj") maj();
+            if(t.name==="oe-emp") emp();
+            if(t.dataset&&t.dataset.net){ q('.oe-nettext[data-for="'+t.dataset.net+'"]').hidden=!t.checked; }
+          });
+          q("#oe-hpw").addEventListener("input",est);
+          var last=null;
+          function open(){ last=document.activeElement; scrim.hidden=false; requestAnimationFrame(function(){ scrim.classList.add("open"); }); q(".oe-x").focus(); }
+          function close(){ scrim.classList.remove("open"); window.setTimeout(function(){ scrim.hidden=true; },160); if(last&&last.focus) last.focus(); }
+          openBtn.addEventListener("click",open);
+          q(".oe-x").addEventListener("click",close);
+          q(".oe-close").addEventListener("click",close);
+          scrim.addEventListener("mousedown",function(e){ if(e.target===scrim) close(); });
+          document.addEventListener("keydown",function(e){
+            if(scrim.hidden) return;
+            if(e.key==="Escape"){ e.preventDefault(); close(); return; }
+            if(e.key!=="Tab") return;
+            var f=[].filter.call(modal.querySelectorAll('button,input,select,textarea,[tabindex]:not([tabindex="-1"])'),function(x){return !x.disabled&&x.offsetParent!==null;});
+            if(!f.length) return;
+            var a=f[0], z=f[f.length-1];
+            if(e.shiftKey&&document.activeElement===a){ e.preventDefault(); z.focus(); }
+            else if(!e.shiftKey&&document.activeElement===z){ e.preventDefault(); a.focus(); }
+          });
+        })();
+        </script>
+        </section>
+
+        <section class="wsec" id="sec-w-worksite">
+        <h3 class="sub" id="w-worksite">Approved Projects at Existing Employers</h3>
+        <p class="wsec-todo">Placeholder. Section content to come.</p>
+        </section>
+
+        <section class="wsec" id="sec-w-support">
+        <h3 class="sub" id="w-support">Support, Interventions &amp; Petitions</h3>
+        <p class="wsec-todo">Placeholder. Section content to come.</p>
+        </section>
+
+        <section class="wsec" id="sec-enough">
+        <h3 class="sub" id="w-enough">&ldquo;But What If We Can&rsquo;t Find Enough?&rdquo;</h3>
         <p>There are many students, and entire departments, who are already engaging in internship, research, or other experiences that would satisfy the WBL requirement, or could do so with some minor adjustments to meet the five criteria above. But by far the most common question this proposal meets with is, &ldquo;But what if we can&rsquo;t find experiences for every student?&rdquo;</p>
         <p>It is important to remember that students in this updated curriculum will have had two classes dedicated to planning for this experience. They will not start looking for an internship 3 months before they want to do one, as is the case for many students today. But it is important to map out what this looks like as a throughput. The diagram below attempts to model this, and you can play with almost all of the variables to mock up various scenarios yourself.</p>
         <iframe class="sankey-frame" id="sankeyFrame" src="WBL_Sankey.html?embed=1" title="Model of how students move through six terms toward a work-based learning experience" loading="lazy" scrolling="no"></iframe>
-
-        <h3 class="sub" id="w-3">Work-based learning placeholder three</h3>
-        <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.</p>
-
-        <h3 class="sub" id="w-4">Work-based learning placeholder four</h3>
-        <p>At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident.</p>
+        </section>
       </div>
     </section>
 
@@ -2247,7 +2571,7 @@ sections:[
     b.addEventListener("click", function(){ show(b.dataset.panel); });
   });
 
-  document.querySelectorAll(".start").forEach(function(b){
+  document.querySelectorAll(".start[data-panel]").forEach(function(b){
     b.addEventListener("click", function(){ show(b.dataset.panel); });
   });
 
