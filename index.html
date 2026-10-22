@@ -496,6 +496,7 @@
   .cta-sm{display:inline-block;margin:4px 0 14px;background:var(--navy);color:#fff;font-size:.9375rem;font-weight:600;padding:10px 18px;text-decoration:none;border-bottom:3px solid var(--gold);transition:background .18s ease;}
   .cta-sm:hover{background:#0F1E39;}
   .cta-sm::after{content:"\2197";margin-left:8px;}
+  .cost-frame{display:block;width:100%;height:900px;border:0;margin:0 0 6px;}
   .sankey-frame{display:block;width:100%;height:560px;border:0;}
   .home-cta a.start::after{content:"\2197";}
   /* five criteria, shown as part of the page */
@@ -1040,15 +1041,20 @@
     .scrim{position:fixed;inset:0;background:rgba(0,0,0,.35);z-index:44;display:none;}
     .scrim.on{display:block;}
   }
-  @media (max-width:760px){
-    .shell{grid-template-columns:1fr;}
+  /* below a standard laptop width the section menu slides away behind a "Sections" button */
+  @media (max-width:1279px){
+    .shell{grid-template-columns:minmax(0,1fr) var(--rail-r);}
     .menu{
       position:fixed;inset:0 auto 0 0;width:260px;z-index:45;
       transform:translateX(-100%);transition:transform .26s ease;
-      padding-top:calc(28px + env(safe-area-inset-top,0px));
+      padding-top:calc(66px + env(safe-area-inset-top,0px));
     }
     .menu.open{transform:translateX(0);}
     .menu-toggle{display:block;}
+    .panel-inner{padding-top:68px;}
+  }
+  @media (max-width:760px){
+    .shell{grid-template-columns:1fr;}
     .panel-inner{padding:68px 22px 100px;}
   }
   @media (prefers-reduced-motion:reduce){
@@ -1106,8 +1112,9 @@
         </ul>
       </li>
       <li>
-        <button class="nav-link" data-panel="howwork">How the Work Gets Done</button>
+        <button class="nav-link" data-panel="howwork">Cost and Logistics</button>
         <ul class="sublist" data-for="howwork">
+          <li><button class="sub-link" data-target="h-planner">Section and cost planner</button></li>
           <li><button class="sub-link" data-target="h-1">Who teaches what</button></li>
           <li><button class="sub-link" data-target="h-2">Support for instructors</button></li>
           <li><button class="sub-link" data-target="h-3">Assessment and review</button></li>
@@ -1133,7 +1140,7 @@
         <div class="home-grid">
           <div class="home-main">
             <p class="home-tagline">An outcome this consequential requires an intentional curriculum.</p>
-        <p class="home-lead">Suffolk's academic programs prepare students to think critically, engage with complex questions, and develop expertise within and across disciplines. <b>Career Strategy & Design</b> builds on that foundation by ensuring <span class="mark">every</span> undergraduate receives structured opportunities to explore career pathways, develop professional skills and relationships, and gain meaningful work experience. Career preparation and postgraduation opportunities are central considerations for prospective students and families. At Suffolk, the expectations are especially clear: our entering students overwhelmingly identify career advancement, relevant employment, and internship experience as priorities for their college education.</p>
+        <p class="home-lead">Suffolk's academic programs prepare students to think critically, engage with complex questions, and develop expertise within and across disciplines. <b>Career Strategy & Design</b> builds on that foundation by ensuring <span class="mark">every</span> undergraduate receives structured opportunities to explore career pathways, develop professional skills and relationships, and gain meaningful work experience. </p> <p>Career preparation and postgraduation opportunities are central considerations for prospective students and families. At Suffolk, the expectations are especially clear: our entering students overwhelmingly identify career advancement, relevant employment, and internship experience as priorities for their college education.</p>
 
         <figure class="stats-wrap">
             <p class="stats-title">Among students entering Suffolk in Fall 2026:<span data-cite="SU_FY26"></span></p>
@@ -1331,7 +1338,7 @@
           {h:"Credits",p:"1 credit; new for CAS and SBS."},
           {h:"Sequencing",p:"Second semester of students' first year. Currently proposed as the second half of a First Year Experience sequence. Adapted pathways for transfer students and other entry patterns will require implementation design."},
           {h:"Satisfied By",p:"There are no existing courses that currently meet the criteria for the Career Exploration component of the CS&D requirement. This proposal suggests developing <b>CE-100: Career Exploration</b> as a course available to all Suffolk students. Like any Gen Ed requirement, however, this requirement could be satisfied by another course that meets the necessary <a data-jump='criteria'>criteria and learning objectives</a>."},
-          {h:"Proposed Course",p:"<b>CE-100: Career Exploration</b> or other course that meets this requirement's criteria (below).<br>See the <a data-panel='howwork'>How the Work Gets Done</a> section for information about how this course would be designed and managed, who would teach the course, and how it would be paid for."},
+          {h:"Proposed Course",p:"<b>CE-100: Career Exploration</b> or other course that meets this requirement's criteria (below).<br>See the <a data-panel='howwork'>Cost and Logistics</a> section for information about how this course would be designed and managed, who would teach the course, and how it would be paid for."},
           {h:"Instructional Identity",lvl:2,p:"<b>A common course and curriculum, with student-led exploration across or within particular disciplines.</b> The course is designed to support students' developing professional identity, whether starting from a set of broad interests or with a very focused academic and career goal. It teaches the habits of inquiry required to connect academic choices, lived experiences, and possible futures. Faculty from across the university contribute to the course by providing information about their disciplines, research, and professional pathways, and by helping students identify and pursue opportunities for exploration. The course is designed to be inclusive of students with a wide range of prior experience, access to professional networks, and clarity about their goals."},
           {h:"Description",lvl:2,p:"Through guided self-assessment, exploration of Suffolk's academic programs and disciplinary opportunities, labor-market research, analysis of professional roles, and conversations with faculty, alumni, and other students, students investigate multiple academic and career pathways and learn to evaluate the evidence informing their choices. Students practice initiating professional relationships, develop foundational career materials, and consider how compensation, educational costs, and personal circumstances affect possible directions. They examine how majors, courses, faculty expertise, and research or creative opportunities can help them test emerging interests. Students complete a <b>Career Exploration Plan (v1.0)</b> documenting their findings, promising directions, outstanding questions, and specific next steps for coursework, relationships, and experience. The course prepares students to pursue more focused professional development in CE-200."},
           {h:"Scheduling and Modality",lvl:2,p:"This draft is designed to minimize the number of instructors required while accommodating limited classroom space. One proposed spring model uses approximately <b>25 sections of 40 students</b>, each attached to a weekly 75-minute classroom block. Each section is divided into two cohorts of about 20 students, with cohorts attending in person on alternating weeks. Between in-person meetings, students complete research, assignments, departmental or career events, and informational conversations. From the student's perspective, the in-person cohort of approximately 20 is their regular class group. Additional delivery models can be considered after validating staffing, access, time-on-task, and room availability."},
@@ -1372,7 +1379,7 @@ sections:[
           {h:"Credits",p:"1 credit; proposed as new credit-bearing instruction for CAS and SBS. College-level degree-credit effects require review."},
           {h:"Sequencing",p:"Prerequisite: CE-100.<br>Sophomore year, following CE-100, and ideally before the student's principal qualifying work-based learning experience. Students with accelerated recruiting calendars and transfer pathways may need appropriate timing accommodations."},
           {h:"Satisfied By",p:"There are no existing courses currently approved as satisfying this portion of the CS&D requirement. The closest match are the CAS courses that meet the CAS-201 requirement, but those do not meet all the criteria while also covering material from CE-100. This proposal suggests developing <b>CE-200: Career Navigation</b> as a course open to all Suffolk students. Like any Gen Ed requirement, however, this requirement could be satisfied by another course that meets the necessary <a data-jump='criteria'>criteria and learning objectives</a>."},
-          {h:"Proposed Course",p:"<b>CE-200: Career Navigation</b> or other course that meets this requirement's criteria (below).<br>See the <a data-panel='howwork'>How the Work Gets Done</a> section for more information about how this course would be designed and managed, who would teach the course, and how it would be paid for."},
+          {h:"Proposed Course",p:"<b>CE-200: Career Navigation</b> or other course that meets this requirement's criteria (below).<br>See the <a data-panel='howwork'>Cost and Logistics</a> section for more information about how this course would be designed and managed, who would teach the course, and how it would be paid for."},
           {h:"Instructional Identity",lvl:2,p:"<b>One coordinated CE-200 course family; common outcomes, industry-aligned application.</b> Every undergraduate is expected to take CE-200 through the proposed Career Education academic unit. Sections may align with broad career communities, and a generalist or interdisciplinary option serves students who are undecided or pursuing cross-sector interests. Students should be able to select alignment according to intended professional opportunities rather than major alone."},
           {h:"Description",lvl:2,p:"Building directly on CE-100, this course prepares students to <b>secure, succeed in, and maximize the value of</b> an internship or other meaningful work-based learning experience. Students assess their qualifications and readiness, identify career-relevant opportunities, develop targeted search strategies, and strengthen their professional materials, networking, and interviewing skills. They also develop strategies for navigating workplace expectations, communicating effectively, establishing professional credibility, seeking and responding to feedback, building relationships, and maximizing their learning before, during, and after an experience. Students complete an individualized Career Navigation Plan that builds on their earlier Exploration Plan and establishes specific goals, preparation priorities, and actionable steps for securing and succeeding in work-based learning."},
           {h:"Industry Alignment and Instructional Delivery",lvl:2,p:"CE-200 uses a <b>common academic architecture with differentiated professional applications</b>. The Career Education academic unit would coordinate course identity, syllabi, required assignments, v2.0, learning outcomes, assessment, and continuous improvement. Broad industry-aligned sections may use relevant employers, recruiting timelines, job descriptions, professional organizations, portfolios, technical skills, and interview practices. Generalist or interdisciplinary sections must be available. Students are not assigned an industry solely based on their current major.<br><b>Potential section families, subject to demand and staffing:</b> Business, Finance &amp; Accounting; Healthcare &amp; Life Sciences; Technology &amp; Analytics; Arts, Media &amp; Design; Government, Law &amp; Public Service; and Generalist / Interdisciplinary. These examples are not a finalized set of section types.<br><b>Collaborative delivery without fragmented equivalencies:</b> Faculty and departments may teach, contribute expertise, or arrange linked meeting times with existing courses, but the proposed default is that students are enrolled in <b>CE-200 itself</b> and that its common expectations remain intact. The existing CAS-201 courses and departmental variants taught in practice by Career Center staff may offer a useful transition path into this coordinated model. SBS does not currently have a directly equivalent required course, so implementation there will require different scheduling and credit decisions. Formal equivalency policies, transfer cases, and exceptions remain for faculty governance discussion."},
@@ -2235,8 +2242,11 @@ sections:[
     <!-- HOW THE WORK GETS DONE -->
     <section class="panel" id="panel-howwork" tabindex="-1">
       <div class="panel-inner">
-        <h2 class="sec-title">How the Work Gets Done</h2>
+        <h2 class="sec-title">Cost and Logistics</h2>
         <p class="sec-standfirst">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+
+        <h3 class="sub" id="h-planner">CE-100 and CE-200 Section and Cost Planner</h3>
+        <iframe class="cost-frame" id="costFrame" src="CE_Course_Cost.html?embed=1" title="CE-100 and CE-200 section and cost planner" loading="lazy" scrolling="no"></iframe>
 
         <h3 class="sub" id="h-1">Who teaches what</h3>
         <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation.<span data-cite="staffing-model"></span></p>
@@ -2537,7 +2547,7 @@ sections:[
   navLinks.forEach(function(b){
     b.addEventListener("click", function(){
       show(b.dataset.panel);
-      if(window.innerWidth<=760) closeMobileMenu();
+      if(window.innerWidth<=1279) closeMobileMenu();
     });
   });
 
@@ -2556,7 +2566,7 @@ sections:[
           panel.scrollTo({top:target.offsetTop-24, behavior:"smooth"});
         });
       }
-      if(window.innerWidth<=760) closeMobileMenu();
+      if(window.innerWidth<=1279) closeMobileMenu();
     });
   });
 
@@ -2606,7 +2616,7 @@ sections:[
   window.addEventListener("resize", function(){
     if(current) syncRail(panels[current]);
     if(window.innerWidth>1100) closeRail();
-    if(window.innerWidth>760) closeMobileMenu();
+    if(window.innerWidth>1279) closeMobileMenu();
   });
 
   /* ---- embedded modules marked data-autofit grow to fit their own content ---- */
@@ -2651,8 +2661,10 @@ sections:[
   window.addEventListener("message",function(e){
     var f=document.getElementById("sankeyFrame");
     if(f && e.source===f.contentWindow && e.data && e.data.sankeyHeight) f.style.height=Math.ceil(e.data.sankeyHeight)+"px";
+    var c=document.getElementById("costFrame");
+    if(c && e.source===c.contentWindow && e.data && e.data.costHeight) c.style.height=Math.ceil(e.data.costHeight)+"px";
   });
-  var SLUG={throughline:"career-plan",howwork:"how-the-work-gets-done"}, KEYOF={}, applyingHash=false;
+  var SLUG={throughline:"career-plan",howwork:"cost-and-logistics"}, KEYOF={"how-the-work-gets-done":"howwork"}, applyingHash=false;
   Object.keys(SLUG).forEach(function(k){ KEYOF[SLUG[k]]=k; });
   function hashFor(key,sub){ return "#"+(SLUG[key]||key)+(sub?"/"+sub:""); }
   function pushHash(key,sub,replace){
