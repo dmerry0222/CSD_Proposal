@@ -325,9 +325,6 @@ html.embed h1{display:none}
     <div class="tablescroll">
       <table class="cohort" id="cohort"></table>
     </div>
-    <p class="gridnote" id="gridnote"></p>
-
-    <p class="foot" id="foot"></p>
 </div>
 </div>
 
@@ -336,7 +333,7 @@ html.embed h1{display:none}
   var ids = ['fallIn','springIn','su1','p1','p2','su2','p3','s100','f100','c100','s200','f200','f200su','c200'];
   var el = {};
   ids.concat(['summer','p4','pctWarn','cap','fyTotal','fallTotal','springTotal','summerTotal',
-              'c100Total','c200Total','tbody','cohort','gridnote','foot'])
+              'c100Total','c200Total','tbody','cohort'])
      .forEach(function(k){ el[k] = document.getElementById(k); });
 
   function num(id, min){
@@ -538,16 +535,6 @@ html.embed h1{display:none}
     }
     g += '</tr></tfoot>';
     el.cohort.innerHTML = g;
-
-    el.gridnote.textContent = 'Each row is one entering cohort moving across its terms. The '
-      + (summerOn ? 'three highlighted columns are a steady-state fall, the spring that follows it, and that year’s summer.'
-                  : 'two highlighted columns are a steady-state fall and the spring that follows it.');
-
-    el.foot.textContent = 'Each cohort sits out its first two terms, then takes CE-200 across the '
-      + (summerOn ? 'next four academic terms and the two summers alongside them. '
-                  : 'next four academic terms. ')
-      + 'CE-100 is taken in a cohort’s second academic term, so Fall CE-100 enrolls the Spring '
-      + 'intake and Spring CE-100 enrolls the Fall intake. Sections round up.';
   }
 
   ids.forEach(function(k){

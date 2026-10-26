@@ -55,7 +55,7 @@
   }
   .tabs{
     display:grid;grid-auto-flow:column;grid-auto-columns:minmax(max-content,1fr);gap:2px;max-width:1100px;margin:0 auto;
-    padding:0 clamp(16px,4vw,36px);overflow-x:auto;
+    padding:10px clamp(16px,4vw,36px) 0;overflow-x:auto;
   }
   .tabs button{
     background:none;border:0;border-bottom:3px solid transparent;
@@ -171,8 +171,6 @@
   .fieldlb{
     font-size:12.5px;color:var(--mute);display:block;margin-bottom:6px;
   }
-  .wc{font-size:12px;color:var(--mute);margin:5px 0 0;display:flex;gap:10px;}
-  .wc .sv{color:var(--green);}
 
   /* confidence bars */
   .cf{
@@ -374,10 +372,6 @@
 <body>
 
 <div class="appbar">
-  <div class="row1">
-    <span class="mark"></span>
-    <h1>My Career Plan</h1>
-  </div>
   <div class="tabs" id="tabs"></div>
 </div>
 
@@ -466,8 +460,8 @@
         '<div class="who"><h2>Maya Ellison</h2>'+
         '<p class="maj">B.A. Sociology · Minor, Public Health · Class of 2031</p>'+
         '<div class="goalbox"><span class="lb">Career Goal Summary</span>'+
-        '<p>I\'m a first-year Sociology student interested in how health systems are organized, and I\'m exploring whether that means working inside a hospital, in public health, or in research.<span class="caret"></span></p>'+
-        '<p class="wc"><span>28 words</span></p></div></div>'+
+        '<p>I\'m interested in how health systems are organized, and in how care could work better for the people who rely on it. I\'m exploring whether that means working inside a hospital, in public health, or in research.<span class="caret"></span></p>'+
+        '</div></div>'+
       '</div>';
 
       h+=sec("Intake Questions",editBtn(),
@@ -550,7 +544,7 @@
         '<div class="who"><h2>Maya Ellison</h2>'+
         '<p class="maj">B.A. Sociology · Minor, Public Health · Class of 2031</p>'+
         '<div class="goalbox"><span class="lb">Career Goal Summary</span>'+
-        '<p>I\'m a junior studying Sociology and Public Health. I\'m heading into a summer in hospital operations to test whether quality improvement is the part of health systems work I want to build a career on.</p>'+
+        '<p>I want to improve how health systems run behind the scenes, in work that makes care safer and more efficient for patients. I\'m heading into a summer in hospital operations to test whether quality improvement is the part of health systems work I want to build a career on.</p>'+
         '<span class="prev">'+back(1,"hero")+' <i>"I\'m exploring whether that means working inside a hospital, in public health, or in research."</i></span>'+
         '</div></div>'+
       '</div>';
@@ -646,7 +640,7 @@
         '<div class="who"><h2>Maya Ellison</h2>'+
         '<p class="maj">B.A. Sociology · Minor, Public Health · Class of 2031</p>'+
         '<div class="goalbox"><span class="lb">Career Goal Summary</span>'+
-        '<p>I\'m a senior Sociology and Public Health student with a summer in hospital performance improvement. I\'m targeting healthcare analyst roles where the work is finding what\'s broken in a process and proving it with data.</p>'+
+        '<p>I want to help hospitals run better for the patients and staff who depend on them, and my summer in performance improvement showed me where I do my best work. I\'m targeting healthcare analyst roles where the work is finding what\'s broken in a process and proving it with data.</p>'+
         '<span class="prev">'+back(2,"hero")+' <i>"I\'m heading into a summer in hospital operations to test whether quality improvement is the part of health systems work I want to build a career on."</i></span>'+
         '</div></div>'+
       '</div>';
@@ -657,7 +651,6 @@
         '<p>It clarified more than it changed, but one thing did change. I went in assuming I\'d have to choose between the analyst track and the coordinator track, and I spent the first month trying to figure out which one I was. By week six I\'d stopped asking, because the project I ended up on needed both. I pulled the discharge delay data myself and then sat in the room where we argued about what to do with it.</p>'+
         '<p>What caused the change was a single meeting in week seven. I\'d built a report showing that most of the delay was concentrated in one unit on weekends. I presented it and a nurse manager explained, politely, that she already knew that and the reason was a staffing rule I hadn\'t known existed. I was wrong about the cause but right about the pattern. That meeting is why my goal shifted from "work with healthcare data" to "work with healthcare data in a role where I\'m close enough to operations to be corrected." A pure analyst job sitting apart from the units would have let me be confidently wrong for a lot longer.</p>'+
         '<p>The second thing I learned is that I need SQL, not as a resume line but because I spent two weeks waiting on someone else to pull data I could have pulled myself.<span class="caret"></span></p>'+
-        '<p class="wc"><span>268 words</span></p>'+
         '</div>');
 
       h+=sec("Your evaluations",editBtn(),
@@ -738,7 +731,7 @@
         '<div class="who"><h2>Maya Ellison</h2>'+
         '<p class="maj">B.A. Sociology · Minor, Public Health · Class of 2031</p>'+
         '<div class="goalbox"><span class="lb">Career Goal Summary</span>'+
-        '<p>I\'m graduating in May with a performance improvement background in hospital operations. I\'m looking for an analyst role close enough to the units that the data has a person attached to it.</p>'+
+        '<p>I want to build a career in hospital operations, using data to make health systems easier to run for the people doing the work. I\'m looking for an analyst role close enough to the units that the data has a person attached to it.</p>'+
         '<span class="prev">'+back(3,"hero")+' <i>"I\'m targeting healthcare analyst roles where the work is finding what\'s broken in a process and proving it with data."</i></span>'+
         '</div></div>'+
       '</div>';

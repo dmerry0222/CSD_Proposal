@@ -114,6 +114,7 @@
     color:#8A6A1E;font-weight:600;display:block;margin-bottom:5px;
   }
   .piped .txt{font-size:.9375rem;line-height:1.5;color:var(--navy);margin:0;}
+  .lnk{font-size:.8125rem;color:#1D6FB8;text-decoration:underline;font-weight:400;}
   .fieldkey{
     font-family:ui-monospace,SFMono-Regular,Menlo,monospace;
     font-size:.6875rem;color:var(--mute);background:var(--t05);
@@ -262,73 +263,56 @@
   var USES=[
   {
     n:"Use 01",
-    tab:"Piping forward<br>into the next plan",
-    h:"The plan asks students to revise, not to start over",
-    p:"Because every response is stored as a field rather than as prose in a submitted document, the next version of the Career Plan can open with what the student actually said last time. The student is not asked \"what is your career aspiration?\" a second time. They are shown their own words from eighteen months ago and asked what has changed. This is the difference between four assignments and one longitudinal instrument. It also makes the reflection honest: a student cannot quietly rewrite their history to match where they ended up, because the prior response is on the screen in front of them. For the program, the paired responses are the assessment evidence: we can see movement, direction and reasoning, not just a final state."
+    tab:"Resurfacing<br>past content",
+    h:"Resurfacing past content",
+    p:"Students don't start each career plan from scratch. They revise, reflect on, and add to their own past content."
   },
   {
     n:"Use 02",
-    tab:"Piping into<br>follow-up outreach",
-    h:"Follow-up that references what the student committed to",
-    p:"The goals a student sets are stored as discrete records with an action, a detail and a deadline, so an email in March can name the three things they said in December. The outreach writes itself, and it arrives specific rather than generic, which is the difference between a message students ignore and one they answer. Because the system also holds attendance and appointment records, self-reported progress can be set beside what we already know: a student who says they have not yet met with an advisor, when our records show they came in twice, is telling us something about how they understand their own progress. Note that this is the point where governance matters most; who may send what, and on what basis, should be settled before the first message goes out."
+    tab:"Reminders and<br>accountability",
+    h:"Reminders and accountability",
+    p:"Goals, action steps, and other reminders are tied to date fields that enable just-in-time email reminders to students and timely assessment from advisors."
   },
   {
     n:"Use 03",
-    tab:"Program-level<br>pattern and outcome",
-    h:"Aggregate views of aspiration, obstacle and competency",
-    p:"When pathway selections are drawn from a fixed taxonomy rather than typed freely, they count. We can say how many students are heading toward a given Career Community, which obstacles they report most often, and where self-efficacy moves between versions of the plan: by major, by school, by first-generation status, by any population we are accountable for. This is the view that answers a dean's question about whether the requirement is working, and it is the view that is impossible to produce from a folder of essays. The competency movement is especially useful in accreditation conversations, because it is a repeated measure on the same students rather than a satisfaction survey."
+    tab:"Program-level<br>patterns",
+    h:"Program-level patterns",
+    p:"Much of the data can be aggregated and used to identify trends, from obstacles students are facing to industries they are pursuing."
   },
   {
     n:"Use 04",
     tab:"Advisor worklist<br>and triage",
-    h:"Finding the students who need a conversation",
-    p:"The same fields that aggregate also flag. A student with no pathway selected in their second year, a senior with no work-based learning plan, a self-efficacy score of 1 on asking for an informational conversation, a reported financial obstacle: each is a condition we can query rather than a problem we discover late, or never. Advisors begin the week with a list ordered by urgency instead of waiting for the students who were already going to come in. This is the equity mechanism in operation: the students who do not self-select into the career center are precisely the students this list surfaces."
+    h:"Advisor worklist and triage",
+    p:"Advisors can identify particular struggles their students are facing, and reach out with relevant resources or proactively schedule a 1:1 advising session."
   },
   {
     n:"Use 05",
-    tab:"Shared back to<br>faculty and advisors",
-    h:"Giving instructors something genuinely useful before class",
-    p:"A short, structured field (a career goal statement of 50 to 75 words) can be assembled into a roster and handed to the person who is about to teach or advise those students. An instructor can see, before Tuesday's class, what each of their students is working toward, in the student's own words. An advisor can read fourteen statements in four minutes before a day of appointments. This is the lowest-effort, highest-goodwill use of the data, and it is often the one that convinces faculty the requirement is for them too, rather than something done to their curriculum."
+    tab:"Connecting career goals<br>to the classroom",
+    h:"Connecting career goals to the classroom",
+    p:"Career Plan fields, like professional goal statements, can be aggregated into class lists and shared with instructors, who can benefit in myriad ways from those student insights."
   }];
 
   /* ===================== SCREEN 1 ===================== */
   function screen1(){
     return '<div class="screen"><div class="chrome"><span class="dot"></span>'+
-      '<b>Career Plan v2.0: Career Navigation</b><span>Section A · Direction</span>'+
-      '<span class="right">Maya Ellison · autosaved 2:14 PM</span></div>'+
+      '<b>Career Plan v2.0</b></div>'+
       '<div class="pad">'+
-      '<h3 class="sh">Question A1: Career aspiration</h3>'+
-      '<div class="piped"><span class="src">Piped from Career Plan v1.0 · submitted March 14, 2027</span>'+
+      '<h3 class="sh">Your Career Goals</h3>'+
+      '<div class="piped"><span class="src">From Career Plan v1.0</span>'+
       '<p class="txt">"I think I want to work in health somehow, but not as a clinician. Maybe public health? I like the idea of working on problems that affect a lot of people at once rather than one person at a time. I don\'t really know what the jobs are called yet."</p></div>'+
       '<p class="q">That is what you wrote at the end of your first year. What is your career aspiration now?</p>'+
-      '<div class="input"><span class="inline-lb">68 words</span>'+
+      '<div class="input">'+
       'I want to work in hospital operations, specifically quality improvement, where you find what is broken in a process and prove it with data. I know the job titles now: performance improvement analyst, quality improvement coordinator, revenue cycle analyst. Public health is still interesting to me but it needs an MPH, and I am not ready to commit to that until I have worked for a few years.</div>'+
 
       '<p class="q" style="margin-top:20px">How has it changed, or not changed, and what caused that?</p>'+
-      '<div class="input"><span class="inline-lb">61 words</span>'+
+      '<div class="input">'+
       'The direction is the same, the vagueness is gone. Two things caused it: filtering the pathways site by my major showed me that "the business side of care" is an actual career with actual titles, and talking to Devon Marsh for forty minutes showed me what the week looks like. I did not change my mind. I found out what my mind was pointing at.</div>'+
-
-      '<div class="radios"><span class="inline-lb" style="width:100%;margin:0 0 2px">Which best describes the change?</span>'+
-      '<span>No meaningful change</span><span class="sel">Same direction, more specific</span>'+
-      '<span>Shifted to an adjacent pathway</span><span>Changed substantially</span><span>Still undecided</span></div>'+
-
-      '<h3 class="sh mt">Question A4: Pathway selections</h3>'+
-      '<div class="piped"><span class="src">Piped from v1.0</span>'+
-      '<p class="txt">Healthcare Administration &amp; Health Data · Public Health &amp; Epidemiology · Policy Analysis &amp; Social Research</p></div>'+
-      '<p class="q">Keep, drop or add. You must give a reason for anything you drop.</p>'+
-      '<div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px" class="grid2">'+
-      '<div class="input"><span class="inline-lb">Healthcare Administration &amp; Health Data</span><b style="color:var(--navy)">Kept, now primary</b></div>'+
-      '<div class="input"><span class="inline-lb">Public Health &amp; Epidemiology</span><b style="color:var(--navy)">Kept, secondary</b></div>'+
-      '<div class="input"><span class="inline-lb">Policy Analysis &amp; Social Research</span><b style="color:#93244A">Dropped</b>: the RA job showed me I don\'t enjoy a full day of literature review.</div>'+
-      '</div></div></div>';
+      '</div></div>';
   }
 
   /* ===================== SCREEN 2 ===================== */
   function screen2(){
-    return '<div class="screen"><div class="chrome"><span class="dot"></span><b>Outreach: generated from Career Plan goal records</b>'+
-      '<span class="right">Batch: 418 recipients · merge fields resolved</span></div>'+
-      '<div class="pad"><div style="display:grid;grid-template-columns:1.35fr 1fr;gap:20px" class="grid2">'+
-
+    return '<div class="screen" style="max-width:760px"><div class="pad">'+
       '<div class="mail"><div class="hdr">'+
       '<div><span class="lb">From</span> Center for Career Equity, Development &amp; Success</div>'+
       '<div><span class="lb">To</span> mellison@su.suffolk.edu</div>'+
@@ -342,19 +326,6 @@
       '<div class="meta">Deadline you set: 04/20/2029</div></div></div>'+
       '<div class="goalrow"><span class="bx"></span><div><b>Mock interview with an advisor before your summer start</b>'+
       '<div class="meta">Deadline you set: 05/15/2029</div></div></div>'+
-      '<p style="margin-top:14px">It takes about ninety seconds. Whatever you say here goes straight into Career Plan v2.0, so you will not have to write it twice.</p>'+
-      '<p style="margin-bottom:0">Rachel Alvarez, your advisor in Healthcare &amp; Wellness</p></div></div>'+
-
-      '<div><h3 class="sh">Self-report set beside what we already know</h3>'+
-      '<div class="check">'+
-      '<div class="ckrow"><span class="ic yes">Confirmed</span><div><b>Placement secured.</b> Student reports complete; WBL record created 02/26/2029, employer verified.</div></div>'+
-      '<div class="ckrow"><span class="ic no">Gap</span><div><b>Skills inventory not started.</b> No submission on file. Deadline is in seven weeks.</div></div>'+
-      '<div class="ckrow"><span class="ic part">Discrepancy</span><div><b>Student reports no advising contact since the fall.</b> Our records show two appointments, 01/23 and 03/12. Worth a gentle correction, or worth asking what did not feel like advising.</div></div>'+
-      '</div>'+
-      '<h3 class="sh mt">What this replaces</h3>'+
-      '<p style="font-size:.875rem;margin:0">A generic end-of-term email asking students to "reflect on your progress," which produces a 6% response rate and nothing comparable across students.</p>'+
-      '<h3 class="sh mt">Governance note</h3>'+
-      '<p style="font-size:.875rem;margin:0">Merge fields here are limited to the student\'s own prior responses. Any use beyond that (sharing with instructors, flagging to advisors) is a separate permission, set per field.</p>'+
       '</div></div></div></div>';
   }
 
@@ -374,24 +345,15 @@
     var obst=[["Paying for college expenses",287],["Not knowing what jobs exist for my major",241],
       ["No professional network to draw on",223],["Managing anxiety about the search",198],
       ["Finding time around work and commuting",176],["Nobody in my family has done this",149]];
-    var comp=[["Describe what I'm interested in, out loud",3.9,3.1],["Find pathways connected to my major",4.4,3.6],
-      ["Read earnings and outlook data",3.4,2.7],["Ask for an informational conversation",3.2,2.2],
-      ["Name specific skills and where I got them",3.6,2.9],["Explain what work-based learning is",4.5,3.3]];
-    var h='<div class="screen"><div class="chrome"><span class="dot"></span><b>Program dashboard: Career Plan v2.0</b>'+
-      '<span>Cohort: entered Fall 2026</span><span class="right">612 of 684 plans complete · exported 10/06/2030</span></div><div class="pad">'+
+    var comp=[["I can identify one or more specific jobs or professional roles that I am interested in pursuing.",3.8,2.6],
+      ["I can clearly communicate my experiences, skills, and goals to an employer or other professional audience.",3.6,2.7],
+      ["I have trusted people I can turn to for career information, advice, or opportunities.",3.4,2.5],
+      ["I can identify practical steps I could take in the next month to explore or advance my career goals.",3.9,3.0],
+      ["I have the resources and support I need to take at least one of those actions in the next month.",3.5,2.8]];
+    var h='<div class="screen"><div class="pad">'+
       '<div class="chips"><span class="chip on">All students</span><span class="chip">By school</span><span class="chip">By major</span>'+
       '<span class="chip">First-generation</span><span class="chip">Pell-eligible</span><span class="chip">Commuter</span><span class="chip">Transfer</span></div>'+
-      '<div class="kpis">'+
-      '<div class="kpi"><b>89%</b><span>completed v2.0 on time</span></div>'+
-      '<div class="kpi"><b>2.4</b><span>pathways selected per student <em>↓ from 3.0 at v1.0</em></span></div>'+
-      '<div class="kpi"><b>73%</b><span>have a stated work-based learning term</span></div>'+
-      '<div class="kpi"><b>61%</b><span>had at least one advising appointment <em>↑ 18 pts</em></span></div></div>'+
-      '<div style="display:grid;grid-template-columns:1fr 1fr;gap:26px" class="grid2">'+
-      '<div><h3 class="sh">Pathway aspirations: top 8 of 52</h3>'+bars(paths)+
-      '<p style="font-size:.75rem;color:var(--mute);margin:8px 0 0">Drawn from the fixed pathway taxonomy, so selections aggregate without coding free text.</p></div>'+
-      '<div><h3 class="sh">Self-reported obstacles: multi-select</h3>'+bars(obst,"warn")+
-      '<p style="font-size:.75rem;color:var(--mute);margin:8px 0 0">Each obstacle is a queryable condition, which is what makes the advisor worklist possible.</p></div></div>'+
-      '<h3 class="sh mt">Career self-efficacy: mean of 612, v2.0 against v1.0</h3>';
+      '<h3 class="sh">Career self-efficacy: mean of 612, v2.0 against v1.0</h3>';
     comp.forEach(function(c){
       var v=Math.round(c[1]), p=Math.round(c[2]), seg="";
       for(var i=1;i<=5;i++) seg+='<i class="'+(i<=v?(i>p?"f g":"f"):"")+'"></i>';
@@ -399,40 +361,40 @@
          '<span style="text-align:right"><b style="color:var(--navy)">'+c[1].toFixed(1)+'</b> '+
          '<span class="up">▲'+(c[1]-c[2]).toFixed(1)+'</span></span></div>';
     });
-    return h+'<p style="font-size:.75rem;color:var(--mute);margin:10px 0 0">Repeated measure on the same students, not a satisfaction survey. Gold segments show movement since v1.0.</p></div></div>';
+    return h+'<div style="display:grid;grid-template-columns:1fr 1fr;gap:26px;margin-top:28px" class="grid2">'+
+      '<div><h3 class="sh">Pathway aspirations: top 8 of 52</h3>'+bars(paths)+'</div>'+
+      '<div><h3 class="sh">Self-reported obstacles: multi-select</h3>'+bars(obst,"warn")+'</div></div></div></div>';
   }
 
   /* ===================== SCREEN 4 ===================== */
   function screen4(){
     var rows=[
-      ["Hassan, Nadia","S0151902","Biology","Junior",[["No WBL plan","f-high"],["Self-efficacy 1: networking","f-med"]],"11 months ago","Three semesters left and no stated term for work-based learning. Experience Accelerator eligible next fall."],
-      ["Crowley, Brendan","S0149338","Marketing","Sophomore",[["No pathway selected","f-high"]],"Never","Completed v1.0 but left all three pathway slots empty. No advising contact in two years."],
-      ["Oyelaran, Tope","S0152277","Sociology","Senior",[["No WBL plan","f-high"],["Financial obstacle","f-med"]],"4 months ago","Reports paying for college as primary obstacle and has not secured a placement. Paid-placement list and emergency funding."],
-      ["Rivera-Santos, Luz","S0150441","Computer Science","Junior",[["Self-efficacy ≤2: interviewing","f-med"]],"2 months ago","Strong technical profile, lowest-quartile interview confidence. Mock interview referral."],
-      ["Park, Daniel","S0151003","Finance","Senior",[["Pathway/role mismatch","f-med"]],"8 months ago","Pathway selections are all corporate finance; saved postings are all nonprofit program roles. Worth a conversation."],
-      ["Abdullahi, Fatima","S0152910","Psychology","Sophomore",[["No network entries","f-low"],["First-gen","f-low"]],"1 month ago","Zero contacts recorded in the network section across two plan versions."],
-      ["Moreau, Jean-Luc","S0149772","Media & Film","Senior",[["No WBL plan","f-high"],["Plan incomplete","f-med"]],"14 months ago","v2.0 is 40% complete and overdue. Last contact was a first-year drop-in."],
-      ["Tran, Mai","S0151566","Accounting","Junior",[["Self-efficacy drop","f-med"]],"3 weeks ago","Self-efficacy fell on four of six items between v1.0 and v2.0. Unusual direction, worth asking about."]
+      ["Hassan, Nadia","nhassan@su.suffolk.edu","Biology","Junior",[["No WBL plan","f-high"],["Self-efficacy 1: networking","f-med"]],"11 months ago"],
+      ["Crowley, Brendan","bcrowley@su.suffolk.edu","Marketing","Sophomore",[["No pathway selected","f-high"]],"Never"],
+      ["Oyelaran, Tope","toyelaran@su.suffolk.edu","Sociology","Senior",[["No WBL plan","f-high"],["Financial obstacle","f-med"]],"4 months ago"],
+      ["Rivera-Santos, Luz","lriverasantos@su.suffolk.edu","Computer Science","Junior",[["Self-efficacy ≤2: interviewing","f-med"]],"2 months ago"],
+      ["Park, Daniel","dpark@su.suffolk.edu","Finance","Senior",[["Pathway/role mismatch","f-med"]],"8 months ago"],
+      ["Abdullahi, Fatima","fabdullahi@su.suffolk.edu","Psychology","Sophomore",[["No network entries","f-low"],["First-gen","f-low"]],"1 month ago"],
+      ["Moreau, Jean-Luc","jmoreau@su.suffolk.edu","Media & Film","Senior",[["No WBL plan","f-high"],["Plan incomplete","f-med"]],"14 months ago"],
+      ["Tran, Mai","mtran@su.suffolk.edu","Accounting","Junior",[["Self-efficacy drop","f-med"]],"3 weeks ago"]
     ];
-    var h='<div class="screen"><div class="chrome"><span class="dot"></span><b>Advisor worklist: R. Alvarez, Healthcare &amp; Wellness and shared caseload</b>'+
-      '<span class="right">38 students flagged · 8 shown · sorted by urgency</span></div><div class="pad">'+
+    var h='<div class="screen"><div class="pad">'+
       '<div class="chips"><span class="chip on">No WBL plan</span><span class="chip on">No pathway selected</span>'+
       '<span class="chip on">Self-efficacy ≤2</span><span class="chip">No advising contact 12+ months</span>'+
       '<span class="chip">Reported financial obstacle</span><span class="chip">Plan incomplete</span></div>'+
-      '<table class="t"><tr><th style="width:15%">Student</th><th style="width:12%">Major</th>'+
-      '<th style="width:8%">Year</th><th style="width:20%">Flags</th><th style="width:11%">Last contact</th><th>Why this student surfaced</th><th style="width:8%"></th></tr>';
+      '<table class="t"><tr><th style="width:27%">Student</th><th style="width:17%">Major</th>'+
+      '<th style="width:11%">Year</th><th style="width:30%">Flags</th><th>Last appointment</th></tr>';
     rows.forEach(function(r){
       var f=r[4].map(function(x){return '<span class="flagpill '+x[1]+'">'+x[0]+'</span>';}).join("");
-      h+='<tr><td><b style="color:var(--navy)">'+r[0]+'</b></td>'+
-         '<td>'+r[2]+'</td><td>'+r[3]+'</td><td>'+f+'</td><td>'+r[5]+'</td><td>'+r[6]+'</td>'+
-         '<td><button class="btn">Reach out</button></td></tr>';
+      h+='<tr><td><b style="color:var(--navy)">'+r[0]+'</b><br><span class="lnk">'+r[1]+'</span></td>'+
+         '<td>'+r[2]+'</td><td>'+r[3]+'</td><td>'+f+'</td><td>'+r[5]+'</td></tr>';
     });
-    return h+'</table><p style="font-size:.75rem;color:var(--mute);margin:12px 0 0">Every flag is a stored field, not a judgment entered by hand: a missing pathway id, a null WBL term, a likert value, a date difference. The list regenerates nightly.</p></div></div>';
+    return h+'</table></div></div>';
   }
 
   /* ===================== SCREEN 5 ===================== */
   var ROSTER=[
-    ["Ellison, Maya","S0148827","Sociology · Public Health minor","mellison@su.suffolk.edu",
+    ["Ellison, Maya","S0148827","Sociology","mellison@su.suffolk.edu",
      "I want to work in hospital operations, specifically quality improvement, where you find what is broken in a process and prove it with data. I know the job titles now: performance improvement analyst, quality improvement coordinator. Public health still interests me but it needs an MPH, and I am not ready to commit to that until I have worked a few years."],
     ["Abara, Chinedu","S0150118","Computer Science","cabara@su.suffolk.edu",
      "I am aiming for backend engineering at a company where I can see what the software is for. Fintech appeals to me because my family sends money home and the infrastructure for that is genuinely bad. I need to get better at talking about my projects. I can build things but I go quiet when someone asks me to explain the tradeoffs I made."],
@@ -462,16 +424,16 @@
      "Local accountability reporting, specifically on housing. I write for the student paper and freelanced two pieces for a neighborhood outlet this year. I know the industry economics are grim. My plan is to build data skills so I am useful in a newsroom in a way that is harder to cut, and to be realistic about moving for a first job."]
   ];
   function screen5(){
-    var h='<div class="screen"><div class="chrome"><span class="dot"></span><b>SOC 210 · Research Methods &amp; Data Analysis, Section 02</b>'+
-      '<span>Prepared for Dr. P. Lindo</span><span class="right">14 students · career goal statements from Career Plan v2.0 · generated 10/06/2030</span></div>'+
-      '<div class="pad"><p style="font-size:.875rem;margin:0 0 16px;max-width:76ch">Each statement is the student\'s own 50 to 75 word response to <i>"In your own words, what are you working toward?"</i>, pulled from the current version of their Career Plan. Nothing here was written for you, and nothing was edited.</p><div class="rost">';
+    var h='<div class="screen"><div class="chrome"><span class="dot"></span><b>ABC-200: Research Methods &amp; Data Analysis, Section 02</b></div>'+
+      '<div class="pad"><table class="t"><tr><th style="width:17%">Student</th><th style="width:21%">Email</th>'+
+      '<th style="width:15%">Major</th><th>Career goal statement</th></tr>';
     ROSTER.forEach(function(s){
-      h+='<div class="stu"><div class="top"><span class="nm">'+s[0]+'</span></div>'+
-        '<p class="mj">'+s[2]+' · '+s[3]+'</p>'+
-        '<p class="gl">'+s[4]+'</p>'+
-        '</div>';
+      h+='<tr><td><b style="color:var(--navy)">'+s[0]+'</b></td>'+
+        '<td><span class="lnk">'+s[3]+'</span></td>'+
+        '<td>'+s[2]+'</td>'+
+        '<td>'+s[4]+'</td></tr>';
     });
-    return h+'</div></div></div>';
+    return h+'</table></div></div>';
   }
 
   var SCREENS=[screen1,screen2,screen3,screen4,screen5];
@@ -487,8 +449,7 @@
 
   function render(i){
     tabs.querySelectorAll("button").forEach(function(b,j){ b.classList.toggle("on", j===i); });
-    lede.innerHTML='<h2>'+USES[i].h+'</h2><p>'+USES[i].p+'</p>'+
-      '<p class="edit">Draft copy: written to be replaced</p>';
+    lede.innerHTML='<h2>'+USES[i].h+'</h2><p>'+USES[i].p+'</p>';
     stage.innerHTML=SCREENS[i]();
     window.scrollTo({top:0,behavior:"instant"});
   }

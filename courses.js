@@ -2,7 +2,8 @@
    The object is plain JSON (double-quoted keys, no trailing commas) so it can move to a .json file unchanged.
    Text fields accept **bold** markup.
    Each course may list units (number, name, weeks, description, optional week_breakdown, and assignments with
-   assignment_name / assignment_description); the Two 1-Credit Courses page shows them under Sample Course Content. */
+   assignment_name / assignment_description); the Two 1-Credit Courses page shows them under Sample Course Content.
+   A course may also list criteria (name, description), shown in its popup, and a description_heading to rename its Description header. */
 window.COURSES = {
   "CE-100": {
     "name": "Career Exploration",
@@ -182,7 +183,32 @@ window.COURSES = {
     "credits_explained": "0-4 credits, at Departments' discretion",
     "prereq": "CE-200",
     "timing": "Typically summer after sophomore year through summer after junior year; flexible from sophomore spring through senior year.",
-    "tagline": "Substantive, supervised work, such as an internship, faculty-led research, qualifying on-campus employment, or an approved project with a current employer."
+    "tagline": "Substantive, supervised work, such as an internship, faculty-led research, qualifying on-campus employment, or an approved project with a current employer.",
+    "description_heading": "Description",
+    "description": "While it is sometimes useful shorthand to refer to this as \"the internship requirement,\" it is important to clarify that work-based learning encompasses a broader range of experiences that provide students with opportunities to apply their knowledge and skills in real-world settings. To create a consistent definition of work-based learning that distinguishes it from other (very valuable!) forms of experiential education, the SGE committee posited five criteria, which have been reviewed and revised based on faculty feedback.",
+    "criteria_heading": "5 Qualifying Criteria of Work-Based Learning Experiences",
+    "criteria": [
+      {
+        "name": "Real Work",
+        "description": "A majority of the student's responsibilities consist of substantive, career-relevant work that draws upon or extends academic learning and advances career exploration or preparation."
+      },
+      {
+        "name": "Meaningful Time",
+        "description": "The student completes at least **120 hours**, including required training and activities integral to the role. With prior approval, two experiences may be combined to reach 120 hours, provided each independently satisfies all other criteria."
+      },
+      {
+        "name": "Professional Supervision",
+        "description": "A qualified professional or field-specific equivalent provides appropriate training, ongoing guidance and feedback, and an end-of-experience performance evaluation."
+      },
+      {
+        "name": "Expanded Network",
+        "description": "The student engages with at least **two professionals beyond existing classroom, peer, and immediate supervisory relationships**, gaining exposure to perspectives, pathways, communities, or opportunities relevant to their goals."
+      },
+      {
+        "name": "Integrated Learning",
+        "description": "The student identifies what they learned, connects it to academic and career development, and communicates the experience's value in a professional context."
+      }
+    ]
   }
 };
 

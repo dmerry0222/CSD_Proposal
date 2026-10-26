@@ -108,13 +108,14 @@
     transition:width .22s ease;
   }
   .brand h1{
-    font-size:1.375rem;
+    font-size:1.25rem;
     font-weight:600;
     line-height:1.25;
     margin:0;
     color:#fff;
     letter-spacing:.005em;
   }
+  .brand h1.short .prop{display:none;}
   .brand p{
     margin:7px 0 0;
     font-size:var(--t-small);
@@ -142,6 +143,8 @@
   }
   .nav-link.nav-sub{font-size:.875rem;padding:8px 22px 8px 40px;}
   .nav-note{display:block;font-style:italic;font-weight:400;font-size:calc(.9375rem - 2pt);line-height:1.35;margin-top:2px;}
+  .nav-link:disabled{opacity:.45;cursor:not-allowed;}
+  .nav-link:disabled:hover{color:rgba(255,255,255,.78);background:none;}
   .nav-link:hover{color:#fff;background:rgba(255,255,255,.05);}
   .nav-link[aria-current="true"]{
     color:#fff;font-weight:600;
@@ -322,6 +325,9 @@
     font-size:.9375rem;font-weight:600;letter-spacing:-.01em;
     color:var(--navy);line-height:1.2;margin-bottom:6px;
   }
+  .ps{display:block;font-size:.8125rem;line-height:1.3;color:var(--mute);margin:-3px 0 6px;}
+  .plan .ps{padding-right:22px;}
+  #msx-prog .ps{display:none;}   /* subtitles show on The Career Plan page, not the Curriculum Overview */
   .pn{
     display:block;
     font-size:.78125rem;line-height:1.45;color:var(--body);
@@ -432,6 +438,15 @@
   .mtag{margin:16px 0 2px;padding:11px 16px;font-size:1.0625rem;font-weight:500;font-style:italic;line-height:1.45;color:var(--navy);background:rgba(var(--teal-rgb),.12);border-left:4px solid var(--teal);}
   .modal p,.modal li,.modal dd{text-wrap:pretty;}
   .modal h2,.modal .mtag{text-wrap:balance;}
+  .modal.is-course .mhead{padding:13px 54px 11px 26px;}
+  .modal.is-course .mhead h2{margin:0 0 3px;font-size:1.25rem;}
+  .modal.is-course .mtag{margin:9px 0 0;padding:8px 14px;font-size:1rem;line-height:1.4;}
+  .modal.is-course .mbody{padding:12px 26px 16px;}
+  .modal.is-course .cm-rule{margin:11px 0;}
+  .modal.is-course .cm-h{margin:0 0 5px;}
+  .modal.is-course .cm p{margin:0 0 5px;line-height:1.5;}
+  .modal.is-course .cm ol{line-height:1.5;}
+  .modal.is-course .cm ol li{margin:0 0 3px;}
   .modal.is-course{width:min(100%,1040px);max-height:min(94vh,900px);}
   .mtag[hidden]{display:none;}
 
@@ -511,6 +526,9 @@
   .home-cta a.start{display:inline-block;text-decoration:none;color:#fff;}
   .wbl-intro{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:20px 40px;align-items:center;}
   .wbl-intro .home-cta{margin:0;}
+  .wbl-jumps{grid-column:1 / -1;display:flex;flex-wrap:wrap;gap:10px;margin-top:6px;}
+  .wbl-jumps button{font:inherit;font-size:.875rem;font-weight:600;color:var(--navy);background:#fff;border:1px solid var(--rule);border-bottom:3px solid var(--teal);padding:8px 14px;cursor:pointer;transition:background .18s ease,border-color .18s ease;}
+  .wbl-jumps button:hover{background:rgba(var(--teal-rgb),.14);border-color:var(--teal);}
   .wbl-intro .home-cta a.start{font-size:1.0625rem;padding:16px 24px;max-width:250px;line-height:1.3;}
   .wbl-intro .home-cta a.start::after{margin-left:8px;}
   @media (max-width:900px){.wbl-intro{grid-template-columns:1fr;}.wbl-intro .home-cta a.start{max-width:none;}}
@@ -635,6 +653,7 @@
   .wsec{padding-top:38px;margin-top:0;}
   .wsec + .wsec{margin-top:44px;border-top:1px solid var(--rule);}
   .wsec > h3.sub:first-child{margin-top:0;}
+  #panel-wbl h3.sub{font-size:1.5rem;line-height:1.3;}
   .wsec-todo{font-style:italic;color:#8A8A8A;}
   #sec-w-courses{border-top:1px solid var(--rule);margin-top:38px;}
   .wsec h4.wh{font-size:1.125rem;font-weight:600;line-height:1.3;color:var(--navy);margin:30px 0 8px;}
@@ -677,7 +696,9 @@
   .msx .plan.l4{grid-row:2 / 4;align-self:end;margin-top:0;}
   .msx .prog-nav .plan.l4{grid-row:2;align-self:start;margin-top:0;}
   .msx .plan.l4 .nm{margin-bottom:9px;}
-  .msx .plan.l4 .ord{margin:-5px 0 9px;}
+  .msx .plan.l4 .ord{margin:0 0 9px;}
+  /* the first three Career Plan cards share one height */
+  #msx-prog .plan:not(.l4){align-self:stretch;}
 
   /* group label above the two course cards */
   .msx-group{grid-row:1;grid-column:1 / 3;display:flex;align-items:center;gap:12px;margin:0 0 8px;font-size:.6875rem;font-weight:600;letter-spacing:.09em;text-transform:uppercase;color:var(--navy);}
@@ -745,6 +766,24 @@
   .ovx-det summary{cursor:pointer;padding:12px 16px;font-weight:600;color:var(--navy);}
   .ovx-det > div{padding:0 16px 14px;}
   .ovx-det ul{margin:6px 0 10px;padding-left:22px;}
+  /* The Career Plan page */
+  .cmp{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:20px;margin:30px 0 8px;}
+  .cmp-card{padding:22px 24px 24px;border:1px solid var(--rule);border-top:4px solid var(--rule);background:#fff;}
+  .cmp-static{background:var(--tint-02);border-top-color:rgba(21,40,75,.35);}
+  .cmp-live{border-top-color:var(--sky);box-shadow:0 1px 0 rgba(60,180,229,.25), -5px 5px 0 -1px rgba(60,180,229,.14), -10px 10px 0 -2px rgba(60,180,229,.08);}
+  .cmp-ic{display:inline-flex;margin-bottom:10px;color:rgba(21,40,75,.55);}
+  .cmp-live .cmp-ic{color:var(--sky);}
+  .cmp-card h3{margin:0 0 10px;font-size:1.1875rem;font-weight:600;line-height:1.3;color:var(--navy);}
+  .cmp-lab{display:block;font-size:.875rem;font-weight:500;color:var(--body);margin-bottom:2px;}
+  .cmp-card p{margin:0 0 9px;line-height:1.6;text-wrap:pretty;}
+  .cmp-card p:last-child{margin-bottom:0;}
+  .caps{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px;margin:20px 0 8px;}
+  .cap{padding:20px 22px 22px;border:1px solid var(--rule);border-left:4px solid var(--teal);background:#fff;}
+  .cap h3{margin:0 0 8px;font-size:1.0625rem;font-weight:600;line-height:1.3;color:var(--navy);}
+  .cap p{margin:0;font-size:.9375rem;line-height:1.6;text-wrap:pretty;}
+  .cp-rule{border:0;border-top:1px solid var(--rule);margin:26px 0;}
+  #panel-throughline h2.sub{margin:48px 0 10px;padding-top:34px;border-top:1px solid var(--rule);}
+  @media (max-width:760px){.cmp,.caps{grid-template-columns:1fr;}}
   .msx.msx-plans{margin:18px 0 26px;}
   .msx.msx-jump{margin:4px 0 40px;padding-bottom:40px;border-bottom:1px solid var(--rule);}
   #panel-milestones .sec-title::after{display:none;}
@@ -1154,7 +1193,7 @@
   <nav class="menu" id="menu" aria-label="Section navigation">
     <button class="brand" id="brand" data-panel="home">
       <span class="mark" aria-hidden="true"></span>
-      <h1>Career Strategy<br>&amp; Design Proposal</h1>
+      <h1 id="brandTitle">Career Strategy<br>&amp; Design <span class="prop">Proposal</span></h1>
     </button>
 
     <ul class="nav" id="nav">
@@ -1173,15 +1212,9 @@
       </li>
       <li>
         <button class="nav-link" data-panel="howwork">Cost and Logistics</button>
-        <ul class="sublist" data-for="howwork">
-          <li><button class="sub-link" data-target="h-planner">Section and cost planner</button></li>
-          <li><button class="sub-link" data-target="h-1">Who teaches what</button></li>
-          <li><button class="sub-link" data-target="h-2">Support for instructors</button></li>
-          <li><button class="sub-link" data-target="h-3">Assessment and review</button></li>
-        </ul>
       </li>
       <li>
-        <button class="nav-link" data-panel="faq">FAQ</button>
+        <button class="nav-link" data-panel="faq" disabled aria-disabled="true">FAQ (Avail. 10/28)</button>
       </li>
       <li class="nav-top nav-research">
         <button class="nav-link" data-panel="urgency">What is the Urgency?<span class="nav-note">The context and research <br>behind this proposal</span></button>
@@ -1206,7 +1239,7 @@
         <div class="home-grid">
           <div class="home-main">
             <p class="home-tagline">An outcome this consequential requires an intentional curriculum.</p>
-        <p class="home-lead">Suffolk's academic programs prepare students to think critically, engage with complex questions, and develop expertise within and across disciplines. <b>Career Strategy & Design</b> builds on that foundation by ensuring <span class="mark">every</span> undergraduate receives structured opportunities to explore career pathways, develop professional skills and relationships, and gain meaningful work experience. </p> <p>Career preparation and postgraduation opportunities are central considerations for prospective students and families. At Suffolk, the expectations are especially clear: our entering students overwhelmingly identify career advancement, relevant employment, and internship experience as priorities for their college education.</p>
+        <p class="home-lead">Suffolk's academic programs prepare students to think critically, engage with complex questions, and develop expertise within and across disciplines. <b>Career Strategy & Design</b> builds on that foundation by ensuring <span class="mark">every</span> undergraduate receives structured opportunities to explore career pathways, develop professional skills and relationships, and gain meaningful work experience. </p> <p>Career preparation and postgraduation opportunities are central considerations for prospective students and families. At Suffolk, our entering students overwhelmingly identify career advancement, relevant employment, and internship experience as priorities for their college education.</p>
 
         <figure class="stats-wrap">
             <p class="stats-title">Among students entering Suffolk in Fall 2026:<span data-cite="SU_FY26"></span></p>
@@ -1295,29 +1328,54 @@
     <section class="panel" id="panel-throughline" tabindex="-1">
       <div class="panel-inner">
         <h2 class="sec-title">The Career Plan</h2>
-        <div class="sec-standfirst"><p>The <strong>Career Plan</strong> is an online tool currently in development, designed to live as en embedded and connected Canvas tool through LTI connections, and made specifically for Suffolk. It connects students’ learning, experiences, and decisions across their time at Suffolk. Students would use it to document the possibilities they are investigating, the evidence informing their choices, and the actions they intend to take next. As they gain experience and receive feedback, they would revisit and revise that plan. The value of guided planning is supported by the 2024 National Alumni Career Mobility report, which identifies institutional help in creating a career plan as a significant predictor of stronger alumni-reported career preparation.<span data-cite="nacm"></span></p>
+        <div class="sec-standfirst"><p><strong>Enabling student-authored career development to become a persistent, shared, and actionable part of the undergraduate experience.</strong></p></div>
 
-        <p>The plan also provides <strong>a shared starting point for guidance across courses, academic advising, and career services</strong>, allowing each conversation to build on the student’s prior work. For students, it would make progress and next steps explicit; for faculty and advisors, it would reveal opportunities to help; and for Suffolk, aggregate information would help identify patterns in students’ goals, preparation, and unmet needs. This design puts into practice the principle that career guidance should begin early, continue throughout college, and connect across the settings where students learn and seek support.<span data-cite="stradaprinciples"></span></p>
+        <div class="cmp">
+          <div class="cmp-card cmp-static">
+            <span class="cmp-ic"><svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 3h7l4 4v14H7z"/><path d="M14 3v4h4"/><path d="M10 12h5M10 15.5h5"/></svg></span>
+            <h3><span class="cmp-lab">Traditional approach:</span> A reflective essay submitted in Canvas</h3>
+            <p>A student reflects on goals, writes a plan, and submits it for a grade.</p>
+            <p>The assignment may be valuable, but its usefulness often ends when the course does.</p>
+          </div>
+          <div class="cmp-card cmp-live">
+            <span class="cmp-ic"><svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 4l8 4-8 4-8-4z"/><path d="M4 12l8 4 8-4"/><path d="M4 16l8 4 8-4"/></svg></span>
+            <h3><span class="cmp-lab">CS&amp;D Career Plan:</span> Actionable data that lives beyond the class</h3>
+            <p>A student submits an evolving plan through structured inputs of qualitative and quantitative information.</p>
+            <p>Their insights are stored as structured, actionable data that enable personalized guidance, progress tracking, and a clearer understanding of student needs.</p>
+          </div>
         </div>
 
-        <h2 class="sub" id="t-1">Proof-of-Concept Examples of the Career Plan at Each of the Four Milestones</h2>
-        <p>The Career Plan is a technology interface for students, faculty, and staff at Suffolk, and is currently in development. It is designed to live as an embedded and connected LTI component in Canvas, allowing for easy access for educators, connection to assignments in any Canvas class, and a pre-emptive strike against having &ldquo;one more place&rdquo; to do things online.</p>
-        
-      
+        <h2 class="sub" id="t-caps">Four technology-enabled capabilities</h2>
+        <p>The Career Plan's value comes not just from what students record, but from how that information can remain useful over time, across the University, and in support of individual student success.</p>
+        <div class="caps">
+          <div class="cap"><h3>Continuity Across Time</h3>
+            <p>A student's goals and experiences don't disappear when a semester ends. Each Career Plan builds on earlier work, helping students revisit decisions, recognize growth, and adjust their direction as their interests evolve.</p></div>
+          <div class="cap"><h3>Continuity Across People</h3>
+            <p>With appropriate permissions, faculty and advisors can build on relevant student-authored information rather than starting every conversation from scratch. Students remain the authors of their plans, while educators gain a shared foundation for more personalized guidance.</p></div>
+          <div class="cap"><h3>Continuity Across Experiences &amp; Systems</h3>
+            <p>Coursework, advising, work-based learning, and preparation for graduation can contribute to one evolving record. Students can build on existing information instead of recreating their goals and history in disconnected systems.</p></div>
+          <div class="cap"><h3>Institutional Intelligence &amp; Proactive Support</h3>
+            <p>Structured information can help Suffolk recognize individual needs, identify students who may benefit from additional guidance, and understand patterns across cohorts. This creates opportunities to move from primarily reactive services toward timely, targeted interventions.</p></div>
+        </div>
+
+        <h2 class="sub" id="t-1">The evolving student Career Plan</h2>
+        <p>Students develop their Career Plans at four points in their undergraduate journey. Each version builds on what came before, capturing their evolving interests, decisions, experiences, and goals.</p>
 
         <!-- the four Career Plan cards; built by the msx script, same modals as the Curriculum Overview -->
         <div class="msx msx-plans">
           <div class="prog" id="msx-plans"></div>
         </div>
 
-
-        
-
         <h2 class="sub" id="t-3">How the Career Plan Innovates Career Advising at Suffolk</h2>
-        <p>Because students answer in structured fields rather than in free-standing essays, the Career Plan can do things a submitted document cannot: carry a student’s own words into their next plan, follow up on the goals they set, show patterns across a cohort, point advisors to the students who most need a conversation, and give instructors a view of what their students are working toward. Select a card to see an illustrative example of each. All names and data are fabricated for demonstration.</p>
+        <p>The information students submit in their Career Plan is stored as structured data, and not just paragraphs of text. Some of that data is quantitative, such as confidence ratings or anticipated timelines. Other data is qualitative, such as career interests, outstanding questions, or requests for assistance. Both can be organized and acted upon without reducing students to a set of scores or checkboxes.</p>
         <div class="msx msx-plans">
           <div class="prog" id="msx-uses"></div>
         </div>
+
+        <h2 class="sub" id="t-canvas">Connected to Canvas, Not Another Destination</h2>
+        <p>The Career Plan is envisioned as a purpose-built tool that students and faculty will access through Canvas, potentially using Learning Tools Interoperability (LTI).</p>
+        <p>Students could complete Career Plan assignments within the courses where they already work, while their information remains available beyond any single course or semester. Faculty and advisors could access information about students' career goals and growth in the same place they are conducting much of their other work.</p>
+
       </div>
     </section>
 
@@ -1479,7 +1537,7 @@
       }
     },
     {
-      ord:"Senior Course Assignment",
+      ord:"Capstone Course Assignment",
       nm:"Career Launch",
       ds:[
         "Embedded in a capstone or other senior-facing course, this culminating assignment ensures every student completes a final Career Plan. It assesses career development, identifies students needing additional support, and informs OIRA's First Destination outcomes tracking."
@@ -1526,9 +1584,11 @@
 
   var OPEN_ICO='<span class="open-ico" aria-hidden="true"><svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7"/><path d="M8 7h9v9"/></svg></span>';
   var DOWN_ICO='<span class="open-ico" aria-hidden="true"><svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14"/><path d="M6 13l6 6 6-6"/></svg></span>';
+  var PLAN_SUB=["CE-100 Assignment","CE-200 Assignment","Work-Based Learning Assignment","Capstone Class Assignment"];
+  function planSub(s){ return '<span class="ps">'+PLAN_SUB[STAGES.indexOf(s)]+'</span>'; }
   function c4Inner(s,ico){
-    return '<span class="nm">'+(STAGES.indexOf(s)+1)+': '+s.nm+'</span><span class="ord">'+s.ord+'</span>'+
-           '<span class="pv">'+s.planV+'</span><span class="pn">'+s.planDs+'</span>'+(ico||'');
+    return '<span class="ord">'+s.ord+'</span>'+
+           '<span class="pv">'+s.planV+'</span>'+planSub(s)+'<span class="pn">'+s.planDs+'</span>'+(ico||'');
   }
   function cardTitle(s){
     var c=courseOf(s);
@@ -1544,7 +1604,7 @@
            '</span>';
   }
   function planInner(s){
-    return '<span class="pv">'+s.planV+'</span><span class="pn">'+s.planDs+'</span>'+OPEN_ICO;
+    return '<span class="pv">'+s.planV+'</span>'+planSub(s)+'<span class="pn">'+s.planDs+'</span>'+OPEN_ICO;
   }
   function btn(cls,kind,i,html,col,label){
     var b=document.createElement("button");
@@ -1566,13 +1626,16 @@
   STAGES.forEach(function(s,i){
     if(i<3){
       prog.appendChild(btn("msx-card","modal",i,cardInner(s,OPEN_ICO),i+1,s.nm));
-      prog.appendChild(btn("plan","planModal",i,
+      var pb=btn("plan","planModal",i,
         '<span class="link"><i class="eb"></i><i class="tp"></i></span>'+planInner(s),
-        i+1,s.planV));
+        i+1,s.planV);
+      pb.removeAttribute("aria-haspopup");   /* on the overview this card links to The Career Plan page */
+      prog.appendChild(pb);
     }else{
       /* milestone 4 is shown as a Career Plan card alone */
       var c4=btn("plan","planModal",i,c4Inner(s,OPEN_ICO),i+1,s.nm+", "+s.planV);
       c4.classList.add("l4");
+      c4.removeAttribute("aria-haspopup");
       prog.appendChild(c4);
     }
   });
@@ -1626,11 +1689,11 @@
 
   /* "What the Career Plan makes possible": five cards, each opening an example from CP_uses.html */
   var USE_CARDS=[
-    ["Piping forward into the next plan","Students revise rather than start over: each plan opens with their own words from the last one, giving the program paired responses as assessment evidence."],
-    ["Piping into follow-up outreach","Goals are stored as records, so a March email can name what a student set in December and compare self-reports with what we already know."],
-    ["Program-level pattern and outcome","Fixed-taxonomy responses can be counted: where students are headed, which obstacles they report, and how self-efficacy moves, for any population we serve."],
-    ["Advisor worklist and triage","The same fields flag students who need a conversation, so advisors start the week with a list ordered by urgency."],
-    ["Shared back to faculty and advisors","A short goal statement becomes a roster that shows instructors and advisors what each student is working toward, before class begins."]
+    ["Resurfacing past content","Students don't start each career plan from scratch. They revise, reflect on, and add to their own past content."],
+    ["Reminders and accountability","Goals, action steps, and other reminders are tied to date fields that enable just-in-time email reminders to students and timely assessment from advisors."],
+    ["Program-level patterns","Much of the data can be aggregated and used to identify trends, from obstacles students are facing to industries they are pursuing."],
+    ["Advisor worklist and triage","Advisors can identify particular struggles their students are facing, and reach out with relevant resources or proactively schedule a 1:1 advising session."],
+    ["Connecting career goals to the classroom","Career Plan fields, like professional goal statements, can be aggregated into class lists and shared with instructors, who can benefit in myriad ways from those student insights."]
   ];
   var usesEl=document.getElementById("msx-uses");
   if(usesEl){
@@ -1731,11 +1794,7 @@
     var embed = kind==="planModal";
     modal.classList.toggle("is-embed", embed);
     mframe.hidden = !embed;
-    mintro.hidden = !embed;
-    if(embed){
-      mintro.innerHTML='<p class="mi-sub">Proof of Concept. Actual content to be developed.</p>'+
-                       '<p class="mi-body">'+PLAN_WHEN[i]+'</p>';
-    }
+    mintro.hidden = true;   /* the example starts straight at its tabs */
     if(embed) mframe.src = "My%20Career%20Plan.html#up="+(i+1);
     var isCourse = kind==="modal";   /* milestone modals drop the eyebrow */
     var cd = isCourse ? courseOf(STAGES[i]) : null;
@@ -1746,8 +1805,8 @@
     else if(cd) mtitle.innerHTML='<span class="mt-a">'+STAGES[i].course+':</span> '+md(cd.name);
     
     else mtitle.innerHTML=data.title||"";
-    mtag.innerHTML=cd&&cd.tagline ? md(cd.tagline) : "";
-    mtag.hidden=!(cd&&cd.tagline);
+    mtag.innerHTML="";
+    mtag.hidden=true;   /* taglines live on the cards, not in the popups */
     msub.innerHTML=sub||"";
     msub.style.display=sub?"":"none";
     mbody.innerHTML=(cd ? courseSections(cd,"modal") : (data.sections||[])).map(function(sec){ return secModal(sec,i); }).join('');
@@ -1782,7 +1841,19 @@
     var src = b.classList.contains("mplan") && group[0] ? group[0] : b;
     open(b.dataset.kind, +b.dataset.i, src);
   }
-  prog.addEventListener("click", onCardClick);
+  /* on the overview, a Career Plan section goes to the examples on The Career Plan page */
+  function goPlans(){
+    var n=document.querySelector('.nav-link[data-panel="throughline"]'); if(n) n.click();
+    window.requestAnimationFrame(function(){
+      var panel=document.getElementById("panel-throughline"), t=document.getElementById("t-1");
+      if(panel&&t) panel.scrollTo({top:panel.scrollTop+t.getBoundingClientRect().top-panel.getBoundingClientRect().top-24,behavior:"smooth"});
+    });
+  }
+  prog.addEventListener("click", function(e){
+    var p=e.target.closest(".plan,.mplan,.merged");
+    if(p && (p.dataset.kind==="planModal" || p.classList.contains("mplan") || p.classList.contains("merged"))){ goPlans(); return; }
+    onCardClick(e);
+  });
   if(plansEl) plansEl.addEventListener("click", onCardClick);
 
   /* ---------- the same content, laid out as a page (Milestones tab) ---------- */
@@ -1888,7 +1959,9 @@
           (c.timing?'<div class="cm-seq"><span class="cm-k">Timing:</span><span class="cm-v">'+md(c.timing)+'</span></div>':'')+
         '</div>'+
         '<hr class="cm-rule">'+
-        (c.description?'<h3 class="cm-h">Course Description</h3><p>'+md(c.description)+'</p><hr class="cm-rule">':'')+
+        (c.description?'<h3 class="cm-h">'+md(c.description_heading||"Course Description")+'</h3><p>'+md(c.description)+'</p><hr class="cm-rule">':'')+
+        ((c.criteria&&c.criteria.length)?'<h3 class="cm-h">'+md(c.criteria_heading||"Criteria")+'</h3><ol>'+
+          c.criteria.map(function(x){ return '<li><b>'+md(x.name)+':</b> '+md(x.description)+'</li>'; }).join('')+'</ol>':'')+
         ((c.learningOutcomes&&c.learningOutcomes.length)?'<h3 class="cm-h">Learning Outcomes</h3><p class="cm-lead">Upon successful completion of this course, students will be able to:</p><ol>'+
           c.learningOutcomes.map(function(o){ return '<li>'+md(o)+'</li>'; }).join('')+'</ol>':'')+
       '</div>'}];
@@ -1973,6 +2046,13 @@
     pages.innerHTML='<div class="cc-grid">'+outs[0].concat(outs[1]).join('')+'</div>';
     pages.addEventListener("click", onCardClick);
   }
+  /* WBL page intro paragraph: the description in the WBL entry of courses.js */
+  function bindWbl(){
+    var p=document.getElementById("wblDesc"), c=COURSES.WBL;
+    if(p && c && c.description) p.innerHTML=md(c.description);
+  }
+  if(document.readyState==="loading") document.addEventListener("DOMContentLoaded",bindWbl);
+  else bindWbl();
   if(document.readyState==="loading") document.addEventListener("DOMContentLoaded",renderPages);
   else renderPages();
 
@@ -2089,9 +2169,9 @@
       <div class="panel-inner">
         <h2 class="sec-title">Two 1-Credit Courses: CE-100 and CE-200</h2>
         <div class="cc-intro">
-          <p>The two one-credit Career Strategy &amp; Design courses create dedicated time for students to explore career pathways, connect their academic choices to future goals, and develop the confidence to pursue them. This strengthens the value of their Suffolk education by helping students find purpose in their coursework and build meaningful connections within the University. It also reinforces Suffolk's enrollment and retention propositions: students who see a clear path forward have stronger reasons to enroll and persist. While individual career advising remains essential, teaching and assessing this work in the required core curriculum ensures that <span class="yu">every student</span> receives structured preparation for post-graduation success and enables faculty and career advisors to identify unmet needs and provide timely, targeted interventions.</p>
-          <p>Within the broader CSD sequence, CE-100 establishes a foundation for informed exploration early in the student journey. CE-200 builds on that foundation as students strengthen their professional readiness and begin actively pursuing opportunities. Together, the courses prepare students to secure meaningful work-based learning experiences, enter them with clearer goals, and translate what they learn into future opportunities.</p>
-          <p>The required courses also establish the foundation for Suffolk's longitudinal Career Plan, ensuring that every student meaningfully engages with it and develops an initial body of work that can evolve throughout their education. Rather than relying on voluntary participation, the curriculum creates universal points of engagement and assessment, while the Career Plan preserves that work for continued use by students, faculty, and advisors. Together, they make career development a sustained and integrated element of every student's Suffolk education.</p>
+          <p>The two one-credit Career Strategy &amp; Design courses help students connect their education to future goals, build confidence, and develop meaningful relationships at Suffolk. By strengthening students' sense of direction and purpose, they also support the University's enrollment and retention goals. Making this preparation part of the required curriculum ensures that <span class="yu">every student</span> participates and is assessed, enabling faculty and career advisors to identify unmet needs and provide timely, targeted interventions.</p>
+          <p>Within the broader CSD sequence, CE-100 establishes a foundation for informed exploration, while CE-200 develops professional readiness and helps students actively pursue opportunities. Together, they prepare students to secure meaningful work-based learning experiences, succeed in them, and translate that learning into future opportunities.</p>
+          <p>The courses also establish the foundation for Suffolk's longitudinal Career Plan, ensuring universal participation and creating work that evolves throughout students' education. The Career Plan preserves their insights for continued use by students, faculty, and advisors, making career development a sustained and integrated part of the Suffolk experience.</p>
         </div>
         <div id="msx-pages" class="msx"></div>
       </div>
@@ -2104,10 +2184,25 @@
         <div class="sec-standfirst wbl-intro">
           <p>A substantial and growing body of research demonstrates the value of internships and other forms of work-based learning in strengthening students&rsquo; academic learning, professional development, and post-graduation career outcomes. This evidence spans research from the career education field, leading higher education organizations such as AAC&amp;U, and studies conducted by labor-market researchers, employers, and workforce consulting organizations.</p>
           <div class="home-cta"><a class="start" data-evidence target="_blank" rel="noopener">Explore the Evidence for Work-Based Learning</a></div>
+          <div class="wbl-jumps" id="wblJumps">
+            <button type="button" data-jump="w-1">The Five WBL Criteria</button>
+            <button type="button" data-jump="w-courses">Courses, Credit, and Assessment</button>
+            <button type="button" data-jump="w-quals">Qualifying Experiences</button>
+            <button type="button" data-jump="w-enough">Modeling WBL Placements</button>
+          </div>
+          <script>
+          (function(){
+            document.getElementById("wblJumps").addEventListener("click",function(e){
+              var b=e.target.closest("[data-jump]"); if(!b) return;
+              var panel=document.getElementById("panel-wbl"), t=document.getElementById(b.dataset.jump);
+              if(panel&&t) panel.scrollTo({top:panel.scrollTop+t.getBoundingClientRect().top-panel.getBoundingClientRect().top-24,behavior:"smooth"});
+            });
+          })();
+          </script>
         </div>
 
         <h3 class="sub" id="w-1">Five Criteria for Work-Based Learning in the SGE Core</h3>
-        <p>While it is sometimes useful shorthand to refer to this as "the internship requirement," it is important to clarify that work-based learning encompasses a broader range of experiences that provide students with opportunities to apply their knowledge and skills in real-world settings. To create a consistent definition of work-based learning that distinguishes it from other (very valuable!) forms of experiential education, the SGE committee posited these five criteria, which have been reviewed and revised based on faculty feedback:</p>
+        <p id="wblDesc"></p>
 
         <div class="crit-wrap">
           <table class="crit">
@@ -2194,35 +2289,10 @@
     <section class="panel" id="panel-howwork" tabindex="-1">
       <div class="panel-inner">
         <h2 class="sec-title">Cost and Logistics</h2>
-        <p class="sec-standfirst">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+        <p class="sec-standfirst">More information about course sections for WBL, curriculum revision and assessment, and WBL petition processes will be available shortly.</p>
 
         <h3 class="sub" id="h-planner">CE-100 and CE-200 Section and Cost Planner</h3>
         <iframe class="cost-frame" id="costFrame" src="CE_Course_Cost.html?embed=1" title="CE-100 and CE-200 section and cost planner" loading="lazy" scrolling="no"></iframe>
-
-        <h3 class="sub" id="h-1">Who teaches what</h3>
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation.<span data-cite="staffing-model"></span></p>
-        <table class="grid">
-          <thead><tr><th>Element</th><th>Led by</th><th>Supported by</th></tr></thead>
-          <tbody>
-            <tr><td>Lorem ipsum dolor</td><td>Placeholder</td><td>Placeholder</td></tr>
-            <tr><td>Consectetur adipiscing</td><td>Placeholder</td><td>Placeholder</td></tr>
-            <tr><td>Sed do eiusmod</td><td>Placeholder</td><td>Placeholder</td></tr>
-          </tbody>
-        </table>
-
-        <h3 class="sub" id="h-2">Support for instructors</h3>
-        <p>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur excepteur sint occaecat.<span data-cite="toolkit"></span></p>
-        <ul class="plain">
-          <li>Lorem ipsum dolor sit amet, consectetur</li>
-          <li>Sed do eiusmod tempor incididunt</li>
-          <li>Ut enim ad minim veniam quis nostrud</li>
-        </ul>
-
-        <h3 class="sub" id="h-3">Assessment and review</h3>
-        <p>Nam libero tempore, cum soluta nobis est eligendi optio cumque nihil impedit quo minus id quod maxime placeat facere possimus.<span data-cite="assessment-plan"></span></p>
-        <div class="note">
-          <p>Placeholder note: review cadence, who reports to whom, and where results surface.</p>
-        </div>
       </div>
     </section>
 
@@ -2291,6 +2361,20 @@
 
   /* ======================= nothing below needs editing ====================== */
 
+  /* the menu title holds to two lines: if it wraps to three, drop "Proposal" */
+  (function(){
+    var h=document.getElementById("brandTitle"); if(!h) return;
+    function fit(){
+      h.classList.remove("short");
+      if(!h.offsetHeight) return;   /* menu hidden */
+      var lh=parseFloat(getComputedStyle(h).lineHeight)||h.offsetHeight/3;
+      if(h.offsetHeight>lh*2.5) h.classList.add("short");
+    }
+    fit();
+    window.addEventListener("resize",fit);
+    if(document.fonts && document.fonts.ready) document.fonts.ready.then(fit);
+    if(window.ResizeObserver) new ResizeObserver(fit).observe(document.getElementById("menu"));
+  })();
   var navLinks=[].slice.call(document.querySelectorAll(".nav-link:not(.nav-ext), .brand"));
   document.querySelectorAll(".nav-ext").forEach(function(b){
     b.addEventListener("click", function(){ window.open(WBL_EVIDENCE_URL,"_blank","noopener"); });
