@@ -126,6 +126,7 @@
   .nav{list-style:none;margin:0;padding:0;}
   .nav > li{margin:0;}
   .nav > li.nav-top{border-top:1px solid rgba(255,255,255,.16);margin-top:56px;padding-top:22px;}
+  .nav > li.nav-div{border-top:1px solid rgba(255,255,255,.16);padding-top:10px;}
   /* the two research links stand out from the section links above them */
   .nav > li.nav-research .nav-link{background:rgba(231,171,42,.15);border-left-color:var(--gold);color:#fff;font-weight:600;}
   .nav > li.nav-research .nav-link:hover{background:rgba(231,171,42,.24);}
@@ -239,6 +240,15 @@
   }
   @media (max-width:760px){
     .home-grid .stats-wrap{padding:0;}
+  }
+  /* stacked but with room: the statistics sit to the right of the paragraph text */
+  @media (max-width:1280px) and (min-width:761px){
+    .home-main{display:grid;grid-template-columns:minmax(0,1fr) minmax(220px,290px);column-gap:34px;align-items:start;}
+    .home-main > .home-tagline{grid-column:1 / -1;}
+    .home-main > .home-lead{grid-column:1;grid-row:2;}
+    .home-main > .stats-wrap{grid-column:2;grid-row:2 / span 2;margin:4px 0 0;padding:0;}
+    .home-main > p:not(.home-tagline):not(.home-lead){grid-column:1;grid-row:3;}
+    .home-main > .home-cta{grid-column:1;grid-row:4;}
   }
   .home-grid .stats-wrap,.home-grid .stat-t,.home-grid .stat-sub{text-wrap:pretty;hyphens:none;}
   /* ---------- four milestones (native module) ---------- */
@@ -526,7 +536,8 @@
   .home-cta a.start{display:inline-block;text-decoration:none;color:#fff;}
   .wbl-intro{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:20px 40px;align-items:center;}
   .wbl-intro .home-cta{margin:0;}
-  .wbl-jumps{grid-column:1 / -1;display:flex;flex-wrap:wrap;gap:10px;margin-top:6px;}
+  .sec-standfirst.wbl-intro{border-bottom:0;padding-bottom:0;margin-bottom:56px;}
+  .wbl-jumps{grid-column:1 / -1;display:flex;flex-wrap:wrap;gap:10px;margin-top:8px;padding-top:24px;border-top:1px solid var(--rule);}
   .wbl-jumps button{font:inherit;font-size:.875rem;font-weight:600;color:var(--navy);background:#fff;border:1px solid var(--rule);border-bottom:3px solid var(--teal);padding:8px 14px;cursor:pointer;transition:background .18s ease,border-color .18s ease;}
   .wbl-jumps button:hover{background:rgba(var(--teal-rgb),.14);border-color:var(--teal);}
   .wbl-intro .home-cta a.start{font-size:1.0625rem;padding:16px 24px;max-width:250px;line-height:1.3;}
@@ -798,7 +809,7 @@
   .cc-hd.cc-col1{padding-left:20px;}
   .cc-head{margin:0;font-size:1.375rem;font-weight:600;line-height:1.25;color:#fff;}
   .cc-head .mt-a{color:var(--teal);}
-  .cc-sec{border-top:1px solid var(--rule);padding-top:14px;padding-bottom:14px;}
+  .cc-sec{border-top:2px solid rgba(21,40,75,.32);padding-top:14px;padding-bottom:14px;}
   .cc-c .cm-h{margin:0 0 6px;}
   .cc-c p{margin:0;font-size:.9375rem;line-height:1.58;text-wrap:pretty;}
   .cu{margin:0 0 16px;}
@@ -1197,7 +1208,7 @@
     </button>
 
     <ul class="nav" id="nav">
-      <li>
+      <li class="nav-div">
         <button class="nav-link" data-panel="overview">CS&amp;D Curriculum Overview</button>
       </li>
       <li>
@@ -1340,7 +1351,7 @@
           <div class="cmp-card cmp-live">
             <span class="cmp-ic"><svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 4l8 4-8 4-8-4z"/><path d="M4 12l8 4 8-4"/><path d="M4 16l8 4 8-4"/></svg></span>
             <h3><span class="cmp-lab">CS&amp;D Career Plan:</span> Actionable data that lives beyond the class</h3>
-            <p>A student submits an evolving plan through structured inputs of qualitative and quantitative information.</p>
+            <p>A student submits an evolving plan at four points throughout their undergraduate journey.</p>
             <p>Their insights are stored as structured, actionable data that enable personalized guidance, progress tracking, and a clearer understanding of student needs.</p>
           </div>
         </div>
