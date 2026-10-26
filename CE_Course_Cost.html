@@ -1,4 +1,3 @@
-<!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1"><style>:root{color-scheme:light}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#fff;color:#000}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -15,6 +14,8 @@
   --gold:#E7AB2A;
   --sky:#3CB4E5;
   --teal:#40C1AC;
+  --summer:#FDB924;
+  --summer-dark:#8F6300;
   --body:#595959;
   --ink:#000000;
   --bg:#FFFFFF;
@@ -34,10 +35,6 @@ body{
   line-height:1.65;
   -webkit-font-smoothing:antialiased;
 }
-/* ?embed: sits inside the proposal page, which supplies the heading and the scrolling */
-html.embed body{overflow:hidden}
-html.embed .wrap{max-width:none;padding:0}
-html.embed h1{display:none}
 ::selection{background:rgba(231,171,42,.3)}
 :focus-visible{outline:2px solid var(--navy);outline-offset:2px}
 
@@ -53,7 +50,8 @@ h2{
 h2 + .rule{width:64px;height:3px;background:var(--gold);margin:0 0 20px}
 h3{font-size:.9375rem;font-weight:600;color:var(--navy);margin:0 0 9px}
 
-.grid{display:grid;grid-template-columns:376px minmax(0,1fr);gap:44px;align-items:start}
+.grid{display:grid;grid-template-columns:minmax(290px,376px) minmax(0,1fr);gap:44px;align-items:start}
+.below{margin-top:44px}
 
 /* ---- inputs ---- */
 .card{
@@ -65,6 +63,7 @@ h3{font-size:.9375rem;font-weight:600;color:var(--navy);margin:0 0 9px}
 
 .field{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:3px 0}
 .field label{font-size:.875rem;line-height:1.35;flex:1}
+.field.off{display:none}
 input[type=number]{
   width:104px;flex:none;text-align:right;
   font-family:inherit;font-size:.875rem;font-weight:500;color:var(--navy);
@@ -75,6 +74,16 @@ input[type=number]:hover{border-color:rgba(21,40,75,.3)}
 input[readonly]{background:var(--tint-05);color:var(--body);font-weight:400}
 .field .unit{font-size:.8125rem;color:var(--body);width:12px;flex:none}
 
+.check{
+  display:flex;align-items:flex-start;gap:9px;cursor:pointer;
+  padding-bottom:11px;margin-bottom:9px;border-bottom:1px solid var(--tint-08);
+}
+.check input{
+  width:16px;height:16px;flex:none;margin:4px 0 0;
+  accent-color:var(--navy);cursor:pointer;
+}
+.check span{font-size:.875rem;line-height:1.35;color:var(--navy);font-weight:500}
+
 .cgrid{display:grid;grid-template-columns:1fr 92px 92px;gap:6px 10px;align-items:center}
 .cgrid .ch{
   font-size:.6875rem;font-weight:600;color:var(--navy);
@@ -82,6 +91,10 @@ input[readonly]{background:var(--tint-05);color:var(--body);font-weight:400}
 }
 .cgrid .rl{font-size:.875rem;line-height:1.3}
 .cgrid input{width:100%}
+.cgrid .na{text-align:center;font-size:.8125rem;color:rgba(21,40,75,.3)}
+.cgrid .surow{display:none}
+.summer-on .cgrid .surow{display:block}
+.summer-on .cgrid .surow.rl{display:block}
 
 .warn{font-size:.8125rem;color:#9B2C2C;font-weight:500;margin:9px 0 0;display:none}
 .warn.on{display:block}
@@ -94,7 +107,7 @@ input[readonly]{background:var(--tint-05);color:var(--body);font-weight:400}
 }
 .headline .cap{font-size:.9375rem;color:rgba(255,255,255,.72);margin-top:8px;display:block}
 .headline .split{
-  display:flex;align-items:stretch;gap:16px 20px;flex-wrap:wrap;margin-top:22px;padding-top:20px;
+  display:flex;align-items:stretch;gap:30px;margin-top:22px;padding-top:20px;
   border-top:1px solid rgba(255,255,255,.2);
 }
 .headline .vrule{width:1px;background:rgba(255,255,255,.22);flex:none}
@@ -103,6 +116,8 @@ input[readonly]{background:var(--tint-05);color:var(--body);font-weight:400}
   font-variant-numeric:tabular-nums;line-height:1.25;display:block;
 }
 .headline .split .k{font-size:.8125rem;color:rgba(255,255,255,.72);display:block}
+.headline .split .su{display:none}
+.summer-on .headline .split .su{display:block}
 
 /* ---- table ---- */
 table{width:100%;border-collapse:collapse}
@@ -124,55 +139,51 @@ td.num,th.num{text-align:right;padding-right:0}
 
 /* ---- cohort grid ---- */
 .cohort{width:100%;border-collapse:collapse;table-layout:fixed;font-variant-numeric:tabular-nums}
-.cohort col.lab{width:66px}
+.cohort col.lab{width:60px}
 .cohort th,.cohort td{padding:0;text-align:center;border:1px solid var(--bg)}
 .cohort thead th{
   background:var(--tint-08);color:var(--navy);
   font-size:.6875rem;font-weight:600;text-transform:uppercase;letter-spacing:.04em;
   padding:5px 0;
 }
-.cohort thead th.hiF{background:var(--sky);color:#fff}
-.cohort thead th.hiS{background:var(--teal);color:#fff}
+.cohort thead th.hiF{background:var(--sky)}
+.cohort thead th.hiS{background:var(--teal)}
+.cohort thead th.hiU{background:var(--summer)}
 .cohort thead th.lab,.cohort tbody th{
   background:transparent;color:var(--body);font-size:.75rem;font-weight:400;
-  text-align:left;letter-spacing:0;text-transform:none;padding-right:10px;
+  text-align:left;letter-spacing:0;text-transform:none;padding-right:9px;
 }
-.cohort td{height:34px;font-size:.875rem;color:var(--ink);background:var(--tint-02)}
+.cohort td{height:32px;font-size:.8125rem;color:var(--ink);background:var(--tint-02)}
 .cohort td.out{background:var(--tint-08)}
-.cohort td.val{color:var(--navy);font-weight:500}
-.cohort td.inF{background:rgba(60,180,229,.14)}
-.cohort td.inS{background:rgba(64,193,172,.14)}
+.cohort td.val{color:var(--navy);font-weight:500;font-size:.875rem}
+.cohort td.zero{color:rgba(21,40,75,.32);font-weight:400}
+.cohort td.inF{background:rgba(60,180,229,.16)}
+.cohort td.inS{background:rgba(64,193,172,.16)}
+.cohort td.inU{background:rgba(253,185,36,.20)}
 .cohort tfoot td{
   background:transparent;font-size:1.0625rem;font-weight:600;padding-top:7px;height:auto;
 }
 .cohort tfoot td.tF{color:var(--sky)}
 .cohort tfoot td.tS{color:var(--teal)}
+.cohort tfoot td.tU{color:var(--summer-dark)}
 .gridnote{font-size:.8125rem;margin:14px 0 0;max-width:78ch}
 
 .foot{font-size:.8125rem;margin-top:26px;padding-top:16px;border-top:1px solid var(--rule);max-width:78ch}
 
+/* ?embed: sits inside the proposal page, which supplies the heading and the scrolling */
+html.embed body{overflow:hidden}
+html.embed .wrap{max-width:none;padding:0}
+html.embed h1{display:none}
 @media (prefers-reduced-motion:reduce){*{transition:none!important}}
-/* The inputs sit to the left of the results until the page gets narrow. Embedded in the proposal
-   there is no outer padding, so it can hold the two-column layout down to a narrower width. */
 @media (max-width:1100px){
-  html:not(.embed) .grid{grid-template-columns:1fr;gap:30px}
-  html:not(.embed) .wrap{padding:44px 34px 100px}
-}
-@media (max-width:900px){
-  html.embed .grid{grid-template-columns:1fr;gap:30px}
-}
-/* once stacked, the three input cards sit side by side instead of as tall, mostly empty cards */
-@media (max-width:1100px){
-  html:not(.embed) .grid > div:first-child{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px;align-items:start}
-  html:not(.embed) .grid > div:first-child .card{margin-bottom:0}
-}
-@media (max-width:900px){
-  html.embed .grid > div:first-child{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px;align-items:start}
-  html.embed .grid > div:first-child .card{margin-bottom:0}
+  .grid{gap:28px}
+  .wrap{padding:44px 34px 100px}
+  .headline{padding:24px 24px 26px}
+  .headline .big{font-size:2.75rem}
+  .headline .split{flex-wrap:wrap;gap:16px 22px}
 }
 @media (max-width:700px){
-  html .grid > div:first-child{grid-template-columns:1fr !important}
-  html .grid > div:first-child .card{margin-bottom:14px}
+  .grid{grid-template-columns:1fr;gap:30px}
 }
 @media (max-width:760px){
   .wrap{padding:34px 22px 80px}
@@ -182,7 +193,7 @@ td.num,th.num{text-align:right;padding-right:0}
   .headline .split{flex-direction:column;gap:16px}
   .headline .vrule{display:none}
   .cohort{font-size:.75rem}
-  .cohort col.lab{width:48px}
+  .cohort col.lab{width:46px}
   .tablescroll{overflow-x:auto}
 }
 </style>
@@ -209,6 +220,17 @@ td.num,th.num{text-align:right;padding-right:0}
 
     <div class="card intake">
       <h3>When students take CE-200</h3>
+
+      <label class="check" for="summer">
+        <input id="summer" type="checkbox">
+        <span>Summer online asynchronous availability</span>
+      </label>
+
+      <div class="field su" id="row_su1">
+        <label for="su1">First year to sophomore summer</label>
+        <input id="su1" type="number" min="0" max="100" step="5" value="0">
+        <span class="unit">%</span>
+      </div>
       <div class="field">
         <label for="p1">Sophomore fall</label>
         <input id="p1" type="number" min="0" max="100" step="5" value="40">
@@ -219,12 +241,22 @@ td.num,th.num{text-align:right;padding-right:0}
         <input id="p2" type="number" min="0" max="100" step="5" value="40">
         <span class="unit">%</span>
       </div>
-      <div class="field">
-        <label for="p3">Junior fall</label>
-        <input id="p3" type="number" readonly value="20" tabindex="-1">
+      <div class="field su" id="row_su2">
+        <label for="su2">Sophomore to junior summer</label>
+        <input id="su2" type="number" min="0" max="100" step="5" value="0">
         <span class="unit">%</span>
       </div>
-      <p class="warn" id="pctWarn">The first two terms exceed 100%. Junior fall is held at 0.</p>
+      <div class="field">
+        <label for="p3">Junior fall</label>
+        <input id="p3" type="number" min="0" max="100" step="5" value="20">
+        <span class="unit">%</span>
+      </div>
+      <div class="field">
+        <label for="p4">Junior spring</label>
+        <input id="p4" type="number" readonly value="0" tabindex="-1">
+        <span class="unit">%</span>
+      </div>
+      <p class="warn" id="pctWarn">The earlier terms exceed 100%. Junior spring is held at 0.</p>
     </div>
 
     <div class="card courses">
@@ -241,6 +273,10 @@ td.num,th.num{text-align:right;padding-right:0}
         <input id="f100" type="number" min="0" step="1" value="5" aria-label="CE-100 sections in CEDS courseload">
         <input id="f200" type="number" min="0" step="1" value="10" aria-label="CE-200 sections in CEDS courseload">
 
+        <div class="rl surow">In courseload, summer</div>
+        <div class="na surow">n/a</div>
+        <input id="f200su" class="surow" type="number" min="0" step="1" value="0" aria-label="CE-200 sections in CEDS courseload, summer">
+
         <div class="rl">Cost per section</div>
         <input id="c100" type="number" min="0" step="100" value="2500" aria-label="CE-100 cost per section">
         <input id="c200" type="number" min="0" step="100" value="2500" aria-label="CE-200 cost per section">
@@ -252,10 +288,11 @@ td.num,th.num{text-align:right;padding-right:0}
   <div>
     <div class="headline">
       <span class="big" id="fyTotal">$0</span>
-      <span class="cap">Projected FY cost of instruction, both courses, both terms</span>
+      <span class="cap" id="cap">Projected FY cost of instruction, both courses, both terms</span>
       <div class="split">
         <div><span class="n" id="fallTotal">$0</span><span class="k">Fall</span></div>
         <div><span class="n" id="springTotal">$0</span><span class="k">Spring</span></div>
+        <div class="su"><span class="n" id="summerTotal">$0</span><span class="k">Summer</span></div>
         <div class="vrule" aria-hidden="true"></div>
         <div><span class="n" id="c100Total">$0</span><span class="k">CE-100</span></div>
         <div><span class="n" id="c200Total">$0</span><span class="k">CE-200</span></div>
@@ -278,26 +315,28 @@ td.num,th.num{text-align:right;padding-right:0}
       <tbody id="tbody"></tbody>
     </table>
 
-    <h2 style="margin-top:42px">How the cohorts stack into CE-200</h2>
-    <div class="rule"></div>
-    <div class="tablescroll">
-      <table class="cohort" id="cohort">
-        <colgroup><col class="lab"></colgroup>
-      </table>
-    </div>
-    <p class="gridnote">Each row is one entering cohort moving across its terms. The two highlighted columns are a steady-state fall and the spring that follows it.</p>
-
-    <p class="foot">Each cohort sits out its first two terms, then takes CE-200 across the next three. CE-100 is taken in a cohort's second term, so Fall CE-100 enrolls the Spring intake and Spring CE-100 enrolls the Fall intake. Sections round up.</p>
   </div>
 
+</div>
+
+<div class="below">
+    <h2 style="margin-top:0">How the cohorts stack into CE-200</h2>
+    <div class="rule"></div>
+    <div class="tablescroll">
+      <table class="cohort" id="cohort"></table>
+    </div>
+    <p class="gridnote" id="gridnote"></p>
+
+    <p class="foot" id="foot"></p>
 </div>
 </div>
 
 <script>
 (function(){
-  var ids = ['fallIn','springIn','p1','p2','s100','f100','c100','s200','f200','c200'];
+  var ids = ['fallIn','springIn','su1','p1','p2','su2','p3','s100','f100','c100','s200','f200','f200su','c200'];
   var el = {};
-  ids.concat(['p3','pctWarn','fyTotal','fallTotal','springTotal','c100Total','c200Total','tbody','cohort'])
+  ids.concat(['summer','p4','pctWarn','cap','fyTotal','fallTotal','springTotal','summerTotal',
+              'c100Total','c200Total','tbody','cohort','gridnote','foot'])
      .forEach(function(k){ el[k] = document.getElementById(k); });
 
   function num(id, min){
@@ -309,54 +348,103 @@ td.num,th.num{text-align:right;padding-right:0}
   var money = function(n){ return '$' + Math.round(n).toLocaleString('en-US'); };
   var count = function(n){ return Math.round(n).toLocaleString('en-US'); };
 
-  function line(students, perSection, ceds, cost){
+  function line(students, perSection, covered, cost){
     var sections = perSection > 0 ? Math.ceil(students / perSection) : 0;
-    var paid = Math.max(0, sections - ceds);
-    return { students:students, sections:sections, ceds:ceds, paid:paid, cost:paid * cost };
+    var paid = Math.max(0, sections - covered);
+    return { students:students, sections:sections, covered:covered, paid:paid, cost:paid * cost };
   }
 
-  // Cohort grid geometry: 10 terms, columns 0..9 alternating FL/SP.
-  // Highlighted steady-state pair: column 4 (fall) and column 5 (spring).
-  var NCOL = 10, HI_F = 4, HI_S = 5, SPAN = 8;
-  var COHORTS = [0,1,2,3]; // entry column of each cohort row
+  /* ----------------------------------------------------------------
+     Cohort calendar.
+
+     Columns run left to right as consecutive terms. TYPE[(c+PHASE)%TPY]
+     gives a column's term. Each cohort enters at a column, sits out its
+     first two academic terms, then takes CE-200 across the next four
+     academic terms, with the two summers that fall alongside them.
+
+     A  = offsets of the four academic slots from the entry column
+     SU = offsets of the two summer slots
+     Offsets differ for fall and spring entrants because a spring cohort
+     is one term out of phase with the academic year.
+  ---------------------------------------------------------------- */
+  var PLAN = {
+    off: {
+      TPY:2, PHASE:0, NCOL:10, HI:{F:4,S:5},
+      ENTRIES:[0,1,2,3],
+      fall:  { A:[2,3,4,5], SU:[] },
+      spring:{ A:[2,3,4,5], SU:[] }
+    },
+    on: {
+      TPY:3, PHASE:1, NCOL:11, HI:{F:8,S:9,U:10},
+      ENTRIES:[0,2,3,5,6,8],
+      fall:  { A:[3,4,6,7], SU:[2,5] },
+      spring:{ A:[3,5,6,8], SU:[4,7] }
+    }
+  };
+  var TYPE = ['FL','SP','SU'];
 
   function render(){
+    var summerOn = el.summer.checked;
+    document.body.classList.toggle('summer-on', summerOn);
+    el.row_su1 = document.getElementById('row_su1');
+    el.row_su2 = document.getElementById('row_su2');
+    el.row_su1.className = 'field su' + (summerOn ? '' : ' off');
+    el.row_su2.className = 'field su' + (summerOn ? '' : ' off');
+
+    var P = summerOn ? PLAN.on : PLAN.off;
+    var termOf = function(c){ return TYPE[(c + P.PHASE) % P.TPY]; };
+    var SPAN = P.TPY * 4;
+
     var fallIn   = num('fallIn', 0);
     var springIn = num('springIn', 0);
 
-    var p1 = Math.min(100, Math.max(0, num('p1', 0)));
-    var p2 = Math.min(100, Math.max(0, num('p2', 0)));
-    var p3 = 100 - p1 - p2;
-    var over = p3 < 0;
-    if (over) p3 = 0;
-    el.p3.value = Math.round(p3 * 100) / 100;
+    var su1 = summerOn ? Math.min(100, Math.max(0, num('su1', 0))) : 0;
+    var su2 = summerOn ? Math.min(100, Math.max(0, num('su2', 0))) : 0;
+    var p1  = Math.min(100, Math.max(0, num('p1', 0)));
+    var p2  = Math.min(100, Math.max(0, num('p2', 0)));
+    var p3  = Math.min(100, Math.max(0, num('p3', 0)));
+    var p4  = 100 - (su1 + su2 + p1 + p2 + p3);
+    var over = p4 < 0;
+    if (over) p4 = 0;
+    el.p4.value = Math.round(p4 * 100) / 100;
     el.pctWarn.className = 'warn' + (over ? ' on' : '');
 
-    var pct = [p1/100, p2/100, p3/100];
+    var A  = [p1/100, p2/100, p3/100, p4/100];   // soph fall, soph spring, jr fall, jr spring
+    var SU = [su1/100, su2/100];
 
-    // Build cohort matrix
-    var cells = [];   // cells[row][col] = null | number
-    COHORTS.forEach(function(entry, r){
-      var size = (entry % 2 === 0) ? fallIn : springIn;
+    // ---- build the cohort matrix ----
+    var cells = [];
+    P.ENTRIES.forEach(function(entry, r){
+      var isFall = termOf(entry) === 'FL';
+      var map = isFall ? P.fall : P.spring;
+      var size = isFall ? fallIn : springIn;
       cells[r] = [];
-      for (var c = 0; c < NCOL; c++){
-        var t = c - entry;                     // 0-indexed term within the cohort
-        if (t < 0 || t >= SPAN) { cells[r][c] = 'out'; }
-        else if (t >= 2 && t <= 4) { cells[r][c] = size * pct[t - 2]; }
-        else { cells[r][c] = null; }
+      for (var c = 0; c < P.NCOL; c++){
+        var t = c - entry, v;
+        if (t < 0 || t >= SPAN) { v = 'out'; }
+        else {
+          var ai = map.A.indexOf(t), si = map.SU.indexOf(t);
+          if (ai > -1)      v = size * A[ai];
+          else if (si > -1) v = size * SU[si];
+          else              v = null;
+        }
+        cells[r][c] = v;
       }
     });
 
     function colTotal(c){
-      return COHORTS.reduce(function(t, e, r){
-        var v = cells[r][c];
-        return t + (typeof v === 'number' ? v : 0);
+      return cells.reduce(function(t, row){
+        return t + (typeof row[c] === 'number' ? row[c] : 0);
       }, 0);
     }
-    var fall200 = colTotal(HI_F), spring200 = colTotal(HI_S);
+    var fall200   = colTotal(P.HI.F);
+    var spring200 = colTotal(P.HI.S);
+    var summer200 = summerOn ? colTotal(P.HI.U) : 0;
 
+    // ---- costs ----
     var s100 = num('s100',1), f100 = num('f100',0), c100v = num('c100',0);
     var s200 = num('s200',1), f200 = num('f200',0), c200v = num('c200',0);
+    var f200su = num('f200su',0);
 
     var rows = [
       { term:'Fall',   course:'CE-100', d: line(springIn,  s100, f100, c100v) },
@@ -364,19 +452,26 @@ td.num,th.num{text-align:right;padding-right:0}
       { term:'Spring', course:'CE-100', d: line(fallIn,    s100, f100, c100v) },
       { term:'Spring', course:'CE-200', d: line(spring200, s200, f200, c200v) }
     ];
+    var summerRow = { term:'Summer', course:'CE-200', d: line(summer200, s200, f200su, c200v) };
+    if (summerOn) rows.push(summerRow);
 
     var fallCost   = rows[0].d.cost + rows[1].d.cost;
     var springCost = rows[2].d.cost + rows[3].d.cost;
+    var summerCost = summerOn ? summerRow.d.cost : 0;
     var cost100    = rows[0].d.cost + rows[2].d.cost;
-    var cost200    = rows[1].d.cost + rows[3].d.cost;
+    var cost200    = rows[1].d.cost + rows[3].d.cost + summerCost;
+    var fy         = fallCost + springCost + summerCost;
 
-    el.fyTotal.textContent     = money(fallCost + springCost);
+    el.fyTotal.textContent     = money(fy);
     el.fallTotal.textContent   = money(fallCost);
     el.springTotal.textContent = money(springCost);
+    el.summerTotal.textContent = money(summerCost);
     el.c100Total.textContent   = money(cost100);
     el.c200Total.textContent   = money(cost200);
+    el.cap.textContent = 'Projected FY cost of instruction, both courses, '
+      + (summerOn ? 'all three terms' : 'both terms');
 
-    // ---- term detail table ----
+    // ---- term detail ----
     var html = '';
     function group(term, pair, subtotal){
       pair.forEach(function(r, i){
@@ -384,7 +479,7 @@ td.num,th.num{text-align:right;padding-right:0}
           + '<th>' + (i === 0 ? term + ' ' : '') + '<span class="pill">' + r.course + '</span></th>'
           + '<td class="num">' + count(r.d.students) + '</td>'
           + '<td class="num">' + count(r.d.sections) + '</td>'
-          + '<td class="num">' + count(r.d.ceds) + '</td>'
+          + '<td class="num">' + count(r.d.covered) + '</td>'
           + '<td class="num">' + count(r.d.paid) + '</td>'
           + '<td class="num">' + money(r.d.cost) + '</td>'
           + '</tr>';
@@ -395,50 +490,71 @@ td.num,th.num{text-align:right;padding-right:0}
     }
     group('Fall',   [rows[0], rows[1]], fallCost);
     group('Spring', [rows[2], rows[3]], springCost);
+    if (summerOn) group('Summer', [summerRow], summerCost);
     html += '<tr class="tot"><th>Fiscal year</th>'
       + '<td class="num"></td><td class="num"></td><td class="num"></td>'
       + '<td class="num">' + rows.reduce(function(t,r){ return t + r.d.paid; }, 0) + '</td>'
-      + '<td class="num">' + money(fallCost + springCost) + '</td></tr>';
+      + '<td class="num">' + money(fy) + '</td></tr>';
     el.tbody.innerHTML = html;
 
     // ---- cohort grid ----
-    var g = '<colgroup><col class="lab">';
-    for (var c = 0; c < NCOL; c++) g += '<col>';
+    var hiClass = {}, inClass = {};
+    hiClass[P.HI.F] = 'hiF'; inClass[P.HI.F] = 'inF';
+    hiClass[P.HI.S] = 'hiS'; inClass[P.HI.S] = 'inS';
+    if (summerOn){ hiClass[P.HI.U] = 'hiU'; inClass[P.HI.U] = 'inU'; }
+
+    var g = '<colgroup><col class="lab">', c;
+    for (c = 0; c < P.NCOL; c++) g += '<col>';
     g += '</colgroup><thead><tr><th class="lab"></th>';
-    for (c = 0; c < NCOL; c++){
-      var cls = c === HI_F ? ' class="hiF"' : (c === HI_S ? ' class="hiS"' : '');
-      g += '<th' + cls + ' scope="col">' + (c % 2 === 0 ? 'FL' : 'SP') + '</th>';
+    for (c = 0; c < P.NCOL; c++){
+      g += '<th' + (hiClass[c] ? ' class="' + hiClass[c] + '"' : '')
+         + ' scope="col">' + termOf(c) + '</th>';
     }
     g += '</tr></thead><tbody>';
 
-    COHORTS.forEach(function(entry, r){
-      var name = (entry % 2 === 0 ? 'Fall' : 'Spring');
-      g += '<tr><th scope="row">' + name + '</th>';
-      for (var c = 0; c < NCOL; c++){
+    P.ENTRIES.forEach(function(entry, r){
+      var isFall = termOf(entry) === 'FL';
+      g += '<tr><th scope="row">' + (isFall ? 'Fall' : 'Spring') + '</th>';
+      for (c = 0; c < P.NCOL; c++){
         var v = cells[r][c], k = [], txt = '';
         if (v === 'out') k.push('out');
-        else if (typeof v === 'number'){ k.push('val'); txt = count(v); }
-        if (c === HI_F && v !== 'out') k.push('inF');
-        if (c === HI_S && v !== 'out') k.push('inS');
+        else if (typeof v === 'number'){
+          txt = count(v);
+          k.push('val');
+          if (v < .5) k.push('zero');
+        }
+        if (inClass[c] && v !== 'out') k.push(inClass[c]);
         g += '<td' + (k.length ? ' class="' + k.join(' ') + '"' : '') + '>' + txt + '</td>';
       }
       g += '</tr>';
     });
 
     g += '</tbody><tfoot><tr><td></td>';
-    for (c = 0; c < NCOL; c++){
-      if (c === HI_F)      g += '<td class="tF">' + count(fall200) + '</td>';
-      else if (c === HI_S) g += '<td class="tS">' + count(spring200) + '</td>';
-      else                 g += '<td></td>';
+    for (c = 0; c < P.NCOL; c++){
+      if (c === P.HI.F)                  g += '<td class="tF">' + count(fall200) + '</td>';
+      else if (c === P.HI.S)             g += '<td class="tS">' + count(spring200) + '</td>';
+      else if (summerOn && c === P.HI.U) g += '<td class="tU">' + count(summer200) + '</td>';
+      else                               g += '<td></td>';
     }
     g += '</tr></tfoot>';
     el.cohort.innerHTML = g;
+
+    el.gridnote.textContent = 'Each row is one entering cohort moving across its terms. The '
+      + (summerOn ? 'three highlighted columns are a steady-state fall, the spring that follows it, and that year’s summer.'
+                  : 'two highlighted columns are a steady-state fall and the spring that follows it.');
+
+    el.foot.textContent = 'Each cohort sits out its first two terms, then takes CE-200 across the '
+      + (summerOn ? 'next four academic terms and the two summers alongside them. '
+                  : 'next four academic terms. ')
+      + 'CE-100 is taken in a cohort’s second academic term, so Fall CE-100 enrolls the Spring '
+      + 'intake and Spring CE-100 enrolls the Fall intake. Sections round up.';
   }
 
   ids.forEach(function(k){
     el[k].addEventListener('input', render);
     el[k].addEventListener('change', render);
   });
+  el.summer.addEventListener('change', render);
   render();
 })();
 </script>
@@ -453,5 +569,3 @@ td.num,th.num{text-align:right;padding-right:0}
 </script>
 </body>
 </html>
-
-</body></html>

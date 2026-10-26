@@ -13,7 +13,7 @@
     --gold:#E7AB2A;
     --blue:#3CB4E5;
     --ink:#1A1A1A;
-    --body:#4F5663;
+    --body:#3B3B3B;
     --mute:#7B8494;
     --rule:rgba(21,40,75,.16);
     --hair:rgba(21,40,75,.10);
@@ -60,11 +60,12 @@
 
   /* inline citation marker (built by script) */
   .cite-mark{
-    display:inline-block;min-width:11px;height:11px;line-height:11px;text-align:center;
-    font-size:.5rem;font-weight:600;color:var(--navy);background:var(--gold);
+    display:inline-block;min-width:10px;height:10px;line-height:10px;text-align:center;
+    font-size:.45rem;font-weight:600;color:var(--navy);background:var(--gold);
     border-radius:50%;margin-left:2px;cursor:pointer;border:0;font-family:inherit;
-    padding:0 2px;position:relative;top:-.5em;
+    padding:0 2px;position:relative;top:-1.9em;
   }
+  .cite-mark::after{content:"";position:absolute;inset:-6px -4px;}
   .cite-mark.lit{outline:2px solid var(--navy);outline-offset:1px;}
 
   /* ---------- floated stat figure ---------- */

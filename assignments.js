@@ -261,7 +261,7 @@ window.ASSIGNMENTS = [
 /* ============================== CE-200 ============================== */
 {
   id:"CE200-01", course:"CE-200", ordinal:1, total:6, icon:"clipboard-check",
-  title:"Career Readiness Audit & Action Challenge",
+  title:"Career Navigation Audit & Action Challenge",
   teaser:"Revisit v1.0, identify the obstacles most relevant to your WBL search, and choose two or three concrete actions to strengthen your readiness during the semester.",
   tags:["Reflection to action","Personalized challenge","v2.0 baseline"],
   essentialQuestion:"What could realistically keep me from securing and succeeding in WBL, and what will I do about it now?",
@@ -428,7 +428,7 @@ window.ASSIGNMENTS = [
 },
 {
   id:"CE200-06", course:"CE-200", ordinal:6, total:6, icon:"calendar-check", capstone:true,
-  title:"Career Readiness Plan (v2.0) & WBL Action Strategy",
+  title:"Career Navigation Plan (v2.0) & WBL Action Strategy",
   teaser:"Combine target opportunities, professional evidence, contacts, readiness actions, and constraints into a feasible plan for securing and succeeding in a qualifying WBL experience.",
   tags:["Strategic synthesis","WBL readiness","Career Plan 2"],
   essentialQuestion:"What exactly will I pursue, when will I act, and how will I adapt if my first route doesn't work?",
@@ -440,7 +440,7 @@ window.ASSIGNMENTS = [
     "Identify a preferred WBL route and at least one credible backup, including campus work, faculty research, an approved existing-workplace project, or institutional support where appropriate.",
     "Draft provisional WBL learning goals and a plan to seek feedback, build professional relationships beyond a direct supervisor, and document work-based learning; submit v2.0 with links to existing materials."
   ],
-  deliverables:"v2.0 Career Readiness Plan in the proposed portal (or equivalent launch workflow); target list and applications and approval calendar; projected WBL term; contingency route; provisional work-learning goals; links to resume, interaction tracker, and readiness evidence.",
+  deliverables:"v2.0 Career Navigation Plan in the proposed portal (or equivalent launch workflow); target list and applications and approval calendar; projected WBL term; contingency route; provisional work-learning goals; links to resume, interaction tracker, and readiness evidence.",
   learningOutcomes:"Integrate research, skills evidence, outreach, and constraints into a coherent plan; evaluate WBL fit; sequence and prioritize actions; identify realistic alternatives; anticipate professional responsibilities and learning.",
   rubric:[
     {criterion:"Evidence-based opportunity strategy",weight:30},
