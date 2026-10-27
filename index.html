@@ -132,6 +132,10 @@
   .nav > li.nav-research .nav-link:hover{background:rgba(231,171,42,.24);}
   .nav > li.nav-research .nav-link[aria-current="true"]{background:rgba(231,171,42,.28);}
   .nav > li.nav-research + li.nav-research{margin-top:8px;}
+  .nav-link.nav-callout{display:flex;align-items:center;gap:10px;width:auto;margin:-12px 0 24px;padding:9px 12px 9px 16px;font-size:.8125rem;line-height:1.35;font-weight:400;color:#fff;white-space:nowrap;background:rgba(231,171,42,.15);border-left-color:var(--gold);}
+  .nav-link.nav-callout:hover{background:rgba(231,171,42,.24);}
+  .nav-link.nav-callout[aria-current="true"]{background:rgba(231,171,42,.28);}
+  .nc-ic{flex:0 0 auto;height:2.4em;width:auto;color:var(--gold);}
   .nav-link{
     display:block;width:100%;text-align:left;
     background:none;border:0;
@@ -143,6 +147,25 @@
     transition:color .18s ease,background .18s ease,border-color .18s ease;
   }
   .nav-link.nav-sub{font-size:.875rem;padding:8px 22px 8px 40px;}
+  /* Work-Based Learning is a label only: hovering (or focusing) it opens a flyout over the page */
+  .nav-parent{position:relative;}
+  .nav-chev{position:absolute;right:18px;top:50%;transform:translateY(-50%);font-size:1.125rem;opacity:.7;}
+  .nav-parent[aria-current="true"]{color:#fff;font-weight:600;border-left-color:var(--gold);background:rgba(255,255,255,.07);}
+  .nav-fly.open .nav-parent{color:#fff;background:rgba(255,255,255,.08);}
+  .flyout{
+    display:none;list-style:none;margin:0;padding:8px 0;
+    position:fixed;z-index:60;width:272px;
+    background:#0F1E39;border-top:3px solid var(--gold);box-shadow:8px 10px 28px rgba(0,0,0,.28);
+  }
+  .nav-fly.open .flyout{display:block;}
+  .fly-link{
+    display:block;width:100%;text-align:left;background:none;border:0;
+    border-left:3px solid transparent;font:inherit;font-size:.9375rem;line-height:1.4;
+    color:rgba(255,255,255,.82);padding:10px 20px;cursor:pointer;
+    transition:color .18s ease,background .18s ease;
+  }
+  .fly-link:hover{color:#fff;background:rgba(255,255,255,.08);}
+  .fly-link[aria-current="true"]{color:#fff;font-weight:600;border-left-color:var(--gold);background:rgba(255,255,255,.07);}
   .nav-note{display:block;font-style:italic;font-weight:400;font-size:calc(.9375rem - 2pt);line-height:1.35;margin-top:2px;}
   .nav-link:disabled{opacity:.45;cursor:not-allowed;}
   .nav-link:disabled:hover{color:rgba(255,255,255,.78);background:none;}
@@ -664,10 +687,26 @@
   .wsec{padding-top:38px;margin-top:0;}
   .wsec + .wsec{margin-top:44px;border-top:1px solid var(--rule);}
   .wsec > h3.sub:first-child{margin-top:0;}
-  #panel-wbl h3.sub{font-size:1.5rem;line-height:1.3;}
+  #panel-wbl h3.sub,#panel-wblcourses h3.sub{font-size:1.5rem;line-height:1.3;margin-top:0;}
+  .sec-title.wbl-head::after{display:none;}
+  .sec-title.wbl-head{margin-bottom:6px;}
+  h3.sub.wbl-sub{margin:0 0 30px;}
+  h3.sub.wbl-sub::after{content:"";display:block;width:64px;height:3px;background:var(--gold);margin-top:14px;}
+  .wrule{border:0;border-top:1px solid var(--rule);margin:34px 0 0;}
   .wsec-todo{font-style:italic;color:#8A8A8A;}
-  #sec-w-courses{border-top:1px solid var(--rule);margin-top:38px;}
+  #sec-w-quals{margin-top:10px;}
+  #sec-w-courses{padding-top:10px;}
+  h4.wh.wh-lg{font-size:1.25rem;margin:34px 0 10px;}
+  .wsec h4.wh.wh-lg{font-size:1.25rem;margin:34px 0 10px;}
   .wsec h4.wh{font-size:1.125rem;font-weight:600;line-height:1.3;color:var(--navy);margin:30px 0 8px;}
+  .wcallout{margin:6px 0 8px;padding:20px 26px 8px;background:rgba(var(--teal-rgb),.10);border:1px solid rgba(var(--teal-rgb),.5);border-left:6px solid var(--teal);}
+  .wcallout h4{margin:0 0 8px;font-size:1rem;font-weight:600;color:var(--navy);line-height:1.3;}
+  .wcallout p{font-size:.9375rem;line-height:1.6;}
+  h5.wh2{font-size:1rem;font-weight:600;color:var(--navy);margin:22px 0 10px;}
+  .wnot{margin:0 0 18px;padding:14px 22px 2px;background:rgba(198,54,99,.07);border:1px solid rgba(198,54,99,.4);border-left:5px solid var(--crimson);}
+  .wnot p{font-size:1rem;line-height:1.55;max-width:none;color:var(--body);}
+  .wnot p b{color:var(--crimson);font-weight:700;}
+  .wexp li{margin-bottom:8px;}
   .wlist{margin:0 0 14px;padding-left:22px;}
   .wlist li{margin:0 0 8px;}
   .wlist li b{font-weight:600;color:var(--navy);}
@@ -765,6 +804,8 @@
 
   .modal.is-asg .mkick{color:var(--navy);}
   .msx-page a[data-panel],.msx-page a[data-jump],.modal a[data-panel],.modal a[data-jump]{color:var(--sky);font-weight:inherit;text-decoration:underline;text-decoration-color:var(--sky);text-decoration-thickness:1px;text-underline-offset:2px;cursor:pointer;}
+  .modal a.cost-link{color:var(--sky);text-decoration:underline;text-underline-offset:2px;cursor:pointer;}
+  .modal a.cost-link:hover{text-decoration-thickness:2px;}
   .msx-page a[data-panel]:hover,.msx-page a[data-jump]:hover,.modal a[data-panel]:hover,.modal a[data-jump]:hover{text-decoration-thickness:2px;}
   h3.sub#ov-1{margin-top:46px;}
   /* overview page: course comparison and notes */
@@ -788,12 +829,13 @@
   .cmp-lab{display:block;font-size:.875rem;font-weight:500;color:var(--body);margin-bottom:2px;}
   .cmp-card p{margin:0 0 9px;line-height:1.6;text-wrap:pretty;}
   .cmp-card p:last-child{margin-bottom:0;}
-  .caps{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px;margin:20px 0 8px;}
-  .cap{padding:20px 22px 22px;border:1px solid var(--rule);border-left:4px solid var(--teal);background:#fff;}
+  .caps{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px 36px;margin:14px 0 8px;}
+  .cap{padding:0 0 0 16px;}
   .cap h3{margin:0 0 8px;font-size:1.0625rem;font-weight:600;line-height:1.3;color:var(--navy);}
   .cap p{margin:0;font-size:.9375rem;line-height:1.6;text-wrap:pretty;}
   .cp-rule{border:0;border-top:1px solid var(--rule);margin:26px 0;}
   #panel-throughline h2.sub{margin:48px 0 10px;padding-top:34px;border-top:1px solid var(--rule);}
+  #panel-throughline > .panel-inner > p:first-of-type{font-size:1.0625rem;line-height:1.6;}
   @media (max-width:760px){.cmp,.caps{grid-template-columns:1fr;}}
   .msx.msx-plans{margin:18px 0 26px;}
   .msx.msx-jump{margin:4px 0 40px;padding-bottom:40px;border-bottom:1px solid var(--rule);}
@@ -810,6 +852,8 @@
   .cc-head{margin:0;font-size:1.375rem;font-weight:600;line-height:1.25;color:#fff;}
   .cc-head .mt-a{color:var(--teal);}
   .cc-sec{border-top:2px solid rgba(21,40,75,.32);padding-top:14px;padding-bottom:14px;}
+  .cc-pair{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.6fr);gap:0 24px;}
+  @media (max-width:560px){.cc-pair{grid-template-columns:1fr;gap:14px;}}
   .cc-c .cm-h{margin:0 0 6px;}
   .cc-c p{margin:0;font-size:.9375rem;line-height:1.58;text-wrap:pretty;}
   .cu{margin:0 0 16px;}
@@ -1135,6 +1179,89 @@
   }
   .viewer-close:hover{background:#0F1E39;}
 
+  /* ---------- WBL research & citations page ---------- */
+  #panel-urgency{--blue:var(--sky);--hair:rgba(21,40,75,.10);--tint:rgba(21,40,75,.035);}
+  #panel-urgency .fig{
+    float:right;width:300px;max-width:100%;
+    margin:6px 0 20px 34px;
+    padding:12px 15px 6px;
+    background:var(--tint);
+    border:1px solid var(--hair);
+    border-radius:3px;
+    text-wrap:pretty;
+  }
+#panel-urgency .fig.left{float:left;margin:6px 34px 20px 0;}
+#panel-urgency .fig.wide{width:344px;}
+#panel-urgency .fhead{
+    font-size:.8125rem;font-weight:500;line-height:1.4;
+    color:var(--navy);margin:0 0 8px;
+  }
+#panel-urgency .fstat{
+    display:grid;grid-template-columns:var(--ncol,clamp(56px,30%,86px)) minmax(0,1fr);
+    column-gap:11px;align-items:start;
+    border-top:2px solid var(--blue);
+    padding:7px 0 8px;
+  }
+#panel-urgency .fn{
+    font-size:1.5rem;font-weight:600;line-height:.98;letter-spacing:-.035em;
+    color:var(--navy);font-variant-numeric:lining-nums tabular-nums;
+  }
+#panel-urgency .fn small{font-size:.5em;font-weight:600;letter-spacing:0;}
+#panel-urgency .fstat p{
+    margin:0;font-size:.75rem;line-height:1.4;color:var(--body);
+    max-width:none;text-wrap:pretty;hyphens:none;
+  }
+#panel-urgency .fstat .mark{
+    font-style:normal;font-weight:500;color:var(--navy);
+    box-shadow:inset 0 -1.5px 0 var(--gold);
+  }
+#panel-urgency .fsrc{
+    margin:0;padding-top:6px;border-top:1px solid var(--hair);
+    font-size:.6875rem;line-height:1.45;color:var(--mute);max-width:none;
+  }
+#panel-urgency .flist{margin:0;padding:0 0 0 17px;}
+#panel-urgency .flist li{
+    font-size:.75rem;line-height:1.38;color:var(--body);
+    margin-bottom:6px;padding-left:1px;
+  }
+#panel-urgency .flist li b{color:var(--navy);font-weight:600;}
+#panel-urgency .fig .flist{margin-top:2px;}
+#panel-urgency .fig .flist + .fsrc{margin-top:8px;}
+#panel-urgency .fig.solo .fstat{grid-template-columns:1fr;row-gap:6px;}
+#panel-urgency .fig.solo .fn{font-size:2.125rem;}
+#panel-urgency .pull{
+    clear:both;
+    margin:30px 0 30px;max-width:64ch;
+    padding:2px 0 2px 22px;
+    border-left:3px solid var(--blue);
+  }
+#panel-urgency .pull p{
+    margin:0;font-size:1.125rem;line-height:1.5;color:var(--navy);
+    font-weight:400;max-width:none;
+  }
+#panel-urgency .pull p b{font-weight:600;}
+#panel-urgency .pull .psrc{
+    margin:9px 0 0;font-size:.75rem;line-height:1.45;color:var(--mute);
+  }
+#panel-urgency .sources{
+    clear:both;margin-top:52px;padding-top:22px;border-top:2px solid var(--navy);
+  }
+#panel-urgency .sources h2{margin:0 0 14px;}
+#panel-urgency .sources ol{margin:0;padding-left:20px;}
+#panel-urgency .sources li{
+    font-size:.8125rem;line-height:1.55;color:var(--body);
+    margin-bottom:11px;max-width:84ch;
+  }
+#panel-urgency .sources li:target{background:rgba(231,171,42,.16);}
+#panel-urgency .sources i{font-style:italic;}
+
+  #panel-urgency h3.sub{clear:both;}
+  #panel-urgency .sources h3.sub{margin-top:0;}
+  #panel-urgency .sources li{max-width:none;}
+  @media (max-width:720px){
+    #panel-urgency .fig,#panel-urgency .fig.left{float:none;width:100%;margin:22px 0;}
+  }
+
   /* ---------- mobile ---------- */
   .menu-toggle{
     display:none;position:fixed;left:12px;
@@ -1177,6 +1304,10 @@
       padding-top:calc(66px + env(safe-area-inset-top,0px));
     }
     .menu.open{transform:translateX(0);}
+    /* in the drawer the Work-Based Learning links simply sit open under their label */
+    .nav-chev{display:none;}
+    .flyout,.nav-fly.open .flyout{display:block;position:static;width:auto;background:none;border-top:0;box-shadow:none;padding:0 0 4px;}
+    .fly-link{font-size:.875rem;padding:8px 22px 8px 56px;}
     .menu-toggle{display:block;}
     .panel-inner{padding-top:68px;}
   }
@@ -1207,6 +1338,11 @@
       <h1 id="brandTitle">Career Strategy<br>&amp; Design <span class="prop">Proposal</span></h1>
     </button>
 
+    <button class="nav-link nav-callout" data-panel="urgency">
+      <svg class="nc-ic" viewBox="0 0 24 30" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 2h11l5 5v21H4z"/><path d="M15 2v5h5"/><path d="M8 13h8M8 17h8M8 21h5"/></svg>
+      <span>The context and research<br>behind this proposal</span>
+    </button>
+
     <ul class="nav" id="nav">
       <li class="nav-div">
         <button class="nav-link" data-panel="overview">CS&amp;D Curriculum Overview</button>
@@ -1218,20 +1354,19 @@
         <button class="nav-link nav-sub" data-panel="milestones">Two 1-Credit Courses</button>
       
       </li>
-      <li>
-        <button class="nav-link nav-sub" data-panel="wbl">Work-Based Learning</button>
+      <li class="nav-fly" id="navFly">
+        <button type="button" class="nav-link nav-sub nav-parent" id="navFlyBtn" aria-haspopup="true" aria-expanded="false">Work-Based Learning<span class="nav-chev" aria-hidden="true">&rsaquo;</span></button>
+        <ul class="flyout" id="flyout">
+          <li><button type="button" class="fly-link" data-panel="wbl">The Five WBL Criteria &amp;<br>Qualifying Experiences</button></li>
+          <li><button type="button" class="fly-link" data-panel="wblcourses">Courses and Instruction</button></li>
+          <li><button type="button" class="fly-link" data-href="WBL_Sankey.html">Modeling WBL Placements</button></li>
+        </ul>
       </li>
       <li>
         <button class="nav-link" data-panel="howwork">Cost and Logistics</button>
       </li>
       <li>
         <button class="nav-link" data-panel="faq" disabled aria-disabled="true">FAQ (Avail. 10/28)</button>
-      </li>
-      <li class="nav-top nav-research">
-        <button class="nav-link" data-panel="urgency">What is the Urgency?<span class="nav-note">The context and research <br>behind this proposal</span></button>
-      </li>
-      <li class="nav-research">
-        <button class="nav-link nav-ext" data-ext="evidence">The Impact of WBL<span class="nav-note">Explore the research behind Work-Based Learning</span></button>
       </li>
     </ul>
 
@@ -1282,10 +1417,10 @@
       </div>
     </section>
 
-    <!-- URGENCY -->
+    <!-- CONTEXT AND RESEARCH (urgency + evidence for work-based learning, one paper) -->
     <section class="panel" id="panel-urgency" tabindex="-1">
       <div class="panel-inner">
-        <h2 class="sec-title">What is the urgency?</h2>
+        <h2 class="sec-title">The Context and Research Behind This Proposal</h2>
         <div class="sec-standfirst"><p>Students invest years of their lives and substantial financial resources in college, often taking on debt that will follow them long after graduation. They trust that this investment will help them find meaningful work, achieve economic security, and have greater choice in their futures. <strong>Helping students realize that promise is part of our educational responsibility</strong>. </p>
           <p>Suffolk faculty develop students’ <span class="hl">career readiness</span> through disciplinary knowledge and transferable capacities such as critical thinking, ethical judgment, collaboration, and strong written and verbal communication. Students also need explicit instruction and guided practice in <span class="hl">career management</span> skills, such as:</p>
           <ul class="plain">
@@ -1332,6 +1467,245 @@
         <p><strong>We should not have to wait until after graduation for our first assessment of students' ability to secure a job</strong>. Clear learning outcomes and recurring milestones would enable formative assessment students’ developing capabilities while there is still time to provide feedback, remove barriers, and connect them with support  A universal requirement also creates a corresponding institutional responsibility: participation must be feasible, expectations must be clear, and students must have appropriate ways to meet them. The purpose is to make career development a visible, connected, and assessable part of a Suffolk education, with sustained support for every student’s progress.</p>
 
 
+
+        <h3 class="sub" id="u-4">What the evidence says about work-based learning</h3>
+<p>National research on work-based learning and what it does to students' outcomes after graduation. <b>The strongest causal evidence applies to paid internships and is labeled as such.</b> Several of the largest effects hold for work-based learning of any kind.</p>
+
+<!-- ============================ HIGH-IMPACT PRACTICE ============================ -->
+<div class="sec">
+<h4 class="wh wh-lg">A practice the curriculum already recognizes</h4>
+
+<figure class="fig">
+  <p class="fhead">The eight conditions Kuh and O'Donnell argue a practice must meet to be high-impact:</p>
+  <ol class="flist">
+    <li><b>Performance expectations</b> set at appropriately high levels</li>
+    <li><b>Significant effort</b> sustained over an extended period</li>
+    <li><b>Substantive interaction</b> with faculty and peers</li>
+    <li><b>Encounters with difference</b>, working alongside unfamiliar people and perspectives</li>
+    <li><b>Frequent, timely, constructive feedback</b></li>
+    <li><b>Structured reflection</b> and integration of learning</li>
+    <li><b>Real-world application</b> of what has been learned</li>
+    <li><b>Public demonstration</b> of competence</li>
+  </ol>
+  <p class="fsrc">Kuh and O'Donnell, AAC&amp;U, 2013.</p>
+</figure>
+
+<p>Internships are not an idea arriving from outside the academy. They are one of the eleven high-impact educational practices named in George Kuh's 2008 report for the Association of American Colleges and Universities,<span data-cite="kuh2008hip"></span> alongside first-year seminars, undergraduate research, writing-intensive courses, and capstone projects. Four of those eleven appear somewhere in the milestone structure proposed here. The question in front of the faculty is not whether to adopt an unfamiliar practice. It is whether to extend one already on the list to every student rather than to the students who find their own way to it.</p>
+
+<p>The more useful contribution from that literature is the quality standard that followed it. Kuh and O'Donnell argued in 2013 that calling a practice high-impact guarantees nothing on its own, because the benefits depend on eight conditions actually being met.<span data-cite="kuh2013quality"></span> An experience that fails those conditions is not a high-impact practice. It is a job.</p>
+
+<p>That is the case for a defined set of criteria rather than an open requirement satisfied by any work experience. The five criteria proposed for a qualifying experience are a work-based translation of the AAC&amp;U conditions: substantive work held to a real standard, sustained effort across a defined period, supervision and professional relationships, structured reflection, and application of academic learning in a professional setting. Faculty asked to approve this requirement are being asked to apply a quality framework most of them already accept in a setting where it has not previously been enforced.</p>
+</div>
+
+<!-- ============================ EARNINGS ============================ -->
+<div class="sec">
+<h4 class="wh wh-lg">The return on a work-based experience</h4>
+
+<figure class="fig wide" style="--ncol:106px">
+  <p class="fhead">Earnings advantage, measured against matched peers:</p>
+  <div class="fstat">
+    <span class="fn">+$13,859</span>
+    <p>in annual personal income for bachelor's degree holders who had <span class="mark">any work-based learning</span> experience.</p>
+  </div>
+  <div class="fstat">
+    <span class="fn">+15<small>%</small></span>
+    <p>one year out for a <span class="mark">paid internship</span>, worth $5,564 on an average first-year salary of $36,379.</p>
+  </div>
+  <div class="fstat">
+    <span class="fn">+16<small>%</small></span>
+    <p>four years out. The advantage <span class="mark">widens</span> rather than fades, reaching $9,089 a year.</p>
+  </div>
+  <p class="fsrc">Strada-Gallup Education Survey, 2022; Research in Higher Education, 2026.</p>
+</figure>
+
+<p>Work-based learning shows up in graduates' paychecks, and it keeps showing up years later. Bachelor's degree holders who had a work-based learning experience report $13,859 more in annual personal income than peers matched on race and ethnicity, gender, age, and field of study.<span data-cite="stradapowerwbl"></span> The matching matters: this is not a comparison of business majors with art history majors.</p>
+
+<p>The most rigorous causal evidence narrows to paid internships specifically. Drawing on restricted-access federal data covering a national cohort of bachelor's completers, researchers found a 15 percent earnings advantage one year after graduation for students who had completed a paid internship.<span data-cite="rhe2026earnings"></span> That gap does not close with time. Four years out it has widened to 16 percent.</p>
+
+<p>Earnings are the easiest outcome to measure but not the most revealing one. The same study found that students with a paid internship were 14 percentage points more likely to hold a first job that actually requires their degree, and 13 points more likely to describe that job as part of a career rather than simply a job.<span data-cite="rhe2026earnings"></span> Unpaid internships and practica produce smaller versions of the same effect, up to six points and twelve points respectively. That distinction matters for a requirement that will have to recognize more than one kind of qualifying experience.</p>
+
+<p>Some of the mechanism is visible before a student's first day of work. In an audit study that sent otherwise identical résumés to employers, the versions listing an internship drew 14 percent more callbacks.<span data-cite="nsci2021"></span> The line on the page is doing work in the screening pile, independent of anything the student learned on the job.</p>
+
+<div class="pull">
+  <p>The earnings advantage holds <b>even after accounting for field of study, gender, and race or ethnicity.</b> It is not a reflection of which students manage to get internships in the first place.</p>
+  <p class="psrc">Strada Education Foundation, 2022; Research in Higher Education, 2026.</p>
+</div>
+</div>
+
+<!-- ============================ BEYOND PAY ============================ -->
+<div class="sec">
+<h4 class="wh wh-lg">What changes that salary does not capture</h4>
+
+<figure class="fig left">
+  <p class="fhead">Graduates with work-based learning, against those without:</p>
+  <div class="fstat">
+    <span class="fn">+39<small> pts</small></span>
+    <p>more likely to say <span class="mark">their education helped them achieve their goals</span>. Across all degree holders the gap is 19 points.</p>
+  </div>
+  <div class="fstat">
+    <span class="fn">+11<small> pts</small></span>
+    <p>more likely to agree their education was <span class="mark">worth the cost</span>.</p>
+  </div>
+  <div class="fstat">
+    <span class="fn">+7<small> pts</small></span>
+    <p>higher <span class="mark">career satisfaction</span> years after graduation.</p>
+  </div>
+  <p class="fsrc">Strada-Gallup Education Survey, 2022. Work-based learning of any kind.</p>
+</figure>
+
+<p>The effects that have nothing to do with salary are, if anything, larger. Recent graduates who had work-based learning are 39 percentage points more likely to say their education helped them achieve their goals.<span data-cite="stradapowerwbl"></span> They are 11 points more likely to agree the education was worth the cost, and they report higher career satisfaction years afterward.</p>
+
+<p>Worth-the-cost is not a soft measure. It is the question that drives enrollment decisions, alumni giving, and the public argument about whether a degree pays for itself. An eleven-point swing on that item, attributable to an experience the institution can require, is a consequential finding for any university making its case to families and to the state.</p>
+
+<div class="pull">
+  <p>Researchers found <b>no statistically significant difference in the benefit by race, gender, or socioeconomic status.</b> The advantage is consistent across groups. What differs sharply is who gets access to the experience.</p>
+  <p class="psrc">Strada Education Foundation, 2022.</p>
+</div>
+</div>
+
+<!-- ============================ STUDENT VALUE ============================ -->
+<div class="sec">
+<h4 class="wh wh-lg">What students say the experience is worth</h4>
+
+<figure class="fig solo">
+  <p class="fhead">Career value of the experience, rated out of 10:</p>
+  <div class="fstat">
+    <span class="fn">9.3 <small>vs 5.5</small></span>
+    <p>Students whose experience <span class="mark">expanded their professional network a great deal</span>, against those whose did not expand it at all. The single largest driver of how students rate the value of the experience.</p>
+  </div>
+  <p class="fsrc">Strada Education Foundation, 2025.</p>
+</figure>
+
+<p>Students who complete these experiences rate them highly and specifically. Eighty-one percent scored their experience at least 7 out of 10 on making them a stronger candidate for the job they want, and two in five gave it a perfect 10.<span data-cite="stradabeyond"></span> Three quarters report being extremely or very satisfied with an internship.<span data-cite="stradabuildingbetter"></span> Eight in ten say a supervisor gave them quite a bit or a great deal of mentorship toward their career goals, and that holds across internships, practica, project-based learning, and undergraduate research alike.<span data-cite="stradabeyond"></span></p>
+
+<p>More useful than the overall ratings is what separates a valuable experience from a forgettable one, because that is what a set of criteria can actually govern. Students whose experience expanded their professional network a great deal rated its career value 9.3 out of 10. Students whose experience did not expand their network at all rated it 5.5.<span data-cite="stradabeyond"></span> Skill development follows a similar pattern: 76 percent of paid interns said the experience built technical skills relevant to their goals, with practica at 81 percent, and 70 percent of interns said it built broad skills that transfer across careers.</p>
+
+<p>The implication is that quality is not mysterious. Supervisor support, genuine mentorship, substantive work, and contact with people in the field are the dimensions that separate the experiences students value from the ones they do not, and those are the dimensions a qualifying-experience standard can be written around.</p>
+</div>
+
+<!-- ============================ EMPLOYERS ============================ -->
+<div class="sec">
+<h4 class="wh wh-lg">What employers do with the credential</h4>
+
+<figure class="fig left">
+  <p class="fhead">Employer response to an internship on a graduate's record:</p>
+  <div class="fstat">
+    <span class="fn">81<small>%</small></span>
+    <p>of employers say they would be <span class="mark">more likely to consider hiring</span> a graduate who completed an internship or apprenticeship, tied for first on the list.</p>
+  </div>
+  <div class="fstat">
+    <span class="fn">62<small>%</small></span>
+    <p>of the 2024 intern class <span class="mark">received a full-time offer</span> from the employer that hosted them.</p>
+  </div>
+  <div class="fstat">
+    <span class="fn">72<small>%</small></span>
+    <p>offer rate for <span class="mark">in-person programs</span>, against roughly 56% where the work mixed remote and in-person.</p>
+  </div>
+  <p class="fsrc">AAC&amp;U and Morning Consult, 2025; NACE Internship and Co-op Report, 2025.</p>
+</figure>
+
+<p>AAC&amp;U's most recent employer survey, conducted with Morning Consult in August 2025 among 1,030 employers, found that 81 percent would be more likely to consider hiring a graduate who had completed an internship or apprenticeship, tied with having held a leadership role at the top of the list.<span data-cite="agility"></span> An earlier AAC&amp;U survey of 496 executives and hiring managers reached the same conclusion in softer terms, with more than four in five saying that completing an applied learning experience would make them more likely to consider a candidate.<span data-cite="aacuworkforce2021"></span></p>
+
+<p>The most frequently cited study in this area is also the one to handle most carefully. Gallup and Purdue surveyed 29,560 bachelor's degree holders in 2014 and found that graduates who had an internship or job applying what they learned in class, worked on a project lasting a semester or more, and were actively involved in extracurricular activities had roughly double the odds of being engaged at work. Only 6 percent could say they had all three.<span data-cite="gallupppurdue2014"></span> Two cautions apply. The internship item is bundled with two others, so the study cannot isolate what the internship itself contributed, and the design is retrospective self-report rather than the matched comparison used in the earnings research above. It is the most quotable finding in the field and not the most rigorous one.</p>
+
+<p>From the employer side, 62 percent of the 2024 intern class received a full-time offer from their host organization.<span data-cite="nace2025internship"></span> That rate varies sharply by format: 72 percent for in-person programs against roughly 56 percent where the work mixed remote and in-person. For a requirement that will need to accept remote placements, the gap is worth tracking.</p>
+</div>
+
+<!-- ============================ ACCESS ============================ -->
+<div class="sec">
+<h4 class="wh wh-lg">Demand far exceeds access</h4>
+
+<figure class="fig">
+  <p class="fhead">Intent against actual participation:</p>
+  <div class="fstat">
+    <span class="fn">70<small>%</small></span>
+    <p>of first-year students <span class="mark">plan to complete an internship</span> during college.</p>
+  </div>
+  <div class="fstat">
+    <span class="fn">&lt;1<small> in 4</small></span>
+    <p>actually secure a <span class="mark">paid internship</span>. Fewer than half complete one of any kind.</p>
+  </div>
+  <div class="fstat">
+    <span class="fn">21.5<small>%</small></span>
+    <p>measured participation across 12,130 students, <span class="mark">well below the 50 to 60%</span> long assumed from earlier estimates.</p>
+  </div>
+  <p class="fsrc">Strada Education Foundation, 2024; National Survey of College Internships, 2021.</p>
+</figure>
+
+<p>Students are not ambivalent about this. Ninety-six percent of those who took an internship did so to connect their education with career opportunities, either to gain experience in a specific field or to test whether that field was a good fit.<span data-cite="stradabuildingbetter"></span> Seventy percent of first-year students arrive planning to complete one.<span data-cite="stradabuildingbetter"></span></p>
+
+<p>Far fewer manage it. Fewer than one in four secure a paid internship and fewer than half complete an internship of any kind. The most careful participation measure available, taken across 12,130 students at seventeen institutions, put the rate at 21.5 percent, well below the 50 to 60 percent long assumed from older and looser estimates.<span data-cite="nsci2021"></span> Institutions have generally been working from a number roughly twice the real one.</p>
+
+<figure class="fig left solo">
+  <p class="fhead">Among students at four-year institutions who did not intern:</p>
+  <div class="fstat">
+    <span class="fn">6 <small>in 10</small></span>
+    <p><span class="mark">wanted to but could not.</span> In an earlier national sample the figure was 67 percent, and 55 percent of non-interns report a strong interest in doing so.</p>
+  </div>
+  <p class="fsrc">National Survey of College Internships, 2023 and 2021; CCWT, 2024.</p>
+</figure>
+
+<p>The gap is not a motivation problem. Six in ten students at four-year institutions who did not intern wanted to but could not,<span data-cite="stradabuildingbetter"></span> and 55 percent of non-interns report strong interest in doing so.<span data-cite="ccwtbarriers2024"></span> Interest is not the binding constraint, which means interventions aimed at persuading students to care will not move the number.</p>
+
+<div class="pull">
+  <p>The obstacles students name are consistent across studies and they are structural: <b>a heavy course load is the single most-cited barrier,</b> followed by not knowing how to find an internship, too few opportunities in their field, and the need to hold a paying job.</p>
+  <p class="psrc">Strada Education Foundation, 2024; National Survey of College Internships, 2021.</p>
+</div>
+
+<p>Each of those four barriers is institutional rather than personal. Course load is a curricular design question. Not knowing how to find an opportunity is a preparation question. Thin opportunity supply in a given field is an employer development question. The need to earn is a question of whether the experience is paid or carries credit. None of them is addressed by encouragement, and all of them are addressed by structure.</p>
+</div>
+
+<!-- ============================ SYNTHESIS ============================ -->
+<div class="sec">
+<h4 class="wh wh-lg">What the evidence does and does not settle</h4>
+
+<p>Three claims here are well supported. Paid internships raise early-career earnings and improve the quality of the first job, and those effects survive careful matching on student characteristics. Work-based learning of any kind improves how graduates assess the value of their education, by margins large enough to matter institutionally. And the benefits appear to be distributed evenly across demographic groups, while access to the experiences is not.</p>
+
+<p>Two things the evidence does not settle are worth stating plainly. The causal estimates are strongest for paid internships, so claims about unpaid or for-credit experiences should be made more cautiously and at the smaller effect sizes the research actually reports. And none of this research tests a required experience, because no national dataset describes a population where participation was universal. The findings describe what happens to students who complete these experiences, under conditions where roughly one in five does.</p>
+
+<p>A third caution belongs here because a faculty member who follows this literature will raise it. Kilgo, Sheets, and Pascarella, working with longitudinal data from the Wabash National Study, found the measured effects of high-impact practices uneven across practices and across outcomes rather than uniformly strong.<span data-cite="kilgo2015wabash"></span> The designation is not a guarantee, which is the same point Kuh and O'Donnell made about quality conditions. The case for this requirement does not rest on high-impact status. It rests on matched-design evidence about earnings and employment that the high-impact literature does not itself contain, and the two should not be conflated when the proposal is defended.</p>
+
+<p>What the evidence establishes well enough to act on is the shape of the problem: students want the experience, the experience works, and most students do not get it for reasons the institution controls.</p>
+</div>
+
+<!-- ============================ SOURCES ============================ -->
+<div class="sources">
+  <h3 class="sub" id="u-src">Sources</h3>
+  <ol>
+    <li id="s1">Suffolk University, Office of Enrollment Management, &ldquo;Suffolk University Undergraduate Admissions,&rdquo; web page. Accessed October 27, 2026. <a href="https://study.suffolk.edu/undergrad">study.suffolk.edu/undergrad</a>.</li>
+    <li id="s2">Suffolk University, Office of Enrollment Management, &ldquo;Choose Your Path at Suffolk,&rdquo; web page. Accessed October 27, 2026. <a href="https://www.suffolk.edu/undergraduate-admission/why-suffolk/choose-your-path-at-suffolk">suffolk.edu</a>.</li>
+    <li id="s3">Gallup and Lumina Foundation, <i>The State of Higher Education 2025</i> (Gallup, 2025). Web surveys conducted October 2&ndash;31, 2024, including 6,000 currently enrolled students.</li>
+    <li id="s4">Maria Claudia Soler, Ellen Bara Stolzenberg, and Julia Napier, <i>Understanding the Entering Class of 2025: Key Insights from The CIRP Freshman Survey 2025</i> (Washington, DC: American Council on Education, with the Higher Education Research Institute, 2026).</li>
+    <li id="s5">Rizwanur Rob, <i>Entering Student Survey: Summary Findings</i> (Boston: Suffolk University Office of Institutional Research and Assessment, September 2026).</li>
+    <li id="s6">Burning Glass Institute and Strada Institute for the Future of Work, <i>Talent Disrupted: College Graduates, Underemployment, and the Way Forward</i> (February 2024).</li>
+    <li id="s7">Federal Student Aid, U.S. Department of Education, &ldquo;New Lower Earnings Indicator on the FAFSA&reg; Form,&rdquo; Electronic Announcement GENERAL-25-49, posted December 8, 2025, updated March 23, 2026, <a href="https://fsapartners.ed.gov/knowledge-center/library/electronic-announcements/2025-12-03/new-lower-earnings-indicator-fafsar-form">fsapartners.ed.gov</a>.</li>
+    <li id="s8">National Association of Student Financial Aid Administrators (NASFAA), &ldquo;2026 STATS/Earnings Accountability,&rdquo; resource page, September 2026, <a href="https://www.nasfaa.org/ge_2026">nasfaa.org/ge_2026</a>. The page could not be retrieved automatically for verification; confirm title and date.</li>
+    <li id="s9">Patrick Lane, Colleen Falkenstern, and Peace Bransberger, <i>Knocking at the College Door: Projections of High School Graduates</i> (Western Interstate Commission for Higher Education, with support from the College Board and Lumina Foundation, December 2024).</li>
+    <li id="s10">National Association of Colleges and Employers (NACE), &ldquo;What Is Career Readiness?&rdquo; web page listing the Career &amp; Self-Development competency, undated. Accessed October 27, 2026. <a href="https://www.naceweb.org/career-readiness/competencies/career-readiness-defined/">naceweb.org</a>.</li>
+    <li id="s11">Ashley P. Finley, <i>The Agility Imperative: How Employers View Preparation for an Uncertain Future</i> (Washington, DC: Association of American Colleges and Universities, December 2025). Conducted online by Morning Consult, August 11 to 24, 2025, n = 1,030 employers, margin of error plus or minus 3 percentage points.</li>
+    <li id="s12">Elaine W. Leigh, <i>Understanding Undergraduates&rsquo; Career Preparation Experiences</i> (Indianapolis: Strada Education Foundation, December 8, 2021), <a href="https://www.strada.org/reports/understanding-undergraduates-career-preparation-experiences">strada.org</a>.</li>
+    <li id="s13">Mary Gatta, &ldquo;The Class of 2023: Inequity Continues to Underpin Internship Participation and Pay Status,&rdquo; NACE, August 8, 2023, <a href="https://www.naceweb.org/talent-acquisition/internships/the-class-of-2023-inequity-continues-to-underpin-internship-participation-and-pay-status/">naceweb.org</a>.</li>
+    <li id="s14">Strada Education Foundation, <i>Principles for Quality Education-to-Career Guidance</i> (March 2025). Created by the Quality Coaching Advisory Group convened by Strada.</li>
+    <li id="s15">Kevin Gray, &ldquo;Students Reveal Obstacles Preventing Them From Taking Internships,&rdquo; NACE, January 27, 2025, <a href="https://www.naceweb.org/talent-acquisition/student-attitudes/students-reveal-obstacles-preventing-them-from-taking-internships">naceweb.org</a>.</li>
+    <li id="s16">Gallup and Lumina Foundation, <i>Alumni Perspectives on Higher Education Experiences, Outcomes and Value</i> (Gallup, 2026). Web survey of associate and bachelor&rsquo;s degree graduates, November 10 to December 1, 2025.</li>
+    <li id="s17">Strada Education Foundation, <i>Quality Coaching: Helping Students Navigate the Journey From Education to Career</i> (October 2024).</li>
+    <li id="s18">Jeremy Podany, &ldquo;The 4 Foundations of The Career Ecosystem Era,&rdquo; Career Leadership Collective (blog), November 9, 2024, <a href="https://www.careerleadershipcollective.com/post/the-4-foundations-of-the-career-ecosystem-era">careerleadershipcollective.com</a>.</li>
+    <li id="s19">Mary Gatta, Ashley Finley, and Patrick Green, <i>Faculty Attitudes and Behaviors: The Integration of Career Readiness Into the Curriculum</i> (NACE, AAC&amp;U, and the Society for Experiential Education, April 2024).</li>
+    <li id="s20">George D. Kuh, <i>High-Impact Educational Practices: What They Are, Who Has Access to Them, and Why They Matter</i> (Washington, DC: Association of American Colleges and Universities, 2008). Internships appear as one of eleven named high-impact practices.</li>
+    <li id="s21">George D. Kuh and Ken O&rsquo;Donnell, <i>Ensuring Quality and Taking High-Impact Practices to Scale</i> (Washington, DC: Association of American Colleges and Universities, 2013). Source of the eight key elements.</li>
+    <li id="s22">Nichole Torpey-Saboe, Elaine Leigh, and Dave Clayton, <i>The Power of Work-Based Learning</i> (Indianapolis: Strada Education Foundation, March 2022). Estimated effects based on the Strada-Gallup Education Survey, September to November 2021, bachelor&rsquo;s degree completers, n = 1,941, matched on race and ethnicity, gender, age, and field of study, with cost-of-living adjustment for income.</li>
+    <li id="s23">Nichole Torpey-Saboe, Hee Song, and Mindi Thompson, &ldquo;Work-Based Learning and Early Career Outcomes: Evidence on Earnings, College-Level Employment, and Career Progression,&rdquo; <i>Research in Higher Education</i> 67, no. 14 (2026). Nearest-neighbor matching on restricted-access NCES Baccalaureate and Beyond data (B&amp;B:2016/20).</li>
+    <li id="s24">Matthew T. Hora, Jared Colston, Zhidong Chen, and Alexandra Pasqualone, <i>National Survey of College Internships (NSCI) 2021 Report</i> (Madison: Center for Research on College-Workforce Transitions, University of Wisconsin&ndash;Madison). n = 12,130 students across 17 institutions. The r&eacute;sum&eacute; audit study of employer callback rates (John M. Nunley et al., 2016) is cited in this report. The callback figure is drawn from the citing report rather than the original study.</li>
+    <li id="s25">Nichole Torpey-Saboe, Kevin Grubb, and Akua Amankwah-Ayeh, <i>Internships and Beyond: Strengthening Career Value Across Diverse Models of Work-Based Learning</i> (Strada Education Foundation, July 2025).</li>
+    <li id="s26"><i>Building Better Internships: Understanding and Improving the Internship Experience</i> (Indianapolis: Strada Education Foundation, May 2024). Based on the 2023 National Survey of College Internships; third- and fourth-year students at four-year institutions, n = 2,824, and students of all class years at two-year institutions, n = 2,531, weighted to be nationally representative.</li>
+    <li id="s27">Ashley Finley, <i>How College Contributes to Workforce Success: Employer Views on What Matters Most</i> (Washington, DC: Association of American Colleges and Universities, 2021). Conducted with Hanover Research, October 2020, n = 496 executives and hiring managers. Note that the per-experience percentages in Figures 7 and 21 are not consistent with each other; the &ldquo;more than four in five&rdquo; figure cited here comes from the report&rsquo;s body text.</li>
+    <li id="s28">Julie Ray and Stephanie Marken, &ldquo;Life in College Matters for Life After College,&rdquo; Gallup, May 6, 2014. Gallup-Purdue Index, February 4 to March 7, 2014, n = 29,560 bachelor&rsquo;s degree holders. The internship item is reported in combination with two other experiences and cannot be isolated.</li>
+    <li id="s29"><i>2025 Internship &amp; Co-op Report</i> (Bethlehem, PA: National Association of Colleges and Employers, March 2025). Data collected October 16, 2024 to January 2, 2025, n = 247 organizations.</li>
+    <li id="s30">Hee Song and Matthew Hora, <i>Navigating Barriers to Access Internships: Challenges for Thwarted Interns Across Institution Types and Student Demographics</i> (Madison: Center for Research on College-Workforce Transitions, October 2024). n = 2,083 students who had not interned but wanted to.</li>
+    <li id="s31">Cindy A. Kilgo, Jessica K. Ezell Sheets, and Ernest T. Pascarella, &ldquo;The Link Between High-Impact Practices and Student Learning: Some Longitudinal Evidence,&rdquo; <i>Higher Education</i> 69, no. 4 (2015): 509&ndash;525. Longitudinal analysis of Wabash National Study data. Full text not verified here; confirm the specific findings before citing them in a published document.</li>
+  </ol>
+</div>
+
       </div>
     </section>
 
@@ -1339,8 +1713,9 @@
     <section class="panel" id="panel-throughline" tabindex="-1">
       <div class="panel-inner">
         <h2 class="sec-title">The Career Plan</h2>
-        <div class="sec-standfirst"><p><strong>Enabling student-authored career development to become a persistent, shared, and actionable part of the undergraduate experience.</strong></p></div>
+        <p>At four points throughout their undergraduate experience, students revisit and update a personal Career Plan, documenting their evolving interests, experiences, and goals. Introduced through the required Career Strategy &amp; Design curriculum, the plan builds on each student's earlier work and connects their academic exploration, professional preparation, work-based learning, and transition beyond graduation. Rather than four separate assignments, it becomes a continuous record of each student's development&mdash;and a resource that students, faculty, and advisors can return to throughout their time at Suffolk.</p>
 
+        <!-- Traditional vs. CS&D Career Plan comparison cards, hidden for now. Move out of this comment to restore.
         <div class="cmp">
           <div class="cmp-card cmp-static">
             <span class="cmp-ic"><svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 3h7l4 4v14H7z"/><path d="M14 3v4h4"/><path d="M10 12h5M10 15.5h5"/></svg></span>
@@ -1355,8 +1730,8 @@
             <p>Their insights are stored as structured, actionable data that enable personalized guidance, progress tracking, and a clearer understanding of student needs.</p>
           </div>
         </div>
+        -->
 
-        <h2 class="sub" id="t-caps">Four technology-enabled capabilities</h2>
         <p>The Career Plan's value comes not just from what students record, but from how that information can remain useful over time, across the University, and in support of individual student success.</p>
         <div class="caps">
           <div class="cap"><h3>Continuity Across Time</h3>
@@ -1369,7 +1744,7 @@
             <p>Structured information can help Suffolk recognize individual needs, identify students who may benefit from additional guidance, and understand patterns across cohorts. This creates opportunities to move from primarily reactive services toward timely, targeted interventions.</p></div>
         </div>
 
-        <h2 class="sub" id="t-1">The evolving student Career Plan</h2>
+        <h2 class="sub" id="t-1">Example of a student&rsquo;s evolving Career Plan</h2>
         <p>Students develop their Career Plans at four points in their undergraduate journey. Each version builds on what came before, capturing their evolving interests, decisions, experiences, and goals.</p>
 
         <!-- the four Career Plan cards; built by the msx script, same modals as the Curriculum Overview -->
@@ -1383,9 +1758,8 @@
           <div class="prog" id="msx-uses"></div>
         </div>
 
-        <h2 class="sub" id="t-canvas">Connected to Canvas, Not Another Destination</h2>
-        <p>The Career Plan is envisioned as a purpose-built tool that students and faculty will access through Canvas, potentially using Learning Tools Interoperability (LTI).</p>
-        <p>Students could complete Career Plan assignments within the courses where they already work, while their information remains available beyond any single course or semester. Faculty and advisors could access information about students' career goals and growth in the same place they are conducting much of their other work.</p>
+        <h2 class="sub" id="t-canvas" style="margin-top: 0;">Connected to Canvas, Not Another Destination</h2>
+        <p>The Career Plan is envisioned as a purpose-built tool that students and faculty will access through Canvas, potentially using Learning Tools Interoperability (LTI). Students could complete Career Plan assignments within the courses where they already work, while their information remains available beyond any single course or semester. Faculty and advisors could access information about students' career goals and growth in the same place they are conducting much of their other work.</p>
 
       </div>
     </section>
@@ -1968,6 +2342,7 @@
           '<div class="cm-credits"><span class="cm-k">Credits:</span><span class="cm-v">'+md(c.credits)+'</span></div>'+
           (c.prereq?'<div class="cm-pre"><span class="cm-k">Prereq:</span><span class="cm-v">'+md(c.prereq)+'</span></div>':'')+
           (c.timing?'<div class="cm-seq"><span class="cm-k">Timing:</span><span class="cm-v">'+md(c.timing)+'</span></div>':'')+
+          (c.cost?'<div class="cm-pre"><span class="cm-k">Projected Cost/FY:</span><span class="cm-v"><a href="#cost-and-logistics/h-planner" class="cost-link">'+md(c.cost)+'</a></span></div>':'')+
         '</div>'+
         '<hr class="cm-rule">'+
         (c.description?'<h3 class="cm-h">'+md(c.description_heading||"Course Description")+'</h3><p>'+md(c.description)+'</p><hr class="cm-rule">':'')+
@@ -2034,8 +2409,11 @@
     }
     var row=1;
     both(row++,"cc-hd",function(c,code){ return '<h3 class="cc-head" id="ms-'+(codes.indexOf(code)+1)+'"><span class="mt-a">'+code+':</span> '+md(c.name||"")+'</h3>'; });
-    both(row++,"cc-sec",function(c){ return sec("Credits",'<p>'+md(c.credits_explained||c.credits||"")+'</p>'); });
-    both(row++,"cc-sec",function(c){ return sec("Timing",'<p>'+md(c.timing||"")+'</p>'); });
+    both(row++,"cc-sec",function(c){
+      return '<div class="cc-pair"><div class="cc-half">'+sec("Credits",'<p>'+md(c.credits_explained||c.credits||"")+'</p>')+'</div>'+
+        '<div class="cc-half">'+sec("Timing",'<p>'+md(c.timing||"")+'</p>')+'</div></div>';
+    });
+    both(row++,"cc-sec",function(c){ return sec("Instruction",'<p>'+md(c.instruction||"")+'</p>'); });
     both(row++,"cc-sec",function(c){ return sec("Description",'<p>'+md(c.description||"")+'</p>'); });
     both(row++,"cc-sec cc-lohead",function(){ return sec("Learning Outcomes",'<p class="cm-lead">Upon successful completion of this course, students will be able to:</p>'); });
     var pairs=window.LO_PAIRINGS || (cs[0].learningOutcomes||[]).map(function(_,i){ return [[i],[i]]; });
@@ -2061,6 +2439,11 @@
   function bindWbl(){
     var p=document.getElementById("wblDesc"), c=COURSES.WBL;
     if(p && c && c.description) p.innerHTML=md(c.description);
+    var ins=document.getElementById("wblInstr"), rs=document.getElementById("wblResp");
+    if(ins && c) ins.innerHTML=md(c.instruction||"");
+    var ex=(c&&c.responsibilities)||[], nt=document.getElementById("wblNot");
+    if(nt) nt.innerHTML=ex.length?'<p>'+md(ex[0])+'</p>':'';
+    if(rs) rs.innerHTML=ex.slice(1).map(function(t){ return '<li>'+md(t)+'</li>'; }).join('');
   }
   if(document.readyState==="loading") document.addEventListener("DOMContentLoaded",bindWbl);
   else bindWbl();
@@ -2071,6 +2454,8 @@
     if(backTo) open(backTo.kind,backTo.i,lastFocus); else close();
   });
   mbody.addEventListener("click",function(e){
+    var cl=e.target.closest("a.cost-link");
+    if(cl){ e.preventDefault(); close(); location.hash=cl.getAttribute("href"); return; }
     var ag=e.target.closest(".asg");
     if(ag){
       if(ag.dataset.kind==="planModal"){ open("planModal",+ag.dataset.i,ag); return; }
@@ -2191,29 +2576,11 @@
     <!-- WORK-BASED LEARNING -->
     <section class="panel" id="panel-wbl" tabindex="-1">
       <div class="panel-inner">
-        <h2 class="sec-title">Work-Based Learning</h2>
-        <div class="sec-standfirst wbl-intro">
-          <p>A substantial and growing body of research demonstrates the value of internships and other forms of work-based learning in strengthening students&rsquo; academic learning, professional development, and post-graduation career outcomes. This evidence spans research from the career education field, leading higher education organizations such as AAC&amp;U, and studies conducted by labor-market researchers, employers, and workforce consulting organizations.</p>
-          <div class="home-cta"><a class="start" data-evidence target="_blank" rel="noopener">Explore the Evidence for Work-Based Learning</a></div>
-          <div class="wbl-jumps" id="wblJumps">
-            <button type="button" data-jump="w-1">The Five WBL Criteria</button>
-            <button type="button" data-jump="w-courses">Courses, Credit, and Assessment</button>
-            <button type="button" data-jump="w-quals">Qualifying Experiences</button>
-            <button type="button" data-jump="w-enough">Modeling WBL Placements</button>
-          </div>
-          <script>
-          (function(){
-            document.getElementById("wblJumps").addEventListener("click",function(e){
-              var b=e.target.closest("[data-jump]"); if(!b) return;
-              var panel=document.getElementById("panel-wbl"), t=document.getElementById(b.dataset.jump);
-              if(panel&&t) panel.scrollTo({top:panel.scrollTop+t.getBoundingClientRect().top-panel.getBoundingClientRect().top-24,behavior:"smooth"});
-            });
-          })();
-          </script>
-        </div>
-
-        <h3 class="sub" id="w-1">Five Criteria for Work-Based Learning in the SGE Core</h3>
+        <h2 class="sec-title wbl-head">Work-Based Learning</h2>
+        <h3 class="sub wbl-sub" id="w-1">Criteria and Qualifying Experiences</h3>
         <p id="wblDesc"></p>
+
+        <h4 class="wh wh-lg">Five Criteria for Work-Based Learning in the SGE Core</h4>
 
         <div class="crit-wrap">
           <table class="crit">
@@ -2228,7 +2595,7 @@
               </tr>
               <tr>
                 <td class="c-name"><div class="cn"><span class="num">2</span><span class="cnm">Meaningful Time</span></div></td>
-                <td class="c-desc">The student completes at least <b class="hrs">120 hours</b>, including required training and activities integral to the role. With prior approval, two experiences may be combined to reach 120 hours, provided each independently satisfies all other criteria.</td>
+                <td class="c-desc">The student completes at least 120 hours, including required training and activities integral to the role. With prior approval, two experiences may be combined to reach 120 hours, provided each independently satisfies all other criteria.</td>
                 <td class="c-ver">Anticipated dates and hours are approved in advance. The student and supervisor confirm completion at the end; hourly logging is not required.</td>
               </tr>
               <tr>
@@ -2238,7 +2605,7 @@
               </tr>
               <tr>
                 <td class="c-name"><div class="cn"><span class="num">4</span><span class="cnm">Expanded Network</span></div></td>
-                <td class="c-desc">The student engages with at least <b>two professionals beyond existing classroom, peer, and immediate supervisory relationships</b>, gaining exposure to perspectives, pathways, communities, or opportunities relevant to their goals.</td>
+                <td class="c-desc">The student engages with at least two professionals beyond existing classroom, peer, and immediate supervisory relationships, gaining exposure to perspectives, pathways, communities, or opportunities relevant to their goals.</td>
                 <td class="c-ver">Off-campus experiences are generally expected to provide these interactions through the work itself. For on-campus roles, the student and supervisor identify a plan for at least three purposeful interactions, such as informational interviews, professional meetings, external collaborations, conferences, or site visits.</td>
               </tr>
               <tr>
@@ -2250,28 +2617,8 @@
           </table>
         </div>
 
-        <section class="wsec" id="sec-w-courses">
-        <h3 class="sub" id="w-courses">Courses, Credit, and Assessment</h3>
-        <p>The proposal recommends that every qualifying work-based learning experience be connected to a registered academic course. This creates a consistent framework for academic oversight, assessment, and degree-audit tracking while allowing experiences to count toward major requirements where appropriate. Course registration can also support international students' work authorization processes, subject to applicable eligibility requirements.</p>
-        <p>Importantly, credit-bearing WBL courses also provide an established mechanism for recognizing and compensating the faculty responsible for supervising students' academic learning. The proposed model preserves opportunities for departments to award their customary three or four credits while accommodating other credit arrangements when appropriate.</p>
-
-        <h4 class="wh">Ensuring Financial Accessibility</h4>
-        <p>Requiring course registration must not create new financial barriers to participation. Full-credit WBL courses may generate overload charges for students already carrying a full academic schedule, while summer tuition can create significant expenses that financial aid may not cover.</p>
-        <p>Suffolk will need to establish accessible options before implementing the requirement, potentially including zero-credit registration, revised tuition and registration policies, and financial aid solutions. These arrangements must be developed collaboratively with faculty, academic leadership, the Registrar, Financial Aid, and International Student Services.</p>
-        <p><b>Resolving these barriers is a prerequisite for implementation, not a problem to address after the requirement takes effect.</b></p>
-
-        <h4 class="wh">Common Requirements Across WBL Courses</h4>
-        <p>Participating courses may retain additional assignments and expectations appropriate to their disciplines, but all will incorporate a small set of common requirements:</p>
-        <ul class="wlist">
-          <li><b>Career Plan v3.0:</b> Students reflect on their contributions, document professional growth, and identify how the experience informs their remaining time at Suffolk and plans after graduation.</li>
-          <li><b>Updated professional materials:</b> Students revise their resumes and relevant professional profiles or portfolios to reflect the experience and skills developed.</li>
-          <li><b>Career readiness assessment:</b> Students and supervisors complete the NACE Ready competency assessment through Suitable, allowing students to compare their self-assessments with supervisor feedback. Departments may also incorporate additional questions relevant to their fields.</li>
-        </ul>
-        <p>The shared assessment framework will help Suffolk evaluate student development across WBL pathways and identify opportunities for improvement, while allowing departments to maintain the academic expectations appropriate to their programs.</p>
-        </section>
-
         <section class="wsec" id="sec-w-quals">
-        <h3 class="sub" id="w-quals">Qualifying Experiences</h3>
+        <h4 class="wh wh-lg" id="w-quals">Qualifying Experiences</h4>
         <p>Below are details about four types of experiences that could satisfy the Work-Based Learning requirement, if they met the 5 criteria above and were approved by the relevant faculty or administrator:</p>
         <div class="wgrid-wrap">
           <table class="wgrid">
@@ -2287,12 +2634,41 @@
         </div>
         </section>
 
-        <section class="wsec" id="sec-enough">
-        <h3 class="sub" id="w-enough">Modeling Required Work-Based Learning Placements</h3>
-        <p>There are many students, and entire departments, who are already engaging in internship, research, or other experiences that would satisfy the WBL requirement, or could do so with some minor adjustments to meet the five criteria above. But by far the most common question this proposal meets with is, &ldquo;But what if we can&rsquo;t find experiences for every student?&rdquo;</p>
-        <p>It is important to remember that students in this updated curriculum will have had two classes dedicated to planning for this experience. They will not start looking for an internship 3 months before they want to do one, as is the case for many students today. But it is important to map out what this looks like as a throughput. The diagram below attempts to model this, and you can play with almost all of the variables to mock up various scenarios yourself.</p>
-        <iframe class="sankey-frame" id="sankeyFrame" src="WBL_Sankey.html?embed=1" title="Model of how students move through six terms toward a work-based learning experience" loading="lazy" scrolling="no"></iframe>
+      </div>
+    </section>
+
+    <!-- WORK-BASED LEARNING: COURSES AND INSTRUCTION -->
+    <section class="panel" id="panel-wblcourses" tabindex="-1">
+      <div class="panel-inner">
+        <h2 class="sec-title wbl-head">Work-Based Learning</h2>
+        <h3 class="sub wbl-sub" id="w-courses" style="margin-bottom: 6px;">Courses and Instruction</h3>
+        <section class="wsec" id="sec-w-courses">
+         <h4 class="wh">Rationale for Registered WBL Courses</h4>
+        <p style="margin-bottom: 0;">The proposal recommends that every qualifying work-based learning experience be connected to a registered academic course. This creates a consistent framework for academic oversight, assessment, and degree-audit tracking while allowing experiences to count toward major requirements where appropriate. Course registration can also support international students' work authorization processes, subject to applicable eligibility requirements.
+        Importantly, credit-bearing WBL courses also provide an established mechanism for recognizing and compensating the faculty responsible for supervising students' academic learning. The proposed model preserves opportunities for departments to award their customary three or four credits while accommodating other credit arrangements when appropriate.</p>
+
+        <div class="wcallout" style="margin-top: 12px; margin-left: 12px; padding-top: 6px; padding-bottom: 6px; padding-left: 12px;">
+        <h4 style="margin-top: 0;">Ensuring Financial Accessibility</h4>
+        <p style="margin-bottom: 0;">Requiring course registration must not create new financial barriers. Full-credit courses can trigger overload charges, and summer tuition may not be covered by aid. Suffolk will need accessible options in place first, such as zero-credit registration, revised tuition policies, and financial aid solutions, developed with faculty, academic leadership, the Registrar, Financial Aid, and International Student Services. <b>Resolving these barriers is a prerequisite for implementation.</b></p>
+        </div>
+
+        <h4 class="wh">Instruction and Compensation</h4>
+        <p id="wblInstr"></p>
+
+        <h5 class="wh2">Expectations</h5>
+        <div class="wnot" id="wblNot"></div>
+        <ul class="wlist wexp" id="wblResp"></ul>
+
+        <h4 class="wh">Common Requirements Across WBL Courses</h4>
+        <p>Participating courses may retain additional assignments and expectations appropriate to their disciplines, but all will incorporate a small set of common requirements:</p>
+        <ul class="wlist">
+          <li><b>Career Plan v3.0:</b> Students reflect on their contributions, document professional growth, and identify how the experience informs their remaining time at Suffolk and plans after graduation.</li>
+          <li><b>Updated professional materials:</b> Students revise their resumes and relevant professional profiles or portfolios to reflect the experience and skills developed.</li>
+          <li><b>Career readiness assessment:</b> Students and supervisors complete the NACE Ready competency assessment through Suitable, allowing students to compare their self-assessments with supervisor feedback. Departments may also incorporate additional questions relevant to their fields.</li>
+        </ul>
+        <p>The shared assessment framework will help Suffolk evaluate student development across WBL pathways and identify opportunities for improvement, while allowing departments to maintain the academic expectations appropriate to their programs.</p>
         </section>
+
       </div>
     </section>
 
@@ -2366,6 +2742,20 @@
   "use strict";
 
   var DOCS = window.DOCS || {};
+  var PENDING_DOCS={
+    kuh2008hip:{title:"High-Impact Educational Practices: What They Are, Who Has Access to Them, and Why They Matter",date:"2008",author:"George D. Kuh, AAC&U"},
+    kuh2013quality:{title:"Ensuring Quality and Taking High-Impact Practices to Scale",date:"2013",author:"George D. Kuh and Ken O'Donnell, AAC&U"},
+    stradapowerwbl:{title:"The Power of Work-Based Learning",date:"March 2022",author:"Strada Education Foundation"},
+    rhe2026earnings:{title:"Work-Based Learning and Early Career Outcomes: Evidence on Earnings, College-Level Employment, and Career Progression",date:"2026",author:"Torpey-Saboe, Song, and Thompson, Research in Higher Education"},
+    stradabuildingbetter:{title:"Building Better Internships: Understanding and Improving the Internship Experience",date:"May 2024",author:"Strada Education Foundation"},
+    aacuworkforce2021:{title:"How College Contributes to Workforce Success: Employer Views on What Matters Most",date:"2021",author:"Ashley Finley, AAC&U"},
+    gallupppurdue2014:{title:"Life in College Matters for Life After College",date:"May 2014",author:"Gallup and Purdue University"},
+    nace2025internship:{title:"2025 Internship & Co-op Report",date:"2025",author:"NACE"},
+    nsci2021:{title:"National Survey of College Internships (NSCI) 2021 Report",date:"2021",author:"Center for Research on College-Workforce Transitions, UW\u2013Madison"},
+    ccwtbarriers2024:{title:"Navigating Barriers to Access Internships: Challenges for Thwarted Interns Across Institution Types and Student Demographics",date:"October 2024",author:"Hee Song and Matthew Hora, CCWT"},
+    kilgo2015wabash:{title:"The Link Between High-Impact Practices and Student Learning: Some Longitudinal Evidence",date:"2015",author:"Kilgo, Ezell Sheets, and Pascarella, Higher Education"}
+  };
+  Object.keys(PENDING_DOCS).forEach(function(k){ if(!DOCS[k]) DOCS[k]=Object.assign({file:"",thumb:"",pending:true},PENDING_DOCS[k]); });
   if(!Object.keys(DOCS).length){
     console.error("docs.js did not load. Check that it sits next to index.html.");
   }
@@ -2386,10 +2776,36 @@
     if(document.fonts && document.fonts.ready) document.fonts.ready.then(fit);
     if(window.ResizeObserver) new ResizeObserver(fit).observe(document.getElementById("menu"));
   })();
-  var navLinks=[].slice.call(document.querySelectorAll(".nav-link:not(.nav-ext), .brand"));
+  var navLinks=[].slice.call(document.querySelectorAll(".nav-link:not(.nav-ext):not(.nav-parent), .brand, .fly-link[data-panel]"));
   document.querySelectorAll(".nav-ext").forEach(function(b){
     b.addEventListener("click", function(){ window.open(WBL_EVIDENCE_URL,"_blank","noopener"); });
   });
+  document.querySelectorAll(".fly-link[data-href]").forEach(function(b){
+    b.addEventListener("click", function(){ location.href=b.dataset.href; });
+  });
+  /* Work-Based Learning flyout: opens on hover or focus, beside the menu and over the page (fixed, so the menu's scroll box can't clip it) */
+  (function(){
+    var li=document.getElementById("navFly"), btn=document.getElementById("navFlyBtn"), fly=document.getElementById("flyout"), t=null;
+    if(!li) return;
+    function wide(){ return window.innerWidth>1279; }
+    function openFly(){
+      if(!wide()) return;
+      clearTimeout(t);
+      var r=btn.getBoundingClientRect(), m=document.getElementById("menu").getBoundingClientRect();
+      fly.style.left=m.right+"px";
+      fly.style.top=Math.max(8,Math.min(r.top-3,window.innerHeight-fly.offsetHeight-8))+"px";
+      li.classList.add("open"); btn.setAttribute("aria-expanded","true");
+      fly.style.top=Math.max(8,Math.min(r.top-3,window.innerHeight-fly.offsetHeight-8))+"px";
+    }
+    function closeFly(){ clearTimeout(t); t=setTimeout(function(){ li.classList.remove("open"); btn.setAttribute("aria-expanded","false"); },140); }
+    li.addEventListener("mouseenter",openFly);
+    li.addEventListener("mouseleave",closeFly);
+    li.addEventListener("focusin",openFly);
+    li.addEventListener("focusout",function(e){ if(!li.contains(e.relatedTarget)) closeFly(); });
+    btn.addEventListener("click",function(){ li.classList.contains("open") ? closeFly() : openFly(); });
+    fly.addEventListener("click",function(){ li.classList.remove("open"); });
+    document.getElementById("menu").addEventListener("scroll",function(){ li.classList.remove("open"); });
+  })();
   var subLinks=[].slice.call(document.querySelectorAll(".sub-link"));
   var panels={};
   document.querySelectorAll(".panel").forEach(function(p){ panels[p.id.replace("panel-","")]=p; });
@@ -2507,6 +2923,8 @@
     navLinks.forEach(function(b){
       b.setAttribute("aria-current", b.dataset.panel===key ? "true":"false");
     });
+    var fp=document.getElementById("navFlyBtn");
+    if(fp) fp.setAttribute("aria-current", (key==="wbl"||key==="wblcourses") ? "true":"false");
     document.querySelectorAll(".sublist").forEach(function(s){
       s.classList.toggle("open", s.dataset.for===key);
     });

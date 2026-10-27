@@ -58,8 +58,8 @@ window.DOCS = {
 },
 
 "nacecompetency": {
-  title:"The 2024 Student Survey Report",
-  date:"September 2024",
+  title:"What Is Career Readiness?",
+  date:"Accessed October 2026",
   author:"NACE",
   file:"https://www.naceweb.org/career-readiness/competencies/career-readiness-defined/#competencies",
   thumb:"thumb/nacecompetencies.png"

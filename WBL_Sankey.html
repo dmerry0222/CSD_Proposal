@@ -1,4 +1,28 @@
-<!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#fff;color:#000}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
+<!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#fff;color:#000}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}/* site menu: a slim bar on the left that flies out over the page (not hidden in ?embed) */
+html:not(.embed) body{padding-left:calc(52px + max(22px,env(safe-area-inset-left,0px)))}
+.sitebar{position:fixed;inset:0 auto 0 0;width:52px;z-index:100;background:var(--navy);color:#fff;
+  display:flex;flex-direction:column;overflow:hidden;white-space:nowrap;transition:width .22s ease,box-shadow .22s ease}
+.sitebar:hover,.sitebar:focus-within,.sitebar.open{width:290px;box-shadow:10px 0 30px rgba(0,0,0,.28)}
+html.embed .sitebar{display:none}
+.sitebar .sb-top{display:flex;align-items:center;gap:14px;padding:22px 15px 18px;border-bottom:1px solid rgba(255,255,255,.16);margin-bottom:10px}
+.sitebar .sb-ico{flex:0 0 22px;height:16px;border-top:2px solid var(--gold);border-bottom:2px solid var(--gold);position:relative}
+.sitebar .sb-ico::after{content:"";position:absolute;left:0;right:0;top:5px;border-top:2px solid var(--gold)}
+.sitebar .sb-title{font-size:1.0625rem;font-weight:600;line-height:1.25;opacity:0;transition:opacity .15s ease}
+.sitebar:hover .sb-title,.sitebar:focus-within .sb-title,.sitebar.open .sb-title{opacity:1}
+.sitebar nav{opacity:0;visibility:hidden;transition:opacity .15s ease;overflow-y:auto}
+.sitebar:hover nav,.sitebar:focus-within nav,.sitebar.open nav{opacity:1;visibility:visible}
+.sitebar a{display:block;color:rgba(255,255,255,.8);text-decoration:none;font-size:1rem;line-height:1.4;padding:10px 22px;border-left:3px solid transparent}
+.sitebar a.sub{font-size:.875rem;padding:7px 22px 7px 40px}
+.sitebar a.sub2{font-size:.875rem;padding:7px 22px 7px 56px}
+.sitebar a:hover,.sitebar a:focus-visible{color:#fff;background:rgba(255,255,255,.08)}
+.sitebar a[aria-current="page"]{color:#fff;font-weight:600;border-left-color:var(--gold);background:rgba(255,255,255,.07)}
+.sitebar a:focus-visible{outline:2px solid var(--gold);outline-offset:-2px}
+.sitebar a.callout{display:flex;align-items:center;gap:10px;font-size:.8125rem;font-weight:400;color:#fff;background:rgba(231,171,42,.15);border-left-color:var(--gold);margin:4px 0 14px;padding:9px 12px 9px 19px}
+.sitebar a.callout:hover{background:rgba(231,171,42,.24)}
+.sitebar a.callout svg{flex:0 0 auto;height:2.4em;width:auto;color:var(--gold)}
+.sitebar .sb-grp{font-size:.875rem;color:rgba(255,255,255,.62);padding:7px 22px 3px 40px}
+@media (max-width:700px){html:not(.embed) body{padding-left:calc(44px + max(14px,env(safe-area-inset-left,0px)))}.sitebar{width:44px}.sitebar .sb-top{padding-left:11px}}
+</style></head><body>
 <meta name="claude:viewport-fit-sides" content="cover">
 <title>Six-Term WBL Sankey</title>
 <script>if(/[?&]embed\b/.test(location.search))document.documentElement.classList.add("embed");</script>
@@ -185,6 +209,21 @@ html.embed .chartbox .togrow input{flex:0 0 auto;margin-top:.15em}
 html.embed .chartscroll{overflow:visible}
 html.embed svg{min-width:0}
 </style>
+
+<div class="sitebar" id="sitebar">
+  <div class="sb-top"><span class="sb-ico" aria-hidden="true"></span><span class="sb-title">Career Strategy<br>&amp; Design Proposal</span></div>
+  <nav aria-label="Section navigation">
+    <a class="callout" href="index.html#urgency"><svg viewBox="0 0 24 30" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 2h11l5 5v21H4z"/><path d="M15 2v5h5"/><path d="M8 13h8M8 17h8M8 21h5"/></svg><span>The context and research<br>behind this proposal</span></a>
+    <a href="index.html#overview">CS&amp;D Curriculum Overview</a>
+    <a class="sub" href="index.html#career-plan">The Career Plan</a>
+    <a class="sub" href="index.html#milestones">Two 1-Credit Courses</a>
+    <div class="sb-grp">Work-Based Learning</div>
+    <a class="sub2" href="index.html#wbl">The Five WBL Criteria &amp;<br>Qualifying Experiences</a>
+    <a class="sub2" href="index.html#wblcourses">Courses and Instruction</a>
+    <a class="sub2" href="WBL_Sankey.html" aria-current="page">Modeling WBL Placements</a>
+    <a href="index.html#cost-and-logistics">Cost and Logistics</a>
+  </nav>
+</div>
 
 <div class="wrap">
 <h1>Modeling Required Work-Based Learning Placements</h1>
