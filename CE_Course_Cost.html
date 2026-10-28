@@ -465,6 +465,10 @@ html.embed h1{display:none}
     el.summerTotal.textContent = money(summerCost);
     el.c100Total.textContent   = money(cost100);
     el.c200Total.textContent   = money(cost200);
+    window.__lastCosts = { cost100:cost100, cost200:cost200,
+      ceds100:f100 * 2, ceds200:f200 * 2 + (summerOn ? f200su : 0),
+      sec100:rows[0].d.paid + rows[2].d.paid, rate100:c100v,
+      sec200:rows[1].d.paid + rows[3].d.paid + (summerOn ? summerRow.d.paid : 0), rate200:c200v };
     el.cap.textContent = 'Projected FY cost of instruction, both courses, '
       + (summerOn ? 'all three terms' : 'both terms');
 
@@ -535,6 +539,7 @@ html.embed h1{display:none}
     }
     g += '</tr></tfoot>';
     el.cohort.innerHTML = g;
+    if (window.__onCosts) window.__onCosts();
   }
 
   ids.forEach(function(k){
@@ -543,12 +548,21 @@ html.embed h1{display:none}
   });
   el.summer.addEventListener('change', render);
   render();
+  /* the costs at the page's built-in defaults; the proposal page's course popups quote these, so later edits to the inputs don't move them */
+  window.__defaultCosts = window.__lastCosts;
 })();
 </script>
 <script>
 (function(){
   if(!document.documentElement.classList.contains("embed")) return;
   function send(){ parent.postMessage({costHeight:document.documentElement.scrollHeight},"*"); }
+  function sendCosts(){ parent.postMessage({costDefaults:window.__defaultCosts},"*"); }
+  /* the summary cards on the proposal page follow every change made here */
+  function sendLive(){ parent.postMessage({costLive:window.__lastCosts},"*"); }
+  window.__onCosts=sendLive;
+  sendCosts(); sendLive();
+  window.addEventListener("load",sendCosts);
+  window.addEventListener("load",sendLive);
   window.addEventListener("load",send);
   window.addEventListener("resize",send);
   if(window.ResizeObserver) new ResizeObserver(send).observe(document.body);

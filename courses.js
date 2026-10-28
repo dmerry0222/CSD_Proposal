@@ -3,8 +3,9 @@
    Text fields accept **bold** markup.
    Each course may list units (number, name, weeks, description, optional week_breakdown, and assignments with
    assignment_name / assignment_description); the Two 1-Credit Courses page shows them under Sample Course Content.
-   "cost" is the projected cost per fiscal year (blank hides it in the popup); CE-200's figure is net of the current cost of CAS-201 and its analogues.
-   "instruction" is who teaches the course; "responsibilities" (WBL) is the Expectations list; its first entry is the non-expectation, shown as a callout.
+   "cost" is the projected cost per fiscal year (blank hides it in the popup; where "costFrom" names a CE planner result (cost100, cost200) the popup shows the planner's default figure and "cost" is only the fallback until the planner loads; a figure not starting with $, like WBL's "Cost Calculator", links to the WBL planner instead of the CE planner);CE-200's figure is net of the current cost of CAS-201 and its analogues.
+   "instruction" is who teaches the course; "responsibilities" (WBL) is the Expectations list; its first entry is the non-expectation, shown first with a ! marker (text after a 
+ in it is the softer italic aside).
    A course may also list criteria (name, description), shown in its popup, and a description_heading to rename its Description header. */
 window.COURSES = {
   "CE-100": {
@@ -13,6 +14,7 @@ window.COURSES = {
     "credits_explained": "1 credit, new to both SBS and CAS",
     "timing": "First year, 2nd semester",
     "cost": "$87,500",
+    "costFrom": "cost100",
     "instruction": "Career Staff (5); faculty & staff; local alumni(?)",
     "tagline": "Research and evaluate academic and career pathways at Suffolk, and develop a concrete plan for continued exploration and growth.",
     "description": "Through guided self-assessment, exploration of Suffolk's academic opportunities, and evidence-based career research, students investigate how their interests and experiences might shape their academic and professional directions. Students may explore broadly across disciplines or examine possibilities more deeply within an established field of interest. They engage with faculty and professionals, evaluate labor-market information, and develop foundational skills for communicating their emerging qualifications. Attention is also given to how financial and personal circumstances influence educational and career decisions. Students synthesize their learning into a Career Exploration Plan that identifies promising directions, outstanding questions, and actionable next steps. The course establishes a foundation for more focused professional preparation in CE-200.",
@@ -92,6 +94,7 @@ window.COURSES = {
     "credits_explained": "1 credit, new in SBS, replacing CAS-201 and its analogues",
     "prereq": "CE-100",
     "cost": "$62,500",
+    "costFrom": "cost200",
     "instruction": "Career Staff (10); department faculty, especially those who also teach the internship course, if desired",
     "timing": "Preferred Sophomore fall or spring, with Junior year available; explore possibility of online summer sections",
     "tagline": "Evaluate and pursue professional opportunities, strengthen application skills, and create a concrete plan to secure and succeed in a work-based learning experience.",
@@ -188,10 +191,10 @@ window.COURSES = {
     "credits": "0-4 credits",
     "credits_explained": "0-4 credits, at Departments' discretion",
     "prereq": "CE-200",
-    "cost": "",
+    "cost": "Cost Calculator",
     "instruction": "Work-based learning courses are taught by department faculty within their own colleges. Faculty are compensated for teaching a full course, which recognizes the academic oversight, advising, and assessment the role involves.",
     "responsibilities": [
-      "Faculty teaching an internship or other WBL-serving course **are not responsible** for finding students' placements (though faculty currently in these roles often choose to be involved in the search/placement stage, and will continue to be welcome allies in that process).",
+      "Faculty teaching an internship or other WBL-serving course **are not responsible** for finding students' placements.\nFaculty currently in these roles often choose to be involved in the search/placement stage, and will continue to be welcome allies in that process.",
       "Review job descriptions and other placement information to ensure the five WBL criteria, and any superceding department/major requirements, are met.",
       "Approve those site placements in a centralized system that informs the Registrar and informs a Suffolk Employment database.",
       "Meet two times with each student in their course (on site, on campus, or on Zoom) once during the first 3 weeks of the term and once after the middle of the term.",
