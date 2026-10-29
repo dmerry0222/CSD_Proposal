@@ -1,0 +1,2039 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Student Stories</title>
+<script>if(/[?&]frame\b/.test(location.search))document.documentElement.classList.add("frame");</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Libre+Franklin:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --navy:#15284B; --navy-rgb:21,40,75;
+    --gold:#E7AB2A;
+    --sky:#3CB4E5; --sky-rgb:60,180,229;
+    --teal:#40C1AC; --teal-rgb:64,193,172;
+    --amber:#FDB924; --amber-rgb:253,185,36;
+    --crimson:#C63663;
+    --grey:#B3B9C4; --grey-rgb:179,185,196;
+    --body:#3B3B3B; --ink:#000000;
+    --rule:rgba(21,40,75,.14);
+    --tint-02:rgba(21,40,75,.03);
+    --tint-05:rgba(21,40,75,.05);
+    --mute:#8A8A8A;
+    --bg:#FFFFFF;
+    --sans:"Libre Franklin","Segoe UI",Helvetica,Arial,sans-serif;
+    box-sizing:border-box;
+  }
+  *,*::before,*::after{box-sizing:border-box;}
+  body{
+    margin:0;background:var(--bg);color:var(--body);
+    font-family:var(--sans);font-size:1rem;line-height:1.65;
+    -webkit-font-smoothing:antialiased;
+  }
+  ::selection{background:rgba(231,171,42,.3);}
+  :focus-visible{outline:2px solid var(--navy);outline-offset:2px;}
+
+  .wrap{max-width:1180px;margin:0 auto;padding:54px 28px 110px;}
+  @media (max-width:700px){ .wrap{padding:34px 16px 80px;} }
+
+  .sec-title{
+    font-size:2.25rem;line-height:1.2;font-weight:600;color:var(--ink);
+    margin:0 0 24px;letter-spacing:-.015em;
+  }
+  .sec-title::after{content:"";display:block;width:64px;height:3px;background:var(--gold);margin-top:14px;}
+  /* page header, matching the Work-Based Learning pages */
+  .sec-title.pg-head{margin-bottom:6px;}
+  .sec-title.pg-head::after{display:none;}
+  h2.pg-sub{font-size:1.5rem;line-height:1.3;font-weight:600;color:var(--navy);margin:0 0 30px;}
+  h2.pg-sub::after{content:"";display:block;width:64px;height:3px;background:var(--gold);margin-top:14px;}
+
+/* site menu: a slim bar on the left that flies out over the page */
+body{padding-left:52px}
+.sitebar{position:fixed;inset:0 auto 0 0;width:52px;z-index:100;background:var(--navy);color:#fff;
+  display:flex;flex-direction:column;overflow:hidden;white-space:nowrap;transition:width .22s ease,box-shadow .22s ease}
+.sitebar:hover,.sitebar:focus-within,.sitebar.open{width:290px;box-shadow:10px 0 30px rgba(0,0,0,.28)}
+.sitebar .sb-top{display:flex;align-items:center;gap:14px;padding:22px 15px 18px;border-bottom:1px solid rgba(255,255,255,.16);margin-bottom:10px}
+.sitebar .sb-ico{flex:0 0 22px;height:16px;border-top:2px solid var(--gold);border-bottom:2px solid var(--gold);position:relative}
+.sitebar .sb-ico::after{content:"";position:absolute;left:0;right:0;top:5px;border-top:2px solid var(--gold)}
+.sitebar .sb-title{font-size:1.0625rem;font-weight:600;line-height:1.25;opacity:0;transition:opacity .15s ease}
+.sitebar:hover .sb-title,.sitebar:focus-within .sb-title,.sitebar.open .sb-title{opacity:1}
+.sitebar nav{opacity:0;visibility:hidden;transition:opacity .15s ease;overflow-y:auto}
+.sitebar:hover nav,.sitebar:focus-within nav,.sitebar.open nav{opacity:1;visibility:visible}
+.sitebar a{display:block;color:rgba(255,255,255,.8);text-decoration:none;font-size:1rem;line-height:1.4;padding:10px 22px;border-left:3px solid transparent}
+.sitebar a.sub{font-size:.875rem;padding:7px 22px 7px 40px}
+.sitebar a.sub2{font-size:.875rem;padding:7px 22px 7px 56px}
+.sitebar a:hover,.sitebar a:focus-visible{color:#fff;background:rgba(255,255,255,.08)}
+.sitebar a[aria-current="page"]{color:#fff;font-weight:600;border-left-color:var(--gold);background:rgba(255,255,255,.07)}
+.sitebar a:focus-visible{outline:2px solid var(--gold);outline-offset:-2px}
+.sitebar a.callout{display:flex;align-items:center;gap:10px;font-size:.8125rem;font-weight:400;margin:18px 0 14px;padding:9px 12px 9px 22px;line-height:1.35;white-space:nowrap}
+.sitebar a.callout svg{flex:0 0 auto;height:2.4em;width:auto}
+.sitebar .sb-grp{font-size:.875rem;color:rgba(255,255,255,.62);padding:7px 22px 3px 40px}
+@media (max-width:700px){body{padding-left:calc(44px + max(14px,env(safe-area-inset-left,0px)))}.sitebar{width:44px}.sitebar .sb-top{padding-left:11px}}
+
+
+  .intro{font-size:1.02rem;max-width:85ch;margin:-4px 0 26px;line-height:1.75;}
+  .browse{background:rgba(21,40,75,.035);padding:18px 20px 16px;margin:0 0 24px;border-left:3px solid var(--teal);}
+  .browse h2{font-size:1.1rem;color:var(--navy);margin:0 0 3px;font-weight:600;}
+  .browse p{font-size:.91rem;margin:0 0 14px;line-height:1.55;}
+  .themes{display:flex;flex-wrap:wrap;gap:7px;}
+  .theme{font:inherit;font-size:.82rem;line-height:1.35;border:1px solid rgba(21,40,75,.23);background:#fff;color:var(--navy);padding:8px 11px;cursor:pointer;}
+  .theme:hover,.theme:focus-visible{border-color:var(--teal);background:rgba(var(--teal-rgb),.12);}
+  .theme.on{background:var(--navy);border-color:var(--navy);color:white;}
+  .theme-note{font-size:.83rem;color:var(--navy);margin-top:12px;line-height:1.5;}
+  .selector-label{font-size:.88rem;font-weight:600;color:var(--navy);margin:0 0 9px;}
+  .timeline-hint{color:#626a75;font-size:.82rem;margin:24px 0 -12px;max-width:85ch;}
+  .outcome{border-left:3px solid var(--teal);padding:9px 14px;background:rgba(var(--teal-rgb),.07);margin:15px 0 0;font-size:.94rem;}
+  .context-detail{margin-top:13px;font-size:.89rem;max-width:85ch;color:#565b62;}
+  .context-detail summary{cursor:pointer;color:var(--navy);font-weight:600;}
+  .context-detail p{margin:8px 0 0;line-height:1.6;}
+  .dem li{margin-bottom:12px;}
+  .dem summary{cursor:pointer;color:var(--navy);font-size:1.02rem;font-weight:600;}
+  .dem[open] ul{margin-top:15px;}
+  @media(max-width:700px){.browse{padding:14px 12px}.theme{font-size:.76rem;padding:7px 9px}.intro{font-size:.96rem}}
+
+  /* ---------- picker ---------- */
+  .picker{display:flex;flex-wrap:wrap;gap:7px;margin:0 0 28px;}
+  .pk{
+    font:inherit;cursor:pointer;text-align:left;
+    background:#fff;border:1px solid var(--rule);border-top:3px solid var(--rule);
+    padding:7px 12px 8px;min-width:128px;
+    transition:background .18s ease,border-color .18s ease;
+  }
+  .pk:hover{background:rgba(var(--teal-rgb),.16);border-top-color:var(--teal);}
+  .pk.on{background:var(--teal);border-color:var(--teal);border-top-color:var(--navy);}
+  .pk-n{display:block;font-size:.9375rem;font-weight:600;color:var(--navy);line-height:1.2;}
+  .pk-m{display:block;font-size:.75rem;color:var(--body);line-height:1.3;margin-top:2px;}
+  .pk.on .pk-m{color:rgba(21,40,75,.86);}
+
+  /* ---------- story head ---------- */
+  #shead{scroll-margin-top:24px;}
+  /* ?frame: inside the proposal site, which supplies the menu; padding matches the site's panels */
+  html.frame .sitebar{display:none}
+  html.frame body{padding-left:0}
+  html.frame .wrap{padding:54px 46px 120px}
+  @media (max-width:760px){ html.frame .wrap{padding:20px 22px 100px} }
+  .shead{margin:0 0 22px;}
+  .shead .nm{
+    font-size:1.5rem;line-height:1.2;font-weight:600;color:var(--ink);
+    margin:0 0 7px;letter-spacing:-.01em;
+  }
+  .shead .nm .maj{
+    font-size:.9375rem;font-weight:400;color:var(--mute);
+    letter-spacing:0;margin-left:13px;
+  }
+  .shead .hl{
+    font-size:1.0625rem;line-height:1.45;font-weight:600;font-style:italic;
+    color:var(--navy);margin:0 0 14px;max-width:88ch;
+  }
+  .sum p{margin:0 0 10px;font-size:1rem;line-height:1.6;}
+  .sum p:last-child{margin-bottom:0;}
+  .sum p.cfsum{color:var(--crimson);}
+  .sum p.cfsum b{color:var(--crimson);font-weight:600;}
+
+  /* ---------- timeline ---------- */
+  .trackouter{position:relative;margin:30px 0 0;}
+  .trackouter::after{
+    content:"";position:absolute;right:0;top:0;bottom:0;width:56px;
+    background:linear-gradient(to right,rgba(255,255,255,0),#fff 72%);
+    pointer-events:none;opacity:0;transition:opacity .2s ease;
+  }
+  .trackouter.more::after{opacity:1;}
+  .trackwrap{overflow-x:auto;overflow-y:hidden;padding:0 0 6px;}
+  .tl{display:grid;grid-template-rows:auto auto 26px auto;min-width:100%;}
+
+  .when{
+    grid-row:1;align-self:end;text-align:center;
+    font-size:.6875rem;font-style:italic;color:var(--mute);
+    line-height:1.3;padding:0 5px 7px;
+  }
+  .mpt,.ppt{
+    position:relative;background:none;border:0;margin:0;
+    font:inherit;text-align:center;cursor:pointer;
+    --c:var(--navy);--c-rgb:var(--navy-rgb);
+  }
+  .pcol{display:contents;}
+  .when,.mpt,.stem,.ppt{grid-column:var(--col);}
+  .mpt{grid-row:2;align-self:stretch;padding:9px 5px 0;}
+  .mpt.k-course{--c:var(--teal);--c-rgb:var(--teal-rgb);}
+  .mpt.k-stub{--c:var(--grey);--c-rgb:var(--grey-rgb);}
+  .mpt.hinge.k-plain{--c:var(--amber);--c-rgb:var(--amber-rgb);}
+  .ppt{grid-row:4;align-self:start;padding:0 5px 0;--c:var(--sky);--c-rgb:var(--sky-rgb);}
+
+  .mpt::before,.mpt::after{
+    content:"";position:absolute;top:16px;height:2px;background:rgba(21,40,75,.18);
+  }
+  .mpt::before{left:0;right:50%;}
+  .mpt::after{left:50%;right:0;}
+  .mpt.first::before,.mpt.last::after{display:none;}
+
+  .node{
+    position:relative;z-index:2;display:block;
+    width:15px;height:15px;border-radius:50%;
+    border:3px solid var(--c);background:#fff;margin:0 auto 9px;
+    transition:box-shadow .18s ease,transform .18s ease,background .18s ease;
+  }
+  .hinge .node{background:var(--amber);}
+  .mpt:hover .node,.ppt:hover .node{box-shadow:0 0 0 3px rgba(var(--c-rgb),.22);}
+  .mpt.on .node,.ppt.on .node{box-shadow:0 0 0 4px rgba(var(--c-rgb),.32);transform:scale(1.14);}
+
+  .pl{display:block;font-size:.8125rem;font-weight:600;line-height:1.25;color:rgba(21,40,75,.68);min-height:2.5em;}
+  .mpt.on .pl,.ppt.on .pl{color:var(--navy);}
+
+  .stem{grid-row:3;position:relative;}
+  .stem::before{
+    content:"";position:absolute;left:50%;top:0;bottom:0;width:2px;
+    margin-left:-1px;background:rgba(21,40,75,.18);
+  }
+  .ppt .node{margin-bottom:8px;}
+
+  /* ---------- cards ---------- */
+  .cardhead{display:flex;justify-content:flex-start;align-items:center;gap:16px;margin:26px 0 9px;}
+  .steps{display:flex;gap:8px;align-items:center;}
+  .stp{
+    font:inherit;font-size:.8125rem;cursor:pointer;color:var(--navy);
+    background:#fff;border:1px solid var(--rule);padding:5px 12px;
+  }
+  .stp:hover{background:var(--tint-05);}
+  .stp[disabled]{opacity:.35;cursor:default;}
+  .stp[disabled]:hover{background:#fff;}
+  .pos{font-size:.75rem;color:var(--mute);margin-left:3px;}
+  .xall{
+    font:inherit;font-size:.75rem;cursor:pointer;color:var(--mute);
+    background:none;border:0;padding:4px 0;margin-left:auto;
+    display:inline-flex;align-items:center;gap:7px;
+  }
+  .xall:hover{color:var(--navy);}
+  .xall .box{width:12px;height:12px;border:1.5px solid currentColor;display:inline-block;position:relative;flex:0 0 auto;}
+  .xall.on{color:var(--navy);}
+  .xall.on .box{background:var(--navy);border-color:var(--navy);}
+  .xall.on .box::after{
+    content:"";position:absolute;left:3px;top:0;width:4px;height:8px;
+    border-right:2px solid #fff;border-bottom:2px solid #fff;transform:rotate(40deg);
+  }
+
+  .caret{position:relative;height:11px;}
+  .caret i{
+    position:absolute;top:0;width:0;height:0;display:block;
+    border-left:9px solid transparent;border-right:9px solid transparent;
+    border-bottom:11px solid var(--cc,var(--navy));
+    transform:translateX(-9px);transition:left .22s ease;
+  }
+  .card{
+    --c:var(--navy);--c-rgb:var(--navy-rgb);--tint:.030;
+    background:rgba(var(--c-rgb),var(--tint));
+    border:1px solid var(--rule);border-top:4px solid var(--c);
+    padding:21px 24px 23px;
+  }
+  .card.k-course{--c:var(--teal);--c-rgb:var(--teal-rgb);--tint:.055;}
+  .card.k-plan{--c:var(--sky);--c-rgb:var(--sky-rgb);--tint:.055;}
+  .card.hinge{--c:var(--amber);--c-rgb:var(--amber-rgb);--tint:.080;}
+  .card .ch{font-size:1.25rem;font-weight:600;color:var(--navy);line-height:1.3;margin:0 0 11px;max-width:62ch;}
+  .card .cn{font-size:.9375rem;line-height:1.6;margin:0;max-width:84ch;}
+  .card .cn + .cn{margin-top:10px;}
+  .card .cn b{color:var(--navy);font-weight:600;}
+  .hingemark{
+    display:inline-block;font-size:.6875rem;font-weight:600;color:var(--navy);
+    background:var(--amber);padding:2px 8px;margin-bottom:9px;line-height:1.5;
+  }
+  .q{
+    display:block;font-size:.9375rem;line-height:1.55;color:var(--navy);
+    border-left:3px solid var(--sky);padding:3px 0 3px 13px;margin-top:14px;max-width:74ch;
+  }
+  .cf{display:block;font-size:.9375rem;line-height:1.55;color:var(--crimson);margin-top:14px;max-width:84ch;}
+  .cf b{font-weight:600;}
+
+  .carry{margin-top:15px;}
+  .carry ul{margin:0;padding:0;list-style:none;}
+  .carry li{
+    font-size:.9375rem;line-height:1.5;margin-bottom:7px;
+    padding-left:15px;position:relative;max-width:80ch;
+  }
+  .carry li::before{
+    content:"";position:absolute;left:0;top:.62em;width:5px;height:5px;
+    border-radius:50%;background:var(--sky);
+  }
+  .carry li:last-child{margin-bottom:0;}
+  .carry li.old{color:rgba(59,59,59,.6);}
+  .carry li.old::before{background:rgba(var(--sky-rgb),.42);}
+  .tag{
+    font-size:.6875rem;color:var(--mute);white-space:nowrap;
+    border:1px solid var(--rule);padding:0 5px;margin-left:7px;line-height:1.6;
+  }
+
+  .cardbox{display:block;}
+  body.all .caret,body.all .steps{display:none;}
+  body.all .cardbox{display:flex;flex-direction:column;gap:12px;}
+
+  .oq{
+    margin:28px 0 0;background:rgba(253,185,36,.1);
+    border:1px solid var(--rule);border-left:3px solid var(--amber);
+    padding:15px 18px;max-width:86ch;
+  }
+  .oq h4{font-size:.9375rem;font-weight:600;color:var(--navy);margin:0 0 6px;}
+  .oq p{font-size:.875rem;line-height:1.55;margin:0 0 8px;}
+  .oq p:last-child{margin-bottom:0;}
+
+  .dem{margin:32px 0 0;padding-top:24px;border-top:1px solid rgba(21,40,75,.32);}
+  .dem h3{font-size:1.25rem;font-weight:600;color:var(--navy);line-height:1.35;margin:0 0 12px;}
+  .dem ul{margin:0;padding-left:18px;}
+  .dem li{font-size:.9375rem;line-height:1.55;margin-bottom:8px;max-width:80ch;}
+
+  .note{
+    margin:40px 0 0;padding-top:24px;border-top:1px solid var(--rule);
+    font-size:.875rem;line-height:1.6;color:var(--mute);max-width:78ch;
+  }
+  .note b{color:var(--navy);font-weight:600;}
+
+  @media (max-width:900px){
+    .trackwrap{overflow:visible;}
+    .trackouter::after{display:none;}
+    .tl{display:block;}
+
+    /* the spine runs down the left; each Career Plan branches off to the right */
+    .pcol{
+      display:grid;
+      /* the spine column hugs the labels so the branch sits close to it */
+      grid-template-columns:clamp(104px,36%,200px) minmax(0,1fr);
+      column-gap:12px;
+      padding-bottom:16px;
+    }
+    .pcol.solo .mpt{grid-column:1 / -1;}
+    .when{grid-column:1 / -1;grid-row:1;display:block;text-align:left;padding:0 0 2px 28px;font-size:.6875rem;}
+    .mpt{grid-column:1;grid-row:2;}
+    .ppt{grid-column:2;grid-row:2;align-self:start;}
+    .stem{display:none;}
+
+    .mpt,.ppt{display:block;width:100%;text-align:left;padding:0 0 0 28px;}
+    .mpt::before,.mpt::after{left:6px;right:auto;width:2px;height:auto;top:auto;}
+    .mpt::before{top:-18px;height:26px;}
+    .mpt::after{top:8px;bottom:-20px;height:auto;}
+    .mpt.last::after{display:none;}
+    .node{position:absolute;left:0;top:1px;margin:0;}
+    .pl{min-height:0;font-size:.875rem;}
+    .mpt.k-stub .pl{min-height:16px;}
+
+    /* short horizontal tick connecting the plan node back toward the spine */
+    .ppt::before{
+      content:"";position:absolute;left:-22px;top:8px;width:22px;height:2px;
+      background:rgba(21,40,75,.18);
+    }
+
+    .caret{display:none;}
+    .cardhead{flex-wrap:wrap;gap:10px;}
+    .xall{margin-left:0;}
+  }
+</style>
+</head>
+<body>
+<div class="sitebar" id="sitebar">
+  <div class="sb-top"><span class="sb-ico" aria-hidden="true"></span><span class="sb-title">Career Strategy<br>&amp; Design Proposal</span></div>
+  <nav aria-label="Section navigation">
+    <a href="index.html#overview">Requirement Overview</a>
+    <a class="sub" href="index.html#career-plan">The Career Plan</a>
+    <a class="sub" href="index.html#milestones">Two 1-Credit Courses</a>
+    <div class="sb-grp">Work-Based Learning</div>
+    <a class="sub2" href="index.html#wbl">The Five WBL Criteria &amp;<br>Qualifying Experiences</a>
+    <a class="sub2" href="index.html#wblcourses">Courses and Instruction</a>
+    <a class="sub2" href="index.html#modeling-wbl-placements">Modeling WBL Placements</a>
+    <a href="index.html#student-stories" aria-current="page">Student Stories</a>
+    <a href="index.html#cost-and-logistics">Cost and Logistics</a>
+    <a class="callout" href="index.html#urgency"><svg viewBox="0 0 24 30" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 2h11l5 5v21H4z"/><path d="M15 2v5h5"/><path d="M8 13h8M8 17h8M8 21h5"/></svg><span>The context and research<br>behind this proposal</span></a>
+</nav>
+</div>
+
+<div class="wrap">
+
+  <h1 class="sec-title pg-head">Student Stories</h1>
+  <h2 class="pg-sub">Career Strategy &amp; Design in Action</h2>
+  <div class="browse">
+    <h2>Explore a question</h2>
+    <div class="themes" id="themes"></div>
+    <div class="theme-note" id="theme-note" aria-live="polite"></div>
+  </div>
+  <p class="selector-label" id="selector-label">Choose a student's journey</p>
+  <div class="picker" id="picker"></div>
+  <div id="shead"></div>
+
+  <div class="trackouter" id="trackouter">
+    <div class="trackwrap" id="trackwrap"><div class="tl" id="tl"></div></div>
+  </div>
+
+  <div class="cardhead">
+    <div class="steps" id="steps"></div>
+    <button type="button" class="xall" id="xall"><span class="box"></span>Read the full timeline</button>
+  </div>
+
+  <div class="caret" id="caret"><i id="caretI"></i></div>
+  <div class="cardbox" id="cardbox"></div>
+
+  <div id="tail"></div>
+
+  <p class="note">These are illustrative scenarios, not accounts of actual Suffolk students. Specific implementation details and processes would require confirmation before adoption.</p>
+
+</div>
+
+<script>
+(function(){
+  "use strict";
+
+  /* =====================================================================
+     EDIT HERE.
+
+     Each story holds:
+       name, major, headline        short: shorter label for the selector only
+       sum{lead, ultimately, without}      shown in that order
+
+       pts[]   the points along the spine, left to right
+         k     "plain" (navy) | "course" (teal: CE-100, CE-200, WBL only)
+               | "stub" (grey dot, no label, no card of its own; it
+                 carries the Career Plan that hangs below it and
+                 clicking it opens that plan)
+         hinge true puts an amber centre in the node
+         lab   label under the node; when: the chronology above it
+         card  {h, n, q, cf}
+         plan  optional Career Plan hanging below this point
+                 lab, card{h,n}, carry[] {t, from:"" | "v1.0" ...}
+
+       dem{points[]}   what the story demonstrates
+       oq{h,p[]}       optional open-question callout
+     ===================================================================== */
+
+  var STORIES=[
+
+  /* ================================================================== */
+  {
+    name:"Jordan", major:"Accounting", short:"Accounting",
+    headline:"Early recruiting knowledge helps Jordan make an informed choice within accounting.",
+    sum:{
+      lead:"Jordan comes to Suffolk confident that accounting is his future, but unfamiliar with the different paths within the profession or their early recruitment timelines. The curriculum helps him investigate those differences while he still has time to respond.",
+      ultimately:"By graduation, he has chosen risk advisory and accepted a position in the field.",
+      without:"He would still have been a good candidate. He would simply have applied in the spring of his third year to firms that had closed their applications the previous September, and he would have learned the difference between audit and advisory during an interview instead of two years before one."
+    },
+    pts:[
+      {k:"plain",lab:"Orientation",when:"Year 1, fall",
+       card:{h:"He begins with a career goal and some important questions",
+        n:"Jordan says he will be an accountant, partly because he has always liked numbers and partly because he wants a steady career. He rates his confidence four out of five. A five-minute question at orientation asks what he actually knows about the profession, and he realizes he cannot explain the difference between audit, tax, corporate accounting and advisory work. His plan records both things: that he is sure, and what he is still missing.",
+        q:"“I know what I want to be called. I don’t know what the different jobs actually involve.”"}},
+      {k:"course",lab:"CE-100",when:"Year 1, spring",
+       card:{h:"He learns that accounting is several different jobs",
+        n:["Jordan compares audit, tax and corporate finance. He reads job descriptions, looks at salary ranges and working conditions, finds out what certification each route requires, and interviews two Suffolk alumni, one in each route. He also writes his first resume, using his grocery store job, where he balanced registers and trained new employees. Being first-generation, he is guessing at a great deal that his classmates were told at home, and seeing the steps laid out reduces how much of it he has to invent.",
+           "<b>The plan gives his faculty advisor more to work with.</b> She already knew he wanted accounting. What is new is that she can see he is weighing audit against advisory, so the fifteen-minute registration meeting they were going to have anyway is about which courses he needs and when, rather than about what interests him."]},
+       plan:{lab:"Career Plan v1.0",
+        card:{h:"His first plan is a short list, not a decision",
+          n:"Version 1.0 does not commit Jordan to anything. It records which two routes he is choosing between, who he has talked to, and what he still needs to find out."},
+        carry:[
+          {t:"The two routes he is choosing between: audit and advisory."},
+          {t:"The accounting courses he needs, in the order that firms' early recruiting requires."},
+          {t:"Two Suffolk alumni he has spoken with, one working in each route."},
+          {t:"A question he still needs answered: whether becoming a CPA will take him a fifth year."}]}},
+      {k:"course",lab:"CE-200",when:"Year 2",hinge:true,
+       card:{h:"He finds out that accounting firms hire a year early",
+        n:["Jordan learns that public accounting firms open internship applications far earlier than he assumed, in some cases more than a year before the internship itself begins. CE-200 puts that calendar next to his course schedule so he can see both at once.",
+           "He picks eight firms, rewrites his resume for audit and advisory, and practices interview answers. When he rates his confidence about networking as low, the system offers him an advising appointment and places it in a free slot that does not conflict with his classes. His advisor opens his earlier plan and spends the hour rehearsing a conversation with an employer, instead of starting with what interests him."],
+        cf:"Jordan applies in the spring of his third year to firms that stopped accepting applications the previous September. He is not a weaker candidate than his classmates. He is late, and nobody told him the calendar existed, because no course was responsible for telling him."},
+       plan:{lab:"Career Plan v2.0",
+        card:{h:"The plan now has dates and names in it",
+          n:"Version 2.0 is the same document revised, not a new one. Jordan can see what he wrote in his first year while he updates it. Almost every line now has either a date or a person attached to it."},
+        carry:[
+          {t:"The two routes he is choosing between: audit and advisory.",from:"v1.0"},
+          {t:"Two Suffolk alumni he has spoken with, one working in each route.",from:"v1.0"},
+          {t:"Eight accounting firms he wants to apply to, and the date each one opens applications."},
+          {t:"Four stories from his own work history that he can tell in an interview."},
+          {t:"One skill he knows he needs to build: starting conversations with people he does not already know."}]}},
+      {k:"course",lab:"WBL:<br>Internship",when:"Year 3, summer",
+       card:{h:"The internship changes his mind about audit",
+        n:"Jordan takes a 150-hour audit internship at a regional firm. He writes three goals, covering reconciliations, documentation a client can read, and professional communication. He helps with substantive testing, sits in on client meetings and keeps records, supervised by a qualified accountant who evaluates his work at the end. To meet the expanded-network criterion he arranges two separate conversations, one with a tax manager and one with a technology-risk associate, neither of whom supervises him. By the end he knows he likes solving analytical problems and does not especially like traditional audit."},
+       plan:{lab:"Career Plan v3.0",
+        card:{h:"He changes direction without starting over",
+          n:"Jordan writes version 3.0 when the internship ends, not on a date set by the academic calendar. Because he chose to share part of his plan, his faculty advisor can see the change in about thirty seconds and suggests a data analytics elective for his final year."},
+        carry:[
+          {t:"The two routes he was choosing between in his first year.",from:"v1.0"},
+          {t:"The eight firms and their application dates.",from:"v2.0"},
+          {t:"His supervisor's written evaluation, and evidence that the internship met all five criteria."},
+          {t:"A changed direction. He now wants risk advisory rather than traditional audit, and he can explain why."},
+          {t:"Two people he worked with who were not his supervisor."},
+          {t:"A data analytics elective his advisor recommended once she saw the change."}]}},
+      {k:"stub",when:"Year 4",
+       plan:{lab:"Career Plan v4.0",
+        card:{h:"A final review of his plans and next steps",
+          n:"Version 4.0 asks Jordan to confirm where he is going, say what he still needs, and set out the steps toward his CPA credential. It takes a single class session rather than a unit of a course, because it is the fourth revision of something he started three years earlier. Most of it is material he wrote in earlier years."},
+        carry:[
+          {t:"His direction: risk advisory rather than traditional audit.",from:"v3.0"},
+          {t:"Four professional contacts, two from alumni interviews and two from the internship.",from:"v3.0"},
+          {t:"The job he accepted and the date he starts."},
+          {t:"The steps and the timing for his CPA credential."},
+          {t:"Nothing outstanding. He does not need further help before he leaves."}]}},
+      {k:"plain",lab:"Graduation",when:"Year 4, spring",
+       card:{h:"He graduates able to explain his professional direction",
+        n:"Jordan starts as a risk advisory associate. The requirement did not make him less certain that business was the right place for him. It gave him the hiring calendar, the vocabulary and the evidence early enough to act on what he found out about himself.",
+        q:"“I started thinking there was one thing called accounting. Now I can explain why I chose this job.”"}}
+    ],
+    dem:{points:[
+      "A student who is confident is not a student who can be skipped. Jordan was right about the field and wrong about how it hires, and that second thing would have cost him two semesters.",
+      "He is first-generation, and the gap the sequence closed was informational rather than academic. His grades were never the thing standing between him and the job he wanted.",
+      "The plan makes an existing advising conversation more useful. Jordan's advisor holds the meetings she was already holding, with better information in front of her.",
+      "The moment that changes his outcome is a piece of information, not a motivational push. Nothing at that point asks Jordan to try harder. It asks him to know something in time to use it."]}
+  },
+  /* ================================================================== */
+  {
+    name:"Maya", major:"Psychology",
+    headline:"An early confidence check helps Maya find a path into community behavioral health.",
+    sum:{
+      lead:"Maya wants to help people with mental health, but has not yet decided what that could mean professionally. As she explores options, a low confidence check-in prompts an advising conversation and helps her find a relevant internship.",
+      ultimately:"She begins her career in community behavioral health, keeping graduate school as a thoughtful future choice.",
+      without:"Maya would have spent four years believing that the only version of her interest required a doctorate, and would have found out otherwise during her final-year job search, if at all."
+    },
+    pts:[
+      {k:"plain",lab:"Orientation",when:"Year 1, fall",
+       card:{h:"A starting point, not a verdict",
+        n:"Maya writes that she might want to be a therapist, and that she cannot yet describe how someone becomes one. She gives her career clarity a modest rating. The answer is hers rather than a prediction the university has made about her, which matters later when it changes.",
+        q:"“I want to help people with mental health. I just don’t know what that looks like yet.”"}},
+      {k:"course",lab:"CE-100",when:"Year 1, spring",
+       card:{h:"The question she was asking turns out to be the wrong one",
+        n:"Maya compares counseling, community behavioral health and human resources, using job postings, labor-market data, graduate program requirements and an interview with a Suffolk alum. She learns that licensure as a therapist requires graduate training, and that several bachelor's-level roles would let her start the work now. She also writes her first resume, and is surprised to find that supervising children at a recreation center involved communication, de-escalation and teamwork.",
+        q:"“I don’t have to decide about graduate school right now to start doing relevant work.”"},
+       plan:{lab:"Career Plan v1.0",
+        card:{h:"The decision she thought she had to make, postponed",
+          n:"Version 1.0 separates two things Maya had treated as one: what kind of work she wants, and whether she needs a doctorate to do it."},
+        carry:[
+          {t:"Three routes compared, with what each one requires in the way of further study."},
+          {t:"Her first resume, including skills from the recreation center job she had dismissed."},
+          {t:"One Suffolk alum working in community behavioral health."},
+          {t:"A decision she has deliberately postponed: whether to pursue graduate training."}]}},
+      {k:"plain",lab:"Confidence<br>check",when:"Year 2",hinge:true,
+       card:{h:"A rating of two out of five brings someone to her",
+        n:["In a psychology course Maya writes a report on youth mental-health access, and her instructor suggests she save it in her plan with a short reflection. Later that term a brief check-in asks how confident she feels about finding an internship. She answers two out of five.",
+           "<b>Maya does not have to identify the right office or initiate the next step on her own.</b> The system offers her support, she accepts, and a meeting is placed in a free slot that does not conflict with her classes. Her advisor arrives having read the parts of her plan she chose to share, so the conversation starts with possible placement sites instead of with a blank intake form."],
+        cf:"Maya answers nobody, because nobody asks. She keeps meaning to visit the career center, the way students who are unsure usually do, and arrives in her third year having never had the conversation."}},
+      {k:"course",lab:"CE-200",when:"Year 2, spring",
+       card:{h:"Interests become a list of employers and dates",
+        n:"Maya reads real postings for community health and youth-service roles, rewrites her resume, practices interview answers and identifies documentation and basic reporting as skills she needs to strengthen. A second faculty member, seeing community behavioral health among the interests students chose to share on a class roster, introduces her to a visiting practitioner."},
+       plan:{lab:"Career Plan v2.0",
+        card:{h:"Five organizations, with dates",
+          n:"Version 2.0 turns a direction into a search. Maya names target roles, five organizations, the people she has met at them and when she intends to apply."},
+        carry:[
+          {t:"Her postponed decision about graduate training.",from:"v1.0"},
+          {t:"The alum in community behavioral health.",from:"v1.0"},
+          {t:"Target roles and five organizations she wants to approach, with application dates."},
+          {t:"A stipend application she can submit as soon as she has an offer letter."},
+          {t:"Two skills she needs to build: documentation and basic reporting."},
+          {t:"A report from a psychology course, saved as evidence of what she can do."}]}},
+      {k:"course",lab:"WBL:<br>Internship",when:"Summer after year 2",
+       card:{h:"An interview she had been preparing for since her first year",
+        n:["The alum Maya met during CE-100 tells her about an opening. She applies to six placements, interviews for three and takes a supervised 180-hour internship in community behavioral health, in the summer after her second year. She helps with resource referrals, youth outreach and reporting, under a designated professional who gives her feedback and evaluates her work. She also arranges conversations with a clinician and an outreach partner outside her supervisor's team.","The role is unpaid, which is usual in community behavioral health and would ordinarily have ruled it out. <b>Because she had an offer in hand in the spring, she could apply for a $3,500 Summer Career Development Stipend</b>, which covers one of a student's two eligible summers."],
+        q:"“The interview felt like a conversation I’d prepared for over two years.”"},
+       plan:{lab:"Career Plan v3.0",
+        card:{h:"She finds out which part of the work she actually likes",
+          n:"Writing version 3.0 at the end of the placement, Maya can separate the parts of the job she enjoyed, connecting people to resources and coordinating programs, from the parts she did not. That is a different and more useful kind of knowledge than she had before."},
+        carry:[
+          {t:"Her postponed decision about graduate training, still postponed on purpose.",from:"v1.0"},
+          {t:"Five target organizations.",from:"v2.0"},
+          {t:"180 hours, three approved goals and her supervisor's evaluation."},
+          {t:"Two contacts outside her supervisor's team."},
+          {t:"What she actually enjoyed: resource referral and program coordination."}]}},
+      {k:"stub",when:"Year 4",
+       plan:{lab:"Career Plan v4.0",
+        card:{h:"A final check on where she is going",
+          n:"Version 4.0 confirms Maya's destination, asks what she still needs and records that graduate study in counseling or social work remains a possibility rather than an automatic next step."},
+        carry:[
+          {t:"What she enjoyed in the placement.",from:"v3.0"},
+          {t:"Her supervisor's evaluation and two professional contacts.",from:"v3.0"},
+          {t:"The job she accepted and the date she starts."},
+          {t:"Graduate study, still open, with a point at which she will look at it again."}]}},
+      {k:"plain",lab:"Graduation",when:"Year 4, spring",
+       card:{h:"She leaves with a direction and the tools to keep exploring",
+        n:"Maya starts as a behavioral health program coordinator. She has learned how to investigate possibilities, get experience, build relationships and make a career decision with evidence behind it. Those are transferable in a way that a settled five-year plan would not be.",
+        q:"“I know what kind of work I want to try next, and I know how to keep figuring it out.”"}}
+    ],
+    dem:{points:[
+      "A low confidence rating could provide useful information for a timely offer of support. Maya's support arrives because a number in her plan triggered it, not because she walked in and asked.",
+      "Proactive outreach could also reach students who might not otherwise seek an appointment. Maya had no idea what to ask for, which is precisely why waiting for her to ask would have failed.",
+      "Exploration did not make her less decisive. It separated the kind of work she wanted from the credential she assumed it required, and that let her start sooner."]}
+  },
+  /* ================================================================== */
+  {
+    name:"Daniela", major:"Healthcare Management", short:"Healthcare Mgmt",
+    headline:"A three-year pathway makes early guidance and flexible course scheduling especially important.",
+    sum:{
+      lead:"Daniela is a first-generation college student completing an accelerated healthcare management degree. A compact curriculum helps her understand unwritten professional expectations without requiring an additional internship beyond the one already in her major.",
+      ultimately:"She accepts a patient access coordinator position before completing her third year.",
+      without:"Daniela would have worked hard for three years and graduated believing that internships were for students whose parents knew someone. The information that changed her trajectory is not difficult. It is simply never said out loud to students who are not already expected to know it."
+    },
+    pts:[
+      {k:"plain",lab:"Orientation",when:"Year 1, fall",
+       card:{h:"She does not know what she does not know",
+        n:"Daniela writes that she is interested in hospitals and is not sure what jobs exist in them besides clinical ones. She is the first in her family to attend college, and she is on the three-year path, which means her first year is already dense. The orientation question asks what she hopes to learn, and her answer is less about a career than about the machinery around one.",
+        q:"“I don’t really know how people end up in the jobs they have. I’ve never asked anyone.”"}},
+      {k:"course",lab:"CE-100",when:"Year 1, spring",
+       card:{h:"One credit, in a ninety-credit degree",
+        n:["Daniela compares hospital operations, revenue cycle, practice management and health insurance. She finds an entire layer of the industry she had not known existed, staffed by people who are not clinicians. She also writes her first resume, built from two years at a pharmacy counter where she handled insurance questions, which turns out to be directly relevant rather than unrelated work.",
+           "The three-year path makes every credit expensive. CE-100 is one of them, and it is the only one in the requirement that has to sit inside a regular term."]},
+       plan:{lab:"Career Plan v1.0",
+        card:{h:"The work she was already doing turns out to count",
+          n:"Version 1.0 does something specific for a student in her position. It converts experience she had dismissed as a job into evidence she can describe, and it names four occupations she can now look up."},
+        carry:[
+          {t:"Four non-clinical routes into healthcare, including two she had never heard of."},
+          {t:"Pharmacy counter work reframed as insurance and patient communication experience."},
+          {t:"One contact who works in hospital revenue cycle."},
+          {t:"A compressed timeline: three years, with the major's required internship in her final autumn."}]}},
+      {k:"course",lab:"CE-200",when:"Summer, online",hinge:true,
+       card:{h:"She learns that asking is normal",
+        n:["Daniela takes CE-200 online over the summer, which is the only place it fits. A three-year degree has no spare seat in a fall or spring term, and a one-credit course delivered asynchronously costs her a schedule slot she does not have.",
+           "The useful thing the course does for her is not a skill. It is permission. It says plainly that professionals expect to be asked, that an informational interview is a recognized thing with a recognized script, that a follow-up message is courtesy rather than pestering, and that none of this requires knowing somebody already.",
+           "She had assumed all of it was arranged privately between people who already had access. She sends her first cold message to the revenue cycle contact from her first year, and it is answered the same week. <b>Nobody had to identify her as needing this.</b> It was in the course every student takes."],
+        cf:"Daniela never sends the message, because she never learns that sending it is a thing people do. She applies through job boards only, competes against students whose applications arrive with an introduction attached, and concludes that she is not the kind of person these employers hire."},
+       plan:{lab:"Career Plan v2.0",
+        card:{h:"A method, not just a target list",
+          n:"Version 2.0 holds the employers she is approaching and, more importantly, how she intends to approach them. The second part is the thing her classmates did not have to be taught."},
+        carry:[
+          {t:"Four non-clinical routes into healthcare.",from:"v1.0"},
+          {t:"Her pharmacy counter experience, described as relevant work.",from:"v1.0"},
+          {t:"Six hospital systems and practice groups she is approaching, with dates."},
+          {t:"Three people she has asked for informational conversations, and what each said."},
+          {t:"A follow-up schedule, because she had not known that following up was expected."}]}},
+      {k:"course",lab:"WBL:<br>Internship",when:"Year 3, fall",
+       card:{h:"The internship her major already required",
+        n:["Daniela completes a 150-hour internship in a hospital revenue cycle department. She works on claim denials, prior authorization follow-up and patient billing questions, supervised by a revenue cycle manager who approves her three goals and evaluates her work. She arranges conversations with a patient access supervisor and a compliance analyst outside her own team.",
+           "<b>Her major already required this placement.</b> The requirement adds the three written goals, the approved scope and the deliberate plan to meet people outside her department. It does not add an experience to a degree that has no room for one."]},
+       plan:{lab:"Career Plan v3.0",
+        card:{h:"She can explain what she is good at",
+          n:"Version 3.0 is where Daniela stops describing herself as a hard worker and starts describing specific things she did. For a student who has never seen a professional resume at home, that shift is most of what separates a strong candidate from an overlooked one."},
+        carry:[
+          {t:"Her pharmacy and patient communication experience.",from:"v1.0"},
+          {t:"Three informational contacts and her follow-up habit.",from:"v2.0"},
+          {t:"150 hours, three approved goals and her supervisor's evaluation."},
+          {t:"Two contacts outside her own team."},
+          {t:"Specific competencies she can name: claim denials, prior authorization, patient billing."}]}},
+      {k:"stub",when:"Year 3, spring",
+       plan:{lab:"Career Plan v4.0",
+        card:{h:"A late checkpoint rather than a reflective capstone",
+          n:["Version 4.0 falls late in Daniela's third year, only a few months after her placement ended. On a four-year path the final version sits a year or more after the experience, and students use it to reflect. Hers cannot do that, because she is still in the middle of the thing she would be reflecting on.",
+             "So it does a narrower job: confirm where she is going, name what she still needs, and catch her before she leaves. That is enough, and it is worth being clear that a compressed degree trades reflection time for speed."]},
+        carry:[
+          {t:"Her informational contacts and follow-up habit.",from:"v2.0"},
+          {t:"Revenue cycle competencies she can name.",from:"v3.0"},
+          {t:"Two contacts outside her own team.",from:"v3.0"},
+          {t:"The job she accepted and the date she starts."},
+          {t:"A master's in health administration, recorded as a planned step with a date to revisit."}]}},
+      {k:"plain",lab:"Graduation",when:"End of year 3",
+       card:{h:"Making unwritten professional expectations more accessible",
+        n:"Daniela starts as a patient access coordinator three years after she arrived. Her story illustrates how universal career education can complement targeted support for first-generation students, and and nothing required a credit her degree did not have. It required one course to say plainly what everyone else had been told at home.",
+        q:"“I thought you had to already know somebody. It turns out you just have to know that you’re allowed to ask.”"}}
+    ],
+    dem:{points:[
+      "This is the equity argument in its most concrete form. Her circumstances highlight an informational barrier alongside other challenges. It was information that is transmitted at home in some families and nowhere at all in others.",
+      "A universal requirement reaches her without anyone having to identify her first. An optional program for first-generation students would have required her to recognize herself as needing it, which is precisely what she did not know.",
+      "The three-year degree is the hardest schedule case in this set, and the requirement costs it two credits and nothing else. CE-200 runs online in a summer, and the placement was already mandated by the major.",
+      "Her final plan is a checkpoint rather than a reflection, because her placement was too recent for anything else. Compressed degrees should expect that, and the proposal should say so rather than describing a four-year rhythm as universal."]},
+    oq:{h:"Check this against the three-year program as built",
+      p:["This story assumes CE-200 is available asynchronously in a summer term, since a ninety-credit path has no spare seat in a fall or spring. If that version does not exist, this student cannot complete the sequence as described.",
+         "It also assumes the major's required internship can serve as the qualifying experience with the addition of written goals and an approved scope. That is the same question the clinical rotation raises, and the qualifying experiences table does not yet answer either of them."]}
+  },
+  /* ================================================================== */
+  {
+    name:"Theo", major:"Philosophy",
+    headline:"Exploration connects Theo’s strengths in philosophy to work he had not considered.",
+    sum:{
+      lead:"Theo loves philosophy but has difficulty seeing how his strengths connect to professional work. Exploration, an adapted writing assignment, and a funded internship introduce him to research, policy, and compliance.",
+      ultimately:"He graduates into a compliance analyst role, with law school still available as an informed future option.",
+      without:"Theo would have graduated able to analyze an argument better than almost anyone in his cohort and unable to name a single job that wanted it. The most likely outcome is law school chosen by default, because it is the one route a philosophy student can name without help."
+    },
+    pts:[
+      {k:"plain",lab:"Orientation",when:"Year 1, fall",
+       card:{h:"He has a question, not a job title",
+        n:"Theo writes that he enjoys arguing carefully, thinking about ethical problems and asking how institutions should behave. He marks his career certainty one out of five and worries that an interest in ideas is not a career direction. The orientation question lets him record a question rather than forcing him to pick a profession he has no evidence for.",
+        q:"“I can tell you what I love studying, but not what someone would pay me to do.”"}},
+      {k:"course",lab:"CE-100",when:"Year 1, spring",hinge:true,
+       card:{h:"He finds the places where careful reasoning is the job",
+        n:["Theo compares legal support, policy analysis, ethics and compliance, and nonprofit research. An interview with a compliance professional shows him how organizations assess risk and interpret standards, which is recognisably the thing he is good at with a different name on it.",
+           "He also learns to stop writing “critical thinker” on a resume and start describing a seminar argument he analyzed. His faculty advisor, seeing an interest in technology ethics, recommends a course on ethical issues in data. Law school stays on the table as one option rather than the only one he can name."],
+        cf:"Theo graduates with excellent analytical training and no language for it. He applies to law school because it is the only route anyone has ever named to him, and finds out whether he wanted to be a lawyer after taking on the debt."},
+       plan:{lab:"Career Plan v1.0",
+        card:{h:"He discovers professional paths beyond law school",
+          n:"Version 1.0 is mostly vocabulary. For a student whose problem is that he cannot name anything, that is the useful output."},
+        carry:[
+          {t:"Four occupational routes he had not previously known existed."},
+          {t:"The words those fields actually use, taken from real job postings."},
+          {t:"One contact who works in compliance."},
+          {t:"A course on ethics in data and technology, recommended by his advisor."}]}},
+      {k:"course",lab:"CE-200",when:"Year 2, spring",
+       card:{h:"He writes for someone who is not a professor, and applies in time to be funded",
+        n:["In a philosophy course Theo writes an analysis of algorithmic fairness, and his instructor offers an alternative version of the assignment: the same argument as a short decision memo for a non-academic audience. He saves both, along with a note on what he changed.",
+           "In CE-200 he builds a list of employers where strong research and writing matter more than the name of the major. The nonprofit roles he wants are unpaid, which would normally end the conversation. <b>Because he has an offer in hand by spring, he can apply for the Summer Career Development Stipend</b>, which pays $3,500 for an unpaid summer experience and is open to him in the summer after his second year."]},
+       plan:{lab:"Career Plan v2.0",
+        card:{h:"Evidence an employer can read, and a way to pay for the summer",
+          n:"Version 2.0 contains the first thing Theo has written that an employer could evaluate. It also contains a funding application with a deadline attached, which is the kind of detail that decides whether a placement happens."},
+        carry:[
+          {t:"Four occupational routes and the language each one uses.",from:"v1.0"},
+          {t:"His compliance contact.",from:"v1.0"},
+          {t:"A policy memo written for a non-academic reader, with the academic original beside it."},
+          {t:"Employers where research and writing matter more than the major."},
+          {t:"An offer letter in hand and a stipend application, submitted before the deadline."}]}},
+      {k:"course",lab:"WBL:<br>Internship",when:"Summer after year 2",
+       card:{h:"He applies his analytical skills in a professional setting",
+        n:["Theo completes a 140-hour supervised research internship at a nonprofit working on responsible technology, in the summer after his second year. He reviews public policies, summarizes stakeholder positions and co-authors briefing material, under a policy director who approves his three goals and evaluates his work. He arranges conversations with a legal counsel and a researcher at an advocacy coalition, outside his own team.",
+           "The stipend carries its own conditions: a midpoint check-in, an evaluation completed by his supervisor, and a written reflection with an updated resume at the end. Those are close to the same things the requirement asks for, which means the two fit together rather than duplicating each other."]},
+       plan:{lab:"Career Plan v3.0",
+        card:{h:"He can describe work, not only coursework",
+          n:"Version 3.0 is the first time Theo can point at something substantive he did rather than something he studied. Because this happened after his second year, he has two full years left to use it, which is the difference between evidence and a line on a resume."},
+        carry:[
+          {t:"The four routes and their vocabulary.",from:"v1.0"},
+          {t:"His policy memo and the employers it suits.",from:"v2.0"},
+          {t:"140 hours, three approved goals and his supervisor's evaluation."},
+          {t:"Two contacts outside his own team."},
+          {t:"Three job titles he is going to apply for: policy assistant, research coordinator, compliance analyst."}]}},
+      {k:"stub",when:"Year 4",
+       plan:{lab:"Career Plan v4.0",
+        card:{h:"Theo prepares for work while keeping future options open",
+          n:"Version 4.0 confirms the job and records that law school is now a choice rather than a default. He is still not certain what he wants in ten years, and nothing in the requirement pretended to deliver that."},
+        carry:[
+          {t:"His policy memo and professional writing sample.",from:"v2.0"},
+          {t:"Two contacts outside his own team.",from:"v3.0"},
+          {t:"Three target titles, one of which he is now taking.",from:"v3.0"},
+          {t:"The job he accepted and the date he starts."},
+          {t:"Law school, recorded as an open option with a date to reconsider."}]}},
+      {k:"plain",lab:"Graduation",when:"Year 4, spring",
+       card:{h:"He translates his academic strengths into professional options",
+        n:"Theo starts as a compliance analyst. What changed is not that philosophy became more employable. It is that somebody made him go and find out where the thinking he was already doing is the job, and then made sure he could afford the summer that proved it.",
+        q:"“I’m still not certain what I want in ten years. I am much less lost about what I’m good at.”"}}
+    ],
+    dem:{points:[
+      "The humanities objection to a career requirement is usually that it narrows students. Theo's case is the reverse. He arrived with one nameable route and left with four, because somebody made him go and look.",
+      "The barrier was money as much as information. The Summer Career Development Stipend already existed. What the sequence added was a student who had an offer in hand early enough to apply for it.",
+      "Philosophy did not have to change, and no faculty member had to teach career content. The department kept doing what it does; the assignment that made Theo employable was a decision memo his instructor offered as an alternative format."]}
+  },
+  /* ================================================================== */
+  {
+    name:"Darius", major:"Computer Science",
+    headline:"Even strong preparation cannot eliminate hiring uncertainty, but it can support a better response.",
+    sum:{
+      lead:"Darius explores cybersecurity, builds experience, and earns an excellent internship evaluation. Then several employers halt hiring during his final semester, despite his preparation.",
+      ultimately:"He graduates still looking, but with substantive work, professional references, and a revised search strategy.",
+      without:"Darius would have graduated into the same frozen market with none of that. The requirement cannot create openings. What it changes is whether he is competing with evidence and relationships or starting from a transcript."
+    },
+    pts:[
+      {k:"plain",lab:"Orientation",when:"Year 1, fall",
+       card:{h:"He picked the field for the right reasons",
+        n:"Darius says he wants to work in security because he likes the adversarial part of the problem, and rates his confidence four out of five. He is not wrong about any of it. His story is a useful one precisely because nothing in it is a mistake."}},
+      {k:"course",lab:"CE-100",when:"Year 1, spring",
+       card:{h:"Security is several jobs with different entry points",
+        n:"Darius compares security operations, governance and compliance, penetration testing and incident response. He learns that the entry points differ sharply, that several employers want a certification he could take as an undergraduate, and that the field hires more readily from people who have already done supervised work."},
+       plan:{lab:"Career Plan v1.0",
+        card:{h:"Four routes and a certification plan",
+          n:"Version 1.0 records which parts of the field he wants and what the entry requirements are for each."},
+        carry:[
+          {t:"Four security routes compared, with the usual entry point for each."},
+          {t:"A certification he can take as an undergraduate, with what it costs and how long it takes."},
+          {t:"One contact working in security operations."},
+          {t:"A question he still has: whether governance work would bore him."}]}},
+      {k:"course",lab:"CE-200",when:"Year 2",
+       card:{h:"He builds a target list and works the calendar",
+        n:"Darius identifies twelve employers, rewrites his resume for security operations, practices technical interviews and books time with an advisor on describing a home lab project in professional terms. He has taken the steps available to him and is well prepared for an opportunity when one becomes available."},
+       plan:{lab:"Career Plan v2.0",
+        card:{h:"A prepared search",
+          n:"Version 2.0 is the document the design expects: targets, dates, evidence and a named gap."},
+        carry:[
+          {t:"Four security routes and their entry points.",from:"v1.0"},
+          {t:"His certification plan.",from:"v1.0"},
+          {t:"Twelve target employers with application windows."},
+          {t:"A home lab project written up so a non-specialist can follow it."},
+          {t:"A named gap: he has no experience of a real incident under time pressure."}]}},
+      {k:"course",lab:"WBL:<br>Internship",when:"Year 3, summer",
+       card:{h:"A good placement, and a good evaluation",
+        n:"Darius completes a 160-hour security operations internship. He triages alerts, writes up two incidents, helps revise a detection rule and shadows an on-call rotation, supervised by a senior analyst who approves his three goals and rates his work highly. He arranges conversations with a governance lead and an external auditor outside his own team. By the end he has closed the gap he named a year earlier."},
+       plan:{lab:"Career Plan v3.0",
+        card:{h:"Everything is in place",
+          n:"Version 3.0 is as strong as any plan in this set. It provides a useful baseline for the adjustments he may need later."},
+        carry:[
+          {t:"His certification, now completed.",from:"v1.0"},
+          {t:"Twelve target employers.",from:"v2.0"},
+          {t:"160 hours, three approved goals and a strong supervisor evaluation."},
+          {t:"Two incident write-ups he can discuss in an interview."},
+          {t:"Two contacts outside his own team, plus his supervisor."}]}},
+      {k:"plain",lab:"Hiring freeze",when:"Year 4, February",hinge:true,
+       card:{h:"Unexpected hiring freezes change his plans",
+        n:["In February the team Darius interned with announces a hiring freeze and withdraws its graduate posting. Two other employers he had reached final stages with cancel their intakes within weeks. None of this has anything to do with him.",
+           "The outcome is an important reminder that strong preparation cannot control employer hiring decisions. The benefit is that he can respond with credible evidence of his skills and an established professional network."],
+        cf:"The freeze happens either way. What differs is that Darius, without the sequence, reaches February with no completed placement, no supervisor who can speak for him and no second and third list of employers to move to."}},
+      {k:"stub",when:"Year 4, spring",
+       plan:{lab:"Career Plan v4.0",
+        card:{h:"He adapts his job search with support from an advisor",
+          n:"Version 4.0 records an active search and, more usefully, records what he already has. An advisor uses it to widen his targets toward governance and audit roles, which are hiring, and to identify a second certification that would make him credible there."},
+        carry:[
+          {t:"160 hours and a strong supervisor evaluation.",from:"v3.0"},
+          {t:"Two incident write-ups.",from:"v3.0"},
+          {t:"Four professional contacts, including a supervisor who will take a reference call.",from:"v3.0"},
+          {t:"A widened target list: governance and audit roles, which are still hiring."},
+          {t:"A second certification that would open those roles, with a date he intends to sit it."}]}},
+      {k:"plain",lab:"Graduation",when:"Year 4, spring",
+       card:{h:"A stronger foundation for a difficult job market",
+        n:"Darius graduates still looking. His story belongs in this set because it is the honest limit of what a curriculum can do. The requirement is not a guarantee of employment and should never be presented as one. It is a guarantee that a student arrives at a bad market with evidence, relationships and a next move already written down.",
+        q:"“Nothing I did was wrong. It just wasn’t a year where that was enough.”"}}
+    ],
+    dem:{points:[
+      "Any proposal that only shows students who succeed invites the obvious question about the ones who do not. Darius is the answer, and he is deliberately a strong student in a strong field.",
+      "The requirement does not control hiring and the proposal should not claim it does. What it controls is the position a student occupies when hiring goes against them.",
+      "His final plan is a working document rather than a record of an outcome. That distinction is what lets an advisor do something useful with him in April."]}
+  },
+  /* ================================================================== */
+  {
+    name:"Lena", major:"Marketing",
+    headline:"Internship experience helps Lena refine a career direction she initially felt certain about.",
+    sum:{
+      lead:"Lena arrives certain she wants to work in advertising. Coursework and a consumer insights internship help her discover that analyzing campaign effectiveness interests her more than designing campaigns.",
+      ultimately:"She accepts a junior marketing insights position and understands why it fits her strengths.",
+      without:"Lena would have spent four years preparing for advertising because she said so at eighteen, and would have discovered that she preferred the research side during her first job, or during her second."
+    },
+    pts:[
+      {k:"plain",lab:"Orientation",when:"Year 1, fall",
+       card:{h:"A clear goal that nobody has questioned",
+        n:"Lena says she wants to work in advertising and rates her confidence five out of five. Her answer is specific, which is useful. The requirement does not treat a high rating as a reason to send her away, because a confident answer and a tested answer are not the same thing."}},
+      {k:"course",lab:"CE-100",when:"Year 1, spring",
+       card:{h:"The field turns out to be larger than advertising",
+        n:"Lena compares brand management, digital marketing, marketing analytics and consumer insights. An analysis of real job postings shows her how often marketers work with data and research rather than only creative execution. She also builds a resume from promoting a student club and a retail job, saving campaign materials and audience numbers as evidence."},
+       plan:{lab:"Career Plan v1.0",
+        card:{h:"The question gets narrower, not wider",
+          n:"Exploration did not leave Lena less sure of herself. It replaced one broad word with a set of specific questions about which part of the work she actually wants."},
+        carry:[
+          {t:"Four parts of marketing compared, with what each one does day to day."},
+          {t:"A skill gap she can now name: she has no analytics experience."},
+          {t:"Campaign materials and audience numbers from her student club work."},
+          {t:"One contact met at an alumni panel on marketing careers."}]}},
+      {k:"course",lab:"CE-200",when:"Year 2",
+       card:{h:"A class project becomes evidence an employer can read",
+        n:"A marketing professor, seeing the interests students chose to share on a course roster, invites Lena to lead the analysis segment of a consumer research assignment. The work includes interpreting survey data and discussing the ethics of using audience information. She adds an executive summary of it to her plan. In CE-200 she finds consumer insights internships and identifies spreadsheet and visualization skills to build."},
+       plan:{lab:"Career Plan v2.0",
+        card:{h:"She is applying for a different job than she expected",
+          n:"Version 2.0 shows a direction that has moved without her having abandoned anything. The creative interest is still recorded. What changed is which part of the work she wants to be responsible for."},
+        carry:[
+          {t:"Four parts of marketing, compared in her first year.",from:"v1.0"},
+          {t:"Her campaign materials and audience numbers.",from:"v1.0"},
+          {t:"A consumer research report she led the analysis for."},
+          {t:"Target roles in consumer insights, with application dates."},
+          {t:"Two skills to build: spreadsheet modeling and data visualization."}]}},
+      {k:"course",lab:"WBL:<br>Internship",when:"Year 3, summer",hinge:true,
+       card:{h:"She finds out she would rather understand the campaign than make it",
+        n:["Lena completes a 160-hour supervised consumer insights internship at a mid-sized company. She cleans survey data, reviews interview themes and prepares charts and findings that are used in a planning meeting. Her research manager approves three goals, gives her feedback throughout and evaluates her work. She also meets a product manager and an outside market research partner to see how findings actually change decisions.",
+           "By the end she knows something she could not have learned from a course: she is more interested in why a campaign works than in making one."],
+        cf:"Lena spends her third-year summer on an advertising internship she chose at eighteen, enjoys parts of it, and does not discover the preference that will shape her career until she is already in a job built on the other one."},
+       plan:{lab:"Career Plan v3.0",
+        card:{h:"She rewrites her professional headline",
+          n:"Version 3.0 is where Lena changes her intended direction from advertising creative to consumer insights. The point is not the change. The point is that she can explain the business question she worked on, the analysis she did and the recommendation that followed."},
+        carry:[
+          {t:"The four parts of marketing she compared in her first year.",from:"v1.0"},
+          {t:"Her consumer research report from the class project.",from:"v2.0"},
+          {t:"160 hours, three approved goals and her manager's evaluation."},
+          {t:"Two contacts outside her own team, including an external research partner."},
+          {t:"A changed direction, with the evidence that produced it."}]}},
+      {k:"stub",when:"Year 4",
+       plan:{lab:"Career Plan v4.0",
+        card:{h:"Lena identifies her next professional goals",
+          n:"Version 4.0 confirms the job and asks which quantitative tools she wants to keep learning. Her early confidence turned out to be an asset. Deliberate exploration is what stopped it from becoming a constraint."},
+        carry:[
+          {t:"Her consumer research report.",from:"v2.0"},
+          {t:"Her changed direction and the evidence behind it.",from:"v3.0"},
+          {t:"The job she accepted and the date she starts."},
+          {t:"The tools she wants to learn next: regression and dashboard reporting."}]}},
+      {k:"plain",lab:"Graduation",when:"Year 4, spring",
+       card:{h:"An informed change of direction",
+        n:"Lena starts as a junior marketing insights analyst.",
+        q:"“I thought I wanted to make the campaign. I discovered I wanted to understand why it works.”"}}
+    ],
+    dem:{points:[
+      "The most common argument for exempting students is that some of them already know. Lena already knew, and was wrong about which half of her field she belonged in.",
+      "She did not change her mind because someone advised her to. She changed it because she did the work and noticed what she preferred, which is the only kind of career decision that holds.",
+      "Nothing here required a faculty member to deliver career content. A professor invited a student to lead the analysis portion of an assignment he was already setting."]}
+  },
+  /* ================================================================== */
+  {
+    name:"Wes", major:"Biology → Sociology",
+    headline:"An evolving Career Plan allows Wes to change majors without starting over.",
+    sum:{
+      lead:"Wes starts college on a pre-health path but changes his major to sociology during his third year. His evolving Career Plan helps him carry useful evidence, relationships, and ideas into a new direction.",
+      ultimately:"He starts work as a research associate at a health policy nonprofit.",
+      without:"Wes would have started his career planning from nothing in his third year, about eighteen months behind his classmates, with a new advisor who knew nothing about him and a pre-health resume that read like a list of things he had given up on."
+    },
+    pts:[
+      {k:"plain",lab:"Orientation",when:"Year 1, fall",
+       card:{h:"He is certain, and he has never tested the reason",
+        n:"Wes arrives committed to biology and a pre-health track and rates his confidence five out of five. Because the orientation question asks him why, not just what, the reason gets written down next to the goal. That turns out to matter two years later, when the reason stops holding."}},
+      {k:"course",lab:"CE-100",when:"Year 1, spring",
+       card:{h:"He records a second possibility he does not act on",
+        n:"Wes compares clinical medicine, public health, health policy and laboratory research. An interview with an epidemiologist introduces him to population-level work he had not known existed. He stays on the pre-health track. But his plan now holds a second idea he can come back to, which is the quiet thing this course does for students who arrive certain."},
+       plan:{lab:"Career Plan v1.0",
+        card:{h:"The line he will need in two years",
+          n:"Nothing in version 1.0 looks important at the time. The second possibility, written down in his first year and left alone, is the line that saves him eighteen months later."},
+        carry:[
+          {t:"His main direction: clinical medicine."},
+          {t:"A second possibility he is not pursuing yet: population health."},
+          {t:"Why he chose pre-health in the first place, in his own words."},
+          {t:"One contact who works in epidemiology."}]}},
+      {k:"plain",lab:"Major change",when:"Year 3, fall",hinge:true,
+       card:{h:"He changes majors without losing the progress he has made",
+        n:["After a difficult second year and a research methods course he unexpectedly enjoys, Wes changes his major to sociology, with a growing interest in population health. He expects to start over.",
+           "He does not. His resume, his writing samples, his epidemiology contact, the note about explaining technical material to non-specialists and the population health idea from version 1.0 all stay. What changes is the target, not the document. <b>His new faculty advisor opens a plan with two years of material in it</b>, rather than meeting a stranger in the third week of the semester."],
+        q:"“I thought changing my major meant losing two years. It meant changing about four lines.”",
+        cf:"Wes starts his career planning from a blank page in the fall of his third year, roughly eighteen months behind his classmates, and spends his remaining semesters catching up rather than building."}},
+      {k:"course",lab:"CE-200",when:"Year 3, spring",
+       card:{h:"He takes the second course later than most, and that is fine",
+        n:"Wes takes CE-200 in the spring of his third year rather than in his second. The course does not assume he is already in the middle of a search. He identifies community health organizations and university research groups, and works out how to present a quantitative background as an advantage rather than as a detour he has to explain away."},
+       plan:{lab:"Career Plan v2.0",
+        card:{h:"The same document with a new target",
+          n:"Everything from version 1.0 stays. Four lines change: the major, the main direction, the list of employers and the way he plans to explain the switch."},
+        carry:[
+          {t:"Why he originally chose pre-health, in his own words.",from:"v1.0"},
+          {t:"One contact who works in epidemiology.",from:"v1.0"},
+          {t:"His main direction is now population health, which was the second possibility he recorded in his first year."},
+          {t:"Employers he wants to approach: community health organizations and university research groups."},
+          {t:"The case he needs to be able to make: that quantitative training is an advantage in this field."}]}},
+      {k:"course",lab:"WBL:<br>Research",when:"Year 3, summer",
+       card:{h:"Faculty research counts, but only because the network was planned",
+        n:"Wes completes 155 hours as a research assistant on a study of housing instability and health outcomes. He runs structured interviews, codes qualitative data and helps write a findings memo, supervised by a principal investigator who approves his three goals and evaluates his work. <b>The principal investigator does what she would do anyway.</b> What the requirement adds is the part a research placement does not supply on its own: because working in one lab does not widen anyone's professional network, Wes arranges conversations with a county health analyst and a community organizer outside the research team."},
+       plan:{lab:"Career Plan v3.0",
+        card:{h:"He has to explain two years of biology, and finds a true way to do it",
+          n:"This reflection is harder than most and more useful. Wes has to say why two years of biology are an advantage rather than a mistake, and he lands on something true: the quantitative training lets him read studies that most sociology graduates cannot. His faculty mentor and his career advisor each test that explanation once before he uses it in an interview."},
+        carry:[
+          {t:"His main direction: population health.",from:"v2.0"},
+          {t:"The epidemiology contact from his first year.",from:"v1.0"},
+          {t:"155 hours, evidence against all five criteria, and his supervisor's evaluation."},
+          {t:"Two contacts outside the research team, which is what made the placement qualify."},
+          {t:"An explanation of his two majors that holds together, tested twice before he used it."},
+          {t:"The job titles he is going to apply for: research associate and program analyst."}]}},
+      {k:"stub",when:"Year 4",
+       plan:{lab:"Career Plan v4.0",
+        card:{h:"Wes brings his experiences into his professional plans",
+          n:"Version 4.0 confirms the job and records that Wes may want a master's in public health in a few years, written down as a decision he is postponing rather than one he has abandoned. By the final version, most of the document was written before he changed his major. That is the point."},
+        carry:[
+          {t:"The epidemiology contact from his first year.",from:"v1.0"},
+          {t:"His explanation of the two majors.",from:"v3.0"},
+          {t:"Two contacts from the research placement.",from:"v3.0"},
+          {t:"The job he accepted and the date he starts."},
+          {t:"A master's in public health, postponed, with a date to look at it again."}]}},
+      {k:"plain",lab:"Graduation",when:"Year 4, spring",
+       card:{h:"The plan moved with him",
+        n:"Wes starts as a research associate at a health policy nonprofit. His story answers the most common objection to a four-year career requirement, which is that students change their minds. They do. His plan was built around questions, evidence and people rather than around a declared major, which is why changing the major changed four lines instead of four years."}}
+    ],
+    dem:{points:[
+      "The usual objection to a four-year sequence is that students change direction, so the early work is wasted. The answer here is structural rather than rhetorical. Because the plan records questions, evidence and relationships instead of a destination, nearly all of it survives the change.",
+      "The first course pays off two years later. The second possibility Wes wrote down in his first year is the one he acts on in his third, and it is exactly the thing a confident student would have skipped if the course were optional.",
+      "Faculty research qualifies here only because the network requirement was planned in advance. That is the difference between a research placement and a research placement that meets the criteria."]}
+  },
+  /* ================================================================== */
+  {
+    name:"Hana", major:"Biochemistry",
+    headline:"A carefully developed alternative helps Hana respond when medical school admission does not come through.",
+    sum:{
+      lead:"Hana plans for medical school and follows a rigorous preparation timeline. Early exploration also leads her to document a clinical research alternative that becomes important when her first medical school application is unsuccessful.",
+      ultimately:"She graduates without an admission offer, then begins working in clinical research later that year.",
+      without:"Hana would have spent four years on a single plan with no alternative behind it, and found out in March of her final year that she had nothing else prepared. The common outcome there is an unstructured gap year assembled in a hurry, often spent in work that does not strengthen the next application."
+    },
+    pts:[
+      {k:"plain",lab:"Orientation",when:"Year 1, fall",
+       card:{h:"She is certain, and the odds are not",
+        n:"Hana says she is going to medical school and rates her confidence five out of five. She is a strong student and her plan is realistic. The thing her plan does not contain, and that nothing in her first year would otherwise prompt, is any account of what happens if the first application cycle does not work."}},
+      {k:"course",lab:"CE-100",when:"Year 1, spring",
+       card:{h:"She names a second route without abandoning the first",
+        n:"CE-100 does not ask Hana to reconsider medicine. It asks her to compare clinical practice with clinical research, public health and the biotechnology and pharmaceutical side, and to name what a person actually does in each. She interviews a clinical research coordinator and finds the work more interesting than she expected. She records it as a backup and gives it no further thought for two years."},
+       plan:{lab:"Career Plan v1.0",
+        card:{h:"She identifies another route while pursuing medicine",
+          n:"Version 1.0 contains one line that turns out to matter more than anything else in it, written by a student who did not think she would need it."},
+        carry:[
+          {t:"Her main route: medical school."},
+          {t:"A second route named and researched: clinical research coordination."},
+          {t:"One contact who coordinates clinical trials."},
+          {t:"What each route requires, and when the deadlines fall."}]}},
+      {k:"course",lab:"CE-200",when:"Year 2",
+       card:{h:"The application calendar and the experience calendar are the same calendar",
+        n:"CE-200 lays the medical school timeline next to her course sequence and her experience plan, which makes visible something most pre-med students discover late: the entrance exam, the clinical hours and the application window all collide with the terms she had been planning to use for research. She also prepares for a faculty research placement, which strengthens both routes at once rather than only the one she is committed to."},
+       plan:{lab:"Career Plan v2.0",
+        card:{h:"One set of experiences, two routes",
+          n:"Version 2.0 is where the backup stops being decorative. The research placement she plans serves the medical application and the research route equally, which costs her nothing and later turns out to be the whole difference."},
+        carry:[
+          {t:"Her second route: clinical research coordination.",from:"v1.0"},
+          {t:"Her contact who coordinates clinical trials.",from:"v1.0"},
+          {t:"The medical school timeline, laid against her course and experience plan."},
+          {t:"A research placement that strengthens both routes."},
+          {t:"Clinical volunteer hours, scheduled around the entrance exam rather than against it."}]}},
+      {k:"course",lab:"WBL:<br>Research",when:"Year 3",
+       card:{h:"A placement that serves whichever way it goes",
+        n:"Hana completes 165 hours on a faculty study of medication adherence in older patients. She screens participants, maintains study records, runs follow-up calls and helps prepare a protocol amendment, supervised by a principal investigator who approves her three goals and evaluates her work. She arranges conversations with a hospital research manager and a regulatory affairs associate outside the research team, which is the part a lab placement does not produce on its own."},
+       plan:{lab:"Career Plan v3.0",
+        card:{h:"Evidence for both applications",
+          n:"Version 3.0 documents work that reads as preparation for medicine and as direct experience of clinical research. Hana writes it thinking of the first and will use it for the second."},
+        carry:[
+          {t:"Her second route: clinical research coordination.",from:"v1.0"},
+          {t:"A research placement that serves both routes.",from:"v2.0"},
+          {t:"165 hours, three approved goals and her supervisor's evaluation."},
+          {t:"Two contacts outside the research team, one of them a hospital research manager."},
+          {t:"Specific competencies she can name: participant screening, protocol work, regulatory documentation."}]}},
+      {k:"plain",lab:"Not admitted",when:"Year 4, March",hinge:true,
+       card:{h:"Medical school admission requires a revised plan",
+        n:["Hana is not admitted. She is waitlisted at one school and rejected at the rest, which is an ordinary outcome and does not feel like one.",
+           "What she has is a second route she named three years earlier, a placement that already counts as direct experience of it, a supervisor who will speak for her and two contacts who work in the field. She did not build any of that as a contingency. She built it because an assignment made her name one, and then because her placement was planned to serve both routes."],
+        cf:"Hana finds out in March that she has one plan and no second one. The usual result is a gap year assembled under pressure, often in work that does nothing for the next application, and a second cycle entered from a weaker position than the first."}},
+      {k:"stub",when:"Year 4, spring",
+       plan:{lab:"Career Plan v4.0",
+        card:{h:"She prepares for an alternative path after graduation",
+          n:"Version 4.0 records no offer and no seat, which is accurate. It also records a plan: coordinator roles she is qualified for now, the people who will refer her, and a decision point in eighteen months about whether to apply again."},
+        carry:[
+          {t:"Her second route, named in her first year.",from:"v1.0"},
+          {t:"165 hours and her supervisor's evaluation.",from:"v3.0"},
+          {t:"Two contacts outside the research team.",from:"v3.0"},
+          {t:"Her status at graduation: not admitted, one waitlist, no job yet."},
+          {t:"A decision point eighteen months out about whether to reapply."}]}},
+      {k:"plain",lab:"That autumn",when:"After graduation",
+       card:{h:"A coordinator role, and an open question",
+        n:"Hana starts as a clinical research coordinator in the autumn. She may reapply to medical school and she may not. The requirement did not improve her odds of admission, and nothing in this proposal should claim that it could. It made sure that the most likely outcome of a pre-med application was not also the outcome nobody had prepared for.",
+        q:"“I wrote the backup in my first year because the assignment told me to. I did not think I was writing it for me.”"}}
+    ],
+    dem:{points:[
+      "Pre-health students are the clearest case for a required second route, because the base rates are well known to faculty and almost never reflected in what students actually plan for.",
+      "The assignment that saved her was one she completed without conviction. That is an argument for requiring it rather than offering it, since a confident student will not elect to plan for failure.",
+      "Her experience was designed in her second year to serve both routes at once. That cost her nothing at the time and was the entire difference in March."]}
+  },
+  /* ================================================================== */
+  {
+    name:"Amara", major:"Biology",
+    headline:"Faculty research becomes more valuable when paired with professional relationships beyond the lab.",
+    sum:{
+      lead:"Amara considers clinical care and scientific research. A supervised faculty project provides hands-on scientific work, while intentional conversations outside the lab broaden her understanding of future possibilities.",
+      ultimately:"She accepts a biotechnology research technician position and plans to revisit graduate study later.",
+      without:"Amara would have worked in a lab for a year, enjoyed it, and left knowing one professor and four graduate students. She would have applied to PhD programs because that is the path the people around her were on."
+    },
+    pts:[
+      {k:"plain",lab:"Orientation",when:"Year 1, fall",
+       card:{h:"She loves the science and does not know the jobs",
+        n:"Amara gives her confidence three out of five and writes that she hopes to learn whether she prefers patient care or discovery. Her plan keeps the question open rather than converting it into a premature decision."}},
+      {k:"course",lab:"CE-100",when:"Year 1, spring",
+       card:{h:"Four futures instead of two",
+        n:"Amara explores clinical care, academic research, biotechnology and environmental testing. She reads job descriptions and education requirements and interviews a biology alum who moved into biotech, learning how laboratory technicians, research assistants and graduate researchers actually differ. Her faculty advisor, seeing an interest in cell biology, connects her with a professor recruiting undergraduates. She also writes a first resume listing tutoring and laboratory coursework, rather than inventing research experience she does not have."},
+       plan:{lab:"Career Plan v1.0",
+        card:{h:"A lab connection and a question she keeps open",
+          n:"Version 1.0 holds the original question rather than answering it, and adds something concrete: a professor who is recruiting."},
+        carry:[
+          {t:"Four routes compared, including two she had not known about."},
+          {t:"The question she is still asking: patient care or discovery."},
+          {t:"A professor recruiting undergraduates for a research team."},
+          {t:"One alum who moved from biology into biotechnology."}]}},
+      {k:"course",lab:"CE-200",when:"Year 2",hinge:true,
+       card:{h:"Her advisor notices that a lab is not a network",
+        n:["Amara joins the lab for preliminary training, and in CE-200 she treats a faculty research placement with the same seriousness as an external internship. She writes three goals: use a validated protocol, document and interpret results, and explain findings to people outside the lab. Her research professor and a designated reviewer approve the duties and hours in advance.",
+           "Then her career advisor points out something that would otherwise have gone unexamined. Working in one lab under one professor does not widen anyone's professional network, so they add specific outside interactions to the plan. That is the difference between a placement that qualifies and one that does not."],
+        cf:"Amara spends a year in the lab and meets her professor and four graduate students. The science is real and the network is not, and nobody notices, because from the outside the placement looks excellent."},
+       plan:{lab:"Career Plan v2.0",
+        card:{h:"An approved scope, and a plan for who she will meet",
+          n:"Version 2.0 turns a lab position into a qualifying experience by naming in advance what she will do and who she will talk to."},
+        carry:[
+          {t:"Her open question about patient care and discovery.",from:"v1.0"},
+          {t:"The alum who moved into biotechnology.",from:"v1.0"},
+          {t:"Approved research duties and hours, agreed before she starts."},
+          {t:"Three goals, including explaining findings to people outside the lab."},
+          {t:"A plan for meeting professionals outside the research team, because the lab will not supply them."}]}},
+      {k:"course",lab:"WBL:<br>Research",when:"Year 3",
+       card:{h:"Research and professional connections deepen her experience",
+        n:"Across a defined research term Amara completes 160 hours collecting and analyzing data on cellular responses to environmental stress. She keeps lab records, investigates anomalous results and contributes a figure to a conference poster, supervised by a faculty member who trains her, gives regular feedback and completes a performance evaluation. She presents at a cross-departmental research forum and holds planned conversations with a collaborating hospital scientist and a biotech researcher, both of whom show her research careers outside the academy."},
+       plan:{lab:"Career Plan v3.0",
+        card:{h:"From worked in a lab to specific professional evidence",
+          n:"Version 3.0 is where a year of work becomes something she can put in front of an employer. Amara writes about how debugging a protocol built persistence and how presenting findings improved her communication, and uploads her poster. A career advisor uses the techniques she has documented to identify realistic employers and the instrument skills she is still missing."},
+        carry:[
+          {t:"Her question about patient care and discovery, now answered by doing both.",from:"v1.0"},
+          {t:"Approved scope and three goals.",from:"v2.0"},
+          {t:"160 hours, a conference poster and her supervisor's evaluation."},
+          {t:"Two contacts outside the research team, one in a hospital and one in biotechnology."},
+          {t:"The instrument skills she still needs, named by an advisor who read her methods."}]}},
+      {k:"stub",when:"Year 4",
+       plan:{lab:"Career Plan v4.0",
+        card:{h:"Industry first, graduate school later",
+          n:"Version 4.0 confirms employment and records a plan to revisit graduate study after she has industry experience. Her placement met all five criteria, not because she spent time in a lab, but because the work, the supervision, the network and the reflection were all designed in advance."},
+        carry:[
+          {t:"Her conference poster and documented methods.",from:"v3.0"},
+          {t:"Two contacts outside the research team.",from:"v3.0"},
+          {t:"The job she accepted and the date she starts."},
+          {t:"Graduate study, deliberately postponed, with a point at which she will reconsider."}]}},
+      {k:"plain",lab:"Graduation",when:"Year 4, spring",
+       card:{h:"She knows what doing science at work looks like",
+        n:"Amara starts as a research technician at a biotechnology company.",
+        q:"“I still love science. Now I know what doing science at work can look like.”"}}
+    ],
+    dem:{points:[
+      "Faculty research is the pathway most likely to be waved through without examination, because it looks obviously valuable. The five criteria are what catch the part it does not supply.",
+      "The expanded-network criterion is not bureaucratic. It is the difference between Amara knowing one professor and Amara knowing a hospital scientist and an industry researcher who can tell her what her options are.",
+      "This also protects faculty. A professor supervising an undergraduate is not being asked to provide career development. The requirement names who covers the part the lab does not."]}
+  },
+  /* ================================================================== */
+  {
+    name:"Priya", major:"Business Analytics and Information Systems", short:"Business Analytics & IS",
+    headline:"A substantive campus project allows Priya to gain qualifying experience while keeping paid work.",
+    sum:{
+      lead:"Priya needs paid employment and cannot easily take an unpaid summer internship. With university support, she develops a separately supervised, substantive project within her campus technology job.",
+      ultimately:"She graduates with a real product case study and a business systems analyst offer.",
+      without:"Priya either takes an unpaid internship she cannot afford, or graduates with three years of help-desk shifts that no employer can distinguish from any other student job."
+    },
+    pts:[
+      {k:"plain",lab:"Orientation",when:"Year 1, fall",
+       card:{h:"She knows the field and not its specialties",
+        n:"Priya says she wants to work on business systems and rates her clarity high, while admitting she has never spoken to anyone who does the job. She writes down a practical constraint alongside the ambition: she commutes, she works for pay, and she cannot easily add an unpaid summer somewhere else."}},
+      {k:"course",lab:"CE-100",when:"Year 1, spring",
+       card:{h:"The field is not one job",
+        n:"Priya compares business analysis, data analytics, systems implementation and application development, and interviews a graduate working in enterprise software, who tells her what technical evidence employers actually look at. Her faculty advisor uses the interests she chose to share to recommend a databases course. She also writes a public explanation of a course project that documents her reasoning as well as her code."},
+       plan:{lab:"Career Plan v1.0",
+        card:{h:"A constraint recorded in her own words",
+          n:"Version 1.0 names the thing that will shape every later decision: Priya needs her job to be paid, and it needs to be on campus."},
+        carry:[
+          {t:"Four kinds of systems role compared, with the evidence employers look for in each."},
+          {t:"A constraint in her own words: she commutes and needs paid work."},
+          {t:"One contact working in enterprise software."},
+          {t:"An annotated course project that shows her problem-solving, not only her code."}]}},
+      {k:"course",lab:"CE-200",when:"Year 2",hinge:true,
+       card:{h:"Answering tickets does not qualify, so they build something that does",
+        n:["Priya works for a campus technology unit answering support tickets. That work is useful and it would not meet the criteria, and the requirement says so plainly rather than quietly approving it because she needs the money.",
+           "Instead of relabelling the job she already has, her supervisor and a faculty reviewer approve a distinct, time-bounded software project with a real campus client: an internal scheduling and equipment-checkout tool. CE-200 helps her write three goals, a project scope and a quality measure. <b>She keeps her routine shifts and her pay, and those hours are explicitly excluded from the requirement.</b>"],
+        cf:"One of two things happens. Either Priya's help-desk shifts are waved through, which lowers the standard for everyone, or she is told to find an unpaid internship, which is a requirement she cannot meet."},
+       plan:{lab:"Career Plan v2.0",
+        card:{h:"A scope document, which is the thing that makes it count",
+          n:"Version 2.0 is unusually specific because it has to be. It separates the project from the job, names a client and sets measures that someone else can check."},
+        carry:[
+          {t:"She commutes and needs paid work.",from:"v1.0"},
+          {t:"Her annotated course project.",from:"v1.0"},
+          {t:"A scope for a separate software project, with a named campus client."},
+          {t:"Three goals and a quality measure, approved by her supervisor and a faculty reviewer."},
+          {t:"A note that her routine shifts continue and do not count toward the requirement."}]}},
+      {k:"course",lab:"WBL:<br>Campus project",when:"Year 3",
+       card:{h:"A project with accountability outside her own unit",
+        n:"Priya completes 150 pre-approved project hours: interviewing users, designing a data model, building the tool, testing the workflow and writing handoff documentation. A systems analyst reviews her milestones and evaluates her performance. Because this is an on-campus placement, the expanded-network criterion asks for three purposeful interactions rather than two, so she arranges planned contact with an information security specialist in another unit, an external vendor engineer and an alum working in software development. None of those are chats with her own team."},
+       plan:{lab:"Career Plan v3.0",
+        card:{h:"Evidence of a product, not a job title",
+          n:"Version 3.0 is a case study: the requirements she gathered, the technical trade-offs she made, the accessibility decisions and the result. A computer science professor checks the technical explanation. Her career advisor points her at employers for whom applied systems work is more persuasive than algorithm puzzles, and practices technical interviews with her."},
+        carry:[
+          {t:"She commutes and needs paid work.",from:"v1.0"},
+          {t:"Her approved project scope and quality measures.",from:"v2.0"},
+          {t:"150 qualifying project hours, a delivered tool and her supervisor's evaluation."},
+          {t:"Three contacts across unit boundaries, including an external vendor engineer."},
+          {t:"A written case study covering requirements, trade-offs and accessibility."}]}},
+      {k:"stub",when:"Year 4",
+       plan:{lab:"Career Plan v4.0",
+        card:{h:"Priya prepares for her next professional steps",
+          n:"Version 4.0 confirms employment and names what she wants to learn next. Her campus work qualified only because a genuinely substantive project was created inside it, approved separately, supervised, measured and connected to people outside her unit."},
+        carry:[
+          {t:"Her case study and the delivered tool.",from:"v3.0"},
+          {t:"Three contacts across unit boundaries.",from:"v3.0"},
+          {t:"The job she accepted and the date she starts."},
+          {t:"What she wants to learn first: testing practice and system design."}]}},
+      {k:"plain",lab:"Graduation",when:"Year 4, spring",
+       card:{h:"A paid campus role becomes a source of professional evidence",
+        n:"Priya starts as a business systems analyst.",
+        q:"“The campus job paid my bills. The separate project gave me something serious to show employers.”"}}
+    ],
+    dem:{points:[
+      "Campus employment is the pathway that makes the requirement possible for students who cannot afford to work for free. It is also the pathway most at risk of becoming a rubber stamp.",
+      "The answer is not to tier it below an internship. It is to require that a distinct project be scoped and approved, and to exclude the routine hours explicitly, which is what this story shows happening.",
+      "The three-interaction rule for on-campus placements is doing visible work here. Priya's network reaches a vendor engineer and another unit, rather than stopping at the people she already sat with."]}
+  },
+  /* ================================================================== */
+  {
+    name:"Mei", major:"Supply Chain Management",
+    headline:"Early planning helps Mei address the authorization requirements affecting her internship search.",
+    sum:{
+      lead:"Mei is an international student planning an internship in supply chain management. Her journey illustrates why employment authorization and employer eligibility must be part of career planning early, rather than discovered after an offer arrives.",
+      ultimately:"She accepts a supply chain analyst position, with longer-term sponsorship remaining uncertain.",
+      without:"Mei would have discovered the authorization timeline in the spring she needed it, missed the lead time, and spent the summer unable to accept an offer she had already been given. This is a common outcome and it is almost always a paperwork failure rather than a hiring one."
+    },
+    pts:[
+      {k:"plain",lab:"Orientation",when:"Year 1, fall",
+       card:{h:"She assumes she will work it out the way everyone does",
+        n:"Mei arrives wanting to work in global logistics and rates her confidence four out of five. She knows her visa has conditions attached and has not yet looked at what they are, which at this point is entirely reasonable. Her plan records both the direction and the fact that her situation has constraints she has not investigated."}},
+      {k:"course",lab:"CE-100",when:"Year 1, spring",
+       card:{h:"Work authorization turns out to be a career variable",
+        n:["Mei compares procurement, logistics operations, demand planning and supplier management. The part she had not anticipated is that her eligibility is not uniform across them. Some employers will not consider candidates who will eventually need sponsorship, some government-adjacent work is closed to her entirely, and others sponsor routinely.",
+           "She also learns something about timing that changes her whole plan: F-1 students are generally not eligible for off-campus practical training until they have completed a full academic year, so the summer after her first year is not available to her the way it is to her classmates."]},
+       plan:{lab:"Career Plan v1.0",
+        card:{h:"The constraint written down in her first year",
+          n:"Version 1.0 records something most international students find out far too late. Her eligible window is narrower than her classmates' and the employers open to her are a subset, so her search has to start earlier and target differently."},
+        carry:[
+          {t:"Four routes in supply chain work, with which ones commonly sponsor."},
+          {t:"A constraint in her own words: no off-campus practical training until she has completed a full academic year."},
+          {t:"One contact working in logistics operations."},
+          {t:"A note to confirm every authorization detail with the international student office rather than relying on advice from classmates."}]}},
+      {k:"course",lab:"CE-200",when:"Year 2",hinge:true,
+       card:{h:"A curricular connection can help her plan for work authorization",
+        n:["Curricular Practical Training is authorised only when the work is an integral part of an established curriculum. For most students that means scrambling to find a course that will carry an internship, often after they already have an offer.",
+           "<b>Mei does not have to construct that connection, because the requirement already is one.</b> Her placement sits inside a curricular requirement with an approved scope, three written goals and a reviewer, which is the documentation the authorization process is asking for. CE-200 also makes her work backwards from the paperwork: authorization takes weeks, so her offer has to be in hand well before her classmates need theirs. She applies in the autumn for the following summer."],
+        cf:"Mei finds an internship in April and discovers in May that she cannot accept it, because the authorization needed a curricular connection she does not have and a lead time she no longer has either. The employer moves on. Nothing about her candidacy failed."},
+       plan:{lab:"Career Plan v2.0",
+        card:{h:"A timeline that runs backwards from the paperwork",
+          n:"Version 2.0 is dated differently from every other plan in this set, because Mei's binding deadline is not the employer's. She also records that one of the two campus internship funds is closed to her, so the other one is the only option worth preparing for."},
+        carry:[
+          {t:"Employers in her field that commonly sponsor.",from:"v1.0"},
+          {t:"Her authorization constraint and eligible window.",from:"v1.0"},
+          {t:"An application timeline that starts in the autumn, because authorization takes weeks."},
+          {t:"Her placement documented as part of a curricular requirement, which is what the authorization asks for."},
+          {t:"A note that the Phillips Family Internship Fund is open to domestic students only, so it is not a route for her."}]}},
+      {k:"course",lab:"WBL:<br>Internship",when:"Summer after year 2",
+       card:{h:"Authorised in time, and then it is simply an internship",
+        n:"Mei completes a 160-hour internship with a mid-sized logistics company, supervised by an operations manager who approves her three goals and evaluates her work. She tracks shipment exceptions, analyzes supplier on-time performance and documents a revised routing process. She arranges conversations with a customs broker and a demand planner outside her own team. Once the authorization is in place, nothing about the placement is different from anyone else's, which is the point."},
+       plan:{lab:"Career Plan v3.0",
+        card:{h:"Evidence, and a narrower employer list",
+          n:"Version 3.0 holds the work she did and an honest reckoning with how many employers will actually consider her. She narrows her final-year search to firms with a record of sponsoring, which is a smaller list and a more realistic one."},
+        carry:[
+          {t:"Her authorization constraint and eligible window.",from:"v1.0"},
+          {t:"Employers in her field that commonly sponsor.",from:"v1.0"},
+          {t:"160 hours, three approved goals and her supervisor's evaluation."},
+          {t:"Two contacts outside her own team."},
+          {t:"A final-year target list limited to employers with a record of sponsoring."}]}},
+      {k:"stub",when:"Year 4",
+       plan:{lab:"Career Plan v4.0",
+        card:{h:"An offer, and a question that stays open",
+          n:"Version 4.0 confirms a supply chain analyst position starting under post-completion work authorization. Whether it becomes longer-term employment depends on a sponsorship decision that is years away and not hers to make. The plan records that as an open question with a date, rather than treating the offer as the end of the story."},
+        carry:[
+          {t:"Her sponsorship-capable employer list.",from:"v3.0"},
+          {t:"160 hours and her supervisor's evaluation.",from:"v3.0"},
+          {t:"Two contacts outside her own team.",from:"v3.0"},
+          {t:"The job she accepted and the date she starts."},
+          {t:"An open question with a date on it: whether the role leads to sponsorship."}]}},
+      {k:"plain",lab:"Graduation",when:"Year 4, spring",
+       card:{h:"A curriculum designed with practical constraints in mind",
+        n:"Mei starts as a supply chain analyst. The useful observation in her story is that the requirement did not have to do anything special for international students. By making work-based learning a curricular expectation with documented scope and approval, it happens to produce exactly the curricular connection that practical training authorization requires.",
+        q:"“Everyone told me to get an internship. Nobody told me the hard part would be the two months before it started.”"}}
+    ],
+    dem:{points:[
+      "A curricular requirement is worth more to international students than to anyone else, because practical training authorization has to be tied to a curriculum. Making work-based learning a requirement rather than an encouragement creates that connection for every student automatically.",
+      "Her binding deadline is the authorization, not the employer, which means a generic search timeline is wrong for her by several months. That only gets caught if the constraint is recorded early.",
+      "The funding picture is uneven and worth stating plainly. One campus fund is open to domestic students only, and the other withholds tax at a higher rate for international recipients, so the amount that reaches her is smaller.",
+      "Her outcome is positive and provisional. Sponsorship is outside the university's control, and a plan that recorded her as simply placed would misrepresent what she is actually facing."]},
+    oq:{h:"Check this story before it goes to faculty",
+      p:["The authorization details here are described at a general level: no off-campus practical training before a full academic year is complete, a curricular connection required, and several weeks of processing. Those are the standard shape of the rules, but the specifics belong to the international student office rather than to this proposal.",
+         "Have ISSO confirm the timing and the curricular-integration language before this story is shown to faculty, and before the proposal claims anywhere that the requirement eases practical training."]}
+  },
+  /* ================================================================== */
+  {
+    name:"Jalen", major:"Criminal Justice, with the AI co-major", short:"Criminal Justice + AI",
+    headline:"A defined AI-related project creates a meaningful experience within a traditional internship.",
+    sum:{
+      lead:"Jalen combines criminal justice with an AI co-major, but finds few internships that advertise both interests. He works with a host organization and reviewers to define a meaningful AI-related project within a conventional placement.",
+      ultimately:"He moves into a program analyst role with experience evaluating technology in context.",
+      without:"Jalen applies to postings with AI in the title, is screened out of all of them for not being a computer science student, and either drops the co-major or is granted a waiver that makes the requirement meaningless for everyone who follows him."
+    },
+    pts:[
+      {k:"plain",lab:"Orientation",when:"Year 1, fall",
+       card:{h:"He adds the co-major because it is new",
+        n:"Jalen chooses criminal justice because he wants to work on how the system actually treats the people who pass through it. He adds the AI co-major out of curiosity rather than a plan. Nothing at this point tells him that the co-major carries an internship condition he will have to satisfy in a market that may not contain it."}},
+      {k:"course",lab:"CE-100",when:"Year 1, spring",
+       card:{h:"Where the technology is actually used, and where it is talk",
+        n:["Jalen compares court administration, public defense support, probation and community corrections, and victim services, and looks specifically for where artificial intelligence appears in each. He finds concrete uses: case file summarization, records request triage, court date reminders, translation of notices. He also finds a great deal of vendor language that does not survive contact with a real job description.",
+           "The useful discovery is that almost none of this work sits in a role called an AI role. It sits inside ordinary public agency jobs, done by people whose titles say coordinator or analyst."]},
+       plan:{lab:"Career Plan v1.0",
+        card:{h:"He separates the uses from the marketing",
+          n:"Version 1.0 records where the technology genuinely appears in his field, which turns out to be a much shorter and more specific list than the discourse around it suggests."},
+        carry:[
+          {t:"Four routes in the justice system, with where AI actually appears in each."},
+          {t:"Four concrete uses he could name and describe, separated from vendor claims."},
+          {t:"One contact working in a county court administration office."},
+          {t:"An open question: whether the co-major's internship condition can be met without a technical degree."}]}},
+      {k:"course",lab:"CE-200",when:"Year 2",hinge:true,
+       card:{h:"He develops an AI project within an existing placement",
+        n:["Jalen searches for internships with artificial intelligence in the title. There are very few, they are concentrated in technology firms, and they screen for computer science. On the postings alone, his co-major requirement looks unmeetable.",
+           "The reframe is the whole story. The scarce thing is a job called an AI job. The common thing is an ordinary role inside which an AI-related project can be defined. So Jalen approaches a public defender’s office about a standard case support internship, and proposes a specific project to go inside it: assess whether a language model can summarize discovery documents for attorney review, and document where it gets things wrong. <b>His supervisor, a faculty reviewer from the co-major and the career center approve that scope before he starts</b>, which is the same machinery a student uses to turn a campus job or an existing employer into a qualifying experience.",
+           "This is not a loophole. It is a narrower and more defensible claim than the posting would have been, because the AI content is written down and approved in advance rather than hoped for."],
+        cf:"Jalen applies to postings with AI in the title, is screened out of every one, and concludes the co-major was not built for students like him. The requirement then either loses him or quietly waives the condition, and the condition stops meaning anything."},
+       plan:{lab:"Career Plan v2.0",
+        card:{h:"A scope document is what makes the co-major condition satisfiable",
+          n:"Version 2.0 contains a project definition rather than a job title. It states what proportion of his hours the AI work will occupy, what he will produce, and who agreed to it, which is what makes the co-major condition checkable."},
+        carry:[
+          {t:"Four concrete uses of AI in the justice system.",from:"v1.0"},
+          {t:"His municipal operations contact.",from:"v1.0"},
+          {t:"An approved project scope: document summarization evaluation, with expected hours."},
+          {t:"Sign-off from his supervisor, a co-major faculty reviewer and the career center, before he starts."},
+          {t:"What he will produce: a written assessment including failure cases and oversight requirements."}]}},
+      {k:"course",lab:"WBL:<br>Internship",when:"Year 3, summer",
+       card:{h:"The interesting findings are the failures",
+        n:"Jalen completes 150 hours at the office. He builds a sample set of closed-case documents, runs a language model against them, and measures its summaries against what the attorneys actually relied on. The useful part is the disagreement: the model reliably omits exculpatory detail buried late in a document, and performs worst on handwritten and scanned material, which is most of what the office receives. He writes that up alongside the oversight any deployment would require. He arranges conversations with a records manager and a legal technology vendor outside his own team."},
+       plan:{lab:"Career Plan v3.0",
+        card:{h:"He can discuss the technology in a way few applicants can",
+          n:"Version 3.0 documents something more valuable than familiarity with a tool. Jalen can describe a specific evaluation he ran, name the conditions under which the technology failed, and explain what would have to be true before a public agency relied on it."},
+        carry:[
+          {t:"Four concrete uses of AI in his field.",from:"v1.0"},
+          {t:"His approved project scope and sign-offs.",from:"v2.0"},
+          {t:"150 hours, with the AI project accounting for the majority of them."},
+          {t:"A written evaluation including failure cases, especially omitted exculpatory detail."},
+          {t:"Two contacts outside his team, including a data governance officer."}]}},
+      {k:"stub",when:"Year 4",
+       plan:{lab:"Career Plan v4.0",
+        card:{h:"Jalen builds on his interdisciplinary experience",
+          n:"Version 4.0 confirms a program analyst position at a state justice agency where part of the role involves assessing vendor tools. He is not an engineer and is not applying as one. What he can do is tell the difference between a claim and a demonstrated result, which is a scarcer skill in government procurement than the ability to build the thing."},
+        carry:[
+          {t:"His written evaluation and failure analysis.",from:"v3.0"},
+          {t:"Two contacts outside his team.",from:"v3.0"},
+          {t:"The job he accepted and the date he starts."},
+          {t:"What he wants to learn next: procurement and how agencies evaluate vendor claims."}]}},
+      {k:"plain",lab:"Graduation",when:"Year 4, spring",
+       card:{h:"He is the person in the room who asks what it got wrong",
+        n:"Jalen starts as a program analyst. He never held a job with artificial intelligence in the title and never needed one. The co-major asked that a significant part of his work relate to AI, and a scoped, approved and documented project delivered that more convincingly than a posting would have.",
+        q:"“I kept looking for the job that was about AI. The job was about defendants. The AI was a question inside it.”"}}
+    ],
+    dem:{points:[
+      "This does not prove that the placements exist, and the proposal should not claim that it does. It shows the mechanism by which an ordinary placement becomes a qualifying one, which is the same scoping and approval process used for campus employment and projects at a current employer.",
+      "The scarce thing is a job titled as an AI job. The common thing is an ordinary role in which an AI-related question can be defined, scoped and approved in advance. Non-technical co-major students are far better served by the second than by competing for the first.",
+      "Approving in advance is what protects the standard. A project written down and signed off before the student starts is more defensible than a posting that mentions the technology and may or may not involve it.",
+      "The employer development implication is different from what the fear assumes. The ask is not for more AI internships. It is for ordinary partners willing to host a defined project, which is a far easier conversation."]},
+    oq:{h:"Open question this story raises",
+      p:["Somebody has to judge that the AI content of a scoped project is substantive rather than cosmetic, and that judgment is not one the career center can make alone. This story assumes a faculty reviewer from the co-major signs off on scope before the student begins.",
+         "That is a real and recurring workload, and it is the one place in this set where the requirement asks for faculty effort that does not already exist. It should be named and resourced in the proposal rather than left implied."]}
+  },
+  /* ================================================================== */
+  {
+    name:"Nico", major:"Graphic Design",
+    headline:"A substantive design internship strengthens Nico’s portfolio, even as his job search continues.",
+    sum:{
+      lead:"Nico learns to document design process as well as finished work, and chooses a substantive client-facing internship over a more recognizable name. His portfolio grows, although his first full-time search remains difficult.",
+      ultimately:"He graduates without a full-time offer, with a paid freelance project and a clear plan to strengthen his portfolio.",
+      without:"Nico takes the studio placement that sounds impressive and turns out to be three months of resizing files, and arrives at graduation with a portfolio full of finished images and no account of how any of them were made."
+    },
+    pts:[
+      {k:"plain",lab:"Orientation",when:"Year 1, fall",
+       card:{h:"Confident about making things, not about the market",
+        n:"Nico knows he wants to design and not which sector. His confidence is high about the craft and low about how anyone gets hired to do it, and the orientation question captures the difference rather than averaging it into a single number."}},
+      {k:"course",lab:"CE-100",when:"Year 1, spring",
+       card:{h:"Hiring teams look at process, not only finished images",
+        n:"Nico researches agency work, in-house creative teams, freelance practice and design roles adjacent to user experience. An interview with a local creative director tells him something he would not have guessed: hiring teams want to see problem-solving and process, not a gallery of polished results. His faculty advisor recommends a studio course with external critique. He begins keeping early drafts, not only finished work."},
+       plan:{lab:"Career Plan v1.0",
+        card:{h:"He starts saving the drafts",
+          n:"Version 1.0 changes what Nico keeps. For a design student that is the single most consequential early habit, and nothing in a studio course would have prompted it."},
+        carry:[
+          {t:"Four sectors compared, including design work adjacent to user experience."},
+          {t:"What hiring teams actually look at: process and problem-solving."},
+          {t:"One contact who is a creative director at a local studio."},
+          {t:"His first design assignment, saved with the drafts and the critique notes."}]}},
+      {k:"course",lab:"CE-200",when:"Year 2",hinge:true,
+       card:{h:"He turns down the placement that would not have counted",
+        n:["A marketing professor invites design students to contribute to a multidisciplinary campaign assignment, and Nico saves the brief, his critique notes and a reflection alongside the work. In CE-200 he identifies summer studios, audits the gaps in his portfolio and practices explaining his design decisions.",
+           "Then the part that matters. Two placements are available. One has a well-known name and offers observation and production support. The other is smaller and offers real client work with a qualified supervisor. <b>The five criteria are what let him tell the difference</b>, and his advisor backs him in turning down the better-known one."],
+        cf:"Nico takes the impressive-sounding placement, spends three months resizing assets for other people's projects, and has nothing to say in an interview about how a design decision gets made."},
+       plan:{lab:"Career Plan v2.0",
+        card:{h:"Criteria he can apply himself",
+          n:"Version 2.0 contains the standard Nico uses to evaluate an offer. That is a different thing from a list of places he would like to work, and it is the reason he makes the right call in a situation where the wrong one looks better."},
+        carry:[
+          {t:"What hiring teams look at: process over finished images.",from:"v1.0"},
+          {t:"His creative director contact.",from:"v1.0"},
+          {t:"A campaign assignment with its brief, drafts and critique notes."},
+          {t:"Target studios, with what each would actually have him doing."},
+          {t:"The conditions a placement has to meet: real client work and a qualified supervisor."}]}},
+      {k:"course",lab:"WBL:<br>Internship",when:"Year 3, summer",
+       card:{h:"A live brief changes how he works",
+        n:"Nico completes a 160-hour internship with a small design studio. He contributes concept options and production-ready assets to two client projects, sits in on review sessions and learns how revisions get negotiated with a client who has an opinion. His creative director approves three goals he wrote and evaluates his progress. He arranges feedback meetings with a user experience designer at a partner firm and a client-side marketing manager, both outside his own supervision."},
+       plan:{lab:"Career Plan v3.0",
+        card:{h:"Case studies instead of a gallery",
+          n:"Version 3.0 becomes a selective portfolio of case studies, each explaining what he contributed, what the constraints were, how the work changed and what happened. An instructor pushes him to show why a solution worked rather than how it looked. He also realizes he prefers in-house brand design to agency life."},
+        carry:[
+          {t:"The conditions a placement has to meet.",from:"v2.0"},
+          {t:"His campaign assignment and critique notes.",from:"v2.0"},
+          {t:"160 hours, three approved goals and his creative director's evaluation."},
+          {t:"Two client projects written up as case studies, with constraints and outcomes."},
+          {t:"A changed preference: in-house brand design rather than agency work."}]}},
+      {k:"stub",when:"Year 4",
+       plan:{lab:"Career Plan v4.0",
+        card:{h:"An employer names the gap, and he can act on it",
+          n:"Nico gets interviews and no full-time design offer before graduating. One employer tells him his portfolio needs stronger user experience examples. Version 4.0 records that specific gap rather than a general sense of rejection, which is what makes the next step obvious. He agrees to a paid freelance project with a defined client and scope while he builds a new case study and keeps applying. This is a bridge, not a job."},
+        carry:[
+          {t:"His case studies and client work.",from:"v3.0"},
+          {t:"Two contacts outside his own supervision.",from:"v3.0"},
+          {t:"A named gap: he needs stronger user experience examples."},
+          {t:"A paid freelance project with a defined client and scope."},
+          {t:"His status at graduation: interviewing, no offer, still applying."}]}},
+      {k:"plain",lab:"After<br>graduation",when:"",
+       card:{h:"He knows exactly what to fix",
+        n:"The difference between Nico and a student who simply did not get hired is that he has a specific gap, a paid project that will fill it and two people who will look at the work. None of that is an offer, and all of it is better than a general sense that it did not go well.",
+        q:"“I didn’t get the offer I wanted. But I know what to improve, and I have clients and people who’ll review the work.”"}}
+    ],
+    dem:{points:[
+      "The most useful thing in this story is a placement that was refused. A requirement that counted any internship would have rewarded the wrong choice and taught Nico nothing.",
+      "The five criteria are not paperwork. They are a standard a student can apply himself, in a moment when the weaker option carries a better-known name.",
+      "His outcome is honest and still shows progress. A named gap and a paid project are what a working plan produces when the job market does not cooperate."]}
+  },
+  /* ================================================================== */
+  {
+    name:"Marcus", major:"Business Management and Leadership", short:"Mgmt & Leadership",
+    headline:"Marcus develops professional experience through a supervised improvement project at his current employer.",
+    sum:{
+      lead:"Marcus works extensive paid retail hours and hopes to move into management. Rather than treating ordinary shifts as an internship, he proposes a documented improvement project within his current workplace.",
+      ultimately:"He accepts an operations management trainee role and can demonstrate how he led change.",
+      without:"Marcus either drops paid hours he cannot afford to lose in order to take an internship, or his existing retail shifts get counted because he is working hard, which would make the requirement meaningless for everyone."
+    },
+    pts:[
+      {k:"plain",lab:"Orientation",when:"Year 1, fall",
+       card:{h:"He wants to lead, and does not know what comes first",
+        n:"Marcus says he wants to be a manager and rates his confidence four out of five. He also records that he works close to full-time hours. The plan holds the ambition and the constraint together, which is the only honest way to plan for a student in his position.",
+        q:"“I want to be a manager. I’m not sure what you do before you become one.”"}},
+      {k:"course",lab:"CE-100",when:"Year 1, spring",
+       card:{h:"Leadership is a trajectory, not an entry-level job title",
+        n:"Marcus compares retail operations, project coordination, human resources and supply chain roles, and interviews an alum who moved from shift lead to operations manager. His faculty advisor recommends an operations course and suggests he look for measurable improvement work. He also writes a resume that identifies the employee training and customer problem-solving already in his retail job, without pretending that job is more than it is."},
+       plan:{lab:"Career Plan v1.0",
+        card:{h:"The goal gets more useful by getting more specific",
+          n:"Version 1.0 changes his stated aim from being a manager to learning how to coordinate people and processes. That is a smaller claim and a far more actionable one."},
+        carry:[
+          {t:"Four functions compared, with realistic entry-level titles in each."},
+          {t:"His revised aim: learn to coordinate people and processes effectively."},
+          {t:"One alum who moved from shift lead to operations manager."},
+          {t:"Evidence of leading without a title, documented from his current job."}]}},
+      {k:"course",lab:"CE-200",when:"Year 2",hinge:true,
+       card:{h:"He proposes a project to the employer he already has",
+        n:["Marcus notices that inconsistent onboarding at his store produces avoidable errors. Rather than counting his usual shifts or relabelling the training he already does, he proposes a separate, time-limited operational improvement project to his employer.",
+           "A district operations supervisor and a faculty reviewer approve a project charter with three goals, expected hours and deliverables. <b>His regular paid job continues untouched, and only the separately documented project hours count.</b> His career advisor also builds him a network plan, because a project at his own store would otherwise introduce him to the same colleagues he already has."],
+        cf:"Either Marcus cuts the hours he lives on to take an internship elsewhere, or the shifts he was working anyway get counted, and the requirement becomes a formality that certifies whatever students were already doing."},
+       plan:{lab:"Career Plan v2.0",
+        card:{h:"A charter, because approval has to mean something",
+          n:"Version 2.0 contains the document that makes the difference between a job and a qualifying experience: an agreed scope, with measures, signed off before the work starts."},
+        carry:[
+          {t:"His aim: learn to coordinate people and processes.",from:"v1.0"},
+          {t:"Evidence of leading without a title.",from:"v1.0"},
+          {t:"An approved project charter with scope, hours and deliverables."},
+          {t:"Three goals and the measures he will be judged against."},
+          {t:"A plan for meeting people outside his own store, which the project would not produce by itself."}]}},
+      {k:"course",lab:"WBL:<br>Employer project",when:"Year 3",
+       card:{h:"A business problem becomes evidence",
+        n:"Across 145 distinct project hours Marcus audits the onboarding steps, interviews colleagues at another location, pilots a checklist and compares training errors before and after. A qualified district supervisor coaches him and evaluates the finished work. He deliberately meets a human resources learning specialist and an operations manager from another district, so his professional network now reaches past his own supervisor and team."},
+       plan:{lab:"Career Plan v3.0",
+        card:{h:"A promotion story with numbers behind it",
+          n:"Marcus writes version 3.0 when the project closes, not on a class-year deadline. He documents what he found and what the limits of the finding were, and revises his resume to describe a measurable process improvement without claiming he did it alone. A student affairs mentor helps him connect it to facilitation work he does in a campus leadership program."},
+        carry:[
+          {t:"His approved charter and measures.",from:"v2.0"},
+          {t:"Evidence of leading without a title.",from:"v1.0"},
+          {t:"145 qualifying project hours and his supervisor's evaluation."},
+          {t:"A before-and-after comparison of training errors, with its limitations stated."},
+          {t:"Two contacts outside his own store and team."}]}},
+      {k:"stub",when:"Year 4",
+       plan:{lab:"Career Plan v4.0",
+        card:{h:"Marcus prepares to take on a leadership role",
+          n:"Version 4.0 confirms his start date and what he wants to develop first. He did not have to give up paid employment to meet the requirement, and the university did not lower the standard to let him meet it. A new project, professional supervision, a wider set of relationships and a written reflection are what made it count."},
+        carry:[
+          {t:"His operational case study and the error comparison.",from:"v3.0"},
+          {t:"Two contacts outside his own store.",from:"v3.0"},
+          {t:"The job he accepted and the date he starts."},
+          {t:"What he wants to develop first: running a team meeting and managing a change people resist."}]}},
+      {k:"plain",lab:"Graduation",when:"Year 4, spring",
+       card:{h:"From aspiring manager to emerging professional",
+        n:"Marcus starts as an operations management trainee.",
+        q:"“I didn’t just say I wanted to manage. I learned how to improve a process and lead people through change.”"}}
+    ],
+    dem:{points:[
+      "The students most likely to be excluded by an experience requirement are the ones already working too many hours to add anything. This pathway is the answer, and it only works if the scoping is genuine.",
+      "The distinction that carries the weight is between the job and the project. Marcus keeps his shifts and his pay; only the approved project hours count.",
+      "A project at a student's own workplace produces no new relationships unless someone plans for them. That is why the network plan is written before the work starts rather than audited afterwards."]}
+  },
+  /* ================================================================== */
+  {
+    name:"Tasneem", major:"Radiation Therapy", short:"Radiation Therapy",
+    headline:"A flexible plan follows Tasneem through interrupted enrollment and a tightly structured clinical degree.",
+    sum:{
+      lead:"Tasneem is completing a tightly sequenced clinical degree when family and financial circumstances interrupt her studies. Her Career Plan preserves earlier work, and her existing supervised clinical rotation becomes a potential qualifying experience.",
+      ultimately:"She returns, completes the degree on a longer timeline, and accepts a cancer center position.",
+      without:"Tasneem would have been assumed not to need any career support, because her major names a job. She would have learned how hospital hiring works from a clinical supervisor in her final spring, and asked for a reference four months after her rotation ended, from someone who had supervised a dozen other students since."
+    },
+    pts:[
+      {k:"plain",lab:"Orientation",when:"Year 1, fall",
+       card:{h:"She knows the job and not the job market",
+        n:"Tasneem enters a program that will tell her what to take every semester until she graduates. She is certain about the work and uncertain about everything surrounding it.",
+        q:"“I know what I’m doing. I don’t know how any of the hiring works.”"}},
+      {k:"course",lab:"CE-100",when:"Year 1, spring",
+       card:{h:"One credit fits where a course block would not",
+        n:["CE-100 is one credit. It fits alongside the clinical sequence because the requirement is two credits spread across the whole degree, rather than a course that has to compete with required science and clinical coursework for a place in the schedule.",
+           "She compares hospital systems, freestanding cancer centers, academic medical centers and equipment vendors, and learns that these employers post at very different times of year and that some hire mainly from people who have already done a rotation with them."]},
+       plan:{lab:"Career Plan v1.0",
+        card:{h:"Certain about the work, uncertain about the market",
+          n:"The useful part of version 1.0 is the split. A student can be completely confident about her field and still be unsure about everything that surrounds it, and only one of those two things shows up on a transcript."},
+        carry:[
+          {t:"She is confident about the work and not about the hiring process."},
+          {t:"Four kinds of employer compared, including two she had not known about."},
+          {t:"When each kind of employer posts openings during the year."},
+          {t:"Two alumni working in hospital radiation oncology departments."}]}},
+      {k:"plain",lab:"Two semesters away",when:"Years 2 to 3",hinge:true,
+       card:{h:"She leaves for a year and comes back to the same plan",
+        n:"A family illness and a financial shortfall take Tasneem out for two semesters. She returns part-time and works thirty hours a week. Her clinical sequence restarts where it stopped. So does her Career Plan, which has been sitting unchanged rather than expiring, so she does not have to reconstruct anything.",
+        q:"“I left for a year. I came back to the same plan, not to a blank page.”",
+        cf:"Every system she touches treats Tasneem as a new student. She repeats the intake conversations she already had in her first year, and the work she did before she left is gone."}},
+      {k:"course",lab:"CE-200",when:"Off-sequence",
+       card:{h:"She takes the second course in a term that works for her",
+        n:"Tasneem takes CE-200 asynchronously, in a term that fits her shifts, rather than in the second spring that the standard sequence assumes. She builds a list of employers across two hospital systems with different posting calendars and prepares her materials around her paid hours."},
+       plan:{lab:"Career Plan v2.0",
+        card:{h:"Nothing had to be rebuilt",
+          n:"Version 2.0 starts from everything she wrote before she left. The plan surviving two inactive semesters is a design decision rather than a convenience, and it matters most for students who stop out, who are disproportionately the students the requirement exists for."},
+        carry:[
+          {t:"Everything from her first year, unchanged through two semesters away.",from:"v1.0"},
+          {t:"Two alumni in hospital radiation oncology departments.",from:"v1.0"},
+          {t:"Employers in two hospital systems, with the dates each one posts."},
+          {t:"A constraint she wrote down herself: thirty paid hours a week, enrolled part-time."},
+          {t:"Her plan to use a clinical rotation as her qualifying experience."}]}},
+      {k:"course",lab:"WBL:<br>Clinical",when:"Year 5, fall",
+       card:{h:"The clinical rotation is the qualifying experience",
+        n:["Tasneem does not need a separate internship. Her clinical rotation already involves supervised professional work, a qualified supervisor, regular feedback and a formal evaluation. <b>Her clinical supervisor does nothing she would not have done anyway.</b>",
+           "What the requirement adds is the part a rotation does not produce by itself: three written goals beyond the clinical competencies, and a plan to meet people outside the department she is placed in. She arranges conversations with a dosimetrist at another site and with a department manager who does the hiring."]},
+       plan:{lab:"Career Plan v3.0",
+        card:{h:"She asks for the reference while the work is fresh",
+          n:"Tasneem writes version 3.0 in December of her fifth year, when her rotation ends. That is not the end of anyone's third spring. Because the reflection is tied to the experience rather than to a class year, she requests her references while her supervisor still remembers what she did."},
+        carry:[
+          {t:"Employers in two hospital systems, with posting dates.",from:"v2.0"},
+          {t:"Two alumni in hospital radiation oncology.",from:"v1.0"},
+          {t:"Three goals she wrote beyond the clinical competencies, approved before she started."},
+          {t:"Two contacts outside her placement department, including a manager who hires."},
+          {t:"A written reference, requested in December while the rotation was recent."}]}},
+      {k:"stub",when:"Year 6",
+       plan:{lab:"Career Plan v4.0",
+        card:{h:"The last version looks at her first year on the job",
+          n:"Version 4.0 confirms the offer and asks what support she will need in her first year and what her registry credential requires. For someone entering a clinical profession the first year is the part most likely to go wrong, and it is the part nobody usually asks about."},
+        carry:[
+          {t:"Two contacts outside her placement department.",from:"v3.0"},
+          {t:"Two alumni in hospital radiation oncology.",from:"v1.0"},
+          {t:"The job she accepted and the date she starts."},
+          {t:"What she needs in her first year on the job, named before she needs it."},
+          {t:"The steps and timing for her registry credential."}]}},
+      {k:"plain",lab:"Graduation",when:"Year 6, December",
+       card:{h:"Five and a half years, one plan",
+        n:"Tasneem starts at a cancer center. Her story answers two objections at once. The requirement is two credits and a rotation she was already completing, so it does not displace anything in a program with no elective room. And because the plan follows her progress rather than her class year, leaving for two semesters cost her time without costing her the work she had already done."}}
+    ],
+    dem:{points:[
+      "Programs with fixed sequences are where a universal requirement draws the most opposition, and the objection is about room in the schedule rather than about whether the content is worth having. One credit at a time, twice across the degree, is the whole answer.",
+      "A plan that survives two inactive semesters is a design decision. Students who stop out are disproportionately the students the requirement is meant to reach.",
+      "Tying the reflection to the end of the experience rather than to a class year is what lets a five-and-a-half-year path work without anyone needing an exception."]},
+    oq:{h:"Open decision this story depends on",
+      p:["The qualifying experiences table names four kinds: an internship, faculty-led research, qualifying campus employment, and an approved project at a current employer. A required clinical rotation is not one of them, so this story currently describes a route the proposal does not yet authorize.",
+         "Either the table gains a fifth column for required clinical and practicum placements, or programs like radiation therapy are told their rotation counts as an internship. Their faculty will ask, and they are the faculty whose students have the least room in the schedule."]}
+  },
+  /* ================================================================== */
+  {
+    name:"Ruben", major:"Sports Management",
+    headline:"Ruben’s plan recognizes the difference between being employed and pursuing aligned career work.",
+    sum:{
+      lead:"Ruben loves sports management but learns early how limited and seasonal some opportunities can be. He develops a parallel set of transferable operations roles, then graduates into work that does not require his degree.",
+      ultimately:"His plan distinguishes stable employment from the professional direction he is still pursuing.",
+      without:"Ruben takes the same job and is counted as employed, which closes the question. Roughly half of bachelor's graduates are working in roles that do not require a degree a year after graduating, and most of them are recorded as a success."
+    },
+    pts:[
+      {k:"plain",lab:"Orientation",when:"Year 1, fall",
+       card:{h:"He wants to work in sport, which is not a job description",
+        n:"Ruben says he wants to work in professional sport and rates his confidence four out of five. He can name teams and cannot name functions, which is the usual starting position in a field people choose because they love the product."}},
+      {k:"course",lab:"CE-100",when:"Year 1, spring",
+       card:{h:"He reads the postings instead of the job titles",
+        n:"Ruben compares team operations, ticketing and revenue, sponsorship, and the facilities and events side. The useful shock is in the postings themselves: entry-level roles in the field are scarce, frequently seasonal and often paid below what he can live on. He also learns that the facilities and events route and the revenue route both transfer readily outside sport, and the team operations route does not."},
+       plan:{lab:"Career Plan v1.0",
+        card:{h:"He learns what the market actually pays",
+          n:"Version 1.0 contains something most first-year plans do not: an honest picture of how competitive and how poorly paid the entry level in his chosen field is, recorded while he still has three years to decide what to do about it."},
+        carry:[
+          {t:"Four routes into the industry, with real posting volumes and pay ranges."},
+          {t:"Which routes transfer outside sport and which do not."},
+          {t:"One alum working in venue operations."},
+          {t:"A question he is carrying: whether he wants the industry or the function."}]}},
+      {k:"course",lab:"CE-200",when:"Year 2",
+       card:{h:"He builds a list inside the industry and a list outside it",
+        n:"Ruben targets clubs, venues and event operators, and on his advisor's suggestion also builds a parallel list of operations and events roles outside sport that want the same skills. He is not giving up on the industry. He is refusing to let one scarce market be his only option, which is a different thing."},
+       plan:{lab:"Career Plan v2.0",
+        card:{h:"Two lists, deliberately",
+          n:"Version 2.0 holds a target list inside sport and a second list of operations roles elsewhere, so that the function he is building toward is portable even when the industry is not hiring."},
+        carry:[
+          {t:"Which routes transfer outside sport.",from:"v1.0"},
+          {t:"His alum contact in venue operations.",from:"v1.0"},
+          {t:"Target clubs, venues and event operators, with their hiring seasons."},
+          {t:"A parallel list of operations and events roles outside sport."},
+          {t:"The skills both lists have in common: scheduling, vendor coordination, event logistics."}]}},
+      {k:"course",lab:"WBL:<br>Internship",when:"Year 3, summer",
+       card:{h:"A real placement in a field with very few of them",
+        n:"Ruben completes a 150-hour operations placement with a minor league club. He works match-day staffing, vendor coordination and post-event reporting, supervised by an operations manager who approves his three goals and evaluates his work. He arranges conversations with a venue general manager and a regional events coordinator outside his own team. The placement is unpaid beyond a travel allowance, which is normal in the industry and is itself part of what he learns."},
+       plan:{lab:"Career Plan v3.0",
+        card:{h:"He prepares for a competitive employment market",
+          n:"Version 3.0 is a good document. Ruben can describe event logistics he ran and problems he solved. None of that changes the fact that the club hires two full-time operations staff a year and had no opening."},
+        carry:[
+          {t:"His parallel list outside sport.",from:"v2.0"},
+          {t:"Two contacts from his first two years.",from:"v1.0"},
+          {t:"150 hours, three approved goals and his supervisor's evaluation."},
+          {t:"Match-day operations work he can describe in detail."},
+          {t:"Two contacts outside his own team, including a venue general manager."}]}},
+      {k:"stub",when:"Year 4, spring",
+       plan:{lab:"Career Plan v4.0",
+        card:{h:"His plan distinguishes employment from career alignment",
+          n:["Ruben takes a full-time assistant manager role at a fitness chain. It is stable, it pays, and it does not require a degree. He takes it because he needs an income in May, which is the most ordinary reason anyone takes a job.",
+             "<b>Version 4.0 records that he is employed and that the role does not use his degree, as two separate facts.</b> He stays on his advisor's list, keeps his parallel operations list open, and sets a review point at nine months. The alternative is a system that counts him as a success and stops looking."],
+          },
+        carry:[
+          {t:"His parallel list of operations roles outside sport.",from:"v2.0"},
+          {t:"150 hours and his supervisor's evaluation.",from:"v3.0"},
+          {t:"Two contacts outside his own team.",from:"v3.0"},
+          {t:"His status: employed full-time in a role that does not require his degree."},
+          {t:"A review point at nine months, and the search left open until then."}]}},
+      {k:"plain",lab:"Nine months on",when:"After graduation",
+       card:{h:"He remains connected to support after graduation",
+        n:"Ruben is still in the fitness role and still applying. Whether he moves is not something the requirement determines. What it determines is whether anyone knows he is trying, and whether the institution counts him as finished.",
+        q:"“I’m working. I’m just not doing the thing I spent four years learning.”"}}
+    ],
+    dem:{points:[
+      "Underemployment is the outcome an employment rate is least able to see. A graduate in a job that does not require a degree is counted exactly like one who is placed, which is why the distinction has to be recorded at the point of graduation rather than inferred later.",
+      "This matters directly for First Destination reporting. A plan that separates employed from employed in a role requiring the degree produces a more honest number than a survey that asks only the first question.",
+      "Ruben's case also tests the fields where the industry itself is the constraint. CE-100 showed him the market in his first year, which is why he had a portable second list rather than discovering the problem in his final spring."]}
+  },
+  /* ================================================================== */
+  {
+    name:"Samira", major:"Political Science",
+    headline:"A compressed career education sequence helps a transfer student build connections and experience.",
+    sum:{
+      lead:"Samira transfers with fewer semesters to build connections and explore public affairs. An adapted sequence helps her find mentors, prepare a writing sample, and secure a funded policy placement.",
+      ultimately:"She graduates with a community engagement coordinator offer and a network she can continue to build.",
+      without:"Samira arrives in her third year, has two years to work out an unfamiliar field on her own, and competes for public service roles against students who have been building contacts since their first semester."
+    },
+    pts:[
+      {k:"plain",lab:"Entry",when:"Transfer, fall",
+       card:{h:"She arrives with interests and fewer connections",
+        n:"An adapted entry process records what Samira is interested in and how many semesters she has left, instead of assuming a four-year runway. That distinction matters immediately, because every later recommendation has to fit a shorter timeline."}},
+      {k:"course",lab:"CE-100",when:"First term",
+       card:{h:"Government, campaigns and advocacy are different careers",
+        n:"Samira researches municipal administration, legislative staff work, nonprofit advocacy and political campaigns. Alumni conversations help her tell the difference between temporary campaign employment and ongoing public administration, which is not obvious from outside. She also builds a resume from organizing work and service at her previous institution, with help seeing that planning meetings and mobilising volunteers are transferable."},
+       plan:{lab:"Career Plan v1.0",
+        card:{h:"A shorter runway, written down",
+          n:"Version 1.0 holds something most plans do not have to: an explicit note that she has fewer terms than the default sequence assumes."},
+        carry:[
+          {t:"Four public service routes compared, including the difference between campaign and administrative work."},
+          {t:"Her credit timeline, and how many terms she actually has."},
+          {t:"Leadership evidence from organizing work at her previous institution."},
+          {t:"Two alumni contacts in city agencies."}]}},
+      {k:"course",lab:"CE-200",when:"Second term",hinge:true,
+       card:{h:"She asks for introductions instead of waiting for postings",
+        n:["Samira identifies agencies and policy nonprofits with supervised student roles and learns to describe campus organizing in public service language. A political science instructor, seeing the interests she chose to share on his roster, invites her to connect a policy assignment to a local government topic, and that brief becomes something she can show an employer.",
+           "The thing CE-200 changes is her method. Public service roles are often filled through introductions rather than postings, and she has fewer semesters than anyone else to build those. So she sets a timeline and requests introductions, rather than refreshing a jobs board."],
+        cf:"Samira waits for openings to appear, because that is how she thinks hiring works. The roles she wants are filled by people someone already knew, and she never finds out why she did not hear back."},
+       plan:{lab:"Career Plan v2.0",
+        card:{h:"A list of people, not a list of postings",
+          n:"Version 2.0 is organized around introductions she intends to ask for, which is a different document from a list of jobs she intends to apply to."},
+        carry:[
+          {t:"Her credit timeline and remaining terms.",from:"v1.0"},
+          {t:"Two alumni contacts in city agencies.",from:"v1.0"},
+          {t:"A policy brief written for a local government topic, saved as a writing sample."},
+          {t:"Target offices and agencies, with the person she intends to ask for an introduction at each."},
+          {t:"A realistic application timeline built around how many terms she has left."},
+          {t:"The Phillips Family Internship Fund deadline in mid-September, and what she needs in hand to meet it."}]}},
+      {k:"course",lab:"WBL:<br>Internship",when:"Fall term",
+       card:{h:"Policy work from the inside",
+        n:["Samira completes a 140-hour internship with a municipal policy office during the fall term. She researches constituent concerns, prepares meeting briefs and helps analyze program feedback, supervised by a qualified policy analyst who approves her three goals and evaluates her work. She meets a budget analyst and a community liaison outside the supervisory relationship, which is how she learns that policy decisions and policy implementation are separate problems.","The role is unpaid, as municipal policy internships usually are. <b>She secures the offer in early September and applies to the Phillips Family Internship Fund before its mid-September deadline</b>, which supports unpaid and underpaid internships and gives preference to students completing one through a course. With fewer terms than her classmates, making that deadline in her first autumn is most of what makes the placement possible."]},
+       plan:{lab:"Career Plan v3.0",
+        card:{h:"She finds out which part of public service suits her",
+          n:"Writing version 3.0 after the internship, Samira realizes that community engagement appeals to her more than campaign work. Her club advisor and a faculty mentor help her connect co-curricular leadership to professional evidence rather than listing them separately."},
+        carry:[
+          {t:"Two alumni contacts in city agencies.",from:"v1.0"},
+          {t:"Her policy brief writing sample, now revised.",from:"v2.0"},
+          {t:"140 hours, three approved goals and her supervisor's evaluation."},
+          {t:"Two contacts outside the supervisory relationship."},
+          {t:"A narrowed preference: community engagement rather than campaign work."}]}},
+      {k:"stub",when:"Final year",
+       plan:{lab:"Career Plan v4.0",
+        card:{h:"Samira prepares for her transition into public service",
+          n:"Version 4.0 records the outcome and asks what she wants to build toward in public administration. Her story shows what a shared career framework does for a student whose time on campus is shorter than the sequence assumes."},
+        carry:[
+          {t:"Her policy brief and revised writing sample.",from:"v2.0"},
+          {t:"Her preference for community engagement work.",from:"v3.0"},
+          {t:"Four professional contacts built in under three years."},
+          {t:"The job she accepted and the date she starts."}]}},
+      {k:"plain",lab:"Graduation",when:"Final spring",
+       card:{h:"Several useful connections, not one lucky one",
+        n:"Samira starts as a community engagement coordinator.",
+        q:"“I didn’t need one magical connection. I needed several useful ones, made over time.”"}}
+    ],
+    dem:{points:[
+      "Transfer students are the clearest case for a structured sequence, because they have the least time to absorb an institution's informal knowledge and the least access to the networks that knowledge runs on.",
+      "The sequence compresses without being waived. Samira does the same four versions on a shorter timeline, which is only possible because the plan is keyed to her progress rather than her class year.",
+      "Her method changes, not her effort. Learning that public service roles are filled through introductions is the kind of thing that is obvious to insiders and invisible to everyone else."]}
+  },
+  /* ================================================================== */
+  {
+    name:"Elena", major:"English",
+    headline:"Timely information about funding helps Elena pursue an internship she could not otherwise afford.",
+    sum:{
+      lead:"Elena loves writing but worries about career opportunities and cannot afford an unpaid internship. Early planning connects her to an existing Suffolk stipend in time to pursue a summer communications placement.",
+      ultimately:"She builds professional writing samples and accepts a communications coordinator position.",
+      without:"Elena receives the advice usually given to English majors: take the prestigious unpaid internship. She cannot, does not say why, and quietly stops going to advising. She graduates with a strong degree and no professional writing anyone has paid for."
+    },
+    pts:[
+      {k:"plain",lab:"Orientation",when:"Year 1, fall",
+       card:{h:"A major she loves and a question about it",
+        n:"Elena reports very low certainty about careers and writes that she worries employers will not value her major. She also records that she works substantial hours and that an unpaid summer is not something she can do. Both go in the plan in her own words.",
+        q:"“I know I like writing. I don’t know what people hire English majors to do.”"}},
+      {k:"course",lab:"CE-100",when:"Year 1, spring",
+       card:{h:"Writing turns out to exist in a lot of workplaces",
+        n:"Elena compares publishing, communications, nonprofit development and technical writing. An interview with a Suffolk alum in nonprofit communications shows her that writing is usually paired with audience research, project management and digital tools, which changes what she thinks she needs to learn. Her academic advisor, reading the part of the plan she shared, recommends a digital storytelling elective rather than assuming graduate school is the obvious next step. A faculty member suggests she keep an analytical essay as an early writing sample."},
+       plan:{lab:"Career Plan v1.0",
+        card:{h:"Her constraint is on the record from the start",
+          n:"Version 1.0 does two things at once: it widens the set of jobs Elena can name, and it records the limit that any realistic plan has to work within."},
+        carry:[
+          {t:"Four functions where writing is the work, including two she had not known about."},
+          {t:"A constraint in her own words: she works to cover living costs and cannot take unpaid work."},
+          {t:"One alum working in nonprofit communications."},
+          {t:"Her first writing sample, saved from a course."}]}},
+      {k:"course",lab:"CE-200",when:"Year 2, spring",hinge:true,
+       card:{h:"She learns about funding while there is still time to apply",
+        n:["In a literature course Elena builds an annotated public-facing article and saves it with a reflection on audience and evidence. In CE-200 she turns a general interest in writing into a list of communications placements.",
+           "Most of them are unpaid, which for Elena has always meant impossible. <b>What CE-200 adds is that Suffolk funds unpaid summer experiences, and that she is eligible.</b> The Summer Career Development Stipend pays $3,500, covers first- and second-year students for one of their two eligible summers, and requires an offer in hand before applying. So her timeline runs backwards from a funding deadline rather than forwards from a vague intention, and she secures a placement in the spring."],
+        cf:"Elena is told to take the unpaid summer internship, the way English majors usually are. She cannot afford it, does not explain why, and stops asking for advice. The stipend that would have solved her problem goes unclaimed, because nobody connected it to her in time to apply."},
+       plan:{lab:"Career Plan v2.0",
+        card:{h:"A placement she can accept, and the funding that makes it possible",
+          n:"Version 2.0 is organized around two deadlines: the employer's and the stipend's. Elena can only use the award for one of her two eligible summers, so choosing which one is a real decision rather than a formality."},
+        carry:[
+          {t:"She works to cover living costs and cannot take unpaid work.",from:"v1.0"},
+          {t:"Her alum contact in nonprofit communications.",from:"v1.0"},
+          {t:"Three strong writing samples, including a public-facing article."},
+          {t:"An offer letter from a cultural nonprofit, secured in the spring."},
+          {t:"A submitted stipend application, with the decision to use her award this summer rather than keeping it for the next one."}]}},
+      {k:"course",lab:"WBL:<br>Internship",when:"Summer after year 2",
+       card:{h:"Writing with an audience and a deadline",
+        n:["Elena takes an unpaid 150-hour communications internship at a cultural nonprofit, funded by the stipend. She drafts newsletter content, interviews program participants, helps evaluate audience response and contributes to an event campaign. A communications director approves her three goals, edits her work and completes a final evaluation. She deliberately interviews a fundraising manager and a freelance communications consultant outside her supervisor's team.",
+           "The stipend asks her to attend a midpoint check-in, have her supervisor complete an evaluation, and submit a written reflection and an updated resume at the end. Those overlap almost exactly with what the requirement asks for, so she is not doing the same work twice."]},
+       plan:{lab:"Career Plan v3.0",
+        card:{h:"A portfolio with professional work in it, two years early",
+          n:"Version 3.0 turns a summer into a portfolio. Elena selects writing samples she has permission to share and describes how she revised the same material for different audiences. Because this happened after her second year, she has two more years to build on it rather than arriving at graduation with one placement and no time."},
+        carry:[
+          {t:"She works to cover living costs.",from:"v1.0"},
+          {t:"Her public-facing article and earlier samples.",from:"v2.0"},
+          {t:"150 hours, three approved goals and her supervisor's evaluation."},
+          {t:"Published work she has permission to show."},
+          {t:"Two contacts outside her supervisor's team, including a freelance consultant."}]}},
+      {k:"stub",when:"Year 4",
+       plan:{lab:"Career Plan v4.0",
+        card:{h:"Elena identifies her next steps in communications",
+          n:"Version 4.0 confirms the job and records what she wants to learn first. Two years of term-time freelance writing for the same nonprofit sit behind it, which was possible only because the first placement happened early enough to lead somewhere."},
+        carry:[
+          {t:"Her writing portfolio and published work.",from:"v3.0"},
+          {t:"Two contacts outside her supervisor's team.",from:"v3.0"},
+          {t:"The job she accepted and the date she starts."},
+          {t:"What she wants to learn first: audience analytics and campaign measurement."}]}},
+      {k:"plain",lab:"Graduation",when:"Year 4, spring",
+       card:{h:"Funding makes a previously inaccessible opportunity possible",
+        n:"Elena starts as a communications coordinator. The thing worth noticing is that Suffolk did not have to create anything to make this happen. The stipend was already there. What was missing was a student who knew about it, had an offer in hand, and applied before the deadline.",
+        q:"“I thought the internships everyone talked about were for people who could afford to work for free. It turned out there was a way, and nobody had told me.”"}}
+    ],
+    dem:{points:[
+      "Financial constraint is the barrier most likely to be invisible, because students rarely volunteer it and advisors rarely ask. Recording it in the first year is what makes every later conversation useful.",
+      "This story spends no new money. The Summer Career Development Stipend already exists and is already funded. The requirement's contribution is a student who secured a placement early enough to apply for it.",
+      "The stipend's own conditions, a qualified supervisor, a midpoint check-in, an evaluation and a final reflection with an updated resume, are close to the five criteria already. The two systems reinforce each other rather than competing."]}
+  },
+  /* ================================================================== */
+  {
+    name:"Omar", major:"Finance",
+    headline:"Recorded internship searches allow Suffolk to offer Omar more intensive support before graduation.",
+    sum:{
+      lead:"Omar applies repeatedly for finance internships without securing an offer. Because his efforts and constraints are recorded, he receives more intensive search support rather than being overlooked.",
+      ultimately:"He completes a supervised internship during his final year and accepts an analyst position after graduation.",
+      without:"Those two failed searches would have left no record anywhere. Omar would have started his final year looking exactly like a student who had never tried, and the university would have found out at graduation, or not at all."
+    },
+    pts:[
+      {k:"plain",lab:"Orientation",when:"Year 1, fall",
+       card:{h:"He is interested in finance and does not know how any of it works",
+        n:"Omar rates his confidence three out of five. The orientation question asks what he wants to find out in college, and he writes that he does not know how people actually get internships. That turns out to matter more than the direction he picked.",
+        q:"“Everyone says get an internship. Nobody says how.”"}},
+      {k:"course",lab:"CE-100",when:"Year 1, spring",
+       card:{h:"Different finance jobs hire at different times",
+        n:"Omar compares corporate finance, wealth management, commercial banking and financial analysis. An alumni interview teaches him that wealth management firms hire all year while investment roles recruit on a fixed early calendar. That turns out to be the single most useful thing he learns, though not for another three years. He also writes his first resume, using warehouse work and a cash-handling job."},
+       plan:{lab:"Career Plan v1.0",
+        card:{h:"He writes down the constraint himself",
+          n:"Version 1.0 records a direction and a limit. The limit matters as much as the direction, because every conversation Omar has for the next three years starts from an accurate picture of what he can actually accept."},
+        carry:[
+          {t:"Four routes compared, two of which he wants to keep looking at."},
+          {t:"A constraint in his own words: he works twenty paid hours a week and cannot take an unpaid placement."},
+          {t:"One alumni contact who works in wealth management."},
+          {t:"A note that hiring calendars are very different from one route to the next."}]}},
+      {k:"course",lab:"CE-200",when:"Year 2, spring",
+       card:{h:"He applies to fourteen places and gets nothing",
+        n:"CE-200 helps Omar build a target list, a timeline and a set of interview answers. He applies to fourteen summer positions in his first eligible term. He gets two first-round interviews and no offers. For a second-year student in a competitive field this is an ordinary result, and his plan records it as an attempt he completed rather than as a failure."},
+       plan:{lab:"Career Plan v2.0",
+        card:{h:"The record of two failed searches is what makes the next step possible",
+          n:"Version 2.0 is revised twice, once after the first search and once after the second. By the end of his third year it holds two documented application cycles. That record is the thing the Accelerator later reads."},
+        carry:[
+          {t:"Four routes compared, two still open.",from:"v1.0"},
+          {t:"He works twenty paid hours a week and cannot take an unpaid placement.",from:"v1.0"},
+          {t:"Twenty-two employers he applied to across two cycles, with what happened to each application."},
+          {t:"What the February interviewer told him when he was not selected, written down in his own words."}]}},
+      {k:"plain",lab:"Second search",when:"Year 3",
+       card:{h:"He gets close again and is not selected",
+        n:"Omar searches through the fall and spring of his third year and reaches a final round in February. He does not get it. His application record and his twenty paid hours a week are both in his plan, so the university can see something that would never show up on a transcript: a student who is trying and not landing.",
+        q:"“It isn’t that I’m not applying. It’s that I keep getting close.”"}},
+      {k:"plain",lab:"Experience<br>Accelerator",when:"End of year 3",hinge:true,
+       card:{h:"Two unsuccessful searches lead to more structured support",
+        n:["At the end of his third-to-last semester Omar still has no qualifying experience, so the Experience Accelerator begins. Over the following break he works through a concentrated sequence of advising, employer research and interview practice, offered in a mix of live and recorded sessions so it fits around his paid hours. The career team brings him openings sourced from alumni, including firms that hire outside the standard calendar.",
+           "<b>Nobody had to notice Omar and refer him.</b> The Accelerator starts because his plan shows two completed searches and no placement. A student who would never have walked into the career center gets the same response as a student who would have. Petition and substitution stay available but are not used, because the Accelerator has not failed yet."],
+        cf:"Nothing starts, because nothing was recorded. Omar begins his final year looking identical to a student who never searched at all, and the first anyone hears about it is when the requirement is either enforced against him or quietly set aside."}},
+      {k:"course",lab:"WBL:<br>Internship",when:"Year 4, fall",
+       card:{h:"He takes a placement in the term the design holds for this",
+        n:"Omar completes a 150-hour wealth management internship in the fall of his final year. This is the term the requirement reserves for students on at least a second search, rather than for students starting their first. He prepares client reports and meeting materials and sits in on planning conversations, supervised by a qualified advisor who approves his three goals and evaluates his work. He arranges conversations with a compliance officer and an operations manager outside his supervisor's team."},
+       plan:{lab:"Career Plan v3.0",
+        card:{h:"The reflection is compressed, and the plan says so",
+          n:"Omar writes version 3.0 in December as the placement ends. His job search and his placement are running in the same semester, which is not ideal, and the plan records that rather than hiding it."},
+        carry:[
+          {t:"Twenty-two employers across two cycles, with outcomes.",from:"v2.0"},
+          {t:"He works twenty paid hours a week.",from:"v1.0"},
+          {t:"150 hours completed, with evidence against all five criteria and his supervisor's evaluation."},
+          {t:"Two professional contacts from outside his supervisor's team."},
+          {t:"A note that his search and his placement overlapped in one semester."}]}},
+      {k:"stub",when:"Year 4, spring",
+       plan:{lab:"Career Plan v4.0",
+        card:{h:"His final plan records his continued search",
+          n:"Omar is still searching when he finishes. Version 4.0 records an active search rather than dressing it up as something else, and that honest answer is what keeps him visible to the career team through the weeks after commencement, when students normally disappear. A plan that recorded him as finished would have cost him the follow-up that got him hired."},
+        carry:[
+          {t:"150 hours and his supervisor's evaluation.",from:"v3.0"},
+          {t:"Two professional contacts from the placement.",from:"v3.0"},
+          {t:"His status at graduation: still searching, with three applications outstanding."},
+          {t:"What he still needs: practice interviewing for analyst roles."},
+          {t:"A follow-up appointment with his advisor, six weeks after commencement."}]}},
+      {k:"plain",lab:"Six weeks later",when:"After graduation",
+       card:{h:"His search continues beyond graduation",
+        n:"Omar accepts an analyst role six weeks after commencement, using a reference from his fall placement. The point of his story is not that the system saved him. It is that two failed searches produced a response that escalated on a schedule, instead of producing silence.",
+        q:"“I didn’t get there the way the brochure says. I got there.”"}}
+    ],
+    dem:{points:[
+      "This illustrates one way to respond when some students need more than one search to secure a placement. It is that a student who does not succeed is noticed on a schedule rather than discovered at graduation.",
+      "The Accelerator starts from what the plan already records, not from a student asking for help. That matters most for the students least likely to ask.",
+      "The fall of the final year is doing exactly the job the term structure reserves it for. Showing that reserve being used is more convincing than stating that it exists.",
+      "Omar's outcome is recorded six weeks after commencement instead of being counted as unknown, which matters for First Destination reporting as well as for him."]},
+    oq:{h:"Open question this story surfaces",
+      p:["The Experience Accelerator is mentioned in the milestone modals but has no section of its own anywhere in the proposal. Omar's story depends on it completely, and a reader who goes looking for how it works will not find anything.",
+         "Petition and substitution are listed on the Cost and Logistics page as coming shortly. Until they are described, the sentence saying petition is not yet in play refers to something the reader cannot check."]}
+  }
+  ];
+
+  /* ===================== nothing below needs editing ===================== */
+
+  var picker=document.getElementById("picker"),
+      sheadEl=document.getElementById("shead"),
+      tl=document.getElementById("tl"),
+      steps=document.getElementById("steps"),
+      cardbox=document.getElementById("cardbox"),
+      tail=document.getElementById("tail"),
+      caret=document.getElementById("caret"),
+      caretI=document.getElementById("caretI"),
+      tw=document.getElementById("trackwrap"),
+      touter=document.getElementById("trackouter"),
+      si=0, ci=0, flat=[];
+
+  function paras(n){
+    return (Array.isArray(n)?n:[n]).map(function(p){ return '<p class="cn">'+p+'</p>'; }).join("");
+  }
+
+  function buildFlat(){
+    flat=[];
+    STORIES[si].pts.forEach(function(p,i){
+      if(p.k!=="stub") flat.push({kind:"main",i:i});
+      if(p.plan) flat.push({kind:"plan",i:i});
+    });
+  }
+
+  function cardFor(f){
+    var p=STORIES[si].pts[f.i];
+    if(f.kind==="main"){
+      return {c:p.card, cls:(p.k==="course"?"k-course":"k-plain")+(p.hinge?" hinge":""),
+              hinge:!!p.hinge,
+              color:p.hinge?"var(--amber)":(p.k==="course"?"var(--teal)":"var(--navy)"),
+              carry:null};
+    }
+    return {c:p.plan.card, cls:"k-plan", hinge:false, color:"var(--sky)", carry:p.plan.carry};
+  }
+
+  function cardHtml(f){
+    var d=cardFor(f), h='<div class="card '+d.cls+'">';
+    if(d.hinge) h+='<span class="hingemark">A point where support matters</span>';
+    h+='<h3 class="ch">'+d.c.h+'</h3>';
+    h+=paras(d.c.n);
+    if(d.c.q) h+='<span class="q">'+d.c.q+'</span>';
+    if(d.carry){
+      h+='<div class="carry"><ul>';
+      d.carry.forEach(function(b){
+        var old=b.from&&b.from.length;
+        h+='<li'+(old?' class="old"':'')+'>'+b.t+(old?'<span class="tag">from '+b.from+'</span>':'')+'</li>';
+      });
+      h+='</ul></div>';
+    }
+    if(d.c.cf) h+='<span class="cf"><b>Without structured support:</b> '+d.c.cf+'</span>';
+    h+='</div>';
+    return h;
+  }
+
+  function placeCaret(){
+    if(document.body.classList.contains("all")) return;
+    var btn=tl.querySelector('.ppt[data-f="'+ci+'"]') || tl.querySelector('[data-f="'+ci+'"]');
+    if(!btn) return;
+    var tr=tl.getBoundingClientRect(), br=btn.getBoundingClientRect();
+    caretI.style.left=(br.left - tr.left + br.width/2)+"px";
+    caret.style.setProperty("--cc",cardFor(flat[ci]).color);
+  }
+
+  function fade(){
+    touter.classList.toggle("more", tw.scrollWidth - tw.clientWidth - tw.scrollLeft > 4);
+  }
+
+  function drawCard(){
+    if(document.body.classList.contains("all")){
+      cardbox.innerHTML=flat.map(cardHtml).join("");
+      return;
+    }
+    cardbox.innerHTML=cardHtml(flat[ci]);
+    steps.innerHTML=
+      '<button type="button" class="stp" id="prev"'+(ci===0?" disabled":"")+'>‹ Previous</button>'+
+      '<button type="button" class="stp" id="next"'+(ci===flat.length-1?" disabled":"")+'>Next ›</button>'+
+      '<span class="pos">'+(ci+1)+' of '+flat.length+'</span>';
+    var pv=document.getElementById("prev"), nx=document.getElementById("next");
+    if(pv) pv.addEventListener("click",function(){ if(ci>0) select(ci-1); });
+    if(nx) nx.addEventListener("click",function(){ if(ci<flat.length-1) select(ci+1); });
+    placeCaret();
+  }
+
+  function select(i){
+    ci=i;
+    Array.prototype.forEach.call(tl.querySelectorAll("[data-f]"),function(b){
+      b.classList.toggle("on", +b.dataset.f===i);
+    });
+    drawCard();
+  }
+
+  function drawTrack(){
+    var s=STORIES[si];
+    tl.innerHTML="";
+    tl.style.gridTemplateColumns="repeat("+s.pts.length+",minmax(122px,1fr))";
+
+    s.pts.forEach(function(p,i){
+      var col=(i+1);
+      var mf=flat.findIndex(function(f){ return f.kind==="main" && f.i===i; });
+      var pf=p.plan ? flat.findIndex(function(f){ return f.kind==="plan" && f.i===i; }) : -1;
+      /* a stub has no card of its own, so it points at the plan on its branch */
+      var target=(p.k==="stub") ? pf : mf;
+
+      /* one wrapper per point: display:contents on the wide layout, a
+         two-column row once the timeline turns vertical */
+      var pc=document.createElement("div");
+      pc.className="pcol"+(p.plan?"":" solo");
+      pc.style.setProperty("--col",col);
+
+      var w=document.createElement("span");
+      w.className="when"; w.innerHTML=p.when||"&nbsp;";
+      pc.appendChild(w);
+
+      var b=document.createElement("button");
+      b.type="button";
+      b.className="mpt "+(p.k==="course"?"k-course":(p.k==="stub"?"k-stub":"k-plain"))+
+                  (p.hinge?" hinge":"")+(i===0?" first":"")+(i===s.pts.length-1?" last":"");
+      b.dataset.f=target;
+      b.innerHTML='<span class="node"></span><span class="pl">'+(p.lab||"")+'</span>';
+      b.addEventListener("click",function(){ select(target); });
+      pc.appendChild(b);
+
+      if(p.plan){
+        var st=document.createElement("span");
+        st.className="stem";
+        pc.appendChild(st);
+
+        var pb=document.createElement("button");
+        pb.type="button"; pb.className="ppt"; pb.dataset.f=pf;
+        pb.innerHTML='<span class="node"></span><span class="pl">'+p.plan.lab+'</span>';
+        pb.addEventListener("click",function(){ select(pf); });
+        pc.appendChild(pb);
+      }
+
+      tl.appendChild(pc);
+    });
+  }
+
+  function drawStory(){
+    var s=STORIES[si];
+    sheadEl.innerHTML=
+      '<div class="shead">'+
+        '<p class="nm">'+s.name+'<span class="maj">'+s.major+'</span></p>'+
+        '<h2 class="hl">'+s.headline+'</h2>'+
+        '<div class="sum">'+
+          '<p>'+s.sum.lead+'</p>'+
+          // hidden for now: "Where the journey leads" and "What might be different without this approach?"
+          // '<p class="outcome"><b>Where the journey leads:</b> '+s.sum.ultimately+'</p>'+
+          // '<details class="context-detail"><summary>What might be different without this approach?</summary><p>'+s.sum.without+'</p></details>'+
+        '</div>'+
+      '</div>';
+
+    buildFlat();
+    ci=0;
+    drawTrack();
+    select(0);
+    fade();
+
+    var t="";
+    if(s.oq){
+      t+='<div class="oq"><h4>'+s.oq.h+'</h4>';
+      s.oq.p.forEach(function(p){ t+='<p>'+p+'</p>'; });
+      t+='</div>';
+    }
+    t+='<details class="dem"><summary>What this journey illustrates for the CSD proposal</summary><ul>';
+    s.dem.points.slice(0,3).forEach(function(p){ t+='<li>'+p+'</li>'; });
+    t+='</ul></details>';
+    tail.innerHTML=t;
+  }
+
+
+  var THEMES=[
+    {label:"All student journeys",names:[],why:"Explore the full range of illustrated pathways."},
+    {label:"Work-based learning alternatives",names:["Priya","Marcus","Amara","Wes","Tasneem","Jalen"],why:"How research, campus employment, clinical experience, or an approved project might meet a shared standard."},
+    {label:"Equity, access & affordability",names:["Daniela","Elena","Priya","Marcus","Mei","Omar","Samira"],why:"How costs, unwritten professional expectations, work hours, and eligibility affect opportunity."},
+    {label:"Changing direction",names:["Lena","Wes","Maya","Theo","Hana"],why:"How exploration and experience help students revise their goals without starting over."},
+    {label:"Still searching at graduation",names:["Darius","Nico","Omar","Hana","Ruben"],why:"How a plan can remain useful when the immediate outcome is uncertain or not yet aligned."},
+    {label:"Proactive advising & support",names:["Maya","Jordan","Omar","Wes","Darius"],why:"What changes when student-authored information can prompt useful, timely support."},
+    {label:"Flexible timelines",names:["Samira","Daniela","Tasneem","Wes","Omar"],why:"How the sequence could adapt for transfer, accelerated, interrupted, and off-sequence pathways."},
+    {label:"Academic & faculty connections",names:["Jordan","Lena","Theo","Amara","Wes","Samira"],why:"How faculty advising, research, and course assignments can connect to an evolving plan."}
+  ];
+  var currentTheme=0;
+  var themeEl=document.getElementById("themes"),themeNote=document.getElementById("theme-note");
+  function renderTheme(){
+    Array.prototype.forEach.call(themeEl.children,function(b,i){b.classList.toggle("on",i===currentTheme);b.setAttribute("aria-pressed",String(i===currentTheme));});
+    var t=THEMES[currentTheme];
+    themeNote.textContent=t.why;
+    Array.prototype.forEach.call(picker.children,function(b,i){b.hidden=!!(t.names.length && t.names.indexOf(STORIES[i].name)<0);});
+    document.getElementById("selector-label").textContent=t.names.length?"Choose a student illustrating this theme":"Choose a student's journey";
+  }
+  THEMES.forEach(function(t,i){
+    var b=document.createElement("button"); b.type="button"; b.className="theme";
+    b.textContent=t.label; b.setAttribute("aria-pressed",i===0?"true":"false");
+    b.addEventListener("click",function(){currentTheme=i;renderTheme();var first=STORIES.findIndex(function(x){return !t.names.length||t.names.indexOf(x.name)>=0;});if(first>=0){si=first;Array.prototype.forEach.call(picker.children,function(c,j){c.classList.toggle("on",j===first);});drawStory();}});
+    themeEl.appendChild(b);
+  });
+
+  STORIES.forEach(function(s,i){
+    var b=document.createElement("button");
+    b.type="button";
+    b.className="pk"+(i===0?" on":"");
+    b.innerHTML='<span class="pk-n">'+s.name+'</span><span class="pk-m">'+(s.short||s.major)+'</span>';
+    b.addEventListener("click",function(){
+      si=i;
+      Array.prototype.forEach.call(picker.children,function(c){ c.classList.remove("on"); });
+      b.classList.add("on");
+      drawStory();
+      /* bring the story itself (starting at the student's name) to the top of the screen */
+      if(document.documentElement.classList.contains("frame")) parent.postMessage({frameScroll:Math.max(0,sheadEl.getBoundingClientRect().top+window.scrollY-24)},"*");
+      else sheadEl.scrollIntoView({behavior:"smooth",block:"start"});
+    });
+    picker.appendChild(b);
+  });
+
+  renderTheme();
+
+  var xall=document.getElementById("xall");
+  xall.addEventListener("click",function(){
+    xall.classList.toggle("on");
+    document.body.classList.toggle("all");
+    drawCard();
+  });
+
+  function sync(){ placeCaret(); fade(); }
+  window.addEventListener("resize",sync);
+  tw.addEventListener("scroll",sync);
+
+  drawStory();
+})();
+</script>
+<script>
+/* ?frame: shown inside the proposal site, which supplies the left menu and the scrolling; report height so the site can size the frame */
+(function(){
+  if(!document.documentElement.classList.contains("frame")) return;
+  function send(){ parent.postMessage({frameHeight:Math.ceil(document.body.getBoundingClientRect().height)},"*"); }
+  window.addEventListener("load",send);
+  window.addEventListener("resize",send);
+  if(window.ResizeObserver) new ResizeObserver(send).observe(document.body);
+})();
+</script>
+</body>
+</html>

@@ -17,7 +17,7 @@ html.embed .sitebar{display:none}
 .sitebar a:hover,.sitebar a:focus-visible{color:#fff;background:rgba(255,255,255,.08)}
 .sitebar a[aria-current="page"]{color:#fff;font-weight:600;border-left-color:var(--gold);background:rgba(255,255,255,.07)}
 .sitebar a:focus-visible{outline:2px solid var(--gold);outline-offset:-2px}
-.sitebar a.callout{display:flex;align-items:center;gap:10px;font-size:.8125rem;font-weight:400;margin:4px 0 14px;padding:9px 12px 9px 22px;line-height:1.35;white-space:nowrap}
+.sitebar a.callout{display:flex;align-items:center;gap:10px;font-size:.8125rem;font-weight:400;margin:18px 0 14px;padding:9px 12px 9px 22px;line-height:1.35;white-space:nowrap}
 .sitebar a.callout svg{flex:0 0 auto;height:2.4em;width:auto}
 .sitebar .sb-grp{font-size:.875rem;color:rgba(255,255,255,.62);padding:7px 22px 3px 40px}
 @media (max-width:700px){html:not(.embed) body{padding-left:calc(44px + max(14px,env(safe-area-inset-left,0px)))}.sitebar{width:44px}.sitebar .sb-top{padding-left:11px}}
@@ -25,6 +25,7 @@ html.embed .sitebar{display:none}
 <meta name="claude:viewport-fit-sides" content="cover">
 <title>Six-Term WBL Sankey</title>
 <script>if(/[?&]embed\b/.test(location.search))document.documentElement.classList.add("embed");</script>
+<script>if(/[?&]frame\b/.test(location.search))document.documentElement.classList.add("frame");</script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Libre+Franklin:wght@400;500;600&display=swap" rel="stylesheet">
@@ -211,21 +212,26 @@ html.embed .chartbox .togrow{position:absolute;z-index:3;left:84.5cqw;top:5.5%;w
 html.embed .chartbox .togrow input{flex:0 0 auto;margin-top:.15em}
 html.embed .chartscroll{overflow:visible}
 html.embed svg{min-width:0}
+/* ?frame: inside the proposal site, which supplies the menu; padding matches the site's panels */
+html.frame .sitebar{display:none}
+html.frame:not(.embed) body{padding:54px 46px 120px}
+@media (max-width:760px){html.frame:not(.embed) body{padding:20px 22px 100px}}
 </style>
 
 <div class="sitebar" id="sitebar">
   <div class="sb-top"><span class="sb-ico" aria-hidden="true"></span><span class="sb-title">Career Strategy<br>&amp; Design Proposal</span></div>
   <nav aria-label="Section navigation">
-    <a class="callout" href="index.html#urgency"><svg viewBox="0 0 24 30" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 2h11l5 5v21H4z"/><path d="M15 2v5h5"/><path d="M8 13h8M8 17h8M8 21h5"/></svg><span>The context and research<br>behind this proposal</span></a>
     <a href="index.html#overview">Requirement Overview</a>
     <a class="sub" href="index.html#career-plan">The Career Plan</a>
     <a class="sub" href="index.html#milestones">Two 1-Credit Courses</a>
     <div class="sb-grp">Work-Based Learning</div>
     <a class="sub2" href="index.html#wbl">The Five WBL Criteria &amp;<br>Qualifying Experiences</a>
     <a class="sub2" href="index.html#wblcourses">Courses and Instruction</a>
-    <a class="sub2" href="WBL_Sankey.html" aria-current="page">Modeling WBL Placements</a>
+    <a class="sub2" href="index.html#modeling-wbl-placements" aria-current="page">Modeling WBL Placements</a>
+    <a href="index.html#student-stories">Student Stories</a>
     <a href="index.html#cost-and-logistics">Cost and Logistics</a>
-  </nav>
+    <a class="callout" href="index.html#urgency"><svg viewBox="0 0 24 30" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 2h11l5 5v21H4z"/><path d="M15 2v5h5"/><path d="M8 13h8M8 17h8M8 21h5"/></svg><span>The context and research<br>behind this proposal</span></a>
+</nav>
 </div>
 
 <div class="wrap">
@@ -1151,6 +1157,16 @@ buildControls();buildDepts();writeUI();go();
   var tg=document.querySelector(".togrow"), cb=document.querySelector(".chartbox");
   if(tg&&cb) cb.appendChild(tg);
   function send(){ parent.postMessage({sankeyHeight:document.documentElement.scrollHeight},"*"); }
+  window.addEventListener("load",send);
+  window.addEventListener("resize",send);
+  if(window.ResizeObserver) new ResizeObserver(send).observe(document.body);
+})();
+</script>
+<script>
+/* ?frame: shown inside the proposal site, which supplies the left menu and the scrolling; report height so the site can size the frame */
+(function(){
+  if(!document.documentElement.classList.contains("frame")) return;
+  function send(){ parent.postMessage({frameHeight:Math.ceil(document.body.getBoundingClientRect().height)},"*"); }
   window.addEventListener("load",send);
   window.addEventListener("resize",send);
   if(window.ResizeObserver) new ResizeObserver(send).observe(document.body);

@@ -89,14 +89,16 @@
     display:flex;
     flex-direction:column;
     overflow-y:auto;
-    padding:28px 0 32px;
+    padding:28px 0 0;
   }
+  /* the research link and the draft line stay pinned to the bottom of the menu at any height */
+  .menu-bottom{margin-top:auto;position:sticky;bottom:0;background:var(--navy);padding:8px 0 32px;}
   .brand{
     display:block;width:100%;text-align:left;
     background:none;border:0;
     font:inherit;cursor:pointer;
     padding:0 22px 12px;
-    margin-bottom:34px;
+    margin-bottom:14px;
     transition:opacity .18s ease;
   }
   .brand:hover{opacity:.82;}
@@ -130,7 +132,6 @@
   /* the research link: a normal nav item with a document icon, set apart by a little extra room before the divider */
   .nav-link.nav-doc{display:flex;align-items:center;gap:10px;padding:9px 12px 9px 22px;font-size:.8125rem;line-height:1.35;white-space:nowrap;}
   .nd-ic{flex:0 0 auto;height:2.4em;width:auto;}
-  .nav > li:first-child{padding-bottom:12px;}
   .nav > li.nav-div{border-top:1px solid rgba(255,255,255,.16);padding-top:10px;}
   .nav-link{
     display:block;width:100%;text-align:left;
@@ -186,8 +187,7 @@
   .sub-link.current{color:var(--gold);}
 
   .menu-foot{
-    margin-top:auto;
-    padding:22px 22px 0;
+    padding:12px 22px 0;
     font-size:var(--t-small);
     color:rgba(255,255,255,.45);
     line-height:1.5;
@@ -566,6 +566,10 @@
   .cta-sm{display:inline-block;margin:4px 0 14px;background:var(--navy);color:#fff;font-size:.9375rem;font-weight:600;padding:10px 18px;text-decoration:none;border-bottom:3px solid var(--gold);transition:background .18s ease;}
   .cta-sm:hover{background:#0F1E39;}
   .cta-sm::after{content:"\2197";margin-left:8px;}
+  /* whole pages shown inside the site (Modeling WBL Placements, Student Stories); they size themselves and report their height */
+  .panel-inner.pg-inner{padding:0;}
+  .page-frame{display:block;width:100%;height:900px;border:0;}
+  @media (max-width:1279px){ .panel-inner.pg-inner{padding-top:14px;} }
   .cost-frame{display:block;width:100%;height:900px;border:0;margin:0 0 6px;}
   /* summary cards at the top of Cost and Logistics; figures come from the two embedded planners */
   .cstc-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin:0;}
@@ -1357,12 +1361,6 @@
 
     <ul class="nav" id="nav">
       <li>
-        <button class="nav-link nav-doc" data-panel="urgency">
-          <svg class="nd-ic" viewBox="0 0 24 30" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 2h11l5 5v21H4z"/><path d="M15 2v5h5"/><path d="M8 13h8M8 17h8M8 21h5"/></svg>
-          <span>The context and research<br>behind this proposal</span>
-        </button>
-      </li>
-      <li class="nav-div">
         <button class="nav-link" data-panel="overview">Requirement Overview</button>
       </li>
       <li>
@@ -1377,8 +1375,11 @@
         <ul class="flyout" id="flyout">
           <li><button type="button" class="fly-link" data-panel="wbl">The Five WBL Criteria &amp;<br>Qualifying Experiences</button></li>
           <li><button type="button" class="fly-link" data-panel="wblcourses">Courses and Instruction</button></li>
-          <li><button type="button" class="fly-link" data-href="WBL_Sankey.html">Modeling WBL Placements</button></li>
+          <li><button type="button" class="fly-link" data-panel="modeling">Modeling WBL Placements</button></li>
         </ul>
+      </li>
+      <li>
+        <button class="nav-link" data-panel="stories">Student Stories</button>
       </li>
       <li>
         <button class="nav-link" data-panel="howwork">Cost and Logistics</button>
@@ -1388,7 +1389,13 @@
       </li>
     </ul>
 
+    <div class="menu-bottom">
+    <button class="nav-link nav-doc" data-panel="urgency">
+          <svg class="nd-ic" viewBox="0 0 24 30" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 2h11l5 5v21H4z"/><path d="M15 2v5h5"/><path d="M8 13h8M8 17h8M8 21h5"/></svg>
+          <span>The context and research<br>behind this proposal</span>
+        </button>
     <div class="menu-foot">Proposal Draft, October 2026</div>
+    </div>
   </nav>
 
   <!-- ============ CENTER STAGE ============ -->
@@ -2376,7 +2383,7 @@
             (c.prereq?'<div class="cm-pre"><span class="cm-k">Prereq:</span><span class="cm-v">'+md(c.prereq)+'</span></div>':'')+
           '</div>'+
           (c.timing?'<div class="cm-seq"><span class="cm-k">Timing:</span><span class="cm-v">'+md(c.timing)+'</span></div>':'')+
-          (cost?'<div class="cm-pre cm-cost"><span class="cm-k">'+(/^\$/.test(cost)?'Projected New Spending/FY:':'Cost:')+'</span><span class="cm-v"><a href="#cost-and-logistics/'+(/^\$/.test(cost)?'h-planner':'h-wbl-planner')+'" class="cost-link"'+(c.costFrom?' data-cost-from="'+e(c.costFrom)+'" data-cost-offset="'+(c.costOffset||0)+'"':'')+'>'+md(cost)+'</a></span></div>':'')+
+          (cost?'<div class="cm-pre cm-cost"><span class="cm-k">'+(/^\$/.test(cost)?'Projected New<br>Spending/FY:':'Cost:')+'</span><span class="cm-v"><a href="#cost-and-logistics/'+(/^\$/.test(cost)?'h-planner':'h-wbl-planner')+'" class="cost-link"'+(c.costFrom?' data-cost-from="'+e(c.costFrom)+'" data-cost-offset="'+(c.costOffset||0)+'"':'')+'>'+md(cost)+'</a></span></div>':'')+
         '</div>'+
         '<hr class="cm-rule">'+
         (c.description?'<h3 class="cm-h">'+md(c.description_heading||"Course Description")+'</h3><p>'+md(c.description)+'</p><hr class="cm-rule">':'')+
@@ -2602,9 +2609,8 @@
       <div class="panel-inner">
         <h2 class="sec-title">Two 1-Credit Courses: CE-100 and CE-200</h2>
         <div class="cc-intro">
-          <p>The two one-credit Career Strategy &amp; Design courses help students connect their education to future goals, build confidence, and develop meaningful relationships at Suffolk. By strengthening students' sense of direction and purpose, they also support the University's enrollment and retention goals. Making this preparation part of the required curriculum ensures that <span class="yu">every student</span> participates and is assessed, enabling faculty and career advisors to identify unmet needs and provide timely, targeted interventions.</p>
-          <p>Within the broader CSD sequence, CE-100 establishes a foundation for informed exploration, while CE-200 develops professional readiness and helps students actively pursue opportunities. Together, they prepare students to secure meaningful work-based learning experiences, succeed in them, and translate that learning into future opportunities.</p>
-          <p>The courses also establish the foundation for Suffolk's longitudinal Career Plan, ensuring universal participation and creating work that evolves throughout students' education. The Career Plan preserves their insights for continued use by students, faculty, and advisors, making career development a sustained and integrated part of the Suffolk experience.</p>
+          <p>The two 1-credit Career Strategy & Design courses give students dedicated time, guidance, and practical tools to explore career possibilities, make informed decisions, and prepare to pursue professional opportunities. Including them in the required curriculum ensures that <span class="yu">every student</span> participates and is assessed, enabling faculty and career advisors to identify unmet needs and provide timely, targeted interventions.</p>
+          <p>CE-100 establishes a foundation for informed exploration, while CE-200 develops professional readiness and helps students actively pursue professional opportunities. Together, they prepare students to secure and succeed in meaningful work-based learning experiences, and to translate that learning into future opportunities.</p>
         </div>
         <div id="msx-pages" class="msx"></div>
       </div>
@@ -2757,6 +2763,20 @@
       </div>
     </section>
 
+    <!-- MODELING WBL PLACEMENTS (the standalone page, shown inside the site) -->
+    <section class="panel" id="panel-modeling" tabindex="-1">
+      <div class="panel-inner pg-inner">
+        <iframe class="page-frame" src="WBL_Sankey.html?frame=1" title="Modeling WBL placements" scrolling="no"></iframe>
+      </div>
+    </section>
+
+    <!-- STUDENT STORIES (the standalone page, shown inside the site) -->
+    <section class="panel" id="panel-stories" tabindex="-1">
+      <div class="panel-inner pg-inner">
+        <iframe class="page-frame" src="Student_Journeys.html?frame=1" title="Student stories" scrolling="no"></iframe>
+      </div>
+    </section>
+
     <!-- FAQ -->
     <section class="panel" id="panel-faq" tabindex="-1">
       <div class="panel-inner">
@@ -2850,11 +2870,11 @@
     if(document.fonts && document.fonts.ready) document.fonts.ready.then(fit);
     if(window.ResizeObserver) new ResizeObserver(fit).observe(document.getElementById("menu"));
   })();
-  var navLinks=[].slice.call(document.querySelectorAll(".nav-link:not(.nav-ext):not(.nav-parent), .brand, .fly-link[data-panel]"));
+  var navLinks=[].slice.call(document.querySelectorAll(".nav-link:not(.nav-ext):not(.nav-go):not(.nav-parent), .brand, .fly-link[data-panel]"));
   document.querySelectorAll(".nav-ext").forEach(function(b){
     b.addEventListener("click", function(){ window.open(WBL_EVIDENCE_URL,"_blank","noopener"); });
   });
-  document.querySelectorAll(".fly-link[data-href]").forEach(function(b){
+  document.querySelectorAll(".fly-link[data-href], .nav-go[data-href]").forEach(function(b){
     b.addEventListener("click", function(){ location.href=b.dataset.href; });
   });
   /* Work-Based Learning flyout: opens on hover or focus, beside the menu and over the page (fixed, so the menu's scroll box can't clip it) */
@@ -2998,7 +3018,7 @@
       b.setAttribute("aria-current", b.dataset.panel===key ? "true":"false");
     });
     var fp=document.getElementById("navFlyBtn");
-    if(fp) fp.setAttribute("aria-current", (key==="wbl"||key==="wblcourses") ? "true":"false");
+    if(fp) fp.setAttribute("aria-current", (key==="wbl"||key==="wblcourses"||key==="modeling") ? "true":"false");
     document.querySelectorAll(".sublist").forEach(function(s){
       s.classList.toggle("open", s.dataset.for===key);
     });
@@ -3234,6 +3254,14 @@
   window.addEventListener("message",function(e){
     var f=document.getElementById("sankeyFrame");
     if(f && e.source===f.contentWindow && e.data && e.data.sankeyHeight) f.style.height=Math.ceil(e.data.sankeyHeight)+"px";
+    if(e.data && e.data.frameHeight) document.querySelectorAll("iframe.page-frame").forEach(function(pf){
+      if(e.source===pf.contentWindow) pf.style.height=Math.ceil(e.data.frameHeight)+"px";
+    });
+    if(e.data && typeof e.data.frameScroll==="number") document.querySelectorAll("iframe.page-frame").forEach(function(pf){
+      if(e.source!==pf.contentWindow) return;
+      var pn=pf.closest(".panel");
+      pn.scrollTo({top:pn.scrollTop+pf.getBoundingClientRect().top-pn.getBoundingClientRect().top+e.data.frameScroll,behavior:"smooth"});
+    });
     var c=document.getElementById("costFrame");
     if(c && e.source===c.contentWindow && e.data && e.data.costHeight) c.style.height=Math.ceil(e.data.costHeight)+"px";
     if(c && e.source===c.contentWindow && e.data && e.data.costLive){ CARDS.ce=e.data.costLive; paintCards(); }
@@ -3242,7 +3270,7 @@
     if(w && e.source===w.contentWindow && e.data && e.data.wblLive){ CARDS.wbl=e.data.wblLive; paintCards(); }
     if(w && e.source===w.contentWindow && e.data && e.data.wblCostHeight) w.style.height=Math.ceil(e.data.wblCostHeight)+"px";
   });
-  var SLUG={throughline:"career-plan",howwork:"cost-and-logistics"}, KEYOF={"how-the-work-gets-done":"howwork"}, applyingHash=false;
+  var SLUG={throughline:"career-plan",howwork:"cost-and-logistics",modeling:"modeling-wbl-placements",stories:"student-stories"}, KEYOF={"how-the-work-gets-done":"howwork"}, applyingHash=false;
   Object.keys(SLUG).forEach(function(k){ KEYOF[SLUG[k]]=k; });
   function hashFor(key,sub){ return "#"+(SLUG[key]||key)+(sub?"/"+sub:""); }
   function pushHash(key,sub,replace){
