@@ -95,7 +95,7 @@ window.COURSES = {
     "prereq": "CE-100",
     "cost": "$30,000",
     "costFrom": "cost200",
-    "costOffset": 32500,
+    "costOffset": 35000,
     "instruction": "Career Staff (10); department faculty, especially those who also teach the internship course, if desired",
     "timing": "Preferred Sophomore fall or spring, with Junior year available; explore possibility of online summer sections",
     "tagline": "Evaluate and pursue professional opportunities, strengthen application skills, and create a concrete plan to secure and succeed in a work-based learning experience.",

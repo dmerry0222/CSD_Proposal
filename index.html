@@ -579,6 +579,9 @@
   .cstc-line{margin:0 0 4px;font-size:.9375rem;line-height:var(--lh-body);}
   .cstc-line b{font-weight:600;color:var(--navy);font-variant-numeric:tabular-nums;}
   .cstc-note{color:var(--body);font-size:.875rem;margin-top:6px;}
+  .cstc-tip{position:relative;cursor:help;border-bottom:1px dotted var(--navy);}
+  .cstc-tip::after{content:attr(data-tip);white-space:pre;position:absolute;left:0;bottom:calc(100% + 8px);z-index:5;background:var(--navy);color:#fff;font-size:.8125rem;line-height:1.5;padding:8px 12px;box-shadow:0 2px 8px rgba(0,0,0,.25);opacity:0;visibility:hidden;transition:opacity .15s ease;pointer-events:none;}
+  .cstc-tip:hover::after,.cstc-tip:focus::after{opacity:1;visibility:visible;}
   .cstc-foot{margin-top:auto;padding-top:18px;display:flex;align-items:baseline;justify-content:space-between;gap:12px;}
   .cstc-model{font-size:.9375rem;font-weight:600;color:var(--navy);text-decoration:underline;text-underline-offset:3px;white-space:nowrap;}
   .cstc-model:hover{text-decoration-thickness:2px;}
@@ -719,6 +722,11 @@
   h4.wh.wh-lg{font-size:1.25rem;margin:34px 0 10px;}
   .wsec h4.wh.wh-lg{font-size:1.25rem;margin:34px 0 10px;}
   .wsec h4.wh{font-size:1.125rem;font-weight:600;line-height:1.3;color:var(--navy);margin:30px 0 8px;}
+  #panel-faculty .wsec{padding-top:28px;}
+  #panel-faculty .wsec + .wsec{margin-top:32px;}
+  #panel-faculty .wsec h3.sub{margin-bottom:6px;}
+  #panel-faculty .wsec h4.wh{font-size:1rem;margin:18px 0 4px;}
+  #panel-faculty .wsec p{margin-bottom:10px;}
   .wcallout{margin:6px 0 8px;padding:20px 26px 8px;background:rgba(var(--teal-rgb),.10);border:1px solid rgba(var(--teal-rgb),.5);border-left:6px solid var(--teal);}
   .wcallout h4{margin:0 0 8px;font-size:1rem;font-weight:600;color:var(--navy);line-height:1.3;}
   .wcallout p{font-size:.9375rem;line-height:var(--lh-body);}
@@ -770,6 +778,20 @@
   .msx .plan.l4 .ord{margin:0 0 9px;}
   /* the first three Career Plan cards share one height */
   #msx-prog .plan:not(.l4){align-self:stretch;}
+
+  /* NESTED CAREER PLAN CARDS (Requirement Overview): each of the first three Career Plan cards sits inside its course card,
+     with a 12px margin at left, bottom and right. TO REVERT to the separate cards, delete the class "cp-nested" from the #msx element. */
+  @media (min-width:901px){
+    .msx.cp-nested #msx-prog .msx-card{border-bottom-width:0;}
+    .msx.cp-nested #msx-prog .msx-card + .plan:not(.l4){
+      margin:0 13px 13px;
+      box-shadow:0 0 0 12px #fff,0 0 0 13px var(--rule);
+      clip-path:inset(0 -14px -14px -14px);
+    }
+    .msx.cp-nested #msx-prog .msx-card + .plan:not(.l4) .link{display:none;}
+    .msx.cp-nested #msx-prog .msx-card:hover + .plan:not(.l4){box-shadow:0 0 0 13px rgba(var(--teal-rgb),.34);}
+    .msx.cp-nested #msx-prog .msx-card.on + .plan:not(.l4){box-shadow:0 0 0 13px var(--teal);}
+  }
 
   /* group label above the two course cards */
   .msx-group{grid-row:1;grid-column:1 / 3;display:flex;align-items:center;gap:12px;margin:0 0 8px;font-size:.6875rem;font-weight:600;letter-spacing:.09em;text-transform:uppercase;color:var(--navy);}
@@ -1093,8 +1115,23 @@
   .faq-q{
     width:100%;text-align:left;background:none;border:0;
     font:inherit;font-weight:500;color:var(--navy);
-    padding:18px 30px 18px 0;cursor:pointer;position:relative;line-height:1.5;
+    padding:10px 30px 10px 0;font-size:.9375rem;cursor:pointer;position:relative;line-height:1.4;
   }
+  .faq-tools{display:flex;flex-wrap:wrap;gap:12px 20px;align-items:center;margin:0 0 14px;}
+  .faq-search{flex:1 1 240px;max-width:340px;font:inherit;font-size:.9rem;color:var(--navy);padding:8px 11px;border:1px solid rgba(21,40,75,.3);background:#fff;border-radius:0;box-sizing:border-box;}
+  .faq-search:focus{outline:2px solid var(--teal);outline-offset:0;}
+  .faq-tabs{display:flex;flex-wrap:wrap;gap:6px;margin:0 0 16px;}
+  .faq-tab{font:inherit;font-size:.82rem;line-height:1.3;color:var(--navy);background:#fff;border:1px solid var(--rule);border-bottom:3px solid var(--rule);padding:6px 11px;cursor:pointer;}
+  .faq-tab:hover,.faq-tab:focus-visible{background:rgba(var(--teal-rgb),.14);border-bottom-color:var(--teal);}
+  .faq-tab.on{background:var(--navy);border-color:var(--navy);border-bottom-color:var(--gold);color:#fff;}
+  .faq-searching .faq-tabs{opacity:.45;pointer-events:none;}
+  .faq-grp{display:none;}
+  .faq-grp.on{display:block;}
+  .faq-grp > h3.sub{display:none;}
+  .faq-searching .faq-grp{display:block;}
+  .faq-searching .faq-grp.nomatch,.faq-item.nomatch{display:none !important;}
+  .faq-empty{display:none;color:#767676;font-style:italic;margin:6px 0;}
+  .faq-searching.none .faq-empty{display:block;}
   .faq-q::after{
     content:"";position:absolute;right:6px;top:50%;
     width:9px;height:9px;margin-top:-6px;
@@ -1799,7 +1836,7 @@
     <section class="panel" id="panel-overview" tabindex="-1">
       <div class="panel-inner">
         <h2 class="sec-title">Requirement Overview</h2>
-        <div class="msx" id="msx">
+        <div class="msx cp-nested" id="msx">
           <!-- Optional link bars, currently hidden. To restore, delete this comment wrapper.
             <button type="button" class="msx-bar msx-bar-top" data-go="milestones">Four sequential milestones, each building the foundation for success in the next</button>
           -->
@@ -2387,7 +2424,7 @@
             (c.prereq?'<div class="cm-pre"><span class="cm-k">Prereq:</span><span class="cm-v">'+md(c.prereq)+'</span></div>':'')+
           '</div>'+
           (c.timing?'<div class="cm-seq"><span class="cm-k">Timing:</span><span class="cm-v">'+md(c.timing)+'</span></div>':'')+
-          (cost?'<div class="cm-pre cm-cost"><span class="cm-k">'+(/^\$/.test(cost)?'Projected New<br>Spending/FY:':'Cost:')+'</span><span class="cm-v"><a href="#cost-and-logistics/'+(/^\$/.test(cost)?'h-planner':'h-wbl-planner')+'" class="cost-link"'+(c.costFrom?' data-cost-from="'+e(c.costFrom)+'" data-cost-offset="'+(c.costOffset||0)+'"':'')+'>'+md(cost)+'</a></span></div>':'')+
+          (cost?'<div class="cm-pre cm-cost"><span class="cm-k">'+(/^\$/.test(cost)?'Projected New<br>Spending per FY:':'Cost:')+'</span><span class="cm-v"><a href="#cost-and-logistics/'+(/^\$/.test(cost)?'h-planner':'h-wbl-planner')+'" class="cost-link"'+(c.costFrom?' data-cost-from="'+e(c.costFrom)+'" data-cost-offset="'+(c.costOffset||0)+'"':'')+'>'+md(cost)+'</a></span></div>':'')+
         '</div>'+
         '<hr class="cm-rule">'+
         (c.description?'<h3 class="cm-h">'+md(c.description_heading||"Course Description")+'</h3><p>'+md(c.description)+'</p><hr class="cm-rule">':'')+
@@ -2734,26 +2771,26 @@
             <p class="cstc-line"><b id="cc-ce100-ceds">...</b> sections in CEDS teaching load</p>
             <p class="cstc-line"><b id="cc-ce100-sec">...</b> sections at <b id="cc-ce100-rate">...</b>/section</p>
             <p class="cstc-line cstc-note">&nbsp;</p>
-            <div class="cstc-foot"><div class="cstc-total"><span id="cc-ce100-total">...</span><small>New Spending/FY</small></div><a class="cstc-model" href="#cost-and-logistics/h-planner">Model this <span aria-hidden="true">&darr;</span></a></div>
+            <div class="cstc-foot"><div class="cstc-total"><span id="cc-ce100-total">...</span><small>Projected New Spending per FY</small></div><a class="cstc-model" href="#cost-and-logistics/h-planner">Model this <span aria-hidden="true">&darr;</span></a></div>
           </div>
           <div class="cstc" style="--c:var(--teal)">
             <h3 class="cstc-h">CE-200</h3>
             <p class="cstc-line"><b id="cc-ce200-ceds">...</b> sections in CEDS teaching load</p>
             <p class="cstc-line"><b id="cc-ce200-sec">...</b> sections at <b id="cc-ce200-rate">...</b>/section</p>
             <p class="cstc-line"><b id="cc-ce200-gross">...</b> total cost</p>
-            <p class="cstc-line cstc-note">Replaces <span id="cc-ce200-repl">...</span> of current instruction</p>
-            <div class="cstc-foot"><div class="cstc-total"><span id="cc-ce200-total">...</span><small>New Spending/FY</small></div><a class="cstc-model" href="#cost-and-logistics/h-planner">Model this <span aria-hidden="true">&darr;</span></a></div>
+            <p class="cstc-line cstc-note">Replaces <span class="cstc-tip" tabindex="0" data-tip="10 sections CAS-201&#10;2 sections ENG-202&#10;1 section ENVS/CHEM-311&#10;1 section THETR-291"><span id="cc-ce200-repl">...</span></span> of current instruction</p>
+            <div class="cstc-foot"><div class="cstc-total"><span id="cc-ce200-total">...</span><small>Projected New Spending per FY</small></div><a class="cstc-model" href="#cost-and-logistics/h-planner">Model this <span aria-hidden="true">&darr;</span></a></div>
           </div>
           <div class="cstc" style="--c:var(--teal)">
             <h3 class="cstc-h">WBL</h3>
             <p class="cstc-line"><b id="cc-sbs-sec">...</b> SBS sections at <b id="cc-sbs-rate">...</b>/section</p>
             <p class="cstc-line"><b id="cc-cas-sec">...</b> CAS sections at <b id="cc-cas-rate">...</b>/section</p>
             <p class="cstc-line cstc-note">Includes ? of current instruction</p>
-            <div class="cstc-foot"><div class="cstc-total"><span id="cc-wbl-total">...</span><small>New Spending/FY</small></div><a class="cstc-model" href="#cost-and-logistics/h-wbl-planner">Model this <span aria-hidden="true">&darr;</span></a></div>
+            <div class="cstc-foot"><div class="cstc-total"><span id="cc-wbl-total">...</span><small>Projected New Spending per FY</small></div><a class="cstc-model" href="#cost-and-logistics/h-wbl-planner">Model this <span aria-hidden="true">&darr;</span></a></div>
           </div>
           <div class="cstc-sum">
             <span class="cstc-sum-v" id="cc-sum">...</span>
-            <span class="cstc-sum-k">Total New Spending/FY</span>
+            <span class="cstc-sum-k">Total Projected New Spending per FY</span>
           </div>
         </div>
 
@@ -2928,29 +2965,355 @@
     <!-- FAQ -->
     <section class="panel" id="panel-faq" tabindex="-1">
       <div class="panel-inner">
-        <h2 class="sec-title">FAQ</h2>
-        <p class="sec-standfirst">Questions raised so far, with placeholder answers to be replaced after the next working group meeting.</p>
+        <h2 class="sec-title">Frequently Asked Questions</h2>
 
+        <div class="faq-tools">
+          <input type="search" class="faq-search" id="faqSearch" placeholder="Search the questions and answers" aria-label="Search the FAQ" autocomplete="off">
+        </div>
+        <div class="faq-tabs" id="faqTabs" role="tablist" aria-label="FAQ topics"></div>
+        <p class="faq-empty" id="faqEmpty">No questions match that search.</p>
+
+        <h3 class="sub" id="faq-1">Purpose and Academic Rationale</h3>
         <div class="faq">
           <div class="faq-item">
-            <button class="faq-q">Does this add credits to a student's load?</button>
-            <div class="faq-a"><p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p></div>
+            <button class="faq-q">Why should career development be part of the required General Education curriculum?</button>
+            <div class="faq-a">
+              <p>Preparing students to navigate their academic and professional futures is central to Suffolk's educational mission. Career development involves transferable intellectual and practical capabilities, including evaluating evidence, making informed decisions, communicating effectively, and building professional relationships.</p>
+              <p>Making this work part of the required curriculum ensures that every student receives structured instruction and opportunities to demonstrate these capabilities. It also connects career preparation more intentionally to students' academic experiences, rather than leaving it primarily to voluntary participation in services outside the classroom.</p>
+            </div>
           </div>
           <div class="faq-item">
-            <button class="faq-q">Who owns the content if it sits inside my course?</button>
-            <div class="faq-a"><p>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat duis aute irure.</p></div>
+            <button class="faq-q">Why can't the Career Center provide this through individual advising and workshops?</button>
+            <div class="faq-a">
+              <p>Individual advising and co-curricular programming remain essential, but they cannot ensure that every student participates or develops the intended capabilities. Students vary considerably in their awareness of available services, confidence seeking help, and competing demands on their time.</p>
+              <p>A required curriculum establishes universal points of instruction and assessment. It also allows Suffolk to identify students who need additional guidance and provide targeted interventions, while reserving individual advising for needs that benefit most from personalized attention.</p>
+            </div>
           </div>
           <div class="faq-item">
-            <button class="faq-q">How is this different from what Career Services already offers?</button>
-            <div class="faq-a"><p>Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum sed ut perspiciatis.</p></div>
+            <button class="faq-q">Isn't this work already happening across the University?</button>
+            <div class="faq-a">
+              <p>Yes. Faculty, academic departments, and the Career Center already engage students in many forms of career exploration and professional preparation. CSD is intended to build on that work, not discount it.</p>
+              <p>The challenge is that these opportunities are not experienced consistently by every student, nor are they necessarily connected across courses and years. CSD establishes a common foundation while preserving the disciplinary learning and professional opportunities that already distinguish a Suffolk education.</p>
+            </div>
           </div>
           <div class="faq-item">
-            <button class="faq-q">What happens to transfer students?</button>
-            <div class="faq-a"><p>Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione.</p></div>
+            <button class="faq-q">Why require two additional one-credit courses?</button>
+            <div class="faq-a">
+              <p>The two courses address different stages of students' development. CE-100 helps students evaluate possibilities and connect their academic experiences to emerging goals. CE-200 moves from exploration toward action, preparing students to pursue opportunities and navigate professional expectations.</p>
+              <p>The one-credit structure provides dedicated instructional time without requiring the equivalent of two additional three-credit courses. The courses also establish required points of engagement with the evolving Career Plan and prepare students for meaningful work-based learning.</p>
+              <p class="wsec-todo">[TBD: Confirm whether both credits are additions to the current Shared General Education total, replace existing credits, or are absorbed through the revised core's overall credit structure.]</p>
+            </div>
           </div>
           <div class="faq-item">
-            <button class="faq-q">What is the implementation timeline?</button>
-            <div class="faq-a"><p>Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi.</p></div>
+            <button class="faq-q">Are students really earning academic credit for writing resumes and practicing interviews?</button>
+            <div class="faq-a">
+              <p>Resumes and interviews are visible applications of a broader curriculum, not its organizing purpose. Students critically evaluate career information, investigate academic pathways, develop professional relationships, and learn to communicate evidence of their capabilities.</p>
+              <p>CE-200 also devotes substantial instruction to professional judgment, accountability, communication, and learning effectively in workplace environments. Students demonstrate these competencies through research, applied exercises, reflection, and assessed performance.</p>
+            </div>
+          </div>
+          <div class="faq-item">
+            <button class="faq-q">How will the learning outcomes be assessed?</button>
+            <div class="faq-a">
+              <p>Both courses have defined learning outcomes supported by a common sequence of instructional units and signature assessments. Student work provides evidence of achievement through research, applied communication, professional engagement, and the Career Plan.</p>
+              <p>Shared assessment expectations will support consistency across sections, while allowing appropriate instructional flexibility.</p>
+              <p class="wsec-todo">[TBD: Finalize common rubrics, grading expectations, assessment oversight, and how aggregate learning-outcome results will be reviewed.]</p>
+            </div>
+          </div>
+          <div class="faq-item">
+            <button class="faq-q">How does CSD support enrollment and retention?</button>
+            <div class="faq-a">
+              <p>Students who understand how their education connects to meaningful future possibilities may have stronger reasons to enroll, engage, and persist. CSD is intended to help students establish that connection early, build relationships within Suffolk, and develop realistic plans for making the most of their undergraduate experience.</p>
+              <p>The curriculum also creates opportunities to identify unmet needs before they become more significant barriers. These are important potential contributions to enrollment and retention, although the magnitude of their impact will need to be evaluated as the program develops.</p>
+              <p class="wsec-todo">[TBD: Add any Suffolk-specific retention analysis, enrollment research, or evaluation measures developed with Institutional Research.]</p>
+            </div>
+          </div>
+        </div>
+        <h3 class="sub" id="faq-2">Course Structure and Student Participation</h3>
+        <div class="faq">
+          <div class="faq-item">
+            <button class="faq-q">When will students complete CE-100 and CE-200?</button>
+            <div class="faq-a">
+              <p>CE-100 is proposed for the spring of the first year. CE-200 would ordinarily be completed during the sophomore year, with flexibility for students whose academic pathways or intended work-based learning timing make junior-year enrollment more appropriate.</p>
+              <p>CE-200 should precede the student's qualifying WBL experience. The sequencing is designed to provide preparation early enough to be useful, rather than immediately before graduation.</p>
+              <p class="wsec-todo">[TBD: Finalize permissible enrollment windows, summer offerings, prerequisite rules, and any exceptions.]</p>
+            </div>
+          </div>
+          <div class="faq-item">
+            <button class="faq-q">How will the courses accommodate students who already know their majors or career directions?</button>
+            <div class="faq-a">
+              <p>Career exploration does not require students to be undecided. Students with established interests may investigate professional specializations or opportunities within their chosen disciplines, while others may explore more broadly.</p>
+              <p>Both approaches require meaningful research, evidence-based comparison, and reflection. CE-200 similarly allows students to pursue opportunities appropriate to their individual goals and professional fields.</p>
+            </div>
+          </div>
+          <div class="faq-item">
+            <button class="faq-q">Will every CE-200 section teach the same curriculum?</button>
+            <div class="faq-a">
+              <p>CE-200 is envisioned as a coordinated course family with common learning outcomes and assessment expectations. Sections may be organized around particular industries or professional fields, while generalist sections accommodate students whose interests cross disciplinary boundaries.</p>
+              <p>This approach preserves consistent educational standards without assuming that students entering different professions should pursue identical opportunities or use identical professional materials.</p>
+              <p class="wsec-todo">[TBD: Determine section assignment, scheduling, instructor selection, and the degree of permitted disciplinary variation.]</p>
+            </div>
+          </div>
+          <div class="faq-item">
+            <button class="faq-q">What happens to existing courses such as CAS-201?</button>
+            <div class="faq-a">
+              <p>Existing career-related instruction represents an important foundation for CSD. The proposed CE-200 structure creates an opportunity to incorporate or transition relevant courses into a common curricular framework, rather than duplicating what is already being taught.</p>
+              <p>Any changes would require coordination with academic departments and appropriate curriculum governance.</p>
+              <p class="wsec-todo">[TBD: Identify the affected courses and determine which would be replaced, revised, retained, or treated as equivalent. Confirm implications for faculty assignments and existing instructional budgets.]</p>
+            </div>
+          </div>
+          <div class="faq-item">
+            <button class="faq-q">How will CSD accommodate transfer students?</button>
+            <div class="faq-a">
+              <p>Transfer students should receive meaningful career preparation without being required to repeat comparable learning unnecessarily or follow a sequence designed exclusively for four-year entrants.</p>
+              <p>A transfer-specific approach may involve recognizing prior coursework, adjusting the timing of CE-200, and establishing appropriate entry points into the Career Plan.</p>
+              <p class="wsec-todo">[TBD: Develop formal transfer-credit, equivalency, placement, and waiver policies. Confirm treatment of students entering with substantial credits or previous qualifying WBL.]</p>
+            </div>
+          </div>
+          <div class="faq-item">
+            <button class="faq-q">What accommodations will be available for students with unusual academic timelines?</button>
+            <div class="faq-a">
+              <p>Students in accelerated programs, students who change majors, returning students, and those with other nontraditional sequences may need flexibility in completing the requirement.</p>
+              <p>The proposal should establish clear pathways that preserve the intended learning outcomes while recognizing legitimate differences in students' circumstances.</p>
+              <p class="wsec-todo">[TBD: Confirm policies for accelerated degrees, part-time enrollment, leaves of absence, double majors, and students nearing graduation when CSD is introduced.]</p>
+            </div>
+          </div>
+        </div>
+        <h3 class="sub" id="faq-3">Work-Based Learning Requirements</h3>
+        <div class="faq">
+          <div class="faq-item">
+            <button class="faq-q">Does every student have to complete an internship?</button>
+            <div class="faq-a">
+              <p>No. Internships are an important and often preferred pathway, but the proposed requirement recognizes several forms of qualifying work-based learning. These include substantive faculty-led research, qualifying campus employment, and approved projects with a student's current employer.</p>
+              <p>All experiences must satisfy the same five WBL criteria, regardless of their setting or designation.</p>
+            </div>
+          </div>
+          <div class="faq-item">
+            <button class="faq-q">What makes an experience qualify as work-based learning?</button>
+            <div class="faq-a">
+              <p>Qualifying experiences must involve substantive, career-relevant work; at least 120 documented hours; appropriate professional supervision and feedback; meaningful expansion of professional relationships; and structured reflection connecting the experience to students' learning and development.</p>
+              <p>These standards distinguish WBL from valuable but different forms of experiential learning, such as brief observation, isolated simulations, or routine activities without substantive professional responsibilities.</p>
+            </div>
+          </div>
+          <div class="faq-item">
+            <button class="faq-q">Does every internship automatically satisfy the requirement?</button>
+            <div class="faq-a">
+              <p>No. The designation “internship” does not guarantee that an experience meets the proposed educational standards.</p>
+              <p>An internship must provide appropriate responsibilities, supervision, and opportunities for learning, while satisfying the remaining WBL criteria. Departments may also establish additional requirements appropriate to their disciplines.</p>
+            </div>
+          </div>
+          <div class="faq-item">
+            <button class="faq-q">Can students use research with a faculty member?</button>
+            <div class="faq-a">
+              <p>Yes, provided the experience satisfies the common criteria. Faculty-led research can offer substantive professional learning, particularly when students contribute meaningfully to scholarly inquiry and develop relevant capabilities.</p>
+              <p>The experience must also include appropriate supervision, sufficient hours, reflection, and opportunities to expand professional relationships beyond the immediate supervisory relationship.</p>
+            </div>
+          </div>
+          <div class="faq-item">
+            <button class="faq-q">Can existing employment or campus jobs count?</button>
+            <div class="faq-a">
+              <p>Potentially. The distinction is between routine employment and work that satisfies the educational requirements of WBL.</p>
+              <p>Some campus positions may provide sufficiently substantive responsibilities to qualify, while others may become eligible through an approved expansion of duties or a defined project. Students already working for an outside employer may similarly undertake an approved project that extends beyond their ordinary responsibilities.</p>
+              <p>These pathways are especially important for students whose financial or scheduling circumstances make traditional internships difficult.</p>
+            </div>
+          </div>
+          <div class="faq-item">
+            <button class="faq-q">Can students complete WBL during the sophomore or senior year?</button>
+            <div class="faq-a">
+              <p>The preferred window extends from the summer after sophomore year through the summer after junior year, including the junior-year fall and spring semesters.</p>
+              <p>The proposed framework also accommodates experiences beginning as early as sophomore spring or occurring during senior year, provided students satisfy applicable preparation, approval, and completion requirements.</p>
+              <p>The intent is to encourage appropriately timed experiences without imposing unnecessary restrictions on students whose circumstances or disciplines require a different schedule.</p>
+              <p class="wsec-todo">[TBD: Finalize the latest permissible completion term, treatment of senior spring, and any earlier-experience approval rules.]</p>
+            </div>
+          </div>
+          <div class="faq-item">
+            <button class="faq-q">Can students combine multiple experiences to reach 120 hours?</button>
+            <div class="faq-a">
+              <p>The current proposal contemplates allowing two approved experiences to be combined when necessary, provided each independently satisfies the other qualifying criteria.</p>
+              <p>This flexibility may help students whose opportunities are shorter or structured differently from a traditional semester-long internship.</p>
+              <p class="wsec-todo">[TBD: Confirm approval authority, documentation requirements, and whether any limits or exceptions will apply.]</p>
+            </div>
+          </div>
+        </div>
+        <h3 class="sub" id="faq-4">Access, Equity, and Student Success</h3>
+        <div class="faq">
+          <div class="faq-item">
+            <button class="faq-q">What if a student cannot find a qualifying WBL experience?</button>
+            <div class="faq-a">
+              <p>CSD is designed to prepare students more effectively for WBL, but it cannot guarantee that every student will receive an offer from an external employer.</p>
+              <p>The proposed approach combines early preparation, expanded employer engagement, multiple qualifying pathways, and increasingly structured assistance for students experiencing unsuccessful searches.</p>
+              <p>Students who need additional help should be identified early and connected with more intensive guidance rather than being left to navigate repeated searches independently.</p>
+              <p class="wsec-todo">[TBD: Define the stages of additional assistance, including when students enter a high-touch search process, who administers it, and what alternative opportunities can be offered.]</p>
+            </div>
+          </div>
+          <div class="faq-item">
+            <button class="faq-q">Could students be prevented from graduating because they cannot find an internship?</button>
+            <div class="faq-a">
+              <p>The requirement must preserve meaningful academic standards while providing fair processes for students who make reasonable efforts but face barriers outside their control.</p>
+              <p>A universal WBL requirement should therefore include proactive assistance, credible alternative pathways, and an academically governed process for exceptional circumstances.</p>
+              <p>The goal is to make successful completion achievable for every student, not to create an additional obstacle to graduation.</p>
+              <p class="wsec-todo">[TBD: Establish final exception, petition, appeal, and graduation-clearance policies, including responsible decision-makers.]</p>
+            </div>
+          </div>
+          <div class="faq-item">
+            <button class="faq-q">What if students cannot afford an unpaid internship?</button>
+            <div class="faq-a">
+              <p>Financial accessibility is a central implementation concern. Students should not be forced to choose between meeting the requirement and maintaining necessary income.</p>
+              <p>Qualifying paid internships, substantive employment-based experiences, and faculty research may provide alternative routes. Suffolk's existing internship funding programs may also support eligible students.</p>
+              <p class="wsec-todo">[TBD: Confirm how existing internship stipends and other financial resources will support CSD, assess anticipated demand, and identify remaining funding gaps.]</p>
+            </div>
+          </div>
+          <div class="faq-item">
+            <button class="faq-q">Will WBL registration create additional tuition charges?</button>
+            <div class="faq-a">
+              <p>Potentially, depending on the academic credit and term of registration. Full-credit experiences could create overload charges during a regular semester, while summer registration could introduce costs not covered by existing financial aid arrangements.</p>
+              <p>The proposal therefore anticipates flexible registration models, potentially including zero-credit options and revised tuition or financial aid policies.</p>
+              <p><b>These issues must be resolved before CSD becomes a universal requirement.</b></p>
+              <p class="wsec-todo">[TBD: Finalize credit, tuition, overload, summer registration, and financial aid policies with the relevant University offices.]</p>
+            </div>
+          </div>
+          <div class="faq-item">
+            <button class="faq-q">How will international students participate?</button>
+            <div class="faq-a">
+              <p>International students should have access to meaningful WBL pathways, but employment-based experiences may involve additional immigration requirements.</p>
+              <p>Course registration can support the curricular structure necessary for some forms of work authorization, but eligibility and authorization depend on applicable regulations and individual circumstances. International Student Services must be involved in establishing appropriate procedures.</p>
+              <p class="wsec-todo">[TBD: Confirm eligible pathways, registration arrangements, authorization timelines, and any restrictions with ISSO. Do not imply that course enrollment alone guarantees work authorization.]</p>
+            </div>
+          </div>
+        </div>
+        <h3 class="sub" id="faq-5">Faculty Roles, Workload, and Resources</h3>
+        <div class="faq">
+          <div class="faq-item">
+            <button class="faq-q">Will faculty be expected to find internships for students?</button>
+            <div class="faq-a">
+              <p>No. Finding external placements is not proposed as a universal responsibility of faculty teaching WBL courses.</p>
+              <p>Faculty who already help students identify internships, research experiences, or professional contacts may continue doing so. The Career Center would coordinate specialized search support and employer engagement, while faculty retain responsibility for appropriate academic instruction and assessment.</p>
+            </div>
+          </div>
+          <div class="faq-item">
+            <button class="faq-q">Will the requirement increase faculty workloads?</button>
+            <div class="faq-a">
+              <p>Expanded WBL participation will create additional instructional and assessment demands. Even where existing courses can accommodate more students, greater enrollment may require additional sections, staffing, or workload recognition.</p>
+              <p>The proposal explicitly recognizes that these demands must be accounted for through the University's implementation and resource planning, rather than absorbed as uncompensated work.</p>
+              <p class="wsec-todo">[TBD: Complete departmental capacity estimates, faculty workload assumptions, and proposed instructional allocations.]</p>
+            </div>
+          </div>
+          <div class="faq-item">
+            <button class="faq-q">How will faculty teaching WBL courses be compensated?</button>
+            <div class="faq-a">
+              <p>Faculty instruction and academic oversight must receive appropriate recognition and compensation, including when students enroll in zero-credit WBL courses.</p>
+              <p>Existing compensation structures may provide a starting point, but the University will need to establish arrangements that accommodate increased participation and different registration models.</p>
+              <p class="wsec-todo">[TBD: Confirm compensation rates, teaching-load policies, section sizes, and whether alternative WBL course models require new agreements.]</p>
+            </div>
+          </div>
+          <div class="faq-item">
+            <button class="faq-q">Will faculty have to redesign existing courses?</button>
+            <div class="faq-a">
+              <p>Not generally. Departments may continue to establish the academic content and disciplinary expectations of their courses.</p>
+              <p>Qualifying WBL courses would need to incorporate the common WBL criteria and assessment requirements, but the proposal does not call for a wholesale redesign of disciplinary instruction. Faculty outside designated CSD courses would not be required to incorporate new career assignments.</p>
+            </div>
+          </div>
+          <div class="faq-item">
+            <button class="faq-q">What administrative responsibilities will faculty have?</button>
+            <div class="faq-a">
+              <p>Faculty teaching WBL courses will retain responsibilities appropriate to academic instruction and assessment. The proposal also envisions centralized systems to reduce duplicated placement tracking, completion verification, and administrative reporting.</p>
+              <p>The intended distinction is between faculty responsibility for student learning and institutional responsibility for managing WBL processes at scale.</p>
+              <p class="wsec-todo">[TBD: Finalize faculty approval responsibilities, student contact expectations, assessment workflows, and the division of responsibilities among departments, the Career Center, and academic administration.]</p>
+            </div>
+          </div>
+          <div class="faq-item">
+            <button class="faq-q">What investment will the University make to support this requirement?</button>
+            <div class="faq-a">
+              <p>A university-wide requirement requires corresponding investment in instructional capacity, faculty compensation, student support, and administrative infrastructure.</p>
+              <p>CSD seeks to make effective use of Suffolk's existing Career Center staffing and expertise while identifying additional resources necessary to deliver the requirement responsibly.</p>
+              <p>The <a href="#cost-and-logistics">Cost and Logistics</a> section provides preliminary instructional models and assumptions.</p>
+              <p class="wsec-todo">[TBD: Confirm funding commitments, approved staffing allocations, implementation costs, and resource decisions with senior leadership.]</p>
+            </div>
+          </div>
+        </div>
+        <h3 class="sub" id="faq-6">The Career Plan and Technology</h3>
+        <div class="faq">
+          <div class="faq-item">
+            <button class="faq-q">How is the Career Plan different from an assignment submitted in Canvas?</button>
+            <div class="faq-a">
+              <p>Traditional planning assignments often become static documents stored within individual courses. The proposed Career Plan would preserve students' evolving reflections, experiences, and goals across their undergraduate education.</p>
+              <p>By capturing relevant information in structured, reusable forms, it could also support more informed advising conversations and allow Suffolk to identify patterns in student needs.</p>
+              <p>Students remain the authors of their plans; the technology makes that work more useful over time.</p>
+            </div>
+          </div>
+          <div class="faq-item">
+            <button class="faq-q">Will this require faculty and students to use another application?</button>
+            <div class="faq-a">
+              <p>The intended approach is to make the Career Plan accessible through Canvas, potentially using Learning Tools Interoperability (LTI), rather than requiring students and faculty to adopt another disconnected destination.</p>
+              <p>The Career Plan's underlying information would need to persist beyond individual Canvas course shells, even if Canvas provides a familiar entry point.</p>
+              <p class="wsec-todo">[TBD: Confirm the technology architecture, platform selection, Canvas integration, support responsibilities, and implementation timeline.]</p>
+            </div>
+          </div>
+          <div class="faq-item">
+            <button class="faq-q">Will faculty be required to use Career Plan information in their own courses?</button>
+            <div class="faq-a">
+              <p>Outside the designated CSD instructional requirements, faculty participation would be optional.</p>
+              <p>Faculty may choose to connect existing assignments with the Career Plan, use relevant student-authored information in advising, or help students identify disciplinary opportunities. These connections are intended to enhance existing teaching and mentorship rather than establish new obligations.</p>
+            </div>
+          </div>
+          <div class="faq-item">
+            <button class="faq-q">Who will be able to see students' Career Plans?</button>
+            <div class="faq-a">
+              <p>Access should reflect students' authorship, legitimate educational purposes, and appropriate privacy protections.</p>
+              <p>The proposed design could make relevant information available to authorized faculty and advisors while distinguishing information intended for individual guidance from information appropriate for institutional analysis.</p>
+              <p class="wsec-todo">[TBD: Establish access policies, student sharing controls, data retention rules, privacy safeguards, and institutional governance responsibilities.]</p>
+            </div>
+          </div>
+          <div class="faq-item">
+            <button class="faq-q">How will Suffolk use aggregated Career Plan and WBL data?</button>
+            <div class="faq-a">
+              <p>Structured information could help Suffolk understand students' developing career interests, anticipated WBL demand, unmet support needs, and progress toward completing the requirement.</p>
+              <p>Combined with improved WBL tracking and graduate outcomes reporting, these insights could inform employer engagement, advising resources, program assessment, and institutional planning.</p>
+              <p class="wsec-todo">[TBD: Identify the reporting infrastructure, agreed institutional metrics, data governance arrangements, and capabilities planned for initial versus later implementation.]</p>
+            </div>
+          </div>
+        </div>
+        <h3 class="sub" id="faq-7">Implementation and Accountability</h3>
+        <div class="faq">
+          <div class="faq-item">
+            <button class="faq-q">When would the requirement take effect?</button>
+            <div class="faq-a">
+              <p>Implementation must allow sufficient time to establish instructional capacity, accessible WBL registration options, faculty compensation arrangements, and the systems necessary to assess and document completion.</p>
+              <p>A phased introduction may be appropriate, particularly if some elements of the required curriculum or technology infrastructure are ready earlier than others.</p>
+              <p class="wsec-todo">[TBD: Provide the proposed approval date, first affected entering cohort, first CE-100 and CE-200 offerings, and WBL implementation timeline.]</p>
+            </div>
+          </div>
+          <div class="faq-item">
+            <button class="faq-q">Would the requirement apply to students already enrolled?</button>
+            <div class="faq-a">
+              <p>Any implementation plan should clearly identify the students subject to the new requirement and avoid creating unexpected graduation obligations for students already progressing under an existing curriculum.</p>
+              <p class="wsec-todo">[TBD: Confirm cohort applicability, catalog-year rules, and treatment of current students.]</p>
+            </div>
+          </div>
+          <div class="faq-item">
+            <button class="faq-q">Who will oversee the program?</button>
+            <div class="faq-a">
+              <p>CSD requires coordination among academic departments, the Career Center, the Registrar, Institutional Research, and other relevant offices. Academic oversight and curricular authority must remain appropriately situated within the University's established governance structures.</p>
+              <p>Operational responsibilities should be clearly assigned so that assessment, WBL approval, and student support do not become fragmented across departments.</p>
+              <p class="wsec-todo">[TBD: Define academic governance, operational ownership, reporting relationships, and decision-making authority.]</p>
+            </div>
+          </div>
+          <div class="faq-item">
+            <button class="faq-q">How will Suffolk know whether CSD is successful?</button>
+            <div class="faq-a">
+              <p>Success should be measured through more than course enrollment or completion of a graduation requirement.</p>
+              <p>The proposed curriculum creates opportunities to assess students' career-management capabilities, confidence, WBL participation, and professional growth. Over time, Suffolk can also examine relationships between CSD participation and broader outcomes, including retention and post-graduation employment.</p>
+              <p>A common assessment framework and more reliable institutional data would support continuous improvement.</p>
+              <p class="wsec-todo">[TBD: Establish program-level success indicators, baseline measures, reporting schedules, responsible offices, and evaluation methods. Distinguish measurable program outcomes from longer-term institutional aspirations.]</p>
+            </div>
+          </div>
+          <div class="faq-item">
+            <button class="faq-q">What decisions must be resolved before faculty are asked to implement the requirement?</button>
+            <div class="faq-a">
+              <p>Several significant decisions remain necessary, including instructional staffing, compensation and workload arrangements, student financial accessibility, WBL registration policies, and administrative support systems.</p>
+              <p>These are not peripheral details. They are essential conditions for delivering an equitable and academically credible university-wide requirement.</p>
+              <p>The proposal establishes the educational framework while recognizing that successful implementation depends on explicit institutional commitments and coordinated operational planning.</p>
+              <p class="wsec-todo">[TBD: Identify which commitments will be confirmed before the faculty vote and which will be resolved through subsequent governance and implementation processes.]</p>
+            </div>
           </div>
         </div>
       </div>
@@ -3308,6 +3671,42 @@
     q.addEventListener("click", function(){ q.parentElement.classList.toggle("open"); });
   });
 
+  /* FAQ: one topic at a time via tabs, or search across every topic */
+  (function(){
+    var panel=document.getElementById("panel-faq"), tabsEl=document.getElementById("faqTabs"),
+        box=document.getElementById("faqSearch"), inner=panel.querySelector(".panel-inner");
+    var LABELS=["Purpose & Rationale","Course Structure","Work-Based Learning","Access & Equity","Faculty Roles","Career Plan & Tech","Implementation"];
+    var anchor=document.getElementById("faqEmpty"), groups=[];
+    [].slice.call(panel.querySelectorAll("h3.sub")).forEach(function(h,i){
+      var list=h.nextElementSibling, g=document.createElement("div");
+      g.className="faq-grp"; h.parentNode.insertBefore(g,h); g.appendChild(h); g.appendChild(list);
+      groups.push(g);
+      var t=document.createElement("button"); t.type="button"; t.className="faq-tab"; t.setAttribute("role","tab");
+      t.textContent=LABELS[i]||h.textContent;
+      t.addEventListener("click",function(){ pick(i); });
+      tabsEl.appendChild(t);
+    });
+    function pick(i){
+      groups.forEach(function(g,j){ g.classList.toggle("on",j===i); });
+      [].forEach.call(tabsEl.children,function(t,j){ t.classList.toggle("on",j===i); t.setAttribute("aria-selected",String(j===i)); });
+    }
+    function search(){
+      var q=box.value.trim().toLowerCase(), any=false;
+      panel.classList.toggle("faq-searching",!!q);
+      groups.forEach(function(g){
+        var hit=false;
+        [].forEach.call(g.querySelectorAll(".faq-item"),function(it){
+          var m=!q || it.textContent.toLowerCase().indexOf(q)>=0;
+          it.classList.toggle("nomatch",!m); if(m) hit=true;
+        });
+        g.classList.toggle("nomatch",!hit); if(hit) any=true;
+      });
+      panel.classList.toggle("none",!!q && !any);
+    }
+    box.addEventListener("input",search);
+    pick(0);
+  })();
+
   /* the Sections menu and the References rail are mutually exclusive drawers */
   document.getElementById("menuToggle").addEventListener("click", function(){
     closeRail();
@@ -3379,7 +3778,7 @@
   window.addEventListener("resize",sendWblView);
   var CARDS={};
   /* CE-200 instruction the new sections replace; the card's big total is the cost of the sections minus this */
-  var CE200_REPLACES=(window.COURSES&&window.COURSES["CE-200"]&&window.COURSES["CE-200"].costOffset)||32500;
+  var CE200_REPLACES=(window.COURSES&&window.COURSES["CE-200"]&&window.COURSES["CE-200"].costOffset)||35000;
   function usd(n){ return "$"+Math.round(n).toLocaleString("en-US"); }
   function setText(id,t){ var x=document.getElementById(id); if(x) x.textContent=t; }
   function paintCards(){
