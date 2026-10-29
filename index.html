@@ -847,6 +847,7 @@
 
   .modal.is-asg .mkick{color:var(--navy);}
   .msx-page a[data-panel],.msx-page a[data-jump],.modal a[data-panel],.modal a[data-jump]{color:var(--sky-link);font-weight:inherit;text-decoration:underline;text-decoration-color:var(--sky-link);text-decoration-thickness:1px;text-underline-offset:2px;cursor:pointer;}
+  .cc-c a.cost-link{color:var(--sky-link);text-decoration:underline;text-underline-offset:2px;cursor:pointer;}
   .modal a.cost-link{color:var(--sky-link);text-decoration:underline;text-underline-offset:2px;cursor:pointer;}
   .modal a.cost-link:hover{text-decoration-thickness:2px;}
   .msx-page a[data-panel]:hover,.msx-page a[data-jump]:hover,.modal a[data-panel]:hover,.modal a[data-jump]:hover{text-decoration-thickness:2px;}
@@ -875,6 +876,8 @@
   .caps{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px 36px;margin:14px 0 8px;}
   .cap{padding:0 0 0 16px;}
   .cap h3{margin:0 0 8px;font-size:1.0625rem;font-weight:600;line-height:1.3;color:var(--navy);}
+  .cap h3{display:flex;align-items:center;gap:10px;}
+  .cap-ic{flex:0 0 auto;width:28px;height:28px;color:var(--sky);fill:currentColor;}
   .cap p{margin:0;font-size:.9375rem;line-height:var(--lh-body);text-wrap:pretty;}
   .cp-rule{border:0;border-top:1px solid var(--rule);margin:26px 0;}
   #panel-throughline h2.sub{margin:48px 0 10px;padding-top:34px;border-top:1px solid var(--rule);}
@@ -898,6 +901,7 @@
   .cc-pair{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.6fr);gap:0 24px;}
   @media (max-width:560px){.cc-pair{grid-template-columns:1fr;gap:14px;}}
   .cc-c .cm-h{margin:0 0 6px;}
+  .cc-c .cc-cost-h{margin-top:12px;}
   .cc-c p{margin:0;font-size:.9375rem;line-height:var(--lh-body);text-wrap:pretty;}
   .cu{margin:0 0 16px;}
   .cu:last-child{margin-bottom:0;}
@@ -1781,7 +1785,7 @@
     <section class="panel" id="panel-throughline" tabindex="-1">
       <div class="panel-inner">
         <h2 class="sec-title">The Career Plan</h2>
-        <p>At four points throughout their undergraduate experience, students revisit and update a personal Career Plan, documenting their evolving interests, experiences, career goals, and concrete next actions. Rather than four separate assignments, it becomes a continuous record of each student's development, and a resource that students, faculty, and advisors can return to throughout their time at Suffolk.</p>
+        <p>At four points throughout their undergraduate experience, students revisit and update a personal Career Plan, documenting their evolving interests, experiences, career goals, and concrete next actions. Rather than four separate assignments, it becomes a continuous record of each student's development, and a resource that students, faculty, and advisors can return to throughout their time at Suffolk. It is also a space where they can connect insights and artifacts from other coursework and extracurricular activities, providing a richer set of information to guide their career decisions.</p>
 
         <!-- Traditional vs. CS&D Career Plan comparison cards, hidden for now. Move out of this comment to restore.
         <div class="cmp">
@@ -1802,13 +1806,13 @@
 
         <p>The Career Plan's value comes not just from what students record, but from how that information can remain useful over time, across the University, and in support of individual student success.</p>
         <div class="caps">
-          <div class="cap"><h3>Continuity Across Time</h3>
+          <div class="cap"><h3><svg class="cap-ic" aria-hidden="true" focusable="false" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><g fill="none" stroke="currentColor" stroke-width="2"><path d="M1 12h20.098"/><path d="M5.5 7v5M16 7v5M9 17v-5"/><circle cx="5.5" cy="4" r="3"/><circle cx="16" cy="4" r="3"/><circle cx="9" cy="20" r="3"/></g><circle cx="1" cy="12" r="1"/><path d="m21.098 13-2.293 2.293 1.414 1.414 3.128-3.128c.871-.871.871-2.287 0-3.158l-3.128-3.128-1.414 1.414 2.293 2.293z"/></svg><span>Continuity Across Time</span></h3>
             <p>A student's goals and experiences don't disappear when a semester ends. Each Career Plan builds on earlier work, helping students revisit decisions, recognize growth, and adjust their direction as their interests evolve.</p></div>
-          <div class="cap"><h3>Continuity Across People</h3>
+          <div class="cap"><h3><svg class="cap-ic" aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m6,0C2.691,0,0,2.691,0,6s2.691,6,6,6,6-2.691,6-6S9.309,0,6,0Zm2.776,8.87c-.445-1.095-1.514-1.87-2.768-1.87h-.016c-1.254,0-2.325.773-2.769,1.868-.751-.728-1.222-1.742-1.222-2.868,0-2.206,1.794-4,4-4s4,1.794,4,4c0,1.127-.472,2.142-1.224,2.87Zm-1.276-4.37c0,.828-.672,1.5-1.5,1.5s-1.5-.672-1.5-1.5.672-1.5,1.5-1.5,1.5.672,1.5,1.5Zm10.5,7.5c-3.309,0-6,2.691-6,6s2.691,6,6,6,6-2.691,6-6-2.691-6-6-6Zm2.776,8.87c-.445-1.095-1.514-1.87-2.768-1.87h-.016c-1.254,0-2.325.773-2.769,1.868-.751-.728-1.222-1.742-1.222-2.868,0-2.206,1.794-4,4-4s4,1.794,4,4c0,1.127-.472,2.142-1.224,2.87Zm-1.276-4.37c0,.828-.672,1.5-1.5,1.5s-1.5-.672-1.5-1.5.672-1.5,1.5-1.5,1.5.672,1.5,1.5Zm-5.5-12.5c0-.552.447-1,1-1h2c2.206,0,4,1.794,4,4v2c0,.552-.447,1-1,1s-1-.448-1-1v-2c0-1.103-.897-2-2-2h-2c-.553,0-1-.448-1-1Zm-4,16c0,.552-.447,1-1,1h-2c-2.206,0-4-1.794-4-4v-2c0-.552.447-1,1-1s1,.448,1,1v2c0,1.103.897,2,2,2h2c.553,0,1,.448,1,1Z"/></svg><span>Continuity Across People</span></h3>
             <p>With appropriate permissions, faculty and advisors can build on relevant student-authored information rather than starting every conversation from scratch. Students remain the authors of their plans, while educators gain a shared foundation for more personalized guidance.</p></div>
-          <div class="cap"><h3>Continuity Across Experiences &amp; Systems</h3>
+          <div class="cap"><h3><svg class="cap-ic" aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m15.104,5.311c.585-.585.585-1.536,0-2.121l-2.043-2.043c-.585-.585-1.536-.585-2.121,0l-2.043,2.043c-.585.585-.585,1.536,0,2.121,0,0,2.083,2.082,2.104,2.1v1.985c-1.444.431-2.5,1.772-2.5,3.354s1.056,2.923,2.5,3.354v1.896c-1.103,0-2,.897-2,2v2c0,1.103.897,2,2,2h2c1.103,0,2-.897,2-2v-2c0-1.103-.897-2-2-2v-1.896c1.444-.431,2.5-1.772,2.5-3.354s-1.056-2.923-2.5-3.354v-1.985c.021-.018,2.104-2.1,2.104-2.1Zm-2.104,16.689h-2v-2h2v2Zm-2.336-17.75l1.336-1.336,1.336,1.336-1.336,1.336-1.336-1.336Zm2.836,8.5c0,.827-.673,1.5-1.5,1.5s-1.5-.673-1.5-1.5.673-1.5,1.5-1.5,1.5.673,1.5,1.5Zm10.5-6.25v3c0,1.93-1.57,3.5-3.5,3.5h-1.5l.793.793c.391.391.391,1.023,0,1.414-.195.195-.451.293-.707.293s-.512-.098-.707-.293l-1.793-1.793c-.78-.78-.78-2.048,0-2.828l1.793-1.793c.391-.391,1.023-.391,1.414,0s.391,1.023,0,1.414l-.793.793h1.5c.827,0,1.5-.673,1.5-1.5v-3c0-.827-.673-1.5-1.5-1.5h-2.5c-.552,0-1-.448-1-1s.448-1,1-1h2.5c1.93,0,3.5,1.57,3.5,3.5ZM7.414,18.586c.78.779.78,2.049,0,2.828l-1.793,1.793c-.195.195-.451.293-.707.293s-.512-.098-.707-.293c-.391-.391-.391-1.023,0-1.414l.793-.793h-1.5c-1.93,0-3.5-1.57-3.5-3.5v-3c0-1.93,1.57-3.5,3.5-3.5h2.5c.552,0,1,.448,1,1s-.448,1-1,1h-2.5c-.827,0-1.5.673-1.5,1.5v3c0,.827.673,1.5,1.5,1.5h1.5l-.793-.793c-.391-.391-.391-1.023,0-1.414s1.023-.391,1.414,0l1.793,1.793Z"/></svg><span>Continuity Across Experiences &amp; Systems</span></h3>
             <p>Coursework, advising, work-based learning, and preparation for graduation can contribute to one evolving record. Students can build on existing information instead of recreating their goals and history in disconnected systems.</p></div>
-          <div class="cap"><h3>Institutional Intelligence &amp; Proactive Support</h3>
+          <div class="cap"><h3><svg class="cap-ic" aria-hidden="true" focusable="false" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="m5 14c.552 0 1 .448 1 1v2c0 .552-.448 1-1 1s-1-.448-1-1v-2c0-.552.448-1 1-1zm3-2v5c0 .552.448 1 1 1s1-.448 1-1v-5c0-.552-.448-1-1-1s-1 .448-1 1zm-3.5-9c-.828 0-1.5.672-1.5 1.5s.672 1.5 1.5 1.5 1.5-.672 1.5-1.5-.672-1.5-1.5-1.5zm4 0c-.828 0-1.5.672-1.5 1.5s.672 1.5 1.5 1.5 1.5-.672 1.5-1.5-.672-1.5-1.5-1.5zm15.5 2v6c0 .552-.447 1-1 1s-1-.448-1-1v-2h-20v8c0 1.654 1.346 3 3 3h5c.552 0 1 .448 1 1s-.448 1-1 1h-5c-2.757 0-5-2.243-5-5v-12c0-2.757 2.243-5 5-5h14c2.757 0 5 2.243 5 5zm-2 2v-2c0-1.654-1.346-3-3-3h-14c-1.654 0-3 1.346-3 3v2zm1.707 15.293c.391.391.391 1.023 0 1.414s-1.023.391-1.414 0l-2.54-2.54c-.791.524-1.736.833-2.753.833-2.757 0-5-2.243-5-5s2.243-5 5-5 5 2.243 5 5c0 1.017-.309 1.962-.833 2.753zm-6.707-2.293c1.654 0 3-1.346 3-3s-1.346-3-3-3-3 1.346-3 3 1.346 3 3 3z"/></svg><span>Institutional Intelligence &amp; Proactive Support</span></h3>
             <p>Structured information can help Suffolk recognize individual needs, identify students who may benefit from additional guidance, and understand patterns across cohorts. This creates opportunities to move from primarily reactive services toward timely, targeted interventions.</p></div>
         </div>
 
@@ -1820,13 +1824,13 @@
           <div class="prog" id="msx-plans"></div>
         </div>
 
-        <h2 class="sub" id="t-3">How the Career Plan Innovates Career Advising at Suffolk</h2>
+        <h2 class="sub" id="t-3">How the Career Plan innovates career advising at Suffolk</h2>
         <p>The information students submit in their Career Plan is stored as structured data, and not just paragraphs of text. Some of that data is quantitative, such as confidence ratings or anticipated timelines. Other data is qualitative, such as career interests, outstanding questions, or requests for assistance. Both can be organized and acted upon without reducing students to a set of scores or checkboxes.</p>
         <div class="msx msx-plans">
           <div class="prog" id="msx-uses"></div>
         </div>
 
-        <h2 class="sub" id="t-canvas" style="margin-top: 0;">Connected to Canvas, Not Another Destination</h2>
+        <h2 class="sub" id="t-canvas" style="margin-top: 0;">Connected to Canvas, and not "one more tool" to add to the mix</h2>
         <p>The Career Plan is envisioned as a purpose-built tool that students and faculty will access through Canvas, potentially using Learning Tools Interoperability (LTI). Students could complete Career Plan assignments within the courses where they already work, while their information remains available beyond any single course or semester. Faculty and advisors could access information about students' career goals and growth in the same place they are conducting much of their other work.</p>
 
       </div>
@@ -2424,7 +2428,7 @@
             (c.prereq?'<div class="cm-pre"><span class="cm-k">Prereq:</span><span class="cm-v">'+md(c.prereq)+'</span></div>':'')+
           '</div>'+
           (c.timing?'<div class="cm-seq"><span class="cm-k">Timing:</span><span class="cm-v">'+md(c.timing)+'</span></div>':'')+
-          (cost?'<div class="cm-pre cm-cost"><span class="cm-k">'+(/^\$/.test(cost)?'Projected New<br>Spending per FY:':'Cost:')+'</span><span class="cm-v"><a href="#cost-and-logistics/'+(/^\$/.test(cost)?'h-planner':'h-wbl-planner')+'" class="cost-link"'+(c.costFrom?' data-cost-from="'+e(c.costFrom)+'" data-cost-offset="'+(c.costOffset||0)+'"':'')+'>'+md(cost)+'</a></span></div>':'')+
+          (cost?'<div class="cm-pre cm-cost"><span class="cm-k">'+'Projected New<br>Spending per FY:'+'</span><span class="cm-v"><a href="#cost-and-logistics/'+(/^\$/.test(cost)?'h-planner':'h-wbl-planner')+'" class="cost-link"'+(c.costFrom?' data-cost-from="'+e(c.costFrom)+'" data-cost-offset="'+(c.costOffset||0)+'"':'')+'>'+md(cost)+'</a></span></div>':'')+
         '</div>'+
         '<hr class="cm-rule">'+
         (c.description?'<h3 class="cm-h">'+md(c.description_heading||"Course Description")+'</h3><p>'+md(c.description)+'</p><hr class="cm-rule">':'')+
@@ -2495,7 +2499,11 @@
       return '<div class="cc-pair"><div class="cc-half">'+sec("Credits",'<p>'+md(c.credits_explained||c.credits||"")+'</p>')+'</div>'+
         '<div class="cc-half">'+sec("Timing",'<p>'+md(c.timing||"")+'</p>')+'</div></div>';
     });
-    both(row++,"cc-sec",function(c){ return sec("Instruction",'<p>'+md(c.instruction||"")+'</p>'); });
+    both(row++,"cc-sec",function(c){
+      var cost=(c.costFrom && PLANNER_COST[c.costFrom]!==undefined) ? plannerMoney(PLANNER_COST[c.costFrom]-(c.costOffset||0)) : c.cost;
+      return sec("Instruction",'<p>'+md(c.instruction||"")+'</p>')+
+        (cost?'<h4 class="cm-h cc-cost-h">Projected New Spending per FY</h4><p><a href="#cost-and-logistics/h-planner" class="cost-link"'+(c.costFrom?' data-cost-from="'+e(c.costFrom)+'" data-cost-offset="'+(c.costOffset||0)+'"':'')+'>'+md(cost)+'</a></p>':'');
+    });
     both(row++,"cc-sec",function(c){ return sec("Description",'<p>'+md(c.description||"")+'</p>'); });
     both(row++,"cc-sec cc-lohead",function(){ return sec("Learning Outcomes",'<p class="cm-lead">Upon successful completion of this course, students will be able to:</p>'); });
     var pairs=window.LO_PAIRINGS || (cs[0].learningOutcomes||[]).map(function(_,i){ return [[i],[i]]; });
