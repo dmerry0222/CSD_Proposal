@@ -34,6 +34,7 @@
     --navy:#15284B;
     --gold:#E7AB2A;
     --sky:#3CB4E5;
+    --sky-link:#1B8BC0;
     --teal:#40C1AC;          /* accent used for cards, rules and highlights */
     --teal-rgb:64,193,172;   /* same color, for translucent tints */
     --amber:#FDB924;         /* search support */
@@ -211,7 +212,7 @@
 
   /* landing page */
   .home-inner{padding-top:42px;padding-bottom:26px;min-height:100%;display:flex;flex-direction:column;container-type:inline-size;container-name:home;}
-  .home-foot{margin-top:auto;padding-top:12px;border-top:1px solid var(--rule);font-size:.75rem;line-height:1.45;color:#A3A3A3;}
+  .home-foot{margin-top:auto;padding-top:12px;border-top:1px solid var(--rule);font-size:.75rem;line-height:1.45;color:#A3A3A3;text-align:right;}
   .home-foot sup{font-size:.75em;margin-right:2px;}
   .home-title{
     font-size:2.875rem;
@@ -238,8 +239,8 @@
   .home-link{background:none;border:0;padding:0;font:inherit;font-weight:600;color:var(--navy);cursor:pointer;text-align:left;text-decoration:underline;text-decoration-color:var(--gold);text-decoration-thickness:2px;text-underline-offset:3px;}
   .home-link:hover{color:#0F1E39;text-decoration-color:var(--navy);}
   /* inline in a paragraph: reads as a plain hyperlink, same as the links inside the popups */
-  p .home-link{font-weight:inherit;color:var(--sky);text-decoration-color:var(--sky);text-decoration-thickness:1px;text-underline-offset:2px;}
-  p .home-link:hover{color:var(--sky);text-decoration-thickness:2px;}
+  p .home-link{font-weight:inherit;color:var(--sky-link);text-decoration-color:var(--sky-link);text-decoration-thickness:1px;text-underline-offset:2px;}
+  p .home-link:hover{color:var(--sky-link);text-decoration-thickness:2px;}
   /* landing page: tagline, darker body text, and the stat band between the paragraphs */
   /* two columns: text and CTA on the left, the statistics stacked in their own column on the right (a long stack never pushes the CTA) */
   .home-grid{--tag:clamp(1.625rem,3.2vw,2.375rem);display:grid;grid-template-columns:minmax(0,40rem) minmax(250px,340px);justify-content:start;column-gap:clamp(28px,3vw,44px);align-items:start;}
@@ -706,7 +707,7 @@
   .wsec{padding-top:38px;margin-top:0;}
   .wsec + .wsec{margin-top:44px;border-top:1px solid var(--rule);}
   .wsec > h3.sub:first-child{margin-top:0;}
-  #panel-wbl h3.sub,#panel-wblcourses h3.sub{font-size:1.5rem;line-height:1.3;margin-top:0;}
+  #panel-wbl h3.sub,#panel-wblcourses h3.sub,#panel-faculty h3.sub{font-size:1.5rem;line-height:1.3;margin-top:0;}
   .sec-title.wbl-head::after{display:none;}
   .sec-title.wbl-head{margin-bottom:6px;}
   h3.sub.wbl-sub{margin:0 0 30px;}
@@ -823,8 +824,8 @@
   .asg-notes p{margin:0;padding:0 12px 11px;font-size:.875rem;}
 
   .modal.is-asg .mkick{color:var(--navy);}
-  .msx-page a[data-panel],.msx-page a[data-jump],.modal a[data-panel],.modal a[data-jump]{color:var(--sky);font-weight:inherit;text-decoration:underline;text-decoration-color:var(--sky);text-decoration-thickness:1px;text-underline-offset:2px;cursor:pointer;}
-  .modal a.cost-link{color:var(--sky);text-decoration:underline;text-underline-offset:2px;cursor:pointer;}
+  .msx-page a[data-panel],.msx-page a[data-jump],.modal a[data-panel],.modal a[data-jump]{color:var(--sky-link);font-weight:inherit;text-decoration:underline;text-decoration-color:var(--sky-link);text-decoration-thickness:1px;text-underline-offset:2px;cursor:pointer;}
+  .modal a.cost-link{color:var(--sky-link);text-decoration:underline;text-underline-offset:2px;cursor:pointer;}
   .modal a.cost-link:hover{text-decoration-thickness:2px;}
   .msx-page a[data-panel]:hover,.msx-page a[data-jump]:hover,.modal a[data-panel]:hover,.modal a[data-jump]:hover{text-decoration-thickness:2px;}
   h3.sub#ov-1{margin-top:46px;}
@@ -1382,10 +1383,13 @@
         <button class="nav-link" data-panel="stories">Student Stories</button>
       </li>
       <li>
+        <button class="nav-link" data-panel="faculty">Faculty Roles &amp; Resources</button>
+      </li>
+      <li>
         <button class="nav-link" data-panel="howwork">Cost and Logistics</button>
       </li>
       <li>
-        <button class="nav-link" data-panel="faq" disabled aria-disabled="true">FAQ (Avail. 10/28)</button>
+        <button class="nav-link" data-panel="faq">FAQ</button>
       </li>
     </ul>
 
@@ -2777,6 +2781,150 @@
       </div>
     </section>
 
+    <!-- FACULTY ROLES & RESOURCES -->
+    <section class="panel" id="panel-faculty" tabindex="-1">
+      <div class="panel-inner">
+        <h2 class="sec-title">Faculty Roles &amp; Resources</h2>
+        <p>Career Strategy &amp; Design is designed to expand students' access to meaningful career preparation without shifting the responsibility for that expansion onto faculty through uncompensated or unrecognized work. The proposal seeks to maximize Suffolk's existing investment in Career Center staff, putting their specialized expertise and capacity to work at institutional scale while preserving meaningful opportunities for faculty to contribute their disciplinary knowledge and experience.</p>
+        <p>A university-wide requirement must be matched by university-wide investment. This includes appropriate instructional staffing, recognition of faculty workload, and administrative systems that make participation manageable. The goal is not simply to add a requirement, but to build the institutional support necessary for its success.</p>
+
+        <section class="wsec" id="sec-f-same">
+          <h3 class="sub" id="f-same">What Stays the Same</h3>
+          <p>CSD builds on Suffolk's existing academic structures and faculty expertise rather than replacing them. Departments will retain authority over disciplinary instruction and academic standards, while qualifying existing courses can continue to serve students under the new requirement. The goal is to strengthen connections between academic learning and career development without fundamentally changing faculty members' established roles.</p>
+
+          <h4 class="wh">Disciplinary Authority and Academic Standards</h4>
+          <p>Academic departments retain responsibility for the disciplinary content and academic expectations of their courses. Existing internships, research courses, and other qualifying work-based learning experiences can continue to serve students under established departmental models, provided they satisfy the common WBL criteria.</p>
+          <p>Departments may maintain additional requirements appropriate to their disciplines. The shared WBL standards establish a common minimum, not a replacement for more specialized academic expectations.</p>
+
+          <h4 class="wh">Existing Faculty Roles</h4>
+          <p>Faculty who already supervise research, teach internship courses, or help students develop professional connections can continue doing so. CSD does not propose making every faculty member responsible for helping students secure internships or providing specialized career advising.</p>
+          <p>Faculty will continue to play an important role in helping students connect disciplinary learning to professional practice, while the Career Center provides specialized expertise and coordinated support across the University.</p>
+
+          <h4 class="wh">Existing Courses and Curricula</h4>
+          <p>The proposal does not require departments to redesign their disciplinary courses around career development. Faculty may continue to teach their existing courses, and departments can identify opportunities for students to connect relevant academic work with CSD without requiring changes to established assignments or curricula.</p>
+          <p class="wsec-todo">[TBD: Confirm how existing internship and research courses will be designated as satisfying the new WBL requirement, including any departmental approval or curriculum-review processes.]</p>
+        </section>
+
+        <section class="wsec" id="sec-f-teaching">
+          <h3 class="sub" id="f-teaching">New Teaching Opportunities</h3>
+          <p>The two one-credit courses create new opportunities to draw on faculty expertise while making full use of Suffolk's investment in professional career education staff. A coordinated curriculum will provide consistent learning outcomes and instructional resources, while allowing faculty to contribute disciplinary perspectives or teach sections where appropriate. This approach is intended to expand instructional capacity without requiring departments to independently develop and administer new career education programs.</p>
+
+          <h4 class="wh">CE-100: Career Exploration</h4>
+          <p>CE-100 is envisioned as a common curriculum with shared learning outcomes and assessments. The Career Center would play a substantial instructional and coordinating role, supported by faculty and other qualified instructors as appropriate.</p>
+          <p>The course intentionally connects students with Suffolk's academic disciplines. Departments may contribute to students' exploration through existing academic events, introductions to faculty research, and other opportunities that help students understand the possibilities within their fields.</p>
+          <p>Faculty participation in these activities would be coordinated to avoid creating large numbers of individual requests or new obligations.</p>
+
+          <h4 class="wh">CE-200: Career Navigation</h4>
+          <p>CE-200 would share common learning outcomes while allowing industry-focused and interdisciplinary sections. Faculty with expertise in particular professional fields may have opportunities to teach sections or contribute disciplinary perspectives.</p>
+          <p>The proposal also creates an opportunity to build on existing career-related courses, including CAS-201 and comparable offerings, rather than duplicating instruction already taking place.</p>
+          <p class="wsec-todo">[TBD: Confirm which existing courses may transition into CE-200, how teaching assignments would be determined, and whether instructional compensation or course-load arrangements would change.]</p>
+
+          <h4 class="wh">Shared Instructional Resources</h4>
+          <p>Faculty teaching CE-100 or CE-200 would have access to common curricula, learning outcomes, instructional materials, and assessment tools developed in coordination with the Career Center.</p>
+          <p>The intention is to provide a strong, consistent curricular foundation while allowing instructors to bring their own expertise and appropriate disciplinary examples into the classroom.</p>
+          <p class="wsec-todo">[TBD: Finalize instructor eligibility, section sizes, training expectations, teaching-load arrangements, and compensation for the one-credit courses.]</p>
+        </section>
+
+        <section class="wsec" id="sec-f-wbl">
+          <h3 class="sub" id="f-wbl">Work-Based Learning: Faculty Roles &amp; Workload</h3>
+          <p>Faculty play an essential role in ensuring that work-based learning is academically meaningful, but they should not be expected to manage every aspect of students' experiences. CSD distinguishes academic instruction and assessment from the operational responsibilities of identifying opportunities, supporting searches, and tracking completion. As participation expands, the University must ensure that faculty workloads are manageable and that instructional contributions receive appropriate recognition and compensation.</p>
+
+          <h4 class="wh">Academic Responsibilities</h4>
+          <p>Faculty teaching courses that satisfy the WBL requirement would continue to establish appropriate academic expectations and assess students' learning.</p>
+          <p>Participating courses would incorporate the five common WBL criteria and shared end-of-experience assessments, alongside any additional departmental requirements.</p>
+          <p>Depending on the course and departmental model, faculty responsibilities may include reviewing proposed experiences for academic suitability, supporting students' reflection and learning, and evaluating their achievement of course objectives.</p>
+          <p class="wsec-todo">[TBD: Finalize common faculty responsibilities, anticipated student contact, assessment workload, and distinctions among internships, research, campus employment, and approved employer projects.]</p>
+
+          <h4 class="wh">Responsibilities Not Automatically Assigned to Faculty</h4>
+          <p>CSD does not envision faculty instructors being universally responsible for finding placements for students, independently managing institutional WBL records, or resolving registration and financial aid issues.</p>
+          <p>Faculty who wish to remain involved in identifying opportunities or developing employer relationships will continue to be valued partners. However, the institution must establish reliable centralized processes so these activities do not become implicit requirements of every WBL instructor.</p>
+          <p>The Career Center will coordinate specialized search assistance and work with academic and administrative partners to support the broader WBL process.</p>
+
+          <h4 class="wh">Recognizing Faculty Work</h4>
+          <p>Expanding WBL participation will increase demand for appropriate academic oversight. This work must be recognized through instructional assignments, compensation, or teaching-load arrangements consistent with University policies.</p>
+          <p>Existing departmental courses may accommodate some of the increased participation, but additional sections or other instructional capacity may be necessary.</p>
+          <p>A critical principle is that <b>zero-credit registration for students must not mean zero recognition or compensation for faculty work</b>.</p>
+          <p class="wsec-todo">[TBD: Establish anticipated WBL enrollments by department, available instructional capacity, section-size assumptions, and compensation arrangements for full-credit and zero-credit courses.]</p>
+        </section>
+
+        <section class="wsec" id="sec-f-invest">
+          <h3 class="sub" id="f-invest">Institutional Investment &amp; Support</h3>
+          <p>A universal student requirement must be supported by a corresponding institutional investment in the people, systems, and resources needed to deliver it successfully. CSD seeks to maximize Suffolk's existing career education capacity while identifying where additional staffing, instructional funding, and administrative infrastructure will be necessary. Coordinated systems for WBL tracking and student support should also reduce duplicated administrative work for faculty and departments, rather than adding new responsibilities to already demanding workloads.</p>
+
+          <h4 class="wh">Instructional Investment</h4>
+          <p>Suffolk must provide sufficient instructional capacity for the two one-credit courses and qualifying WBL courses. This includes funding additional teaching where needed and recognizing increased workloads in existing instructional arrangements.</p>
+          <p>The proposed approach seeks to make full use of the Career Center's established staffing and expertise while identifying areas where additional instructional investment will be necessary.</p>
+          <p>Detailed estimates and scenario assumptions are provided in the <a href="#cost-and-logistics">Cost and Logistics</a> section.</p>
+          <p class="wsec-todo">[TBD: Finalize instructional cost estimates, existing-course offsets, staffing allocations, and required new investment. Identify which assumptions have been validated with academic leadership.]</p>
+
+          <h4 class="wh">Centralized WBL Administration and Tracking</h4>
+          <p>A major implementation priority is the development of a more robust, coordinated system for tracking internships and other qualifying work-based learning experiences.</p>
+          <p>Today, relevant information and processes may be distributed across academic departments, advising systems, career platforms, and institutional reporting activities. CSD presents an opportunity to improve how these processes work together, reducing duplication and making information more useful to students and educators.</p>
+          <p>In collaboration with academic leadership and administrative partners, the Career Center is pursuing a more integrated approach to WBL administration and reporting.</p>
+          <p style="margin-bottom: 0;">The proposed infrastructure would support:</p>
+          <ul class="wlist">
+            <li><b>Experience approval and completion:</b> Consistent processes for documenting qualifying experiences, verifying requirements, and recording completion.</li>
+            <li><b>Faculty and student workflows:</b> Clearer access to relevant placement information and assessment records, reducing repetitive information requests and manual tracking.</li>
+            <li><b>Institutional reporting and analysis:</b> More reliable information about WBL participation, internship access, student development, and post-graduation outcomes.</li>
+          </ul>
+          <p>The objective is to reduce the administrative burden on individual faculty and departments while improving institutional accountability and the ability to identify students who need additional support.</p>
+          <p>This system would also strengthen Suffolk's capacity to understand which students secure WBL, which pathways they use, and where barriers remain.</p>
+          <p class="wsec-todo">[TBD: Add an overview of the parallel WBL and graduate outcomes data initiative, including participating offices, anticipated systems, responsible data stewards, and implementation milestones.]</p>
+          <p class="wsec-todo">[TBD: Clarify which tracking and reporting capabilities exist today, which are being developed independently of CSD, and which would require additional investment or approval.]</p>
+
+          <h4 class="wh">Career Center Support for Students and Faculty</h4>
+          <p>The Career Center would continue providing specialized career education and advising while assuming a coordinating role in helping students prepare for and pursue WBL opportunities.</p>
+          <p>This includes developing common instructional resources, supporting employer engagement, helping students navigate unsuccessful searches, and connecting students with appropriate opportunities and services.</p>
+          <p>As participation expands, Suffolk will need to assess whether existing staffing and employer-development capacity are sufficient to meet demand.</p>
+          <p class="wsec-todo">[TBD: Define expected student-to-staff demand, proposed high-touch assistance for students with unsuccessful searches, and any additional Career Center staffing or operational resources required.]</p>
+
+          <h4 class="wh">Technology and Instructional Tools</h4>
+          <p>Shared resources and technology should make the new requirements easier to deliver, not introduce additional disconnected systems or repetitive administrative tasks.</p>
+          <p>The proposed Career Plan would preserve student-authored information across courses and support appropriate access for faculty and advisors. Canvas integration is a central design priority, allowing students and instructors to work within familiar environments.</p>
+          <p>WBL tracking, Career Plan functionality, and institutional reporting will require coordinated technical planning and appropriate data governance.</p>
+          <p class="wsec-todo">[TBD: Confirm the minimum technology capabilities required at launch, integration priorities, privacy and access arrangements, and the offices responsible for implementation.]</p>
+
+          <h4 class="wh">Prerequisites for Implementation</h4>
+          <p>CSD should not be implemented as a universal requirement until Suffolk has established workable solutions for instructional capacity, faculty compensation, student financial accessibility, and the administrative processes necessary to document completion.</p>
+          <p>The proposal creates a framework for these decisions, but their resolution requires coordinated action and investment from University leadership.</p>
+          <p class="wsec-todo">[TBD: Identify the specific implementation commitments and approvals required before the requirement can take effect.]</p>
+        </section>
+
+        <section class="wsec" id="sec-f-connect">
+          <h3 class="sub" id="f-connect">Opportunities to Connect With and Benefit From CSD</h3>
+          <p>Beyond the required courses, CSD creates opportunities for faculty to connect their existing teaching and advising with students' broader academic and professional development. Faculty may choose to contribute disciplinary expertise, connect existing assignments to the Career Plan, or use relevant student-authored information to inform their own teaching and mentorship. These connections are intended to make faculty members' existing work more visible and valuable to students, without imposing additional curricular responsibilities.</p>
+          <p>Participation beyond assigned teaching or academic responsibilities would be optional.</p>
+
+          <h4 class="wh">Connect Existing Assignments to the Career Plan</h4>
+          <p>Faculty may choose to identify existing assignments or projects that help students develop relevant career knowledge or professional capabilities.</p>
+          <p>Students could incorporate these experiences into their evolving Career Plans without faculty having to redesign their courses or create new assignments.</p>
+          <p>For example, research projects, applied coursework, and disciplinary reflections may provide meaningful evidence of students' developing interests and capabilities.</p>
+
+          <h4 class="wh">Bring Greater Visibility to Academic Opportunities</h4>
+          <p>CE-100 encourages students to investigate Suffolk's academic disciplines and the opportunities available within them.</p>
+          <p>Departments may choose to make existing lectures, research showcases, faculty presentations, or other academic events available for students' exploration.</p>
+          <p>This creates opportunities to introduce students to disciplines they may not have previously considered and to highlight the educational value of departmental offerings.</p>
+          <p>Where possible, these connections should build on existing programming rather than generate new demands on faculty time.</p>
+
+          <h4 class="wh">Use Career Plan Insights in Teaching and Advising</h4>
+          <p>With appropriate permissions, faculty and academic advisors may be able to access relevant student-authored information about academic interests and developing career goals.</p>
+          <p>These insights could inform advising conversations, help identify students interested in particular research or disciplinary opportunities, and support more personalized guidance.</p>
+          <p>The Career Plan is intended to complement faculty relationships with students, not replace them or prescribe how faculty should advise.</p>
+          <p class="wsec-todo">[TBD: Define faculty access options, student permissions, and what information could be available through Canvas or other approved institutional systems.]</p>
+
+          <h4 class="wh">Connect Disciplinary Expertise with Career Education</h4>
+          <p>Faculty may choose to contribute discipline-specific examples, professional perspectives, or academic expertise to CE-100 and CE-200.</p>
+          <p>They may also collaborate with the Career Center on professional events, employer relationships, research opportunities, or other initiatives that connect students' academic learning with the broader professional world.</p>
+          <p>These opportunities should be flexible and responsive to faculty interests rather than additional expectations imposed across departments.</p>
+
+          <h4 class="wh">A More Connected Educational Experience</h4>
+          <p>CSD is intended to make the expertise and opportunities that already exist across Suffolk more accessible to students.</p>
+          <p>Faculty bring disciplinary knowledge and academic mentorship. The Career Center brings specialized career education and employer engagement expertise. Shared curricula and coordinated systems can help connect those contributions without requiring every faculty member to become a career advisor.</p>
+          <p>The result should be a more integrated educational experience for students, supported by an institutional model that respects faculty time and makes purposeful use of Suffolk's existing strengths.</p>
+        </section>
+      </div>
+    </section>
+
     <!-- FAQ -->
     <section class="panel" id="panel-faq" tabindex="-1">
       <div class="panel-inner">
@@ -3270,7 +3418,7 @@
     if(w && e.source===w.contentWindow && e.data && e.data.wblLive){ CARDS.wbl=e.data.wblLive; paintCards(); }
     if(w && e.source===w.contentWindow && e.data && e.data.wblCostHeight) w.style.height=Math.ceil(e.data.wblCostHeight)+"px";
   });
-  var SLUG={throughline:"career-plan",howwork:"cost-and-logistics",modeling:"modeling-wbl-placements",stories:"student-stories"}, KEYOF={"how-the-work-gets-done":"howwork"}, applyingHash=false;
+  var SLUG={throughline:"career-plan",howwork:"cost-and-logistics",modeling:"modeling-wbl-placements",stories:"student-stories",faculty:"faculty-roles-and-resources"}, KEYOF={"how-the-work-gets-done":"howwork"}, applyingHash=false;
   Object.keys(SLUG).forEach(function(k){ KEYOF[SLUG[k]]=k; });
   function hashFor(key,sub){ return "#"+(SLUG[key]||key)+(sub?"/"+sub:""); }
   function pushHash(key,sub,replace){
