@@ -127,16 +127,11 @@
   .nav{list-style:none;margin:0;padding:0;}
   .nav > li{margin:0;}
   .nav > li.nav-top{border-top:1px solid rgba(255,255,255,.16);margin-top:56px;padding-top:22px;}
+  /* the research link: a normal nav item with a document icon, set apart by a little extra room before the divider */
+  .nav-link.nav-doc{display:flex;align-items:center;gap:10px;padding:9px 12px 9px 22px;font-size:.8125rem;line-height:1.35;white-space:nowrap;}
+  .nd-ic{flex:0 0 auto;height:2.4em;width:auto;}
+  .nav > li:first-child{padding-bottom:12px;}
   .nav > li.nav-div{border-top:1px solid rgba(255,255,255,.16);padding-top:10px;}
-  /* the two research links stand out from the section links above them */
-  .nav > li.nav-research .nav-link{background:rgba(231,171,42,.15);border-left-color:var(--gold);color:#fff;font-weight:600;}
-  .nav > li.nav-research .nav-link:hover{background:rgba(231,171,42,.24);}
-  .nav > li.nav-research .nav-link[aria-current="true"]{background:rgba(231,171,42,.28);}
-  .nav > li.nav-research + li.nav-research{margin-top:8px;}
-  .nav-link.nav-callout{display:flex;align-items:center;gap:10px;width:auto;margin:-12px 0 24px;padding:9px 12px 9px 16px;font-size:.8125rem;line-height:1.35;font-weight:400;color:#fff;white-space:nowrap;background:rgba(231,171,42,.15);border-left-color:var(--gold);}
-  .nav-link.nav-callout:hover{background:rgba(231,171,42,.24);}
-  .nav-link.nav-callout[aria-current="true"]{background:rgba(231,171,42,.28);}
-  .nc-ic{flex:0 0 auto;height:2.4em;width:auto;color:var(--gold);}
   .nav-link{
     display:block;width:100%;text-align:left;
     background:none;border:0;
@@ -215,7 +210,7 @@
   }
 
   /* landing page */
-  .home-inner{padding-top:42px;padding-bottom:26px;min-height:100%;display:flex;flex-direction:column;}
+  .home-inner{padding-top:42px;padding-bottom:26px;min-height:100%;display:flex;flex-direction:column;container-type:inline-size;container-name:home;}
   .home-foot{margin-top:auto;padding-top:12px;border-top:1px solid var(--rule);font-size:.75rem;line-height:1.45;color:#A3A3A3;}
   .home-foot sup{font-size:.75em;margin-right:2px;}
   .home-title{
@@ -242,37 +237,36 @@
   .home-list dd{margin:0;}
   .home-link{background:none;border:0;padding:0;font:inherit;font-weight:600;color:var(--navy);cursor:pointer;text-align:left;text-decoration:underline;text-decoration-color:var(--gold);text-decoration-thickness:2px;text-underline-offset:3px;}
   .home-link:hover{color:#0F1E39;text-decoration-color:var(--navy);}
+  /* inline in a paragraph: reads as a plain hyperlink, same as the links inside the popups */
+  p .home-link{font-weight:inherit;color:var(--sky);text-decoration-color:var(--sky);text-decoration-thickness:1px;text-underline-offset:2px;}
+  p .home-link:hover{color:var(--sky);text-decoration-thickness:2px;}
   /* landing page: tagline, darker body text, and the stat band between the paragraphs */
-  .home-grid{display:block;}
-  .home-tagline{font-size:clamp(1.625rem,3.2vw,2.375rem);line-height:1.2;font-weight:600;letter-spacing:-.018em;color:var(--navy);margin:0 0 26px;text-wrap:balance;}
+  /* two columns: text and CTA on the left, the statistics stacked in their own column on the right (a long stack never pushes the CTA) */
+  .home-grid{--tag:clamp(1.625rem,3.2vw,2.375rem);display:grid;grid-template-columns:minmax(0,40rem) minmax(250px,340px);justify-content:start;column-gap:clamp(28px,3vw,44px);align-items:start;}
+  .home-tagline{font-size:var(--tag);line-height:1.2;font-weight:600;letter-spacing:-.018em;color:var(--navy);margin:0 0 26px;text-wrap:balance;}
   .home-lead,.home-main > p:not(.home-tagline){color:#3B3B3B;}
-  /* four columns: the lead-in, then three statistics; no box, inset on both sides */
+  /* line length of the paragraphs: the first one wraps after "prospective" */
+  .home-main > p:not(.home-tagline){max-width:40rem;}
   .home-grid .stats-wrap{
-    display:grid;grid-template-columns:minmax(150px,.78fr) repeat(3,minmax(0,1fr));column-gap:clamp(22px,2.6vw,36px);row-gap:14px;
-    margin:32px 0 34px;padding:0 clamp(16px,3vw,36px);background:none;border:0;border-radius:0;
+    display:grid;grid-template-columns:minmax(0,1fr);row-gap:20px;
+    margin:calc(var(--tag)*2.4 + 26px) 0 0;padding:0;background:none;border:0;border-radius:0;   /* top lines up with the first paragraph: two tagline lines plus the tagline's bottom margin */
   }
   .home-grid .stats{display:contents;}
-  .home-grid .stats-title{margin:0;padding-top:12px;font-size:1.1875rem;font-weight:500;line-height:1.3;color:var(--navy);text-wrap:balance;}
+  .home-grid .stats-title{margin:0;font-size:1.1875rem;font-weight:500;line-height:1.3;color:var(--navy);text-wrap:balance;}
   .home-grid .stat{display:grid;grid-template-columns:auto minmax(0,1fr);column-gap:14px;align-items:start;border-top:3px solid var(--accent);padding:12px 0 0;}
   .home-grid .stat{--accent:var(--sky);}
   .home-grid .stat-n{font-size:2.25rem;line-height:.95;}
   .home-grid .stat-t{font-size:.9rem;line-height:1.4;}
   .home-grid .stat-sub{font-size:.8125rem;margin-top:4px;}
-  @media (max-width:1280px){
-    .home-grid .stats-wrap{grid-template-columns:1fr;row-gap:16px;}
-    .home-grid .stat{max-width:560px;}
-  }
-  @media (max-width:760px){
-    .home-grid .stats-wrap{padding:0;}
-  }
-  /* stacked but with room: the statistics sit to the right of the paragraph text */
-  @media (max-width:1280px) and (min-width:761px){
-    .home-main{display:grid;grid-template-columns:minmax(0,1fr) minmax(220px,290px);column-gap:34px;align-items:start;}
-    .home-main > .home-tagline{grid-column:1 / -1;}
-    .home-main > .home-lead{grid-column:1;grid-row:2;}
-    .home-main > .stats-wrap{grid-column:2;grid-row:2 / span 2;margin:4px 0 0;padding:0;}
-    .home-main > p:not(.home-tagline):not(.home-lead){grid-column:1;grid-row:3;}
-    .home-main > .home-cta{grid-column:1;grid-row:4;}
+  /* when the text and the stat column no longer fit side by side, the statistics move between the two paragraphs */
+  @container home (max-width:940px){
+    .home-grid{grid-template-columns:minmax(0,40rem);row-gap:0;}
+    .home-main{display:contents;}
+    .home-main > .home-tagline{order:1;}
+    .home-main > .home-lead{order:2;}
+    .home-grid .stats-wrap{order:3;margin:14px 0 28px;}
+    .home-main > p:not(.home-tagline):not(.home-lead){order:4;}
+    .home-main > .home-cta{order:5;}
   }
   .home-grid .stats-wrap,.home-grid .stat-t,.home-grid .stat-sub{text-wrap:pretty;hyphens:none;}
   /* ---------- four milestones (native module) ---------- */
@@ -584,12 +578,11 @@
   .cstc-model{font-size:.9375rem;font-weight:600;color:var(--navy);text-decoration:underline;text-underline-offset:3px;white-space:nowrap;}
   .cstc-model:hover{text-decoration-thickness:2px;}
   .cstc-total{font-size:2.25rem;font-weight:600;line-height:1.1;color:var(--navy);font-variant-numeric:tabular-nums;}
-  .cstc-total small,.cstc-sum-v small{font-size:.9375rem;font-weight:500;color:var(--body);margin-left:4px;}
-  .cstc-sum{grid-column:1 / -1;display:flex;flex-wrap:wrap;align-items:baseline;justify-content:space-between;gap:8px 24px;background:var(--navy);color:#fff;padding:20px 28px;}
-  .cstc-sum-k{font-size:1.125rem;font-weight:600;}
-  .cstc-sum-v{font-size:2.5rem;font-weight:600;line-height:1.1;font-variant-numeric:tabular-nums;}
-  .cstc-sum-v small{color:rgba(255,255,255,.75);}
-  @media (max-width:900px){ .cstc-grid{grid-template-columns:1fr;} }
+  .cstc-total small{display:block;margin-top:4px;font-size:.8125rem;font-weight:500;color:var(--body);}
+  .cstc-sum{grid-column:3;display:flex;flex-direction:column;background:var(--teal);color:var(--navy);padding:20px 24px;}
+  .cstc-sum-v{font-size:2.25rem;font-weight:600;line-height:1.1;font-variant-numeric:tabular-nums;}
+  .cstc-sum-k{margin-top:4px;font-size:.8125rem;font-weight:500;}
+  @media (max-width:900px){ .cstc-grid{grid-template-columns:1fr;} .cstc-sum{grid-column:1;} }
   hr.planner-rule{border:0;border-top:1px solid var(--rule);margin:56px 0 48px;}
   #h-wbl-planner{margin-top:0;}
   .sankey-frame{display:block;width:100%;height:560px;border:0;}
@@ -1020,7 +1013,7 @@
   }
   .stat-t{margin:0;font-size:1rem;line-height:1.4;color:var(--body);}
   .stat-t .mark,
-  .home-lead .mark,
+  .home-main .mark,
   .hl{
     font-style:normal;font-weight:500;color:var(--navy);
     box-shadow:inset 0 -2px 0 var(--gold);
@@ -1361,12 +1354,14 @@
       <h1 id="brandTitle">Career Strategy<br>&amp; Design <span class="prop">Proposal</span></h1>
     </button>
 
-    <button class="nav-link nav-callout" data-panel="urgency">
-      <svg class="nc-ic" viewBox="0 0 24 30" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 2h11l5 5v21H4z"/><path d="M15 2v5h5"/><path d="M8 13h8M8 17h8M8 21h5"/></svg>
-      <span>The context and research<br>behind this proposal</span>
-    </button>
 
     <ul class="nav" id="nav">
+      <li>
+        <button class="nav-link nav-doc" data-panel="urgency">
+          <svg class="nd-ic" viewBox="0 0 24 30" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 2h11l5 5v21H4z"/><path d="M15 2v5h5"/><path d="M8 13h8M8 17h8M8 21h5"/></svg>
+          <span>The context and research<br>behind this proposal</span>
+        </button>
+      </li>
       <li class="nav-div">
         <button class="nav-link" data-panel="overview">Requirement Overview</button>
       </li>
@@ -1407,8 +1402,14 @@
         <hr class="home-rule">
         <div class="home-grid">
           <div class="home-main">
-            <p class="home-tagline">An outcome this consequential requires an intentional curriculum.</p>
-        <p class="home-lead">Suffolk's academic programs prepare students to think critically, engage with complex questions, and develop expertise within and across disciplines. <b>Career Strategy & Design</b> builds on that foundation by ensuring <span class="mark">every</span> undergraduate receives structured opportunities to explore career pathways, develop professional skills and relationships, and gain meaningful work experience. </p> <p>Career preparation and postgraduation opportunities are central considerations for prospective students and families. At Suffolk, our entering students overwhelmingly identify career advancement, relevant employment, and internship experience as priorities for their college education.</p>
+            <p class="home-tagline">An outcome this consequential<br>requires an intentional curriculum.</p>
+        <p class="home-lead">Career preparation and postgraduation opportunities are <button type="button" class="home-link" data-panel="urgency">central considerations</button> for prospective students and families. At Suffolk, our entering students overwhelmingly identify career advancement, relevant employment, and internship experience as priorities for their college education.</p>
+
+
+
+        <p><b>Career Strategy &amp; Design</b> is designed to ensure <span class="mark">every</span> undergraduate receives structured opportunities to explore career pathways, develop professional skills and relationships, and gain meaningful work experience. It establishes a common progression through two 1-credit courses, qualifying work-based learning, and a final launch checkpoint, supported by one evolving Career Plan that students author throughout their undergraduate experience.</p>
+          <div class="home-cta"><button type="button" class="start" data-panel="overview">Requirement Overview</button></div>
+          </div>
 
         <figure class="stats-wrap">
             <p class="stats-title">Among students entering Suffolk in Fall 2026:<span data-cite="SU_FY26"></span></p>
@@ -1424,15 +1425,11 @@
               <div class="stat">
                 <span class="stat-n">90%</span>
                 <p class="stat-t">plan to <span class="mark">complete an internship</span> during their time at&nbsp;Suffolk.
-                  <span class="stat-sub">68% strongly agree, 22% somewhat&nbsp;agree</span>
+                  <span class="stat-sub">68% strongly agree,<br>22% somewhat&nbsp;agree</span>
                 </p>
               </div>
             </div>
           </figure>
-
-        <p>This proposed requirement establishes a common progression through two 1-credit courses, qualifying work-based learning, and a final launch checkpoint, supported by one evolving Career Plan that students author throughout their undergraduate experience.</p>
-          <div class="home-cta"><button type="button" class="start" data-panel="overview">Requirement Overview</button></div>
-          </div>
         </div>
 
         <footer class="home-foot"><sup>1</sup> Entering Student Survey, OIRA, Summer&nbsp;2026. n&nbsp;=&nbsp;556&ndash;561.</footer>
@@ -1736,7 +1733,7 @@
     <section class="panel" id="panel-throughline" tabindex="-1">
       <div class="panel-inner">
         <h2 class="sec-title">The Career Plan</h2>
-        <p>At four points throughout their undergraduate experience, students revisit and update a personal Career Plan, documenting their evolving interests, experiences, and goals. Introduced through the required Career Strategy &amp; Design curriculum, the plan builds on each student's earlier work and connects their academic exploration, professional preparation, work-based learning, and transition beyond graduation. Rather than four separate assignments, it becomes a continuous record of each student's development&mdash;and a resource that students, faculty, and advisors can return to throughout their time at Suffolk.</p>
+        <p>At four points throughout their undergraduate experience, students revisit and update a personal Career Plan, documenting their evolving interests, experiences, career goals, and concrete next actions. Rather than four separate assignments, it becomes a continuous record of each student's development, and a resource that students, faculty, and advisors can return to throughout their time at Suffolk.</p>
 
         <!-- Traditional vs. CS&D Career Plan comparison cards, hidden for now. Move out of this comment to restore.
         <div class="cmp">
@@ -2361,7 +2358,7 @@
     if(!f || ev.source!==f.contentWindow || !ev.data || !ev.data.costDefaults) return;
     PLANNER_COST=ev.data.costDefaults;
     document.querySelectorAll("a.cost-link[data-cost-from]").forEach(function(a){
-      var v=PLANNER_COST[a.dataset.costFrom]; if(v!==undefined) a.textContent=plannerMoney(v);
+      var v=PLANNER_COST[a.dataset.costFrom]; if(v!==undefined) a.textContent=plannerMoney(v-(+a.dataset.costOffset||0));
     });
   });
   function courseOf(s){ return s.course && window.COURSES ? window.COURSES[s.course] : null; }
@@ -2371,7 +2368,7 @@
   function courseSections(c,ctx){
     var secs=[];
     if(ctx==="modal"){
-      var cost=(c.costFrom && PLANNER_COST[c.costFrom]!==undefined) ? plannerMoney(PLANNER_COST[c.costFrom]) : c.cost;
+      var cost=(c.costFrom && PLANNER_COST[c.costFrom]!==undefined) ? plannerMoney(PLANNER_COST[c.costFrom]-(c.costOffset||0)) : c.cost;
       return [{html:'<div class="cm">'+
         '<div class="cm-meta">'+
           '<div class="cm-stack">'+
@@ -2379,7 +2376,7 @@
             (c.prereq?'<div class="cm-pre"><span class="cm-k">Prereq:</span><span class="cm-v">'+md(c.prereq)+'</span></div>':'')+
           '</div>'+
           (c.timing?'<div class="cm-seq"><span class="cm-k">Timing:</span><span class="cm-v">'+md(c.timing)+'</span></div>':'')+
-          (cost?'<div class="cm-pre cm-cost"><span class="cm-k">'+(/^\$/.test(cost)?'Projected Cost/FY:':'Cost:')+'</span><span class="cm-v"><a href="#cost-and-logistics/'+(/^\$/.test(cost)?'h-planner':'h-wbl-planner')+'" class="cost-link"'+(c.costFrom?' data-cost-from="'+e(c.costFrom)+'"':'')+'>'+md(cost)+'</a></span></div>':'')+
+          (cost?'<div class="cm-pre cm-cost"><span class="cm-k">'+(/^\$/.test(cost)?'Projected New Spending/FY:':'Cost:')+'</span><span class="cm-v"><a href="#cost-and-logistics/'+(/^\$/.test(cost)?'h-planner':'h-wbl-planner')+'" class="cost-link"'+(c.costFrom?' data-cost-from="'+e(c.costFrom)+'" data-cost-offset="'+(c.costOffset||0)+'"':'')+'>'+md(cost)+'</a></span></div>':'')+
         '</div>'+
         '<hr class="cm-rule">'+
         (c.description?'<h3 class="cm-h">'+md(c.description_heading||"Course Description")+'</h3><p>'+md(c.description)+'</p><hr class="cm-rule">':'')+
@@ -2722,30 +2719,31 @@
         <p class="sec-standfirst">More information about course sections for WBL, curriculum revision and assessment, and WBL petition processes will be available shortly.</p>
 
         <div class="cstc-grid" id="costCards">
-          <div class="cstc" style="--c:var(--navy)">
+          <div class="cstc" style="--c:var(--teal)">
             <h3 class="cstc-h">CE-100</h3>
             <p class="cstc-line"><b id="cc-ce100-ceds">...</b> sections in CEDS teaching load</p>
             <p class="cstc-line"><b id="cc-ce100-sec">...</b> sections at <b id="cc-ce100-rate">...</b>/section</p>
             <p class="cstc-line cstc-note">&nbsp;</p>
-            <div class="cstc-foot"><div class="cstc-total"><span id="cc-ce100-total">...</span><small>/FY</small></div><a class="cstc-model" href="#cost-and-logistics/h-planner">Model this <span aria-hidden="true">&darr;</span></a></div>
+            <div class="cstc-foot"><div class="cstc-total"><span id="cc-ce100-total">...</span><small>New Spending/FY</small></div><a class="cstc-model" href="#cost-and-logistics/h-planner">Model this <span aria-hidden="true">&darr;</span></a></div>
           </div>
-          <div class="cstc" style="--c:var(--sky)">
+          <div class="cstc" style="--c:var(--teal)">
             <h3 class="cstc-h">CE-200</h3>
             <p class="cstc-line"><b id="cc-ce200-ceds">...</b> sections in CEDS teaching load</p>
             <p class="cstc-line"><b id="cc-ce200-sec">...</b> sections at <b id="cc-ce200-rate">...</b>/section</p>
-            <p class="cstc-line cstc-note">Replaces $32,500 of current instruction</p>
-            <div class="cstc-foot"><div class="cstc-total"><span id="cc-ce200-total">...</span><small>/FY</small></div><a class="cstc-model" href="#cost-and-logistics/h-planner">Model this <span aria-hidden="true">&darr;</span></a></div>
+            <p class="cstc-line"><b id="cc-ce200-gross">...</b> total cost</p>
+            <p class="cstc-line cstc-note">Replaces <span id="cc-ce200-repl">...</span> of current instruction</p>
+            <div class="cstc-foot"><div class="cstc-total"><span id="cc-ce200-total">...</span><small>New Spending/FY</small></div><a class="cstc-model" href="#cost-and-logistics/h-planner">Model this <span aria-hidden="true">&darr;</span></a></div>
           </div>
           <div class="cstc" style="--c:var(--teal)">
             <h3 class="cstc-h">WBL</h3>
             <p class="cstc-line"><b id="cc-sbs-sec">...</b> SBS sections at <b id="cc-sbs-rate">...</b>/section</p>
             <p class="cstc-line"><b id="cc-cas-sec">...</b> CAS sections at <b id="cc-cas-rate">...</b>/section</p>
             <p class="cstc-line cstc-note">Includes ? of current instruction</p>
-            <div class="cstc-foot"><div class="cstc-total"><span id="cc-wbl-total">...</span><small>/FY</small></div><a class="cstc-model" href="#cost-and-logistics/h-wbl-planner">Model this <span aria-hidden="true">&darr;</span></a></div>
+            <div class="cstc-foot"><div class="cstc-total"><span id="cc-wbl-total">...</span><small>New Spending/FY</small></div><a class="cstc-model" href="#cost-and-logistics/h-wbl-planner">Model this <span aria-hidden="true">&darr;</span></a></div>
           </div>
           <div class="cstc-sum">
-            <span class="cstc-sum-k">Total projected cost</span>
-            <span class="cstc-sum-v"><span id="cc-sum">...</span><small>/FY</small></span>
+            <span class="cstc-sum-v" id="cc-sum">...</span>
+            <span class="cstc-sum-k">Total New Spending/FY</span>
           </div>
         </div>
 
@@ -3212,6 +3210,8 @@
   window.addEventListener("scroll",sendWblView,true);
   window.addEventListener("resize",sendWblView);
   var CARDS={};
+  /* CE-200 instruction the new sections replace; the card's big total is the cost of the sections minus this */
+  var CE200_REPLACES=(window.COURSES&&window.COURSES["CE-200"]&&window.COURSES["CE-200"].costOffset)||32500;
   function usd(n){ return "$"+Math.round(n).toLocaleString("en-US"); }
   function setText(id,t){ var x=document.getElementById(id); if(x) x.textContent=t; }
   function paintCards(){
@@ -3219,7 +3219,9 @@
     if(ce){
       setText("cc-ce100-ceds",ce.ceds100); setText("cc-ce200-ceds",ce.ceds200);
       setText("cc-ce100-sec",ce.sec100); setText("cc-ce100-rate",usd(ce.rate100)); setText("cc-ce100-total",usd(ce.cost100));
-      setText("cc-ce200-sec",ce.sec200); setText("cc-ce200-rate",usd(ce.rate200)); setText("cc-ce200-total",usd(ce.cost200));
+      setText("cc-ce200-sec",ce.sec200); setText("cc-ce200-rate",usd(ce.rate200));
+      setText("cc-ce200-gross",usd(ce.cost200)); setText("cc-ce200-repl",usd(CE200_REPLACES));
+      setText("cc-ce200-total",usd(ce.cost200-CE200_REPLACES));
     }
     if(w){
       setText("cc-sbs-sec",w.SBS.sections); setText("cc-sbs-rate",usd(w.SBS.rate));
@@ -3227,7 +3229,7 @@
       setText("cc-wbl-total",usd(w.SBS.total+w.CAS.total));
     }
     /* WBL's "current instruction" figure is still a ? and counts as 0 */
-    if(ce && w) setText("cc-sum",usd(ce.cost100+ce.cost200+w.SBS.total+w.CAS.total));
+    if(ce && w) setText("cc-sum",usd(ce.cost100+(ce.cost200-CE200_REPLACES)+w.SBS.total+w.CAS.total));
   }
   window.addEventListener("message",function(e){
     var f=document.getElementById("sankeyFrame");

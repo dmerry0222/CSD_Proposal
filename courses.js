@@ -3,7 +3,7 @@
    Text fields accept **bold** markup.
    Each course may list units (number, name, weeks, description, optional week_breakdown, and assignments with
    assignment_name / assignment_description); the Two 1-Credit Courses page shows them under Sample Course Content.
-   "cost" is the projected cost per fiscal year (blank hides it in the popup; where "costFrom" names a CE planner result (cost100, cost200) the popup shows the planner's default figure and "cost" is only the fallback until the planner loads; a figure not starting with $, like WBL's "Cost Calculator", links to the WBL planner instead of the CE planner);CE-200's figure is net of the current cost of CAS-201 and its analogues.
+   "cost" is the projected new spending per fiscal year (blank hides it in the popup; where "costFrom" names a CE planner result (cost100, cost200) the popup shows the planner's default figure and "cost" is only the fallback until the planner loads; a figure not starting with $, like WBL's "Cost Calculator", links to the WBL planner instead of the CE planner); "costOffset" is current instruction the course replaces (CAS-201 and its analogues for CE-200), subtracted from the planner's figure to give new spending.
    "instruction" is who teaches the course; "responsibilities" (WBL) is the Expectations list; its first entry is the non-expectation, shown first with a ! marker (text after a 
  in it is the softer italic aside).
    A course may also list criteria (name, description), shown in its popup, and a description_heading to rename its Description header. */
@@ -93,8 +93,9 @@ window.COURSES = {
     "credits": "1 credit",
     "credits_explained": "1 credit, new in SBS, replacing CAS-201 and its analogues",
     "prereq": "CE-100",
-    "cost": "$62,500",
+    "cost": "$30,000",
     "costFrom": "cost200",
+    "costOffset": 32500,
     "instruction": "Career Staff (10); department faculty, especially those who also teach the internship course, if desired",
     "timing": "Preferred Sophomore fall or spring, with Junior year available; explore possibility of online summer sections",
     "tagline": "Evaluate and pursue professional opportunities, strengthen application skills, and create a concrete plan to secure and succeed in a work-based learning experience.",
