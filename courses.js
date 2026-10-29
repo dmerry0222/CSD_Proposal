@@ -17,7 +17,7 @@ window.COURSES = {
     "costFrom": "cost100",
     "instruction": "Career Staff (5); faculty & staff; local alumni(?)",
     "tagline": "Research and evaluate academic and career pathways at Suffolk, and develop a concrete plan for continued exploration and growth.",
-    "description": "Through guided self-assessment, exploration of Suffolk's academic opportunities, and evidence-based career research, students investigate how their interests and experiences might shape their academic and professional directions. Students may explore broadly across disciplines or examine possibilities more deeply within an established field of interest. They engage with faculty and professionals, evaluate labor-market information, and develop foundational skills for communicating their emerging qualifications. Attention is also given to how financial and personal circumstances influence educational and career decisions. Students synthesize their learning into a Career Exploration Plan that identifies promising directions, outstanding questions, and actionable next steps. The course establishes a foundation for more focused professional preparation in CE-200.",
+    "description": "Through guided self-assessment, exploration of Suffolk's academic opportunities, and evidence-based career research, students investigate how their interests and experiences might shape their academic and professional directions. Students may explore broadly across disciplines or examine possibilities more deeply within an established field of interest. They engage with faculty and professionals, evaluate labor-market information, and develop foundational skills for communicating their emerging qualifications. Attention is also given to how financial and personal circumstances influence educational and career decisions. Students synthesize their learning into a **Career Exploration Plan** that identifies promising directions, outstanding questions, and actionable next steps. The course establishes a foundation for more focused professional preparation in CE-200.",
     "learningOutcomes": [
       "Analyze how their interests, strengths, and experiences inform their developing academic and career directions.",
       "Research and compare academic and professional pathways, exploring possibilities across disciplines or more deeply within an established field of interest.",
@@ -83,7 +83,7 @@ window.COURSES = {
         "number": 6,
         "name": "Reflecting Back, Planning Ahead",
         "weeks": "12",
-        "description": "Students will synthesize their research and experiences into a Career Exploration Plan, identifying promising directions, remaining questions, and concrete next steps for continued development.",
+        "description": "Students will synthesize their research and experiences into a <b>Career Exploration Plan</b>, identifying promising directions, remaining questions, and concrete next steps for continued development.",
         "assignments": []
       }
     ]
