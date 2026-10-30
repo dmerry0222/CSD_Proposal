@@ -2790,14 +2790,12 @@
             <div class="cstc-foot"><div class="cstc-total"><span id="cc-ce200-total">...</span><small>Projected New Spending per FY</small></div><a class="cstc-model" href="#cost-and-logistics/h-planner">Model this <span aria-hidden="true">&darr;</span></a></div>
           </div>
           <div class="cstc" style="--c:var(--teal)">
-            <h3 class="cstc-h">WBL</h3>
-            <p class="cstc-line"><b id="cc-sbs-sec">...</b> SBS sections at <b id="cc-sbs-rate">...</b>/section</p>
-            <p class="cstc-line"><b id="cc-cas-sec">...</b> CAS sections at <b id="cc-cas-rate">...</b>/section</p>
-            <p class="cstc-line cstc-note">Includes ? of current instruction</p>
-            <div class="cstc-foot"><div class="cstc-total"><span id="cc-wbl-total">...</span><small>Projected New Spending per FY</small></div><a class="cstc-model" href="#cost-and-logistics/h-wbl-planner">Model this <span aria-hidden="true">&darr;</span></a></div>
+            <h3 class="cstc-h">Work-Based Learning Courses</h3>
+            <p class="cstc-line">The amount of new spending required to run adequate internship and other WBL courses is being modeled. It will likely be low, as most majors already have a form of internship, research, or other WBL course counted among the options to fulfill major elective requirements; so student tuition toward these major-supporting classes will often cover the teaching costs.</p>
+            <div class="cstc-foot"><div class="cstc-total"><span id="cc-wbl-total">$ --</span><small>Projected New Spending per FY</small></div><a class="cstc-model" href="#cost-and-logistics/h-wbl-planner" style="display:none">Model this <span aria-hidden="true">&darr;</span></a></div>
           </div>
           <div class="cstc-sum">
-            <span class="cstc-sum-v" id="cc-sum">...</span>
+            <span class="cstc-sum-v" id="cc-sum">$ --</span>
             <span class="cstc-sum-k">Total Projected New Spending per FY</span>
           </div>
         </div>
@@ -3797,12 +3795,10 @@
       setText("cc-ce200-total",usd(ce.cost200-CE200_REPLACES));
     }
     if(w){
-      setText("cc-sbs-sec",w.SBS.sections); setText("cc-sbs-rate",usd(w.SBS.rate));
-      setText("cc-cas-sec",w.CAS.sections); setText("cc-cas-rate",usd(w.CAS.rate));
-      setText("cc-wbl-total",usd(w.SBS.total+w.CAS.total));
+      /* the WBL card is text only for now ("$ --" total, no Model this link); restore the setText calls for cc-sbs-*, cc-cas-* and cc-wbl-total to show planner figures again */
     }
     /* WBL's "current instruction" figure is still a ? and counts as 0 */
-    if(ce && w) setText("cc-sum",usd(ce.cost100+(ce.cost200-CE200_REPLACES)+w.SBS.total+w.CAS.total));
+    /* the grand total shows "$ --" for now; the real sum is: usd(ce.cost100+(ce.cost200-CE200_REPLACES)+w.SBS.total+w.CAS.total) */
   }
   window.addEventListener("message",function(e){
     var f=document.getElementById("sankeyFrame");
